@@ -1,0 +1,21 @@
+name: CI
+on:
+  push:
+    branches: [master]
+  pull_request:
+      branches: [master]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '4.7.2'
+      - name: Restore
+        run: dotnet build src/hangman/Hangman.slnx
+      - name: Build
+        run: dotnet build src/hangman/Hangman.slnx --no-restore
+      - name: Test
+        run: dotnet test src/hangman/Hangman.slnx --no-build

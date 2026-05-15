@@ -1,0 +1,29 @@
+# conf
+.env
+Web.config.local
+App.config.local
+
+# VS 
+.vs/
+
+# Build
+bin/
+obj/
+
+# NuGet
+packages/
+*.nupkg
+
+# MISC
+*.user
+*.suo
+*.userprefs
+
+# OS
+.DS_Store
+Thumb.db
+desktop.ini
+
+# Tests
+*.trx
+*.coverage
