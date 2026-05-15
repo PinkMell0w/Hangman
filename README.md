@@ -6,4 +6,3 @@
 3. Run DB scripts -> '\database' from 01 to 03 (or 04, WIP)
 4. Run seeds '\database\seed\'
 
-Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;
