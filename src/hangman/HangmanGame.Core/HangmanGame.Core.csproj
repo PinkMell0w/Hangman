@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>9386659c-10aa-4320-8331-5e0981d5f3f5</ProjectGuid>
+    <ProjectGuid>{9386659C-10AA-4320-8331-5E0981D5F3F5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HangmanGame.Core</RootNamespace>
@@ -31,24 +31,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Core\Domain\PlayerProfile.cs" />
+    <Compile Include="Core\Domain\PlayerStats.cs" />
+    <Compile Include="Core\Domain\User.cs" />
+    <Compile Include="Core\DTOs\RegisterRequestDto.cs" />
+    <Compile Include="Core\DTOs\RegisterResponseDto.cs" />
+    <Compile Include="Core\Interfaces\Repositories\IUserRepository.cs" />
+    <Compile Include="Core\Interfaces\Repositories\IPlayerProfileRespository.cs" />
+    <Compile Include="Core\Interfaces\Repositories\IPlayerStatsRepository.cs" />
+    <Compile Include="Core\Interfaces\Repositories\IRepository.cs" />
+    <Compile Include="Core\Interfaces\Services\IAuthService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\Enums\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>
