@@ -10,7 +10,7 @@ namespace HangmanGame.Core.Core.Domain
     {
         public int ProfileId { get; set; }
         public int UserId { get; set; }
-        public string AvatarUrl { get; set; }
+        public string AvatarUrl { get; set; } 
         public string bio { get; set; }
         public string Theme { get; set; }
         public DateTime? UpdatedAt { get; set; }

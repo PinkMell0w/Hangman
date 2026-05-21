@@ -1,4 +1,5 @@
 ﻿using HangmanGame.Client.Helpers;
+using HangmanGame.Client.Views.SignUp;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Navigation;
@@ -16,7 +17,7 @@ namespace HangmanGame.Client
             this.Closing += Window_Closing;
 
             NavigationManager.Instance.Initialize(MainFrame, this);
-            NavigationManager.Instance.Navigate(new Views.SignUp.SignUpPage());
+            NavigationManager.Instance.Navigate(new SignUpPage());
         }
 
         private void Window_Closing (object sender, CancelEventArgs e) { /* TODO LogOut*/ }

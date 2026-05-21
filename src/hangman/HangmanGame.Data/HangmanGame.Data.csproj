@@ -158,6 +158,8 @@
     <Compile Include="Context\DatabaseContext.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\PlayerProfileRepository.cs" />
+    <Compile Include="Repositories\PlayerStatsRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>

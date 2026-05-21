@@ -27,5 +27,11 @@
 
             return hasUpper && hasLower && hasNumber;
         }
+
+        public static bool IsValidEmail(string input)
+        {
+            //TODO
+            return true;
+        }
     }
 }

@@ -7,7 +7,7 @@
     WindowStartupLocation="CenterScreen"
     KeyDown="Window_KeyDown">
 
-    <Grid>
+    <Grid Background="White">
         <Frame
             Name="MainFrame" JournalOwnership="OwnsJournal"/>
     </Grid>

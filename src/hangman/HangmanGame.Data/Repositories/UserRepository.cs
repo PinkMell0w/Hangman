@@ -29,11 +29,14 @@ namespace HangmanGame.Data.Repositories
 
             using (SqlCommand cmd = new SqlCommand(query, conn, transaction))
             {
+                cmd.Parameters.AddWithValue("@fullName", user.FullName);
+                cmd.Parameters.AddWithValue("@dateOfBirth", user.DateOfBirth);
+                cmd.Parameters.AddWithValue("@phoneNumber", user.PhoneNumber);
                 cmd.Parameters.AddWithValue("@username", user.Username);
                 cmd.Parameters.AddWithValue("@email", user.Email);
-                cmd.Parameters.AddWithValue("@pwdHash", user.pwdHash);
+                cmd.Parameters.AddWithValue("@pwdHash", user.PwdHash);
                 cmd.Parameters.AddWithValue("@salt", user.Salt);
-                cmd.Parameters.AddWithValue("@isActive", user.isActive);
+                cmd.Parameters.AddWithValue("@isActive", user.IsActive);
                 cmd.Parameters.AddWithValue("@createdAt", user.CreatedAt);
                 try
                 {
@@ -133,9 +136,9 @@ namespace HangmanGame.Data.Repositories
                 UserId = (int)reader["userId"],
                 Username = (string)reader["username"],
                 Email = (string)reader["email"],
-                pwdHash = (string)reader["passwordHash"],
+                PwdHash = (string)reader["passwordHash"],
                 Salt = (string)reader["salt"],
-                isActive = (int)reader["isActive"],
+                IsActive = (int)reader["isActive"],
                 CreatedAt = (DateTime)reader["createdAt"],
                 UpdatedAt = reader["updatedAt"] as DateTime?
             };

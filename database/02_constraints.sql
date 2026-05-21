@@ -4,21 +4,11 @@ GO
 -- ==
 -- PKs
 -- ==
-
 ALTER TABLE [User]
-	ADD CONSTRAINT PK_User PRIMARY_KEY (userId);
+	ADD CONSTRAINT PK_User PRIMARY KEY (userId);
 GO
 
-ALTER TABLE Role
-    ADD CONSTRAINT PK_Role PRIMARY KEY (roleId);
-GO
-
-ALTER TABLE UserRole
-    ADD CONSTRAINT PK_UserRole PRIMARY KEY (userRoleId);
-GO
-
-ALTER TABLE PlayerProfile
-ALTER TABLE Role
+ALTER TABLE [Role]
     ADD CONSTRAINT PK_Role PRIMARY KEY (roleId);
 GO
 
@@ -29,7 +19,6 @@ GO
 ALTER TABLE PlayerProfile
     ADD CONSTRAINT PK_PlayerProfile PRIMARY KEY (profileId);
 GO
-
 ALTER TABLE PlayerStats
     ADD CONSTRAINT PK_PlayerStats PRIMARY KEY (statsId);
 GO
@@ -46,7 +35,7 @@ ALTER TABLE FriendRequest
     ADD CONSTRAINT PK_FriendRequest PRIMARY KEY (requestId);
 GO
 
-ALTER TABLE Match
+ALTER TABLE [Match]
     ADD CONSTRAINT PK_Match PRIMARY KEY (matchId);
 GO
 
@@ -70,7 +59,7 @@ ALTER TABLE Invitation
     ADD CONSTRAINT PK_Invitation PRIMARY KEY (invitationId);
 GO
 
-ALTER TABLE Message
+ALTER TABLE [Message]
     ADD CONSTRAINT PK_Message PRIMARY KEY (messageId);
 GO
 
@@ -123,7 +112,7 @@ GO
 
 ALTER TABLE UserRole
     ADD CONSTRAINT FK_UserRole_Role
-    FOREIGN KEY (roleId) REFERENCES Role(roleId);
+    FOREIGN KEY (roleId) REFERENCES [Role](roleId);
 GO
 
 -- PlayerProfile
@@ -174,7 +163,7 @@ ALTER TABLE FriendRequest
 GO
 
 -- Match
-ALTER TABLE Match
+ALTER TABLE [Match]
     ADD CONSTRAINT FK_Match_Host
     FOREIGN KEY (hostId) REFERENCES [User](userId);
 GO
@@ -182,8 +171,13 @@ GO
 -- PlayerInMatch
 ALTER TABLE PlayerInMatch
     ADD CONSTRAINT FK_PlayerInMatch_Match
-    FOREIGN KEY (matchId) REFERENCES Match(matchId)
+    FOREIGN KEY (matchId) REFERENCES [Match](matchId)
     ON DELETE CASCADE;
+GO
+
+ALTER TABLE PlayerInMatch
+    ADD CONSTRAINT CHK_PlayerInMatch_Role
+    CHECK (role IN ('HOST', 'GUESSER'));
 GO
 
 ALTER TABLE PlayerInMatch
@@ -200,13 +194,18 @@ GO
 -- GameSession
 ALTER TABLE GameSession
     ADD CONSTRAINT FK_GameSession_Match
-    FOREIGN KEY (matchId) REFERENCES Match(matchId)
+    FOREIGN KEY (matchId) REFERENCES [Match](matchId)
     ON DELETE CASCADE;
 GO
 
 ALTER TABLE GameSession
     ADD CONSTRAINT FK_GameSession_Word
     FOREIGN KEY (wordId) REFERENCES Word(wordId);
+GO
+
+ALTER TABLE GameSession
+    ADD CONSTRAINT FK_GameSession_Winner
+    FOREIGN KEY (winnerId) REFERENCES [User](userId);
 GO
 
 -- GuessAttempt
@@ -224,7 +223,7 @@ GO
 -- Invitation
 ALTER TABLE Invitation
     ADD CONSTRAINT FK_Invitation_Match
-    FOREIGN KEY (matchId) REFERENCES Match(matchId)
+    FOREIGN KEY (matchId) REFERENCES [Match](matchId)
     ON DELETE CASCADE;
 GO
 
@@ -241,7 +240,7 @@ GO
 -- Message
 ALTER TABLE Message
     ADD CONSTRAINT FK_Message_Match
-    FOREIGN KEY (matchId) REFERENCES Match(matchId)
+    FOREIGN KEY (matchId) REFERENCES [Match](matchId)
     ON DELETE CASCADE;
 GO
 
@@ -254,14 +253,14 @@ GO
 -- CHECK CONSTRAINTS
 -- ==
 
-ALTER TABLE [User]
-    ADD CONSTRAINT CHK_User_Status
-    CHECK (status IN ('ACTIVE', 'INACTIVE', 'BANNED'));
+ALTER TABLE [Role]
+    ADD CONSTRAINT CHK_Role_RoleName
+    CHECK (roleName IN ('ADMIN', 'PLAYER'));
 GO
 
 ALTER TABLE FriendRequest
     ADD CONSTRAINT CHK_FriendRequest_Status
-    CHECK (status IN ('PENDING', 'ACCEPTED', 'DECLINED'));
+    CHECK ([status] IN ('PENDING', 'ACCEPTED', 'DECLINED'));
 GO
 
 -- Prevent a user from sending themselves a friend request
@@ -270,12 +269,12 @@ ALTER TABLE FriendRequest
     CHECK (senderId <> receiverId);
 GO
 
-ALTER TABLE Match
+ALTER TABLE [Match]
     ADD CONSTRAINT CHK_Match_Status
-    CHECK (status IN ('WAITING', 'IN_PROGRESS', 'FINISHED', 'CANCELLED'));
+    CHECK ([status] IN ('WAITING', 'IN_PROGRESS', 'FINISHED', 'CANCELLED'));
 GO
 
-ALTER TABLE Match
+ALTER TABLE [Match]
     ADD CONSTRAINT CHK_Match_MaxPlayers
     CHECK (maxPlayers BETWEEN 2 AND 8);
 GO
@@ -292,7 +291,7 @@ GO
 
 ALTER TABLE Invitation
     ADD CONSTRAINT CHK_Invitation_Status
-    CHECK (status IN ('PENDING', 'ACCEPTED', 'EXPIRED'));
+    CHECK ([status] IN ('PENDING', 'ACCEPTED', 'EXPIRED'));
 GO
 
 ALTER TABLE GuessAttempt

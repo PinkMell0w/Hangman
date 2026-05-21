@@ -63,18 +63,306 @@ namespace HangmanGame.Client.Properties {
         /// <summary>
         ///   Busca una cadena traducida similar a Accept.
         /// </summary>
-        public static string Global_acceptButton {
+        public static string Button_accept {
             get {
-                return ResourceManager.GetString("Global_acceptButton", resourceCulture);
+                return ResourceManager.GetString("Button_accept", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Cancel.
         /// </summary>
-        public static string Global_cancelButton {
+        public static string Button_cancel {
             get {
-                return ResourceManager.GetString("Global_cancelButton", resourceCulture);
+                return ResourceManager.GetString("Button_cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Create match.
+        /// </summary>
+        public static string Button_createMatch {
+            get {
+                return ResourceManager.GetString("Button_createMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Exit.
+        /// </summary>
+        public static string Button_exit {
+            get {
+                return ResourceManager.GetString("Button_exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Invite.
+        /// </summary>
+        public static string Button_invite {
+            get {
+                return ResourceManager.GetString("Button_invite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Join match.
+        /// </summary>
+        public static string Button_joinMatch {
+            get {
+                return ResourceManager.GetString("Button_joinMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Log in.
+        /// </summary>
+        public static string Button_logIn {
+            get {
+                return ResourceManager.GetString("Button_logIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Log out.
+        /// </summary>
+        public static string Button_logOut {
+            get {
+                return ResourceManager.GetString("Button_logOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ok.
+        /// </summary>
+        public static string Button_Ok {
+            get {
+                return ResourceManager.GetString("Button_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Register.
+        /// </summary>
+        public static string Button_register {
+            get {
+                return ResourceManager.GetString("Button_register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Reject.
+        /// </summary>
+        public static string Button_reject {
+            get {
+                return ResourceManager.GetString("Button_reject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a send.
+        /// </summary>
+        public static string Button_send {
+            get {
+                return ResourceManager.GetString("Button_send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You&apos;re already logged in..
+        /// </summary>
+        public static string Error_alreadyLogged {
+            get {
+                return ResourceManager.GetString("Error_alreadyLogged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Fill in all fields and try again..
+        /// </summary>
+        public static string Error_incompleteFields {
+            get {
+                return ResourceManager.GetString("Error_incompleteFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No results..
+        /// </summary>
+        public static string Error_noCoincidences {
+            get {
+                return ResourceManager.GetString("Error_noCoincidences", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a An error ocurred while trying to connect to the database, please try it later..
+        /// </summary>
+        public static string Error_noConnection {
+            get {
+                return ResourceManager.GetString("Error_noConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a An error ocurred while trying to retrieve your data..
+        /// </summary>
+        public static string Error_retrievingData {
+            get {
+                return ResourceManager.GetString("Error_retrievingData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The new password can&apos;t be the same as your current password..
+        /// </summary>
+        public static string Error_samePassword {
+            get {
+                return ResourceManager.GetString("Error_samePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a An error ocurred while trying to connect to the server, try again later..
+        /// </summary>
+        public static string Error_serverConnection {
+            get {
+                return ResourceManager.GetString("Error_serverConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Your password must only have letters and/or numbers..
+        /// </summary>
+        public static string Error_specialCharacters {
+            get {
+                return ResourceManager.GetString("Error_specialCharacters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a An error ocurred while updating your data, please try again later..
+        /// </summary>
+        public static string Error_unsuccessfulOperation {
+            get {
+                return ResourceManager.GetString("Error_unsuccessfulOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Wrong credentials.
+        /// </summary>
+        public static string Error_wrongCredentials {
+            get {
+                return ResourceManager.GetString("Error_wrongCredentials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a English.
+        /// </summary>
+        public static string Global_lang {
+            get {
+                return ResourceManager.GetString("Global_lang", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a don&apos;t have an account? Register here.
+        /// </summary>
+        public static string Global_noAccount {
+            get {
+                return ResourceManager.GetString("Global_noAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Password.
+        /// </summary>
+        public static string Global_password {
+            get {
+                return ResourceManager.GetString("Global_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Settings.
+        /// </summary>
+        public static string Global_settings {
+            get {
+                return ResourceManager.GetString("Global_settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Log in.
+        /// </summary>
+        public static string Global_signIn {
+            get {
+                return ResourceManager.GetString("Global_signIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Log to your account.
+        /// </summary>
+        public static string Global_signInTitle {
+            get {
+                return ResourceManager.GetString("Global_signInTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Register your account.
+        /// </summary>
+        public static string Global_signUpTitle {
+            get {
+                return ResourceManager.GetString("Global_signUpTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Username.
+        /// </summary>
+        public static string Global_username {
+            get {
+                return ResourceManager.GetString("Global_username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You&apos;re already befriended to this user..
+        /// </summary>
+        public static string Message_alreadyFriends {
+            get {
+                return ResourceManager.GetString("Message_alreadyFriends", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a An unexpected error ocurred. Please try again later..
+        /// </summary>
+        public static string Message_genericError {
+            get {
+                return ResourceManager.GetString("Message_genericError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You can&apos;t add yourself as a friend..
+        /// </summary>
+        public static string Message_isYou {
+            get {
+                return ResourceManager.GetString("Message_isYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Message.
+        /// </summary>
+        public static string Message_titleMessage {
+            get {
+                return ResourceManager.GetString("Message_titleMessage", resourceCulture);
             }
         }
     }

@@ -12,7 +12,7 @@ namespace HangmanGame.Core.Core.Domain
         public int UserId { get; set; }
         public int GamesPlayed { get; set; }
         public int GamesWon { get; set; }
-        public int GamesLost { get; set; }
+        public int TotalScore { get; set; }
         public double WinRate { get; set; }
         public DateTime? UpdatedAt { get; set; }
     }
