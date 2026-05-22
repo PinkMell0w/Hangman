@@ -1,5 +1,6 @@
 ﻿using HangmanGame.Core.Core.Domain;
 using HangmanGame.Core.Core.DTOs;
+using HangmanGame.Core.Core.Enums;
 using HangmanGame.Core.Core.Interfaces.Services;
 using HangmanGame.Data.Context;
 using HangmanGame.Data.Helpers;
@@ -34,7 +35,7 @@ namespace HangmanGame.Server.Services
             var profileRepo = new PlayerProfileRepository(context);
             var statsRepo = new PlayerStatsRepository(context);
 
-            try
+            try //delete messages until end
             {
                 if (userRepo.ExistsByEmail(request.Email))
                     return Fail("Email is already registered.");
@@ -50,13 +51,14 @@ namespace HangmanGame.Server.Services
                 var user = new User
                 {
                     FullName = request.FullName.Trim(),
+                    RoleId = Roles.Player,
                     DateOfBirth = DateTime.Parse(request.DateOfBirth.Trim()),
                     PhoneNumber = request.PhoneNumber.Trim(),
                     Username = request.Username.Trim(),
                     Email = request.Email.Trim().ToLowerInvariant(),
                     PwdHash = passwordHash,
                     Salt = salt,
-                    IsActive = 1,
+                    IsActive = true,
                     CreatedAt = DateTime.UtcNow
                 };
 
@@ -65,6 +67,8 @@ namespace HangmanGame.Server.Services
                 profileRepo.Add(new PlayerProfile
                 {
                     UserId = user.UserId,
+                    AvatarUrl = "/images/default-avatar.png",
+                    bio = "u should edit this later.",
                     Theme = "default"
                 });
 
@@ -84,13 +88,20 @@ namespace HangmanGame.Server.Services
             }
             catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
             {
+                System.Diagnostics.Debug.WriteLine($"SQL Error {ex.Number}: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Procedure: {ex.Procedure}");
+                System.Diagnostics.Debug.WriteLine($"Line: {ex.LineNumber}");
+
                 context.Rollback();
-                return Fail("Username or email is already taken.");
+                return Fail($"SQL Error {ex.Number}: {ex.Message}");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine($"Error: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Inner: {ex.InnerException?.Message}");
+
                 context.Rollback();
-                return Fail("An unexpected error occurred. Please try again.");
+                return Fail($"Error: {ex.Message}");
             }
             finally
             {

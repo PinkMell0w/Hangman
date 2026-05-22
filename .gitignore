@@ -2,6 +2,7 @@
 .env
 Web.config.local
 App.config.local
+database.config
 
 # VS 
 .vs/

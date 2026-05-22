@@ -1,40 +1,26 @@
-﻿using HangmanGame.Client.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HangmanGame.Client.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace HangmanGame.Client.Views.SignUp
 {
-    /// <summary>
-    /// Lógica de interacción para SignUpPage.xaml
-    /// </summary>
     public partial class SignUpPage : Page
     {
         public SignUpPage()
         {
             InitializeComponent();
+            DataContext = new HangmanGame.Client.ViewModels.SignUpViewModel();
         }
 
-        private void btnLoginPage_Click(object sender, RoutedEventArgs e)
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            NavigationManager.Instance.Navigate(new LoginPage());
+            if (DataContext is SignUpViewModel vm) vm.Password = ((PasswordBox)sender).Password;
         }
 
-        private void btnRegister_click(object sender, RoutedEventArgs e)
+        private void ConfirmPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            // TODO
-            NavigationManager.Instance.Navigate(new LobbyPage());
+            if (DataContext is SignUpViewModel vm) vm.ConfirmPassword = ((PasswordBox)sender).Password;
         }
     }
 }

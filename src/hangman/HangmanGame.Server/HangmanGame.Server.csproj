@@ -189,6 +189,9 @@
     <Folder Include="Config\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="database.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -20,7 +20,7 @@ namespace HangmanGame.Client
             NavigationManager.Instance.Navigate(new SignUpPage());
         }
 
-        private void Window_Closing (object sender, CancelEventArgs e) { /* TODO LogOut*/ }
+        private void Window_Closing(object sender, CancelEventArgs e) { /* TODO LogOut*/ }
 
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {

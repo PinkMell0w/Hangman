@@ -1,5 +1,7 @@
 <Solution>
-  <Project Path="HangmanGame.Client/HangmanGame.Client.csproj" Id="4fe15c49-a300-4219-ab80-7375a443e379" />
+  <Project Path="HangmanGame.Client/HangmanGame.Client.csproj" Id="4fe15c49-a300-4219-ab80-7375a443e379">
+    <BuildDependency Project="HangmanGame.Server/HangmanGame.Server.csproj" />
+  </Project>
   <Project Path="HangmanGame.Core/HangmanGame.Core.csproj" Id="9386659c-10aa-4320-8331-5e0981d5f3f5" />
   <Project Path="HangmanGame.Data/HangmanGame.Data.csproj" Id="10cf1e6b-90b2-440a-8bfd-7d29a4693983" />
   <Project Path="HangmanGame.Server/HangmanGame.Server.csproj" Id="2a377a7a-00fa-46bd-8b34-8e6cf38681ec" />

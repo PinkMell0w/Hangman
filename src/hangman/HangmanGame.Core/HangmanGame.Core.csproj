@@ -48,6 +48,7 @@
     <Compile Include="Core\Domain\User.cs" />
     <Compile Include="Core\DTOs\RegisterRequestDto.cs" />
     <Compile Include="Core\DTOs\RegisterResponseDto.cs" />
+    <Compile Include="Core\Enums\Roles.cs" />
     <Compile Include="Core\Interfaces\Repositories\IUserRepository.cs" />
     <Compile Include="Core\Interfaces\Repositories\IPlayerProfileRespository.cs" />
     <Compile Include="Core\Interfaces\Repositories\IPlayerStatsRepository.cs" />
@@ -55,8 +56,6 @@
     <Compile Include="Core\Interfaces\Services\IAuthService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\Enums\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

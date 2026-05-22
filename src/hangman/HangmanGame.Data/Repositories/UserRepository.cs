@@ -19,18 +19,17 @@ namespace HangmanGame.Data.Repositories
         {
             const string query = @"
                 INSERT INTO [User]
-                    (username, email, pwdHash, @salt, isActive, createdAt)
+                    (fullName, birthDate, phoneNumber, username, email, pwdHash, salt, isActive, createdAt)
                 OUTPUT INSERTED.userId
                 VALUES
-                    (@username, @email, @pwdHash, @salt, @isActive, @createdAt)";
+                    (@fullName, @birthDate, @phoneNumber, @username, @email, @pwdHash, @salt, @isActive, @createdAt)";
 
             SqlConnection conn = _context.GetOpenConnection();
-            SqlTransaction transaction = _context.CurrentTransaction;
 
-            using (SqlCommand cmd = new SqlCommand(query, conn, transaction))
+            using (SqlCommand cmd = new SqlCommand(query, conn, _context.CurrentTransaction))
             {
                 cmd.Parameters.AddWithValue("@fullName", user.FullName);
-                cmd.Parameters.AddWithValue("@dateOfBirth", user.DateOfBirth);
+                cmd.Parameters.AddWithValue("@birthDate", user.DateOfBirth);
                 cmd.Parameters.AddWithValue("@phoneNumber", user.PhoneNumber);
                 cmd.Parameters.AddWithValue("@username", user.Username);
                 cmd.Parameters.AddWithValue("@email", user.Email);
@@ -38,23 +37,18 @@ namespace HangmanGame.Data.Repositories
                 cmd.Parameters.AddWithValue("@salt", user.Salt);
                 cmd.Parameters.AddWithValue("@isActive", user.IsActive);
                 cmd.Parameters.AddWithValue("@createdAt", user.CreatedAt);
-                try
-                {
-                    user.UserId = (int)cmd.ExecuteScalar();
-                }
-                catch (SqlException ex)
-                {
-                    throw new System.Exception("An error occurred while adding the user to the database.", ex);
-                }
+
+                user.UserId = (int)cmd.ExecuteScalar();
             }
         }
 
-        public bool ExistsByEmail(string email) {
+        public bool ExistsByEmail(string email)
+        {
             const string query = "SELECT COUNT(1) FROM [User] WHERE email = @email";
 
             SqlConnection conn = _context.GetOpenConnection();
-            
-            using(SqlCommand cmd = new SqlCommand(query, conn, _context.CurrentTransaction))
+
+            using (SqlCommand cmd = new SqlCommand(query, conn, _context.CurrentTransaction))
             {
                 cmd.Parameters.AddWithValue("@email", email);
                 return (int)cmd.ExecuteScalar() > 0;
@@ -65,14 +59,12 @@ namespace HangmanGame.Data.Repositories
         {
             const string query = "SELECT COUNT(1) FROM [User] WHERE username = @username";
 
-            using (SqlConnection conn = _context.GetOpenConnection())
+            SqlConnection conn = _context.GetOpenConnection();
+
+            using (SqlCommand cmd = new SqlCommand(query, conn, _context.CurrentTransaction))
             {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@username", username);
-                    return (int)cmd.ExecuteScalar() > 0;
-                }
+                cmd.Parameters.AddWithValue("@username", username);
+                return (int)cmd.ExecuteScalar() > 0;
             }
         }
 
@@ -110,8 +102,7 @@ namespace HangmanGame.Data.Repositories
 
         public User GetById(int id)
         {
-            const string query =
-                "SELECT * FROM [User] WHERE userId = @userId";
+            const string query = "SELECT * FROM [User] WHERE userId = @userId";
 
             SqlConnection conn = _context.GetOpenConnection();
 
@@ -134,11 +125,14 @@ namespace HangmanGame.Data.Repositories
             return new User
             {
                 UserId = (int)reader["userId"],
+                FullName = (string)reader["fullName"],
+                DateOfBirth = (DateTime)reader["birthDate"],
+                PhoneNumber = (string)reader["phoneNumber"],
                 Username = (string)reader["username"],
                 Email = (string)reader["email"],
-                PwdHash = (string)reader["passwordHash"],
+                PwdHash = (string)reader["pwdHash"],
                 Salt = (string)reader["salt"],
-                IsActive = (int)reader["isActive"],
+                IsActive = (bool)reader["isActive"],
                 CreatedAt = (DateTime)reader["createdAt"],
                 UpdatedAt = reader["updatedAt"] as DateTime?
             };

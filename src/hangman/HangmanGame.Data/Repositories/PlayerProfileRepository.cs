@@ -19,12 +19,12 @@ namespace HangmanGame.Data.Repositories
         public void Add(PlayerProfile profile)
         {
             const string query = @"
-                INSERT INTO PlayerProfile (userId, avatarUrl, theme)
-                VALUES (@UserId, @AvatarUrl, @Theme)";
+            INSERT INTO PlayerProfile (userId, avatarUrl, theme)
+            VALUES (@UserId, @AvatarUrl, @Theme)";
 
             SqlConnection conn = _context.GetOpenConnection();
 
-            using (SqlCommand cmd = new SqlCommand(query, conn))
+            using (SqlCommand cmd = new SqlCommand(query, conn, _context.CurrentTransaction))
             {
                 cmd.Parameters.AddWithValue("@UserId", profile.UserId);
                 cmd.Parameters.AddWithValue("@AvatarUrl", profile.AvatarUrl ?? (object)DBNull.Value);
@@ -39,13 +39,12 @@ namespace HangmanGame.Data.Repositories
 
             SqlConnection conn = _context.GetOpenConnection();
 
-            using (SqlCommand cmd = new SqlCommand(query, conn))
+            using (SqlCommand cmd = new SqlCommand(query, conn, _context.CurrentTransaction))
             {
                 cmd.Parameters.AddWithValue("@userId", userId);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    if (reader.Read()) return null;
-
+                    if (!reader.Read()) return null;
                     return new PlayerProfile
                     {
                         ProfileId = (int)reader["profileId"],

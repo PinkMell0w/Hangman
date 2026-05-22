@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HangmanGame.Client.Views.SignUp"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SignUpPage">
@@ -20,24 +21,29 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" Margin="10, 10, 10, 10">
-                <Label Content="FName" FontSize="16"/>
-                <TextBox/>
-                <Label Content="dob" FontSize="16"/>
-                <DatePicker />
-                <Label Content="pNumber" FontSize="16"/>
-                <TextBox/>
+            <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" 
+                        Margin="10, 10, 10, 10">
+                <Label Content="Full Name" FontSize="16"/>
+                <TextBox Text="{Binding FullName, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Content="Email" FontSize="16"/>
+                <TextBox  Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Content="date of birth" FontSize="16"/>
+                <DatePicker SelectedDate="{Binding DateOfBirth, Mode=TwoWay,
+                    UpdateSourceTrigger=PropertyChanged}"
+                    DisplayDateEnd="{x:Static sys:DateTime.Today}"/>
+                <Label Content="PhoneNumber" FontSize="16"/>
+                <TextBox Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Content="Username" FontSize="16"/>
-                <TextBox/>
+                <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Content="Password" FontSize="16"/>
-                <TextBox/>
+                <PasswordBox x:Name="PasswordBox" PasswordChanged="PasswordBox_PasswordChanged"/>
                 <Label Content="confirm password" FontSize="16"/>
-                <TextBox/>
+                <PasswordBox x:Name="ConfirmPasswordBox" PasswordChanged="ConfirmPasswordBox_PasswordChanged"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20, 20, 20, 20">
-                <Button x:Name="btnLogin" Content="placeholder_log" Click="btnLoginPage_Click" Margin="10, 5, 10, 5"/>
-                <Button x:Name="btnRegister" Content="placeholder_Reg" Click="btnRegister_click" Margin="10, 5, 10, 5"/>
+                <Button Content="Sign Up" Command="{Binding RegisterCommand}"/>
+                <Button Content="Already have an acc?" Command="{Binding NavigateToSignInCommand}"/>
             </StackPanel>
         </Grid>
     </Grid>

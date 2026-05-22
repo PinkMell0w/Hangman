@@ -10,6 +10,8 @@ namespace HangmanGame.Core.Core.DTOs
     [DataContract]
     public class RegisterRequestDto
     {
+
+        [DataMember] public int RoleId { get; set; }
         [DataMember] public string FullName { get; set; }
         [DataMember] public string DateOfBirth { get; set; }
         [DataMember] public string PhoneNumber { get; set; }
