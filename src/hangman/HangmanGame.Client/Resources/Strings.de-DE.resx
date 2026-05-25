@@ -118,39 +118,45 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BtnAlrRegis" xml:space="preserve">
-    <value>Already registered?</value>
+    <value>Bereits Registriert?</value>
   </data>
   <data name="TxtSignUp" xml:space="preserve">
-    <value>Sign up</value>
+    <value>Registrieren</value>
   </data>
   <data name="TxtConfirmPass" xml:space="preserve">
-    <value>Confirm password</value>
+    <value>Passwort bestätigen</value>
   </data>
   <data name="TxtDob" xml:space="preserve">
-    <value>Date of birth</value>
+    <value>Geburtsdatum</value>
   </data>
   <data name="TxtEmail" xml:space="preserve">
-    <value>Email</value>
+    <value>E-Mail</value>
   </data>
   <data name="TxtFullName" xml:space="preserve">
-    <value>Full name</value>
+    <value>Vor und Zuname</value>
   </data>
   <data name="TxtLogIn" xml:space="preserve">
     <value>Log in</value>
   </data>
   <data name="TxtPassword" xml:space="preserve">
-    <value>Password</value>
+    <value>Passwort</value>
   </data>
   <data name="TxtPhone" xml:space="preserve">
-    <value>Phone number</value>
+    <value>Telefonnummer</value>
   </data>
   <data name="TxtUsername" xml:space="preserve">
     <value>Username</value>
   </data>
   <data name="TxtGameTitle" xml:space="preserve">
-    <value>Hangman</value>
+    <value>Galgenmännchen</value>
   </data>
   <data name="TxtEmptyUser" xml:space="preserve">
-    <value>Please input your username</value>
+    <value>Bitte füge deinen Usernamen ein</value>
+  </data>
+  <data name="TxtWrongCredentials" xml:space="preserve">
+    <value>Falscher Username oder Passwort</value>
+  </data>
+  <data name="TxtNoConnection" xml:space="preserve">
+    <value>Du bist Offline. Überprüfe deine Internetverbindung und versuche es erneut</value>
   </data>
 </root>

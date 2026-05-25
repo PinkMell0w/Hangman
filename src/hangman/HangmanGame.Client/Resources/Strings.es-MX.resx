@@ -118,45 +118,45 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BtnAlrRegis" xml:space="preserve">
-    <value>Already registered?</value>
+    <value>¿Ya estás registrad@?</value>
   </data>
   <data name="TxtSignUp" xml:space="preserve">
-    <value>Sign up</value>
+    <value>Registrarse</value>
   </data>
   <data name="TxtConfirmPass" xml:space="preserve">
-    <value>Confirm password</value>
+    <value>Confirmar contraseña</value>
   </data>
   <data name="TxtDob" xml:space="preserve">
-    <value>Date of birth</value>
+    <value>Fecha de nacimiento</value>
   </data>
   <data name="TxtEmail" xml:space="preserve">
-    <value>Email</value>
+    <value>Correo electrónico</value>
   </data>
   <data name="TxtFullName" xml:space="preserve">
-    <value>Full name</value>
+    <value>Nombre completo</value>
   </data>
   <data name="TxtLogIn" xml:space="preserve">
-    <value>Log in</value>
+    <value>Iniciar sesión</value>
   </data>
   <data name="TxtPassword" xml:space="preserve">
-    <value>Password</value>
+    <value>Contraseña</value>
   </data>
   <data name="TxtPhone" xml:space="preserve">
-    <value>Phone number</value>
+    <value>Numero telefónico</value>
   </data>
   <data name="TxtUsername" xml:space="preserve">
-    <value>Username</value>
+    <value>Nombre de usuario</value>
   </data>
   <data name="TxtGameTitle" xml:space="preserve">
-    <value>Hangman</value>
+    <value>Ahorcado</value>
   </data>
   <data name="TxtEmptyUser" xml:space="preserve">
-    <value>Please input your username</value>
+    <value>Por favor introduzca su usuario</value>
   </data>
   <data name="TxtWrongCredentials" xml:space="preserve">
-    <value>Incorrect username or password</value>
+    <value>Usuario o contraseña incorrectos</value>
   </data>
   <data name="TxtNoConnection" xml:space="preserve">
-    <value>You're offline. Check your internet connection and try again</value>
+    <value>Estás offline. Revisa tu conexión a internet e inténtalo de nuevo</value>
   </data>
 </root>
