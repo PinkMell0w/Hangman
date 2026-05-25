@@ -111,9 +111,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.en.resx" />
     <EmbeddedResource Include="Resources\Strings.es.resx" />
     <EmbeddedResource Include="Resources\Strings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Connected Services\HangmanGameService\AuthService.wsdl" />
@@ -141,7 +142,9 @@
       <Name>HangmanGame.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\SplashLogo.png" />
+  </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>

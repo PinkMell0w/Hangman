@@ -8,7 +8,6 @@
     KeyDown="Window_KeyDown">
 
     <Grid Background="White">
-        <Frame
-            Name="MainFrame" JournalOwnership="OwnsJournal"/>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" />
     </Grid>
 </Window>
