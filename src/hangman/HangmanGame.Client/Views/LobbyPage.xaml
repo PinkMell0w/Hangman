@@ -10,5 +10,7 @@
 
     <Grid Background="DarkOliveGreen">
         <Button Click="btnLogout_Click" Width="100" Height="30" Content="logout"/>
+
+        <Button Click="Button_Click" Width="100" Height="30" Content="Profile" Margin="0, 10, 0, 10" VerticalAlignment="Top"/>
     </Grid>
 </Page>

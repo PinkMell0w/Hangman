@@ -20,6 +20,12 @@ namespace HangmanGame.Client.HangmanGameService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/Register", ReplyAction="http://tempuri.org/IAuthService/RegisterResponse")]
         System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.RegisterResponseDto> RegisterAsync(HangmanGame.Core.Core.DTOs.RegisterRequestDto request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/SignIn", ReplyAction="http://tempuri.org/IAuthService/SignInResponse")]
+        HangmanGame.Core.Core.DTOs.SignInResponseDto SignIn(HangmanGame.Core.Core.DTOs.SignInRequestDto request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/SignIn", ReplyAction="http://tempuri.org/IAuthService/SignInResponse")]
+        System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.SignInResponseDto> SignInAsync(HangmanGame.Core.Core.DTOs.SignInRequestDto request);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,6 +61,14 @@ namespace HangmanGame.Client.HangmanGameService {
         
         public System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.RegisterResponseDto> RegisterAsync(HangmanGame.Core.Core.DTOs.RegisterRequestDto request) {
             return base.Channel.RegisterAsync(request);
+        }
+        
+        public HangmanGame.Core.Core.DTOs.SignInResponseDto SignIn(HangmanGame.Core.Core.DTOs.SignInRequestDto request) {
+            return base.Channel.SignIn(request);
+        }
+        
+        public System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.SignInResponseDto> SignInAsync(HangmanGame.Core.Core.DTOs.SignInRequestDto request) {
+            return base.Channel.SignInAsync(request);
         }
     }
 }

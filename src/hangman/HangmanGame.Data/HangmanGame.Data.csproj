@@ -161,6 +161,7 @@
     <Compile Include="Repositories\PlayerProfileRepository.cs" />
     <Compile Include="Repositories\PlayerStatsRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Repositories\UserSessionRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HangmanGame.Core\HangmanGame.Core.csproj">

@@ -13,16 +13,35 @@
   <wsdl:message name="IAuthService_Register_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegisterResponse" />
   </wsdl:message>
+  <wsdl:message name="IAuthService_SignIn_InputMessage">
+    <wsdl:part name="parameters" element="tns:SignIn" />
+  </wsdl:message>
+  <wsdl:message name="IAuthService_SignIn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SignInResponse" />
+  </wsdl:message>
   <wsdl:portType name="IAuthService">
     <wsdl:operation name="Register">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthService/Register" message="tns:IAuthService_Register_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAuthService/RegisterResponse" message="tns:IAuthService_Register_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SignIn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthService/SignIn" message="tns:IAuthService_SignIn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthService/SignInResponse" message="tns:IAuthService_SignIn_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IAuthService" type="tns:IAuthService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="Register">
       <soap:operation soapAction="http://tempuri.org/IAuthService/Register" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SignIn">
+      <soap:operation soapAction="http://tempuri.org/IAuthService/SignIn" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

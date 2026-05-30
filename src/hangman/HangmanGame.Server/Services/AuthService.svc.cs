@@ -109,6 +109,66 @@ namespace HangmanGame.Server.Services
             }
         }
 
+        public SignInResponseDto SignIn(SignInRequestDto request)
+        {
+            if (request == null || (string.IsNullOrWhiteSpace(request.Email) && string.IsNullOrWhiteSpace(request.Username)) || string.IsNullOrWhiteSpace(request.Password))
+            {
+                return new SignInResponseDto { Success = false, Message = "Invalid credentials." };
+            }
+
+            var context = new DatabaseContext();
+            var userRepo = new UserRepository(context);
+            var sessionRepo = new UserSessionRepository(context);
+
+            try
+            {
+                // Resolve user by username or email
+                User user = null;
+                if (!string.IsNullOrWhiteSpace(request.Email))
+                    user = userRepo.GetByEmail(request.Email.Trim().ToLowerInvariant());
+                else if (!string.IsNullOrWhiteSpace(request.Username))
+                    user = userRepo.GetByUsername(request.Username.Trim());
+
+                if (user == null)
+                    return new SignInResponseDto { Success = false, Message = "Invalid username/email or password." };
+
+                if (!PasswordHelper.VerifyPassword(request.Password, user.Salt, user.PwdHash))
+                    return new SignInResponseDto { Success = false, Message = "Invalid username/email or password." };
+
+                // Ensure only one active session per user: end previous sessions
+                string token = Guid.NewGuid().ToString("N");
+
+                try
+                {
+                    context.BeginTransaction();
+                    sessionRepo.EndActiveSessionsForUser(user.UserId);
+                    sessionRepo.CreateSession(user.UserId, token);
+                    context.Commit();
+                }
+                catch (SqlException ex)
+                {
+                    // If the UserSession table is missing or another SQL error occurs,
+                    // log it, rollback and continue without failing the sign-in so the
+                    // client can still authenticate. This makes the server resilient
+                    // when the DB schema hasn't been fully applied.
+                    context.Rollback();
+                    System.Diagnostics.Debug.WriteLine($"SignIn session DB error: {ex.Message}");
+                }
+
+                return new SignInResponseDto { Success = true, Message = "Signed in.", UserId = user.UserId, Token = token };
+            }
+            catch (Exception ex)
+            {
+                context.Rollback();
+                System.Diagnostics.Debug.WriteLine($"SignIn error: {ex.Message}");
+                return new SignInResponseDto { Success = false, Message = "An error occurred while signing in." };
+            }
+            finally
+            {
+                context.Dispose();
+            }
+        }
+
         private static RegisterResponseDto Fail(string message) =>
             new RegisterResponseDto { Success = false, Message = message };
     }

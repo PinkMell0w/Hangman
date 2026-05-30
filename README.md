@@ -19,12 +19,11 @@
 | CU-06 | Search user               | Anyone          | AuthService   | ❌     |
 | CU-07 | Send friend request       | User            | UserService   | ❌     |
 | CU-08 | Remove friend             | User            | UserService   | ❌     |
-| CU-09 | Manage users              | Admin           | AuthService   | ❌     |
-| CU-10 | Create match              | User            | MatchService  | ❌     |
-| CU-11 | Manage match              | User            | MatchService  | ❌     |
-| CU-12 | Join match                | User            | MatchService  | ❌     |
-| CU-13 | KickPlayer                | User            | MatchService  | ❌     |
-| CU-14 | Win/Surrender             | Admin           | MatchService  | ❌     |
-| CU-15 | Send message              | User            | MessageService| ❌     |
+| CU-09 | Create match              | User            | MatchService  | ❌     |
+| CU-10 | Join match                | User            | MatchService  | ❌     |
+| CU-11 | Guess                     | User            | MatchService  | ❌     |
+| CU-12 | KickPlayer                | User            | MatchService  | ❌     |
+| CU-13 | Win/Surrender             | Admin           | MatchService  | ❌     |
+| CU-14 | Send message              | User            | MessageService| ❌     |
 
 ✅ Implemented · 🔧 Partial · ❌ Not started

@@ -69,6 +69,7 @@
     <Compile Include="Helpers\HashManager.cs" />
     <Compile Include="Helpers\LanguageManager.cs" />
     <Compile Include="Helpers\NavigationManager.cs" />
+    <Compile Include="Helpers\SessionManager.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -78,12 +79,13 @@
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\SignInViewModel.cs" />
     <Compile Include="ViewModels\SignUpViewModel.cs" />
     <Compile Include="Views\LobbyPage.xaml.cs">
       <DependentUpon>LobbyPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LoginPage.xaml.cs">
-      <DependentUpon>LoginPage.xaml</DependentUpon>
+    <Compile Include="Views\ProfilePage.xaml.cs">
+      <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SignInPage.xaml.cs">
       <DependentUpon>SignInPage.xaml</DependentUpon>
@@ -127,6 +129,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.RegisterResponseDto.datasource" />
+    <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.SignInResponseDto.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -151,7 +154,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LoginPage.xaml">
+    <Page Include="Views\ProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -16,6 +16,10 @@ ALTER TABLE UserRole
     ADD CONSTRAINT PK_UserRole PRIMARY KEY (userRoleId);
 GO
 
+ALTER TABLE UserSession
+    ADD CONSTRAINT PK_Session PRIMARY KEY (sessionId);
+GO
+
 ALTER TABLE PlayerProfile
     ADD CONSTRAINT PK_PlayerProfile PRIMARY KEY (profileId);
 GO
@@ -113,6 +117,12 @@ GO
 ALTER TABLE UserRole
     ADD CONSTRAINT FK_UserRole_Role
     FOREIGN KEY (roleId) REFERENCES [Role](roleId);
+GO
+
+-- UserSession
+ALTER TABLE UserSession
+    ADD CONSTRAINT FK_UserSession_User
+    FOREIGN KEY (userId) REFERENCES [User](userId);
 GO
 
 -- PlayerProfile

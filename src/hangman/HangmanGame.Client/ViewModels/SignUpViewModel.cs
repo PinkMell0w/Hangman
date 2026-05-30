@@ -3,9 +3,8 @@ using HangmanGame.Client.HangmanGameService;
 using HangmanGame.Client.Helpers;
 using HangmanGame.Core.Core.DTOs;
 using System;
-using System.Windows;
+using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Windows.Navigation;
 
 namespace HangmanGame.Client.ViewModels
 {
@@ -127,7 +126,7 @@ namespace HangmanGame.Client.ViewModels
                 Password = Password
             };
 
-            var response = await System.Threading.Tasks.Task.Run(
+            var response = await Task.Run(
                 () => _authService.Register(request)
             );
 

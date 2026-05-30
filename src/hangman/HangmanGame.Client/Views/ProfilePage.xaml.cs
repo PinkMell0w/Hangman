@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HangmanGame.Client.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,14 +16,16 @@ using System.Windows.Shapes;
 
 namespace HangmanGame.Client.Views
 {
-    /// <summary>
-    /// Lógica de interacción para LoginPage.xaml
-    /// </summary>
-    public partial class LoginPage : Page
+    public partial class ProfilePage : Page
     {
-        public LoginPage()
+        public ProfilePage()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationManager.Instance.Navigate(new LobbyPage());
         }
     }
 }
