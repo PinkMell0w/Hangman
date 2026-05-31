@@ -6,11 +6,15 @@
       xmlns:local="clr-namespace:HangmanGame.Client.Views.SignUp"
       xmlns:props="clr-namespace:HangmanGame.Client.Properties"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="{x:Static props:Resources.Title_signUp}">
 
-    <Grid Background="DimGray">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Views/SignUp/paperBgB.jpg"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
@@ -53,6 +57,6 @@
             </StackPanel>
         </Grid>
 
-        <Image Grid.Column="1" Source="/Resources/Images/RegisterPic.gif" Stretch="None" />
+        <Image Grid.Column="1" gif:AnimationBehavior.SourceUri="/Resources/Images/RegisterPic.gif" Stretch="None" />
     </Grid>
 </Page>

@@ -106,6 +106,15 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Forgot password.
+        /// </summary>
+        public static string Button_forgotPassword {
+            get {
+                return ResourceManager.GetString("Button_forgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invite.
         /// </summary>
         public static string Button_invite {

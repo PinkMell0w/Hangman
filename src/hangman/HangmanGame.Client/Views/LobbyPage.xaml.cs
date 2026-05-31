@@ -29,7 +29,7 @@ namespace HangmanGame.Client.Views
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
             //TODO logout logic 
-            NavigationManager.Instance.Navigate(new LoginPage());
+            NavigationManager.Instance.Navigate(new SignInPage());
         }
     }
 }

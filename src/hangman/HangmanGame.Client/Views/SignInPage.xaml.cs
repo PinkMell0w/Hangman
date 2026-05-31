@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HangmanGame.Client.Views.SignUp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,31 @@ namespace HangmanGame.Client.Views
         public SignInPage()
         {
             InitializeComponent();
+        }
+
+        private void TxtUsername_GotFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TxtUsername_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnForgotPassword_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnLogIn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnSignUp_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new SignUpPage());
         }
     }
 }

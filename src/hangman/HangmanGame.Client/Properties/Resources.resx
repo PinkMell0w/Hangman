@@ -237,4 +237,7 @@
   <data name="Error_serverConnection" xml:space="preserve">
     <value>The server timed out. If the problem persists, try again later</value>
   </data>
+  <data name="Button_forgotPassword" xml:space="preserve">
+    <value>Forgot password</value>
+  </data>
 </root>

@@ -237,4 +237,7 @@
   <data name="Error_serverConnection" xml:space="preserve">
     <value>Se agotó el tiempo de espera de respuesta con el servidor. Si el problema persiste, intente de nuevo más tarde</value>
   </data>
+  <data name="Button_forgotPassword" xml:space="preserve">
+    <value>Olvidé mi contraseña</value>
+  </data>
 </root>
