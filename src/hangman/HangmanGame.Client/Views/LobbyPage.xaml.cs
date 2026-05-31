@@ -26,15 +26,15 @@ namespace HangmanGame.Client.Views
             InitializeComponent();
         }
 
-        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        private void BtnProfile_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationManager.Instance.Navigate(new ProfilePage());
+        }
+
+        private void BtnLogout_Click(object sender, RoutedEventArgs e)
         {
             //TODO logout logic 
             NavigationManager.Instance.Navigate(new SignInPage());
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationManager.Instance.Navigate(new ProfilePage());
         }
     }
 }
