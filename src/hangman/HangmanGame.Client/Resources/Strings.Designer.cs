@@ -124,15 +124,6 @@ namespace HangmanGame.Client.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Log in.
-        /// </summary>
-        public static string TxtLogIn {
-            get {
-                return ResourceManager.GetString("TxtLogIn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to You&apos;re offline. Check your internet connection and try again.
         /// </summary>
         public static string TxtNoConnection {
@@ -156,6 +147,15 @@ namespace HangmanGame.Client.Resources {
         public static string TxtPhone {
             get {
                 return ResourceManager.GetString("TxtPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log in.
+        /// </summary>
+        public static string TxtSignIn {
+            get {
+                return ResourceManager.GetString("TxtSignIn", resourceCulture);
             }
         }
         

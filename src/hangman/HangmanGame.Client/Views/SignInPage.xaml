@@ -4,11 +4,44 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HangmanGame.Client.Views"
+      xmlns:props="clr-namespace:HangmanGame.Client.Properties"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="SignInPage">
+      Title="{x:Static props:Resources.Title_signIn}">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel>
+            <Label FontSize="56" FontFamily="Ink Free" FontWeight="Bold" Content="{x:Static props:Resources.Text_gameTitle}" HorizontalAlignment="Center" Margin="0,80,0,0" />
+            <Image Source="/Resources/Images/SplashLogo.png" Stretch="None" />
+        </StackPanel>
+
+        <Grid Grid.Column="1" Background="White" Margin="40" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Content="{x:Static props:Resources.Global_signIn}" FontSize="28" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Center" Margin="40,20,40,0"/>
+
+            <StackPanel Grid.Row="1" HorizontalAlignment="Left" Margin="25,10,0,10" Width="205" >
+                <Label Content="{x:Static props:Resources.Global_username}" FontSize="14" FontFamily="Ink Free" FontWeight="Bold"/>
+                <TextBox x:Name="TxtUsername" Text="{x:Static props:Resources.Global_username}" Foreground="Gray" GotFocus="TxtUsername_GotFocus" LostFocus="TxtUsername_LostFocus"/>
+                <Label Content="{x:Static props:Resources.Global_password}" FontSize="14" FontFamily="Ink Free" FontWeight="Bold"/>
+                <PasswordBox x:Name="PsbPassword"/>
+                <Button Content="{x:Static props:Resources.Button_forgotPassword}" HorizontalAlignment="Left" Margin="0,5,0,0" Click="BtnForgotPassword_Click"/>
+                <Label x:Name="TxtErrorLogin" FontSize="10" FontFamily="Ink Free" FontWeight="Bold" Foreground="#FFB20000" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <Button Name="BtnLogIn" Content="{x:Static props:Resources.Global_signIn}" Margin="0,0,5,0" Click="BtnLogIn_Click" />
+                <Button Name="BtnSignUp" Content="{x:Static props:Resources.Button_signUp}" Margin="5,0,0,0" Click="BtnSignUp_Click" />
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

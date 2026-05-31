@@ -4,11 +4,11 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HangmanGame.Client.Views.SignUp"
-      xmlns:langs="clr-namespace:HangmanGame.Client.Resources"
+      xmlns:props="clr-namespace:HangmanGame.Client.Properties"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="SignUpPage">
+      Title="{x:Static props:Resources.Title_signUp}">
 
     <Grid Background="DimGray">
         <Grid.ColumnDefinitions>
@@ -23,33 +23,33 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" Content="{x:Static langs:Strings.TxtSignUp}" FontSize="28" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <Label Grid.Row="0" Content="{x:Static props:Resources.Button_signUp}" FontSize="28" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Center"/>
 
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
                 <StackPanel HorizontalAlignment="Left" Margin="0,0,15,0">
-                    <Label Content="{x:Static langs:Strings.TxtFullName}" FontSize="14"/>
+                    <Label Content="{x:Static props:Resources.Text_fullName}" FontSize="14"/>
                     <TextBox Text="{Binding FullName, UpdateSourceTrigger=PropertyChanged}"/>
-                    <Label Content="{x:Static langs:Strings.TxtEmail}" FontSize="14"/>
+                    <Label Content="{x:Static props:Resources.Text_email}" FontSize="14"/>
                     <TextBox  Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
-                    <Label Content="{x:Static langs:Strings.TxtDob}" FontSize="14"/>
+                    <Label Content="{x:Static props:Resources.Text_dateOfBirth}" FontSize="14"/>
                     <DatePicker SelectedDate="{Binding DateOfBirth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayDateEnd="{x:Static sys:DateTime.Today}"/>
-                    <Label Content="{x:Static langs:Strings.TxtPhone}" FontSize="14"/>
+                    <Label Content="{x:Static props:Resources.Text_phone}" FontSize="14"/>
                     <TextBox Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
                 <StackPanel HorizontalAlignment="Left" Margin="15,0,0,0">
-                    <Label Content="{x:Static langs:Strings.TxtUsername}" FontSize="14"/>
+                    <Label Content="{x:Static props:Resources.Global_username}" FontSize="14"/>
                     <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
-                    <Label Content="{x:Static langs:Strings.TxtPassword}" FontSize="14"/>
+                    <Label Content="{x:Static props:Resources.Global_password}" FontSize="14"/>
                     <PasswordBox x:Name="PasswordBox" PasswordChanged="PasswordBox_PasswordChanged"/>
-                    <Label Content="{x:Static langs:Strings.TxtConfirmPass}" FontSize="14"/>
+                    <Label Content="{x:Static props:Resources.Text_confirmPassword}" FontSize="14"/>
                     <PasswordBox x:Name="ConfirmPasswordBox" PasswordChanged="ConfirmPasswordBox_PasswordChanged"/>
                 </StackPanel>
             </StackPanel>
 
             <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10, 10">
-                <Button Content="{x:Static langs:Strings.TxtSignUp}" Command="{Binding RegisterCommand}" Margin="0,0,5,0"/>
-                <Button Content="{x:Static langs:Strings.BtnAlrRegis}" Command="{Binding NavigateToSignInCommand}" Margin="5,0,0,0" Click="Button_Click"/>
+                <Button Content="{x:Static props:Resources.Button_signUp}" Command="{Binding RegisterCommand}" Margin="0,0,5,0"/>
+                <Button Content="{x:Static props:Resources.Button_alreadyRegistered}" Command="{Binding NavigateToSignInCommand}" Margin="5,0,0,0" Click="Button_Click"/>
             </StackPanel>
         </Grid>
 

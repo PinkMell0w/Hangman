@@ -135,7 +135,7 @@
   <data name="TxtFullName" xml:space="preserve">
     <value>Vor und Zuname</value>
   </data>
-  <data name="TxtLogIn" xml:space="preserve">
+  <data name="TxtSignIn" xml:space="preserve">
     <value>Log in</value>
   </data>
   <data name="TxtPassword" xml:space="preserve">
