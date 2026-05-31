@@ -67,8 +67,7 @@ namespace HangmanGame.Server.Services
                 profileRepo.Add(new PlayerProfile
                 {
                     UserId = user.UserId,
-                    AvatarUrl = "/images/default-avatar.png",
-                    bio = "u should edit this later.",
+                    Bio = "u should edit this later.",
                     Theme = "default"
                 });
 
@@ -135,7 +134,6 @@ namespace HangmanGame.Server.Services
                 if (!PasswordHelper.VerifyPassword(request.Password, user.Salt, user.PwdHash))
                     return new SignInResponseDto { Success = false, Message = "Invalid username/email or password." };
 
-                // Ensure only one active session per user: end previous sessions
                 string token = Guid.NewGuid().ToString("N");
 
                 try
@@ -147,10 +145,6 @@ namespace HangmanGame.Server.Services
                 }
                 catch (SqlException ex)
                 {
-                    // If the UserSession table is missing or another SQL error occurs,
-                    // log it, rollback and continue without failing the sign-in so the
-                    // client can still authenticate. This makes the server resilient
-                    // when the DB schema hasn't been fully applied.
                     context.Rollback();
                     System.Diagnostics.Debug.WriteLine($"SignIn session DB error: {ex.Message}");
                 }

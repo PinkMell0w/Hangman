@@ -31,7 +31,32 @@ namespace HangmanGame.Data.Repositories
             }
         }
 
-        public PlayerStats GetByUserId(int userId) => throw new NotImplementedException();
+        public PlayerStats GetByUserId(int userId)
+        {
+            const string query = "SELECT * FROM PlayerStats WHERE userId = @userId";
+
+            var conn = _context.GetOpenConnection();
+
+            using (var cmd = new SqlCommand(query, conn, _context.CurrentTransaction))
+            {
+                cmd.Parameters.AddWithValue("@userId", userId);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (!reader.Read()) return null;
+
+                    return new PlayerStats
+                    {
+                        StatsId = Convert.ToInt32(reader["statsId"]),
+                        UserId = Convert.ToInt32(reader["userId"]),
+                        GamesPlayed = Convert.ToInt32(reader["gamesPlayed"]),
+                        GamesWon = Convert.ToInt32(reader["gamesWon"]),
+                        TotalScore = Convert.ToInt32(reader["totalScore"]),
+                        WinRate = Convert.ToDouble(reader["winRate"]),
+                        UpdatedAt = reader["updatedat"] as DateTime?
+                    };
+                }
+            }
+        }
         public PlayerStats Get(int id) => throw new NotImplementedException();
         public IEnumerable<PlayerStats> GetAll() => throw new NotImplementedException();
         public void Update(PlayerStats entity) => throw new NotImplementedException();

@@ -4,6 +4,7 @@ using HangmanGame.Client.Helpers;
 using HangmanGame.Core.Core.DTOs;
 using System;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace HangmanGame.Client.ViewModels
@@ -135,10 +136,11 @@ namespace HangmanGame.Client.ViewModels
 
             if (response.Success)
             {
-                NavigationManager.Instance.Navigate(new Views.SignInPage());
+                NavigateToSignIn();
             }
             else
             {
+                MessageBox.Show(response.Message);
                 ErrorMessage = response.Message;
             }
         }

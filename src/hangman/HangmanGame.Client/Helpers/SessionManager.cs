@@ -22,5 +22,11 @@ namespace HangmanGame.Client.Helpers
         public bool IsSignedIn => _userId > 0 && !string.IsNullOrEmpty(_tokenHash);
 
         public int CurrentUserId => _userId;
+
+        public void Logout()
+        {
+            _userId = 0;
+            _tokenHash = null; 
+        }
     }
 }

@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.Serialization;
 
 namespace HangmanGame.Core.Core.DTOs
 {
     [DataContract]
     public class RegisterRequestDto
     {
-
         [DataMember] public int RoleId { get; set; }
         [DataMember] public string FullName { get; set; }
         [DataMember] public string DateOfBirth { get; set; }
