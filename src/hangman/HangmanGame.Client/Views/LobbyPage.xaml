@@ -7,7 +7,7 @@
       xmlns:props="clr-namespace:HangmanGame.Client.Properties"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="LobbyPage">
+      Title="{x:Static props:Resources.Title_lobby}">
 
     <Grid Background="DarkOliveGreen">
         <Grid.ColumnDefinitions>
@@ -16,8 +16,12 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="10, 10, 10, 10">
-            <Button Name="BtnProfile" Padding="5" Height="30" Content="Profile" VerticalAlignment="Top" Click="BtnProfile_Click"/>
-            <Button Name="BtnLogout" Padding="5" Height="30" Content="logout" Click="BtnLogout_Click"/>
+            <Button Name="BtnCreateMatch" Padding="5" Height="30" Content="{x:Static props:Resources.Button_createMatch}" />
+            <Button Name="BtnJoinMatch" Padding="5" Height="30" Content="{x:Static props:Resources.Button_joinMatch}" />
+            <Button Name="BtnProfile" Padding="5" Height="30" Content="{x:Static props:Resources.Button_profile}" Click="BtnProfile_Click"/>
+            <Button Name="BtnFriends" Padding="5" Height="30" Content="{x:Static props:Resources.Button_friends}" Click="BtnFriends_Click"/>
+            <Button Name="BtnSettings" Padding="5" Height="30" Content="{x:Static props:Resources.Global_settings}" Click="BtnSettings_Click"/>
+            <Button Name="BtnLogout" Padding="5" Height="30" Content="{x:Static props:Resources.Button_logOut}" Click="BtnLogout_Click"/>
         </StackPanel>
     </Grid>
 </Page>

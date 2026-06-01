@@ -172,7 +172,7 @@
     <value>We couldn't get your profile data. Try again later</value>
   </data>
   <data name="Error_samePassword" xml:space="preserve">
-    <value>The new password can't be the same as your current password.</value>
+    <value>The new password can't be the same as your current password</value>
   </data>
   <data name="Error_serverConnection" xml:space="preserve">
     <value>The server timed out. If the problem persists, try again later</value>
@@ -184,10 +184,10 @@
     <value>You're already logged in</value>
   </data>
   <data name="Error_profileUpdate" xml:space="preserve">
-    <value>An error occurred while updating your data, please try again later.</value>
+    <value>We couldn't update your profile data. Please try again later</value>
   </data>
   <data name="Error_wrongCredentials" xml:space="preserve">
-    <value>Wrong credentials</value>
+    <value>Wrong username or password</value>
   </data>
   <data name="Button_exit" xml:space="preserve">
     <value>Exit</value>
