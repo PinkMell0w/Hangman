@@ -4,15 +4,16 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HangmanGame.Client.Views"
+      xmlns:props="clr-namespace:HangmanGame.Client.Properties"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="SignInPage">
+      Title="{x:Static props:Resources.Title_signIn}">
 
     <Grid Background="Gray">
         <StackPanel Orientation="Vertical" Margin="10, 10, 10, 10" HorizontalAlignment="Center">
             <TextBox x:Name="tbUsername" Text="{Binding Credential, UpdateSourceTrigger=PropertyChanged}" />
             <PasswordBox x:Name="pbPassword" PasswordChanged="pbPassword_PasswordChanged" Margin="0, 10, 0, 10"/>
-            <Button Content="Sign in" Command="{Binding SignInCommand}"/>
+            <Button Content="{x:Static props:Resources.Global_signIn}" Command="{Binding SignInCommand}"/>
         </StackPanel>
     </Grid>
 </Page>

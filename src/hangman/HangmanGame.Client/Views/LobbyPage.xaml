@@ -16,8 +16,8 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="10, 10, 10, 10">
-            <Button Name="BtnCreateMatch" Padding="5" Height="30" Content="{x:Static props:Resources.Button_createMatch}" />
-            <Button Name="BtnJoinMatch" Padding="5" Height="30" Content="{x:Static props:Resources.Button_joinMatch}" />
+            <Button Name="BtnCreateMatch" Padding="5" Height="30" Content="{x:Static props:Resources.Button_createMatch}" Click="BtnCreateMatch_Click" />
+            <Button Name="BtnJoinMatch" Padding="5" Height="30" Content="{x:Static props:Resources.Button_joinMatch}" Click="BtnJoinMatch_Click"/>
             <Button Name="BtnProfile" Padding="5" Height="30" Content="{x:Static props:Resources.Button_profile}" Click="BtnProfile_Click"/>
             <Button Name="BtnFriends" Padding="5" Height="30" Content="{x:Static props:Resources.Button_friends}" Click="BtnFriends_Click"/>
             <Button Name="BtnSettings" Padding="5" Height="30" Content="{x:Static props:Resources.Global_settings}" Click="BtnSettings_Click"/>

@@ -26,9 +26,28 @@ namespace HangmanGame.Client.Views
             InitializeComponent();
         }
 
+        private void BtnCreateMatch_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnJoinMatch_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
         private void BtnProfile_Click(object sender, RoutedEventArgs e)
         {
             NavigationManager.Instance.Navigate(new ProfilePage());
+        }
+
+        private void BtnFriends_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnSettings_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void BtnLogout_Click(object sender, RoutedEventArgs e)
