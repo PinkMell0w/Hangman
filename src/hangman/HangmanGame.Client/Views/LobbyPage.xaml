@@ -15,13 +15,25 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="10, 10, 10, 10">
-            <Button Name="BtnCreateMatch" Padding="5" Height="30" Content="{x:Static props:Resources.Button_createMatch}" Click="BtnCreateMatch_Click" />
-            <Button Name="BtnJoinMatch" Padding="5" Height="30" Content="{x:Static props:Resources.Button_joinMatch}" Click="BtnJoinMatch_Click"/>
-            <Button Name="BtnProfile" Padding="5" Height="30" Content="{x:Static props:Resources.Button_profile}" Click="BtnProfile_Click"/>
-            <Button Name="BtnFriends" Padding="5" Height="30" Content="{x:Static props:Resources.Button_friends}" Click="BtnFriends_Click"/>
-            <Button Name="BtnSettings" Padding="5" Height="30" Content="{x:Static props:Resources.Global_settings}" Click="BtnSettings_Click"/>
-            <Button Name="BtnLogout" Padding="5" Height="30" Content="{x:Static props:Resources.Button_logOut}" Click="BtnLogout_Click"/>
-        </StackPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10, 10, 10, 10">
+                <Button Name="BtnCreateMatch" Padding="5" Height="30" Content="{x:Static props:Resources.Button_createMatch}" Command="{Binding CreateMatchCommand}" />
+                <Button Name="BtnJoinMatch" Padding="5" Height="30" Content="{x:Static props:Resources.Button_joinMatch}" Command="{Binding JoinMatchCommand}" />
+                <Button Name="BtnProfile" Padding="5" Height="30" Content="{x:Static props:Resources.Button_profile}" Command="{Binding ProfileCommand}" />
+                <Button Name="BtnFriends" Padding="5" Height="30" Content="{x:Static props:Resources.Button_friends}" Command="{Binding FriendsCommand}" />
+                <Button Name="BtnSettings" Padding="5" Height="30" Content="{x:Static props:Resources.Global_settings}" Command="{Binding SettingsCommand}" />
+                <Button Name="BtnLogout" Padding="5" Height="30" Content="{x:Static props:Resources.Button_logOut}" Command="{Binding SignOutCommand}" />
+            </StackPanel>
+
+            <TextBlock Grid.Row="1" Text="{Binding Username}" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10, 10, 10, 10"/>
+        </Grid>
+        
+        <Image Grid.Column="1" Source="/Resources/Images/lobby.png" Stretch="None" HorizontalAlignment="Center" Margin="0,0,80,0" />
+
     </Grid>
 </Page>

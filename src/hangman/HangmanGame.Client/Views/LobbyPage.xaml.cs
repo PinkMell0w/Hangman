@@ -1,4 +1,5 @@
 ﻿using HangmanGame.Client.Helpers;
+using HangmanGame.Client.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,36 +25,7 @@ namespace HangmanGame.Client.Views
         public LobbyPage()
         {
             InitializeComponent();
-        }
-
-        private void BtnCreateMatch_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnJoinMatch_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void BtnProfile_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationManager.Instance.Navigate(new ProfilePage());
-        }
-
-        private void BtnFriends_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnSettings_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnLogout_Click(object sender, RoutedEventArgs e)
-        {
-            //TODO logout logic 
-            NavigationManager.Instance.Navigate(new SignInPage());
+            DataContext = new LobbyViewModel();
         }
     }
 }

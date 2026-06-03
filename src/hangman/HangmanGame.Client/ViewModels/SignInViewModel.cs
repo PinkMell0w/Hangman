@@ -75,7 +75,7 @@ namespace HangmanGame.Client.ViewModels
 
             if (response.Success)
             {
-                SessionManager.Instance.SetSession(response.UserId, response.Token);
+                SessionManager.Instance.SetSession(response.UserId, Credential, response.Token);
                 NavigateToLobby();
             }
             else
