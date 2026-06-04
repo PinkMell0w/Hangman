@@ -240,4 +240,37 @@
   <data name="Button_forgotPassword" xml:space="preserve">
     <value>Olvidé mi contraseña</value>
   </data>
+  <data name="Title_lobby" xml:space="preserve">
+    <value>Menú principal</value>
+  </data>
+  <data name="Title_createMatch" xml:space="preserve">
+    <value>Haz una partida</value>
+  </data>
+  <data name="Title_matchesList" xml:space="preserve">
+    <value>Únete a una partida</value>
+  </data>
+  <data name="Title_profile" xml:space="preserve">
+    <value>Mi perfil</value>
+  </data>
+  <data name="Title_settings" xml:space="preserve">
+    <value>Ajustes del juego</value>
+  </data>
+  <data name="Title_game" xml:space="preserve">
+    <value>¡Hora de adivinar!</value>
+  </data>
+  <data name="Title_friendsList" xml:space="preserve">
+    <value>Mis amigos</value>
+  </data>
+  <data name="Button_friends" xml:space="preserve">
+    <value>Amigos</value>
+  </data>
+  <data name="Button_profile" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="Title_matchSettings" xml:space="preserve">
+    <value>Ajustes de la partida</value>
+  </data>
+  <data name="Button_editProfile" xml:space="preserve">
+    <value>Modificar perfil</value>
+  </data>
 </root>

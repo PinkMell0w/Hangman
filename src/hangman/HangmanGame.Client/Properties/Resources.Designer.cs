@@ -97,6 +97,15 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Modify profile.
+        /// </summary>
+        public static string Button_editProfile {
+            get {
+                return ResourceManager.GetString("Button_editProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exit.
         /// </summary>
         public static string Button_exit {
@@ -111,6 +120,15 @@ namespace HangmanGame.Client.Properties {
         public static string Button_forgotPassword {
             get {
                 return ResourceManager.GetString("Button_forgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Friends.
+        /// </summary>
+        public static string Button_friends {
+            get {
+                return ResourceManager.GetString("Button_friends", resourceCulture);
             }
         }
         
@@ -147,6 +165,15 @@ namespace HangmanGame.Client.Properties {
         public static string Button_ok {
             get {
                 return ResourceManager.GetString("Button_ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile.
+        /// </summary>
+        public static string Button_profile {
+            get {
+                return ResourceManager.GetString("Button_profile", resourceCulture);
             }
         }
         
@@ -403,11 +430,83 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Make a match.
+        /// </summary>
+        public static string Title_createMatch {
+            get {
+                return ResourceManager.GetString("Title_createMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My friends.
+        /// </summary>
+        public static string Title_friendsList {
+            get {
+                return ResourceManager.GetString("Title_friendsList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time to guess!.
+        /// </summary>
+        public static string Title_game {
+            get {
+                return ResourceManager.GetString("Title_game", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main menu.
+        /// </summary>
+        public static string Title_lobby {
+            get {
+                return ResourceManager.GetString("Title_lobby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Join a match.
+        /// </summary>
+        public static string Title_matchesList {
+            get {
+                return ResourceManager.GetString("Title_matchesList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Match settings.
+        /// </summary>
+        public static string Title_matchSettings {
+            get {
+                return ResourceManager.GetString("Title_matchSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Message.
         /// </summary>
         public static string Title_message {
             get {
                 return ResourceManager.GetString("Title_message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My profile.
+        /// </summary>
+        public static string Title_profile {
+            get {
+                return ResourceManager.GetString("Title_profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game settings.
+        /// </summary>
+        public static string Title_settings {
+            get {
+                return ResourceManager.GetString("Title_settings", resourceCulture);
             }
         }
         

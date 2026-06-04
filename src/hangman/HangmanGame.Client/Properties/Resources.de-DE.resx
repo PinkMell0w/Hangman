@@ -117,11 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Button_accept" xml:space="preserve">
+    <value>Akzeptieren</value>
+  </data>
+  <data name="Button_cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
   <data name="Global_password" xml:space="preserve">
     <value>Passwort</value>
   </data>
+  <data name="Global_settings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
   <data name="Global_signIn" xml:space="preserve">
-    <value>Log in</value>
+    <value>Einloggen</value>
+  </data>
+  <data name="Title_signUp" xml:space="preserve">
+    <value>Erstelle ein Account</value>
   </data>
   <data name="Global_username" xml:space="preserve">
     <value>Username</value>
@@ -132,14 +144,65 @@
   <data name="Button_ok" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="Title_message" xml:space="preserve">
+    <value>Nachricht</value>
+  </data>
+  <data name="Message_alreadyFriends" xml:space="preserve">
+    <value>Du bist bereits mit diesem Benutzer befreundet</value>
+  </data>
+  <data name="Message_isYou" xml:space="preserve">
+    <value>Du kannst dich nicht mit dir selbst anfreunden</value>
+  </data>
+  <data name="Error_incompleteFields" xml:space="preserve">
+    <value>Fülle alle Felder aus und versuche es erneut</value>
+  </data>
+  <data name="Error_noCoincidences" xml:space="preserve">
+    <value>Keine Ergebnisse</value>
+  </data>
   <data name="Error_noConnection" xml:space="preserve">
     <value>Du bist Offline. Überprüfe deine Internetverbindung und versuche es erneut</value>
+  </data>
+  <data name="Error_retrievingData" xml:space="preserve">
+    <value>Wir konnten deine Profil Daten nicht laden. Bitte versuche er später erneut</value>
+  </data>
+  <data name="Error_samePassword" xml:space="preserve">
+    <value>Das neue Passwort kann nicht das selbe wie das momentane Passwort sein</value>
+  </data>
+  <data name="Error_specialCharacters" xml:space="preserve">
+    <value>Dein Passwort kann nur Buchstaben/Zahlen enthalten</value>
+  </data>
+  <data name="Error_alreadyLogged" xml:space="preserve">
+    <value>Du bist bereits eingelogged</value>
+  </data>
+  <data name="Error_profileUpdate" xml:space="preserve">
+    <value>Wir konnten deine Profildaten nicht aktualisieren. Bitte versuche es später erneut</value>
   </data>
   <data name="Error_wrongCredentials" xml:space="preserve">
     <value>Falscher Username oder Passwort</value>
   </data>
+  <data name="Button_exit" xml:space="preserve">
+    <value>Verlassen</value>
+  </data>
+  <data name="Button_send" xml:space="preserve">
+    <value>Senden</value>
+  </data>
+  <data name="Button_invite" xml:space="preserve">
+    <value>Einladen</value>
+  </data>
+  <data name="Button_reject" xml:space="preserve">
+    <value>Ablehnen</value>
+  </data>
   <data name="Button_signUp" xml:space="preserve">
     <value>Registrieren</value>
+  </data>
+  <data name="Button_logOut" xml:space="preserve">
+    <value>Ausloggen</value>
+  </data>
+  <data name="Button_createMatch" xml:space="preserve">
+    <value>Match erstellen</value>
+  </data>
+  <data name="Button_joinMatch" xml:space="preserve">
+    <value>Match beitreten</value>
   </data>
   <data name="Error_emptyUser" xml:space="preserve">
     <value>Bitte füge deinen Usernamen ein</value>
@@ -164,5 +227,50 @@
   </data>
   <data name="Text_phone" xml:space="preserve">
     <value>Telefonnummer</value>
+  </data>
+  <data name="Title_signIn" xml:space="preserve">
+    <value>Logge dich ein</value>
+  </data>
+  <data name="Error_generic" xml:space="preserve">
+    <value>Ein unerwarteter Fehler ist aufgetreten. Bitte versuche er später erneut</value>
+  </data>
+  <data name="Error_serverConnection" xml:space="preserve">
+    <value>Der Server eine Zeitüberschreitung verursacht. Falls das Problem besteht, bitte versuche es später erneut</value>
+  </data>
+  <data name="Button_forgotPassword" xml:space="preserve">
+    <value>Passwort vergessen</value>
+  </data>
+  <data name="Title_lobby" xml:space="preserve">
+    <value>Hauptmenü</value>
+  </data>
+  <data name="Title_createMatch" xml:space="preserve">
+    <value>Erstelle ein Match</value>
+  </data>
+  <data name="Title_matchesList" xml:space="preserve">
+    <value>Tritt einem Match bei</value>
+  </data>
+  <data name="Title_profile" xml:space="preserve">
+    <value>Mein Profil</value>
+  </data>
+  <data name="Title_settings" xml:space="preserve">
+    <value>Spieleinstellungen</value>
+  </data>
+  <data name="Title_game" xml:space="preserve">
+    <value>Zeit zum Raten!</value>
+  </data>
+  <data name="Title_friendsList" xml:space="preserve">
+    <value>Meine Freunde</value>
+  </data>
+  <data name="Button_friends" xml:space="preserve">
+    <value>Freunde</value>
+  </data>
+  <data name="Button_profile" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="Title_matchSettings" xml:space="preserve">
+    <value>Match Einstellungen</value>
+  </data>
+  <data name="Button_editProfile" xml:space="preserve">
+    <value>Profil bearbeiten</value>
   </data>
 </root>
