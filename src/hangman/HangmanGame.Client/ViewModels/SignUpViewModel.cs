@@ -91,7 +91,7 @@ namespace HangmanGame.Client.ViewModels
         {
             if (!DateOfBirth.HasValue)
             {
-                ErrorMessage = "select a date";
+                ErrorMessage = "Please select a date of birth";
                 return;
             }
 
@@ -109,7 +109,7 @@ namespace HangmanGame.Client.ViewModels
 
             if (DateOfBirth.Value >= DateTime.Today)
             {
-                ErrorMessage = "seriously...";
+                ErrorMessage = "You can't be born in the future.";
                 return;
             }
 
