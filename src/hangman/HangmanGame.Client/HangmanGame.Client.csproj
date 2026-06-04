@@ -95,10 +95,10 @@
     </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\SignUpViewModel.cs" />
-    <Compile Include="Views\LobbyPage.xaml.cs">
+    <Compile Include="Views\Lobby\LobbyPage.xaml.cs">
       <DependentUpon>LobbyPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SignInPage.xaml.cs">
+    <Compile Include="Views\SignIn\SignInPage.xaml.cs">
       <DependentUpon>SignInPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SignUp\SignUpPage.xaml.cs">
@@ -161,11 +161,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LobbyPage.xaml">
+    <Page Include="Views\Lobby\LobbyPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SignInPage.xaml">
+    <Page Include="Views\SignIn\SignInPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -211,10 +211,22 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Views\paperBg.jpg" />
+    <Resource Include="Resources\Images\paperBg.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Views\SignUp\paperBgB.jpg" />
+    <Resource Include="Resources\Images\paperBgA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\paperBgB.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Admin\" />
+    <Folder Include="Views\CreateMatch\" />
+    <Folder Include="Views\FriendsList\" />
+    <Folder Include="Views\Game\" />
+    <Folder Include="Views\MatchesList\" />
+    <Folder Include="Views\Profile\" />
+    <Folder Include="Views\Settings\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -27,22 +27,5 @@ namespace HangmanGame.Client.Views.SignUp
         {
             NavigationService.GoBack();
         }
-
-        private bool ValidateFields()
-        {
-            if (string.IsNullOrWhiteSpace(TextBox.Text) ||
-                string.IsNullOrWhiteSpace(PasswordBox.Password) ||
-                string.IsNullOrWhiteSpace(ConfirmPasswordBox.Password))
-            {
-                MessageBox.Show("Please fill in all fields.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return false;
-            }
-            if (PasswordBox.Password != ConfirmPasswordBox.Password)
-            {
-                MessageBox.Show("Passwords do not match.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return false;
-            }
-            return true;
-        }
     }
 }

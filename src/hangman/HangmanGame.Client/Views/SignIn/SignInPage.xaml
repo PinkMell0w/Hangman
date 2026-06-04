@@ -11,7 +11,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Views/paperBg.jpg" TileMode="None" Stretch="Fill"/>
+            <ImageBrush ImageSource="/Resources/Images/paperBg.jpg" TileMode="None" Stretch="Fill"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
