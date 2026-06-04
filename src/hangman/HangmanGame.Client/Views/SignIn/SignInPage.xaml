@@ -56,7 +56,7 @@
             </StackPanel>
 
             <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                <Button Name="BtnLogIn" Content="{x:Static props:Resources.Global_signIn}"  FontFamily="Ink Free" FontWeight="Bold" Margin="0,0,5,0" Padding="5" Click="BtnLogIn_Click" BorderBrush="{x:Null}">
+                <Button Name="BtnLogIn" Content="{x:Static props:Resources.Global_signIn}"  FontFamily="Ink Free" FontWeight="Bold" Margin="0,0,5,0" Padding="5" Click="BtnLogIn_Click" BorderBrush="{x:Null}" >
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="5"/>

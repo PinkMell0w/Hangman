@@ -97,8 +97,29 @@
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\SignInViewModel.cs" />
     <Compile Include="ViewModels\SignUpViewModel.cs" />
+    <Compile Include="Views\Admin\AdminPage.xaml.cs">
+      <DependentUpon>AdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreateMatch\CreateMatchPage.xaml.cs">
+      <DependentUpon>CreateMatchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FriendsList\FriendsListPage.xaml.cs">
+      <DependentUpon>FriendsListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Game\GamePage.xaml.cs">
+      <DependentUpon>GamePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Lobby\LobbyPage.xaml.cs">
       <DependentUpon>LobbyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MatchesList\MatchesListPage.xaml.cs">
+      <DependentUpon>MatchesListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Profile\ProfilePage.xaml.cs">
+      <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SignIn\SignInPage.xaml.cs">
       <DependentUpon>SignInPage.xaml</DependentUpon>
@@ -163,7 +184,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Admin\AdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreateMatch\CreateMatchPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FriendsList\FriendsListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Game\GamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Lobby\LobbyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MatchesList\MatchesListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Profile\ProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -221,15 +270,7 @@
   <ItemGroup>
     <Resource Include="Resources\Images\paperBgB.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Admin\" />
-    <Folder Include="Views\CreateMatch\" />
-    <Folder Include="Views\FriendsList\" />
-    <Folder Include="Views\Game\" />
-    <Folder Include="Views\MatchesList\" />
-    <Folder Include="Views\Profile\" />
-    <Folder Include="Views\Settings\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\Images\Lobby.png" />
   </ItemGroup>

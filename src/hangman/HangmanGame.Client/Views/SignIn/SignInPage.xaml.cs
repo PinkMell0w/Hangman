@@ -1,4 +1,5 @@
-﻿using HangmanGame.Client.Views.SignUp;
+﻿using HangmanGame.Client.Helpers;
+using HangmanGame.Client.Views.SignUp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,7 +44,7 @@ namespace HangmanGame.Client.Views
 
         private void BtnLogIn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new LobbyPage());
         }
 
         private void BtnSignUp_Click(object sender, RoutedEventArgs e)

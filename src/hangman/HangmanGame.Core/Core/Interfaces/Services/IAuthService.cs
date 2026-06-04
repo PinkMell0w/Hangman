@@ -9,8 +9,5 @@ namespace HangmanGame.Core.Core.Interfaces.Services
         [OperationContract]
         RegisterResponseDto Register(RegisterRequestDto request);
 
-        [OperationContract]
-        SignInResponseDto SignIn(SignInRequestDto request);
-
     }
 }
