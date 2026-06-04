@@ -228,5 +228,8 @@
     <Folder Include="Views\Profile\" />
     <Folder Include="Views\Settings\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Lobby.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

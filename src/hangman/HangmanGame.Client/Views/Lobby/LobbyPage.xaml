@@ -10,6 +10,30 @@
       Title="{x:Static props:Resources.Title_lobby}">
 
     <Grid Background="DarkOliveGreen">
-        <Button Click="btnLogout_Click" Width="100" Height="30" Content="logout"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10, 10, 10, 10">
+                <Button Name="BtnCreateMatch" Padding="5" Height="30" Content="{x:Static props:Resources.Button_createMatch}" Command="{Binding CreateMatchCommand}" />
+                <Button Name="BtnJoinMatch" Padding="5" Height="30" Content="{x:Static props:Resources.Button_joinMatch}" Command="{Binding JoinMatchCommand}" />
+                <Button Name="BtnProfile" Padding="5" Height="30" Content="{x:Static props:Resources.Button_profile}" Command="{Binding ProfileCommand}" />
+                <Button Name="BtnFriends" Padding="5" Height="30" Content="{x:Static props:Resources.Button_friends}" Command="{Binding FriendsCommand}" />
+                <Button Name="BtnSettings" Padding="5" Height="30" Content="{x:Static props:Resources.Global_settings}" Command="{Binding SettingsCommand}" />
+                <Button Name="BtnLogout" Padding="5" Height="30" Content="{x:Static props:Resources.Button_logOut}" Command="{Binding SignOutCommand}" />
+            </StackPanel>
+
+            <TextBlock Grid.Row="1" Text="{Binding Username}" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10, 10, 10, 10"/>
+        </Grid>
+
+        <Image Grid.Column="1" Source="/Resources/Images/Lobby.png" Stretch="None" HorizontalAlignment="Center" Margin="0,0,80,0" />
+
     </Grid>
 </Page>
