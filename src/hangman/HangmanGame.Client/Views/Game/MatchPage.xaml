@@ -1,0 +1,75 @@
+﻿<Page x:Class="HangmanGame.Client.Views.Game.MatchPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HangmanGame.Client.Views.Game"
+      xmlns:props="clr-namespace:HangmanGame.Client.Properties"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="{x:Static props:Resources.Title_createMatch}">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/Images/paperBg.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Button Name="BtnConfigureMatch" Content="Configurar partida" HorizontalAlignment="Left" Margin="10" Padding="5" Click="BtnConfigureMatch_Click" />
+
+        <Grid Grid.Row="1" HorizontalAlignment="Center" Margin="0,40,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                <Image Source="/Resources/Images/PlayerPfp.png" Margin="0,20,0,0" Width="180"/>
+                <TextBlock Text="Tú" FontFamily="Ink Free" FontWeight="Bold" FontSize="16" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <TextBlock Grid.Column="1" Text="VS" FontFamily="Ink Free" FontWeight="Bold" FontSize="80" Margin="60,65,60,0"/>
+
+            <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+                <Image Source="/Resources/Images/NoOpponent.png" Margin="0,20,0,0" Width="180"/>
+                <TextBlock Text="Esperando oponente" FontFamily="Ink Free" FontWeight="Bold" FontSize="16" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Name="BtnLeaveMatch" Grid.Column="0" Content="Abandonar partida" HorizontalAlignment="Left" Margin="10" Padding="5" Click="BtnLeaveMatch_Click" Height="40" VerticalAlignment="Bottom" />
+
+            <Button Name="BtnStartMatch" Grid.Column="1" Content="Comenzar partida" FontSize="18" HorizontalAlignment="Center" Margin="10" Padding="10" Click="BtnStartMatch_Click" Height="60" />
+
+            <Grid x:Name="GridChat" Grid.Column="2" Margin="0,10,10,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBox x:Name="TxtHistorial" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Margin="0,0,0,10" Background="#FAFAFA" Width="300" Height="200"/>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox x:Name="TxtMensaje" Text="Escribe tu mensaje aquí..." Grid.Column="0" Margin="0,0,10,0" Padding="5" Foreground="#FFA2A2A2" />
+                    <Button x:Name="BtnSend" Grid.Column="1" Content="Enviar" Click="BtnSend_Click" Padding="10" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

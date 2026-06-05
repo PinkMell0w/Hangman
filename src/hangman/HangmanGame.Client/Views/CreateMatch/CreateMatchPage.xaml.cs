@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HangmanGame.Client.Views.Game;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,16 @@ namespace HangmanGame.Client.Views.CreateMatch
         public CreateMatchPage()
         {
             InitializeComponent();
+        }
+
+        private void BtnGoBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+        private void BtnCreateMatch_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MatchPage());
         }
     }
 }

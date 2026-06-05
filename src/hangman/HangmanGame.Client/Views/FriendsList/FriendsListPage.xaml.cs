@@ -24,5 +24,10 @@ namespace HangmanGame.Client.Views.FriendsList
         {
             InitializeComponent();
         }
+
+        private void BtnGoBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }

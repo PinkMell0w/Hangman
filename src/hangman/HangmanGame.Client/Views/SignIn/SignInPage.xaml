@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:HangmanGame.Client.Views"
       xmlns:props="clr-namespace:HangmanGame.Client.Properties"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="900"
       Title="{x:Static props:Resources.Title_signIn}">
 
     <Grid>
@@ -19,7 +19,7 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel>
-            <Label FontSize="56" FontFamily="Ink Free" FontWeight="Bold" Content="{x:Static props:Resources.Text_gameTitle}" HorizontalAlignment="Center" Margin="0,80,0,0" />
+            <Label FontSize="56" FontFamily="Ink Free" FontWeight="Bold" Content="{x:Static props:Resources.Text_gameTitle}" HorizontalAlignment="Center" Margin="0,110,0,0" />
             <Image Source="/Resources/Images/SplashLogo.png" Stretch="None" />
         </StackPanel>
 

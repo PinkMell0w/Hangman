@@ -16,28 +16,28 @@ using System.Windows.Shapes;
 namespace HangmanGame.Client.Views.Game
 {
     /// <summary>
-    /// Interaction logic for GamePage.xaml
+    /// Interaction logic for MatchPage.xaml
     /// </summary>
-    public partial class GamePage : Page
+    public partial class MatchPage : Page
     {
-        public GamePage()
+        public MatchPage()
         {
             InitializeComponent();
+        }
+
+        private void BtnConfigureMatch_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MatchSettingsPage());
+        }
+
+        private void BtnStartMatch_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new GamePage());
         }
 
         private void BtnLeaveMatch_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new LobbyPage());
-        }
-
-        private void BtnKickPlayer_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new LobbyPage());
-        }
-
-        private void BtnLetter_Click(object sender, RoutedEventArgs e)
-        {
-            // TODO
         }
 
         private void BtnSend_Click(object sender, RoutedEventArgs e)

@@ -13,19 +13,29 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HangmanGame.Client.Views.Settings
+namespace HangmanGame.Client.Views.Game
 {
     /// <summary>
-    /// Interaction logic for SettingsPage.xaml
+    /// Interaction logic for MatchSettingsPage.xaml
     /// </summary>
-    public partial class SettingsPage : Page
+    public partial class MatchSettingsPage : Page
     {
-        public SettingsPage()
+        public MatchSettingsPage()
         {
             InitializeComponent();
         }
 
         private void BtnGoBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+        private void BtnKickPlayer_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO
+        }
+
+        private void BtnSaveChanges_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }

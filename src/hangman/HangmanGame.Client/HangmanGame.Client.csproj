@@ -109,6 +109,12 @@
     <Compile Include="Views\Game\GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Game\MatchPage.xaml.cs">
+      <DependentUpon>MatchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Game\MatchSettingsPage.xaml.cs">
+      <DependentUpon>MatchSettingsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Lobby\LobbyPage.xaml.cs">
       <DependentUpon>LobbyPage.xaml</DependentUpon>
     </Compile>
@@ -200,6 +206,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Game\MatchPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Game\MatchSettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Lobby\LobbyPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -270,12 +284,36 @@
   <ItemGroup>
     <Resource Include="Resources\Images\paperBgB.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\NoOpponent.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Lobby.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\PlayerPfp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Friends.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\StickArm.png" />
+    <Resource Include="Resources\Images\StickHead.png" />
+    <Resource Include="Resources\Images\StickLeg.png" />
+    <Resource Include="Resources\Images\Stickman.png" />
+    <Resource Include="Resources\Images\StickTorso.png" />
+    <Resource Include="Resources\Images\StickTwoArms.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Gallows.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\FaceDead.png" />
+    <Resource Include="Resources\Images\FaceOk.png" />
+    <Resource Include="Resources\Images\FaceWin.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

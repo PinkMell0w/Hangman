@@ -1,13 +1,13 @@
-﻿<Page x:Class="HangmanGame.Client.Views.CreateMatch.CreateMatchPage"
+﻿<Page x:Class="HangmanGame.Client.Views.Game.MatchSettingsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:HangmanGame.Client.Views.CreateMatch"
+      xmlns:local="clr-namespace:HangmanGame.Client.Views.Game"
       xmlns:props="clr-namespace:HangmanGame.Client.Properties"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="900"
-      Title="{x:Static props:Resources.Title_createMatch}">
+      Title="{x:Static props:Resources.Title_matchSettings}">
 
     <Grid>
         <Grid.Background>
@@ -25,7 +25,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            
+
             <TextBlock Text="Selecciona una categoría" FontSize="26" FontFamily="Ink Free" FontWeight="Bold" />
             <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="10,10,10,0" HorizontalAlignment="Center">
                 <Button Content="Animales" Padding="10" Margin="0,0,10,0" FontSize="24" Width="140" />
@@ -41,7 +41,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            
+
             <TextBlock Text="Y una palabra" FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Margin="0,10,0,10" />
             <Grid Grid.Row="1" x:Name="GdCategories">
                 <WrapPanel x:Name="WpAnimals" Visibility="Visible">
@@ -142,8 +142,9 @@
         </StackPanel>
 
         <Grid Grid.Row="3">
-            <Button Name="BtnGoBack" Content="Volver" HorizontalAlignment="Left" Margin="10,0,0,10" Padding="10" Click="BtnGoBack_Click"  />
-            <Button Name="BtnCreateMatch" Content="Crear partida" HorizontalAlignment="Right" Margin="0,0,10,10" Padding="10" Click="BtnCreateMatch_Click"  />
+            <Button Name="BtnGoBack" Content="Volver" HorizontalAlignment="Left" Margin="10,0,0,10" Padding="10" Click="BtnGoBack_Click" />
+            <Button Name="BtnKickPlayer" Content="Expulsar jugador" HorizontalAlignment="Right" Margin="0,0,200,10" Padding="10" Click="BtnKickPlayer_Click" />
+            <Button Name="BtnSaveChanges" Content="Guardar cambios" HorizontalAlignment="Right" Margin="0,0,10,10" Padding="10" Click="BtnSaveChanges_Click" />
         </Grid>
     </Grid>
 </Page>

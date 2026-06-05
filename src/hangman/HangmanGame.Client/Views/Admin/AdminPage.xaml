@@ -5,10 +5,83 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HangmanGame.Client.Views.Admin"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="900"
       Title="AdminPage">
 
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/Images/paperBgB.jpg" TileMode="None" Stretch="Fill"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Margin="0,20,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0" Margin="20,0,0,10" VerticalAlignment="Center" Text="Buscar usuarios" HorizontalAlignment="Left" Width="430" Padding="5" VerticalContentAlignment="Center"/>
+            <Button Grid.Column="1" Name="BtnSearch" Margin="10,0,20,10" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Buscar" Padding="5"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="0" Margin="20,0,10,10" Background="AliceBlue" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Source="/Resources/Images/PlayerPfp.png" Margin="10" Width="40" Height="40"/>
+                <TextBlock Grid.Column="1" Text="SuperPancrasio32" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <Button Grid.Column="2" Content="Suspender" Margin="10" Padding="5" VerticalAlignment="Center"/>
+                <Button Grid.Column="3" Content="Desactivar" Margin="10" Padding="5" VerticalAlignment="Center"/>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="0" Margin="20,0,10,10" Background="AliceBlue" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Source="/Resources/Images/PlayerPfp.png" Margin="10" Width="40" Height="40"/>
+                <TextBlock Grid.Column="1" Text="gerundio99" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <Button Grid.Column="2" Content="Suspender" Margin="10" Padding="5" VerticalAlignment="Center"/>
+                <Button Grid.Column="3" Content="Desactivar" Margin="10" Padding="5" VerticalAlignment="Center"/>
+            </Grid>
+
+            <Grid Grid.Row="2" Grid.Column="0" Margin="20,0,10,10" Background="AliceBlue" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Source="/Resources/Images/PlayerPfp.png" Margin="10" Width="40" Height="40"/>
+                <TextBlock Grid.Column="1" Text="uniqueCellar2" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <Button Grid.Column="2" Content="Suspender" Margin="10" Padding="5" VerticalAlignment="Center"/>
+                <Button Grid.Column="3" Content="Desactivar" Margin="10" Padding="5" VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
+
+        <Button Grid.Row="1" Name="BtnGoBack" Content="Volver" Margin="20,456,0,20" HorizontalAlignment="Left" Padding="8" Click="BtnGoBack_Click" Height="34" VerticalAlignment="Bottom"/>
     </Grid>
 </Page>
