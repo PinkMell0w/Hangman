@@ -33,9 +33,19 @@ namespace HangmanGame.Client.Views
             NavigationManager.Instance.Navigate(new SignInPage());
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void toProfilePage(object sender, RoutedEventArgs e)
         {
             NavigationManager.Instance.Navigate(new ProfilePage());
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

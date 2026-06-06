@@ -7,6 +7,8 @@ namespace HangmanGame.Core.Core.Interfaces.Services
     public interface IUserService
     {
         [OperationContract]
-        ProfileResponseDto LoadProfile(LoadProfileRequestDto request); 
+        ProfileResponseDto LoadProfile(LoadProfileRequestDto request);
+        [OperationContract]
+        UserCardResponseDto SearchUsers(UserCardRequestDto request);
     }
 }

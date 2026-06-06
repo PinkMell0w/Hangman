@@ -43,22 +43,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Domain\Match.cs" />
     <Compile Include="Core\Domain\PlayerProfile.cs" />
     <Compile Include="Core\Domain\PlayerStats.cs" />
     <Compile Include="Core\Domain\User.cs" />
+    <Compile Include="Core\Domain\UserCard.cs" />
+    <Compile Include="Core\Domain\Word.cs" />
+    <Compile Include="Core\DTOs\GetAvailableMatchesRequestDto.cs" />
+    <Compile Include="Core\DTOs\GetGameSessionRequestDto.cs" />
+    <Compile Include="Core\DTOs\GetMatchDetailsRequestDto.cs" />
     <Compile Include="Core\DTOs\LoadProfileRequestDto.cs" />
+    <Compile Include="Core\DTOs\MatchRequest.cs" />
     <Compile Include="Core\DTOs\ProfileResponseDto.cs" />
     <Compile Include="Core\DTOs\RegisterRequestDto.cs" />
     <Compile Include="Core\DTOs\RegisterResponseDto.cs" />
     <Compile Include="Core\DTOs\SignInRequestDto.cs" />
     <Compile Include="Core\DTOs\SignInResponseDto.cs" />
+    <Compile Include="Core\DTOs\UserCardRequestDto.cs" />
+    <Compile Include="Core\DTOs\UserCardResponseDto.cs" />
+    <Compile Include="Core\DTOs\WordRequestDto.cs" />
+    <Compile Include="Core\DTOs\WordResponseDto.cs" />
     <Compile Include="Core\Enums\Roles.cs" />
+    <Compile Include="Core\Interfaces\Repositories\IMatchRepository.cs" />
     <Compile Include="Core\Interfaces\Repositories\IUserRepository.cs" />
     <Compile Include="Core\Interfaces\Repositories\IPlayerProfileRespository.cs" />
     <Compile Include="Core\Interfaces\Repositories\IPlayerStatsRepository.cs" />
     <Compile Include="Core\Interfaces\Repositories\IRepository.cs" />
+    <Compile Include="Core\Interfaces\Repositories\IWordRepository.cs" />
     <Compile Include="Core\Interfaces\Services\IAuthService.cs" />
+    <Compile Include="Core\Interfaces\Services\IMatchService.cs" />
     <Compile Include="Core\Interfaces\Services\IUserService.cs" />
+    <Compile Include="Core\Interfaces\Services\IWordService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

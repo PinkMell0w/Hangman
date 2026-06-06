@@ -1,0 +1,103 @@
+@startuml Hangman Game - Component Diagram
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam componentStyle uml2
+
+title Hangman Game - Component Diagram (Architecture Overview)
+
+package "Client Layer" {
+    component "WPF Views" as Views {
+        [ProfilePage]
+        [SignUpPage]
+        [SignInPage]
+        [LobbyPage]
+        [GamePage]
+    }
+    
+    component "ViewModels" as ClientVMs {
+        [ProfilePageViewModel]
+        [SignUpViewModel]
+        [SignInViewModel]
+        [GameViewModel]
+    }
+    
+    component "Service Clients" as Clients {
+        [AuthServiceClient]
+        [UserServiceClient]
+        [GameServiceClient]
+    }
+    
+    component "Helpers" as ClientHelpers {
+        [SessionManager]
+        [NavigationManager]
+        [RelayCommand]
+    }
+}
+
+package "Server Layer" {
+    component "WCF Services" as Services {
+        [IAuthService]
+        [IUserService]
+        [IGameService]
+    }
+    
+    component "Service Implementations" as ServiceImpl {
+        [AuthService]
+        [UserService]
+        [GameService]
+    }
+}
+
+package "Data Layer" {
+    component "Repositories" as Repositories {
+        [UserRepository]
+        [PlayerProfileRepository]
+        [PlayerStatsRepository]
+        [MatchRepository]
+        [GameSessionRepository]
+    }
+    
+    component "Data Context" as DataContext {
+        [DatabaseContext]
+    }
+}
+
+package "Domain Layer" {
+    component "Domain Models" as Models {
+        [User]
+        [PlayerProfile]
+        [PlayerStats]
+        [Match]
+        [GameSession]
+        [Word]
+    }
+}
+
+package "DTOs" {
+    component "Request/Response Objects" as DTOs {
+        [LoadProfileRequestDto]
+        [ProfileResponseDto]
+        [RegisterRequestDto]
+        [SignInRequestDto]
+    }
+}
+
+' Client Layer connections
+Views --> ClientVMs : vincula
+ClientVMs --> Clients : llama
+ClientVMs --> ClientHelpers : usa
+Clients --> Services : invoca\n(WCF)
+
+' Server Layer connections
+Services --> ServiceImpl : implementa
+ServiceImpl --> Repositories : usa
+ServiceImpl --> DTOs : returns
+
+' Data Layer connections
+Repositories --> DataContext : usa conexiones
+DataContext --> Models : mapea
+
+' Models to DTOs
+Models --> DTOs : mapea
+
+@enduml

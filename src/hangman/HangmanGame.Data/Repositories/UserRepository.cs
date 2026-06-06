@@ -117,6 +117,37 @@ namespace HangmanGame.Data.Repositories
             }
         }
 
+        // UserRepository.cs
+        public List<User> SearchByUsername(string username, int excludeUserId)
+        {
+            const string query = @"
+                    SELECT u.userId, u.username, u.isActive
+                    FROM [User] u
+                    WHERE u.username    LIKE @username
+                      AND u.userId     != @excludeUserId
+                      AND u.isActive    = 1
+                    ORDER BY u.username";
+
+            var users = new List<User>();
+            var conn = _context.GetOpenConnection();
+
+            using (var cmd = new SqlCommand(query, conn, _context.CurrentTransaction))
+            {
+                cmd.Parameters.AddWithValue("@username", $"%{username}%");
+                cmd.Parameters.AddWithValue("@excludeUserId", excludeUserId);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                        users.Add(new User
+                        {
+                            UserId = Convert.ToInt32(reader["userId"]),
+                            Username = Convert.ToString(reader["username"])
+                        });
+                }
+            }
+            return users;
+        }
+
         public IEnumerable<User> GetAll() => throw new NotImplementedException();
         public void Update(User entity) => throw new NotImplementedException();
         public void Delete(int id) => throw new NotImplementedException();

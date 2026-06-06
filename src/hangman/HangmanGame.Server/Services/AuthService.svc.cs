@@ -163,6 +163,8 @@ namespace HangmanGame.Server.Services
             }
         }
 
+        //TODO get users
+
         private static RegisterResponseDto Fail(string message) =>
             new RegisterResponseDto { Success = false, Message = message };
     }

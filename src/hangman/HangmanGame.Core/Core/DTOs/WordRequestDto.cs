@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 namespace HangmanGame.Core.Core.DTOs
 {
     [DataContract]
-    public class SignInRequestDto
+    public class WordRequestDto
     {
-        [DataMember] public string Username { get; set; }
-        [DataMember] public string Email { get; set;  }
-        [DataMember] public string Password { get; set; }
+        [DataMember] public string Language { get; set; }
+        [DataMember] public string Category { get; set; }
+        [DataMember] public string Difficulty { get; set; }
     }
 }

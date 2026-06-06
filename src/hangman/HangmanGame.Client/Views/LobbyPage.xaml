@@ -11,6 +11,8 @@
     <Grid Background="DarkOliveGreen">
         <Button Click="btnLogout_Click" Width="100" Height="30" Content="logout"/>
 
-        <Button Click="Button_Click" Width="100" Height="30" Content="Profile" Margin="0, 10, 0, 10" VerticalAlignment="Top"/>
+        <Button Click="toProfilePage" Width="100" Height="30" Content="Profile" Margin="0, 10, 0, 10" VerticalAlignment="Top"/>
+        <Button Click="Button_Click_1" Width="100" Height="30" Content="Matches" Margin="0, 50, 0, 10" VerticalAlignment="Top"/>
+        <Button Click="Button_Click_2" Width="100" Height="30" Content="Friends" Margin="0, 90, 0, 10" VerticalAlignment="Top"/>
     </Grid>
 </Page>

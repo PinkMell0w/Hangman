@@ -1,0 +1,44 @@
+@startuml HangmanDeployment
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam componentStyle uml2
+
+title Hangman Game - Deployment Diagram
+
+node "Client Machine" as Client {
+    artifact "HangmanGame.Client.exe" as ClientApp {
+        component "WPF Application" as WPFApp
+        component "ViewModels" as VMs
+        component "Service Clients" as ServiceClients
+    }
+}
+
+node "Application Server" as AppServer {
+    artifact "HangmanGame.Server" as ServerApp {
+        component "AuthService.svc" as AuthSvc
+        component "UserService.svc" as UserSvc
+        component "GameService.svc" as GameSvc
+    }
+    
+    artifact "Business Logic" as BLogic {
+        component "Authentication Logic" as AuthLogic
+        component "Profile Management" as ProfileMgmt
+        component "Game Logic" as GameLogic
+    }
+}
+
+node "Data Server" as DataServer {
+    database "hangmanDB\n(SQL Server)" as Database {
+        entity "[User]" as UserTable
+        entity "PlayerProfile" as ProfileTable
+        entity "PlayerStats" as StatsTable
+        entity "[Match]" as MatchTable
+        entity "GameSession" as GameSessionTable
+        entity "Word" as WordTable
+    }
+}
+
+Client --> AppServer : HTTP/HTTPS\n(WCF Services)
+AppServer --> DataServer : SQL Queries\n(ADO.NET)
+
+@enduml

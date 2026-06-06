@@ -1,9 +1,12 @@
-﻿using HangmanGame.Core.Core.DTOs;
+﻿using HangmanGame.Core.Core.Domain;
+using HangmanGame.Core.Core.DTOs;
 using HangmanGame.Core.Core.Interfaces.Services;
 using HangmanGame.Data.Context;
 using HangmanGame.Data.Repositories;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace HangmanGame.Server.Services
 {
@@ -62,5 +65,77 @@ namespace HangmanGame.Server.Services
                 context.Dispose();
             }
         }
-    }
+
+        public UserCardResponseDto SearchUsers(UserCardRequestDto request)
+        {
+            if (request == null || string.IsNullOrWhiteSpace(request.Username))
+                return FailSearch("Search term is required.");
+
+            if (request.Username.Trim().Length < 3)
+                return FailSearch("Search term must be at least 3 characters.");
+
+            if (request.RequesterId <= 0)
+                return FailSearch("Invalid session.");
+
+            var context = new DatabaseContext();
+            var userRepo = new UserRepository(context);
+            var profileRepo = new PlayerProfileRepository(context);
+            var statsRepo = new PlayerStatsRepository(context);
+
+            try
+            {
+                var users = userRepo.SearchByUsername(
+                    request.Username.Trim(), request.RequesterId);
+
+                if (!users.Any())
+                    return new UserCardResponseDto
+                    {
+                        Success = true,
+                        Message = "No users found.",
+                        Users = new List<UserCard>()
+                    };
+
+                var cards = new List<UserCard>();
+
+                foreach (var user in users)
+                {
+                    var profile = profileRepo.GetByUserId(user.UserId);
+                    var stats = statsRepo.GetByUserId(user.UserId);
+
+                    cards.Add(new UserCard
+                    {
+                        UserId = user.UserId,
+                        Username = user.Username,
+                        AvatarUrl = profile?.AvatarUrl ?? "/Images/default-avatar.png",
+                        TotalScore = stats?.TotalScore ?? 0,
+                        WinRate = stats?.WinRate ?? 0
+                    });
+                }
+
+                return new UserCardResponseDto
+                {
+                    Success = true,
+                    Message = string.Empty,
+                    Users = cards
+                };
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"SearchUsers error: {ex.Message}");
+                return FailSearch("An error occurred while searching for users.");
+            }
+            finally
+            {
+                context.Dispose();
+            }
+        }
+
+        private static UserCardResponseDto FailSearch(string message) =>
+            new UserCardResponseDto
+            {
+                Success = false,
+                Message = message,
+                Users = new List<UserCard>()
+            };
+            }
 }

@@ -1,0 +1,1 @@
+<%@ ServiceHost Language="C#" Debug="true" Service="HangmanGame.Server.Services.MatchService" CodeBehind="MatchService.svc.cs" %>

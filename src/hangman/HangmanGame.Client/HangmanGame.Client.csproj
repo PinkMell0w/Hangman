@@ -61,12 +61,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Connected Services\HangmanGameService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\HangmanGameService\Reference.UserService.cs" />
+    <Compile Include="Connected Services\HangmanGameService\Reference.cs" />
     <Compile Include="Helpers\HashManager.cs" />
     <Compile Include="Helpers\LanguageManager.cs" />
     <Compile Include="Helpers\NavigationManager.cs" />
@@ -146,7 +141,11 @@
       <Name>HangmanGame.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\Friends.png" />
+    <Resource Include="Resources\Images\PlayerPfp.png" />
+    <Resource Include="Resources\Images\Settings.png" />
+  </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
@@ -173,6 +172,11 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Images\default-avatar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\HangmanGameService\" />
   </ItemGroup>
   <ItemGroup>
@@ -189,11 +193,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\default-avatar.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

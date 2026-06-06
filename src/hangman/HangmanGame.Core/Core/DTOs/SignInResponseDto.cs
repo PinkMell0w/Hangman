@@ -2,6 +2,7 @@
 
 namespace HangmanGame.Core.Core.DTOs
 {
+    [DataContract]
     public class SignInResponseDto
     {
         [DataMember] public bool Success { get; set; }
