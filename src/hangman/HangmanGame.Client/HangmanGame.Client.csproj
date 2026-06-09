@@ -115,8 +115,14 @@
     <Compile Include="Views\Lobby\LobbyPage.xaml.cs">
       <DependentUpon>LobbyPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MatchesList\MatchesListPage.xaml.cs">
+      <DependentUpon>MatchesListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SignIn\SignInPage.xaml.cs">
       <DependentUpon>SignInPage.xaml</DependentUpon>

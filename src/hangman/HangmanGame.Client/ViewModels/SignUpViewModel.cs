@@ -4,6 +4,7 @@ using HangmanGame.Client.Helpers;
 using HangmanGame.Core.Core.DTOs;
 using System;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace HangmanGame.Client.ViewModels

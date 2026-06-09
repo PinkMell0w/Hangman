@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HangmanGame.Client.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,7 +29,7 @@ namespace HangmanGame.Client.Views.Settings
         private void BtnGoBack_Click(object sender, RoutedEventArgs e)
         {
             //TODO logout logic
-            SessionManager.Instance.Logout();
+            SessionManager.Instance.ClearSession();
             NavigationManager.Instance.Navigate(new SignInPage());
         }
 
