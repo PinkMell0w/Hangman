@@ -17,7 +17,7 @@ namespace HangmanGame.Client.Views
             LoadProfilePicture();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BtnGoBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationManager.Instance.Navigate(new LobbyPage());
         }

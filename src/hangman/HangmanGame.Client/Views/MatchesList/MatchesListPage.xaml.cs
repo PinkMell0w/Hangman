@@ -1,6 +1,5 @@
 ﻿using HangmanGame.Client.Views.FriendsList;
 using HangmanGame.Client.Views.Game;
-using HangmanGame.Client.Views.Profile;
 using HangmanGame.Client.Views.Settings;
 using System;
 using System.Collections.Generic;

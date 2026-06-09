@@ -296,15 +296,6 @@
     <Resource Include="Resources\Images\Lobby.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\PlayerPfp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Friends.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Settings.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Images\StickArm.png" />
     <Resource Include="Resources\Images\StickHead.png" />
     <Resource Include="Resources\Images\StickLeg.png" />
