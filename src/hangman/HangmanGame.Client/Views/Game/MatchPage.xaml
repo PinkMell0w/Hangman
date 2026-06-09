@@ -18,7 +18,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
+
         <Button Name="BtnConfigureMatch" Content="Configurar partida" HorizontalAlignment="Left" Margin="10" Padding="5" Click="BtnConfigureMatch_Click" />
 
         <Grid Grid.Row="1" HorizontalAlignment="Center" Margin="0,40,0,0">
