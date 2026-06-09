@@ -222,10 +222,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Profile\ProfilePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\Settings\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -319,6 +315,9 @@
     <Resource Include="Resources\Images\FaceDead.png" />
     <Resource Include="Resources\Images\FaceOk.png" />
     <Resource Include="Resources\Images\FaceWin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Profile\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
