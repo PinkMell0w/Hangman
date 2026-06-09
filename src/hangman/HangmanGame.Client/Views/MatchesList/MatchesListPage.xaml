@@ -1,0 +1,133 @@
+﻿<Page x:Class="HangmanGame.Client.Views.MatchesList.MatchesListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HangmanGame.Client.Views.MatchesList"
+      xmlns:props="clr-namespace:HangmanGame.Client.Properties"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="{x:Static props:Resources.Title_matchesList}">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/Images/paperBg.jpg" TileMode="None" Stretch="Fill"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+            <TextBlock Text="Partidas disponibles" FontSize="24" FontFamily="Ink Free" FontWeight="Bold" Margin="20,20,0,10"/>
+            <Button Name="BtnGoBack" Content="Volver" Margin="20,0,0,0" HorizontalAlignment="Left" Padding="8" Click="BtnGoBack_Click"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel VerticalAlignment="Bottom">
+                <Button Name="BtnFriends" Padding="5" Margin="20,0,0,10" HorizontalAlignment="Left" Click="BtnFriends_Click">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Image Source="/Resources/Images/Friends.png" Height="20"/>
+                        <TextBlock Text="Amigos" FontSize="12" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Name="BtnSettings" Padding="5" Margin="20,0,0,10" HorizontalAlignment="Left" Click="BtnSettings_Click">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Image Source="/Resources/Images/Settings.png" Height="20"/>
+                        <TextBlock Text="Ajustes" FontSize="12" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Name="BtnProfile" Padding="8" Margin="20,0,20,20" HorizontalAlignment="Left" Click="BtnProfile_Click">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Image Source="/Resources/Images/PlayerPfp.png" Height="40"/>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="Fulanito123" FontSize="14" VerticalAlignment="Center" Margin="8,0,0,5"/>
+                            <TextBlock Text="Ver perfil" FontSize="10" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                <Button Padding="8" Margin="20,0,20,10" Click="Button_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Images/PlayerPfp.png" Height="60"/>
+                        <StackPanel>
+                            <TextBlock Text="SuperPancrasio32" FontSize="14" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                            <TextBlock Text="panchitoreyelmejor32@gmail.com" FontSize="10" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                            <TextBlock Text="Creada: Hoy 2:07 PM" FontSize="8" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Button>
+
+                <Button Padding="8" Margin="20,0,20,10" Click="Button_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Images/PlayerPfp.png" Height="60"/>
+                        <StackPanel>
+                            <TextBlock Text="SuperPancrasio32" FontSize="14" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                            <TextBlock Text="panchitoreyelmejor32@gmail.com" FontSize="10" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                            <TextBlock Text="Creada: Hoy 2:07 PM" FontSize="8" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Button>
+
+                <Button Padding="8" Margin="20,0,20,10" Click="Button_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Images/PlayerPfp.png" Height="60"/>
+                        <StackPanel>
+                            <TextBlock Text="SuperPancrasio32" FontSize="14" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                            <TextBlock Text="panchitoreyelmejor32@gmail.com" FontSize="10" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                            <TextBlock Text="Creada: Hoy 2:07 PM" FontSize="8" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Button>
+
+                <Button Padding="8" Margin="20,0,20,10" Click="Button_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Images/PlayerPfp.png" Height="60"/>
+                        <StackPanel>
+                            <TextBlock Text="SuperPancrasio32" FontSize="14" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                            <TextBlock Text="panchitoreyelmejor32@gmail.com" FontSize="10" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                            <TextBlock Text="Creada: Hoy 2:07 PM" FontSize="8" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Button>
+                
+                <Button Padding="8" Margin="20,0,20,10" Click="Button_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Images/PlayerPfp.png" Height="60"/>
+                        <StackPanel>
+                            <TextBlock Text="SuperPancrasio32" FontSize="14" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                            <TextBlock Text="panchitoreyelmejor32@gmail.com" FontSize="10" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                            <TextBlock Text="Creada: Hoy 2:07 PM" FontSize="8" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Button>
+
+                <Grid Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" Content="&lt;" Margin="20,0,0,0" Width="30" />
+                    
+                    <TextBlock Grid.Column="1" Text="1" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                    <Button Grid.Column="2" Content="&gt;" Margin="0,0,20,0" Width="30" />
+                </Grid>
+            </StackPanel>
+
+            <Button Grid.Column="2" Name="BtnRefresh" Content="Refrescar" Padding="5" Margin="100,0,20,20" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        </Grid>
+    </Grid>
+</Page>

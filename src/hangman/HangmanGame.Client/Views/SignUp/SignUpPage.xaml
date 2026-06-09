@@ -4,47 +4,59 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HangmanGame.Client.Views.SignUp"
+      xmlns:props="clr-namespace:HangmanGame.Client.Properties"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="SignUpPage">
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="{x:Static props:Resources.Title_signUp}">
 
-    <Grid Background="DimGray">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/Images/paperBgB.jpg"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0">
+        <Grid Grid.Column="0" Background="White" Margin="40">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" 
-                        Margin="10, 10, 10, 10">
-                <Label Content="Full Name" FontSize="16"/>
-                <TextBox Text="{Binding FullName, UpdateSourceTrigger=PropertyChanged}"/>
-                <Label Content="Email" FontSize="16"/>
-                <TextBox  Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
-                <Label Content="date of birth" FontSize="16"/>
-                <DatePicker SelectedDate="{Binding DateOfBirth, Mode=TwoWay,
-                    UpdateSourceTrigger=PropertyChanged}"
-                    DisplayDateEnd="{x:Static sys:DateTime.Today}"/>
-                <Label Content="PhoneNumber" FontSize="16"/>
-                <TextBox Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
-                <Label Content="Username" FontSize="16"/>
-                <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
-                <Label Content="Password" FontSize="16"/>
-                <PasswordBox x:Name="PasswordBox" PasswordChanged="PasswordBox_PasswordChanged"/>
-                <Label Content="confirm password" FontSize="16"/>
-                <PasswordBox x:Name="ConfirmPasswordBox" PasswordChanged="ConfirmPasswordBox_PasswordChanged"/>
+            <Label Grid.Row="0" Content="{x:Static props:Resources.Button_signUp}" FontSize="28" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <StackPanel HorizontalAlignment="Left" Margin="0,0,15,0">
+                    <Label Content="{x:Static props:Resources.Text_fullName}" FontSize="14"/>
+                    <TextBox Text="{Binding FullName, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Content="{x:Static props:Resources.Text_email}" FontSize="14"/>
+                    <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Content="{x:Static props:Resources.Text_dateOfBirth}" FontSize="14"/>
+                    <DatePicker SelectedDate="{Binding DateOfBirth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayDateEnd="{x:Static sys:DateTime.Today}"/>
+                    <Label Content="{x:Static props:Resources.Text_phone}" FontSize="14"/>
+                    <TextBox Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Left" Margin="15,0,0,0">
+                    <Label Content="{x:Static props:Resources.Global_username}" FontSize="14"/>
+                    <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Content="{x:Static props:Resources.Global_password}" FontSize="14"/>
+                    <PasswordBox x:Name="PasswordBox" PasswordChanged="PasswordBox_PasswordChanged"/>
+                    <Label Content="{x:Static props:Resources.Text_confirmPassword}" FontSize="14"/>
+                    <PasswordBox x:Name="ConfirmPasswordBox" PasswordChanged="ConfirmPasswordBox_PasswordChanged"/>
+                </StackPanel>
             </StackPanel>
 
-            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20, 20, 20, 20">
-                <Button Content="Sign Up" Command="{Binding RegisterCommand}"/>
-                <Button Content="Already have an acc?" Command="{Binding NavigateToSignInCommand}"/>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10, 10">
+                <Button Content="{x:Static props:Resources.Button_signUp}" Command="{Binding RegisterCommand}" Margin="0,0,5,0"/>
+                <Button Content="{x:Static props:Resources.Button_alreadyRegistered}" Command="{Binding NavigateToSignInCommand}" Margin="5,0,0,0" Click="Button_Click"/>
             </StackPanel>
         </Grid>
+
+        <Image Grid.Column="1" gif:AnimationBehavior.SourceUri="/Resources/Images/RegisterPic.gif" Stretch="None" />
     </Grid>
 </Page>

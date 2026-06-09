@@ -2,11 +2,14 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace HangmanGame.Client.Views
+namespace HangmanGame.Client.Views.Admin
 {
-    public partial class SignInPage : Page
+    /// <summary>
+    /// Interaction logic for AdminPage.xaml
+    /// </summary>
+    public partial class AdminPage : Page
     {
-        public SignInPage()
+        public AdminPage()
         {
             InitializeComponent();
             DataContext = new SignInViewModel();
@@ -16,6 +19,11 @@ namespace HangmanGame.Client.Views
         {
             if (DataContext is SignInViewModel vm) vm.Password = ((PasswordBox)sender).Password;
             System.Windows.Input.CommandManager.InvalidateRequerySuggested();
+        }
+
+        private void BtnGoBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

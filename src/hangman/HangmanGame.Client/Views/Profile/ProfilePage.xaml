@@ -1,0 +1,60 @@
+﻿<Page x:Class="HangmanGame.Client.Views.Profile.ProfilePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HangmanGame.Client.Views.Profile"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="ProfilePage">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/Images/paperBgB.jpg" TileMode="None" Stretch="Fill"/>
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel x:Name="UserInfoPanel" Visibility="Visible" Margin="40,80,0,0">
+                <TextBlock Text="Nombre de usuario" FontSize="22" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10"/>
+                <TextBlock Text="Fulanito123" FontSize="32" Margin="0,0,0,20" Width="200" HorizontalAlignment="Left"/>
+                
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40,0,0,20">
+                    <StackPanel Margin="0,0,20,0" Background="CornflowerBlue">
+                        <TextBlock Text="Victorias totales" FontSize="16" FontFamily="Ink Free" FontWeight="Bold" Padding="8"/>
+                        <TextBlock Text="15" FontSize="20" Padding="8" Width="100" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,20,0" Background="PaleVioletRed">
+                        <TextBlock Text="Derrotas" FontSize="16" FontFamily="Ink Free" FontWeight="Bold" Padding="8"/>
+                        <TextBlock Text="9" FontSize="20" Padding="8" Width="100" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Left" Margin="40,0,0,20" Background="AliceBlue">
+                    <TextBlock Text="Porcentaje de victorias" FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Padding="5"/>
+                    <TextBlock Text="62.5%" FontSize="32" Padding="8" Width="100" HorizontalAlignment="Left"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Foto de perfil" FontSize="22" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                <Image Source="/Resources/Images/PlayerPfp.png" Margin="0,0,0,20" Width="160"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" VerticalAlignment="Bottom">
+            <Button Name="BtnGoBack" Content="Volver" Margin="20,0,0,10" HorizontalAlignment="Left" Padding="8" Click="BtnGoBack_Click"/>
+            <Button Name="BtnModifyProfile" Content="Modificar perfil" Margin="20,0,140,10" HorizontalAlignment="Right" Padding="8" />
+            <Button Name="BtnDeleteProfile" Content="Eliminar perfil" Margin="0,0,20,10" HorizontalAlignment="Right" Padding="8" />
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,106 @@
+﻿<Page x:Class="HangmanGame.Client.Views.Game.GamePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HangmanGame.Client.Views.Game"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="GamePage">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/Images/paperBgA.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Margin="10,10,10,0">
+            <Button Name="BtnLeaveMatch" Content="Abandonar partida" FontSize="16" Padding="8" Click="BtnLeaveMatch_Click" HorizontalAlignment="Left"/>
+            <Button Name="BtnKickPlayer" Content="Expulsar jugador" FontSize="16" Padding="8" Click="BtnKickPlayer_Click" HorizontalAlignment="Left" Height="39" Margin="745,0,0,0" VerticalAlignment="Bottom"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Canvas Grid.Row="0" Height="200" Margin="0,20,0,20">
+                <Image Source="/Resources/Images/Gallows.png" Stretch="None" Margin="400,0,0,0" />
+
+                <Image x:Name="ImgFaceOk" Source="/Resources/Images/FaceOk.png" Stretch="None" Margin="400,0,0,0" Visibility="Hidden" />
+                <Image x:Name="ImgFaceWin" Source="/Resources/Images/FaceWin.png" Stretch="None" Margin="400,0,0,0" Visibility="Hidden" />
+                <Image x:Name="ImgFaceLose" Source="/Resources/Images/FaceDead.png" Stretch="None" Margin="400,0,0,0" Visibility="Hidden" />
+
+                <Image x:Name="ImgStickHead" Source="/Resources/Images/StickHead.png" Stretch="None" Margin="400,0,0,0" Visibility="Hidden" />
+                <Image x:Name="ImgStickTorso" Source="/Resources/Images/StickTorso.png" Stretch="None" Margin="400,0,0,0" Visibility="Hidden" />
+                <Image x:Name="ImgStickArm" Source="/Resources/Images/StickArm.png" Stretch="None" Margin="400,0,0,0" Visibility="Hidden" />
+                <Image x:Name="ImgStickTwoArms" Source="/Resources/Images/StickTwoArms.png" Stretch="None" Margin="400,0,0,0" Visibility="Hidden" />
+                <Image x:Name="ImgStickLeg" Source="/Resources/Images/StickLeg.png" Stretch="None" Margin="400,0,0,0" Visibility="Hidden" />
+                <Image x:Name="ImgStickman" Source="/Resources/Images/Stickman.png" Stretch="None" Margin="400,0,0,0" Visibility="Hidden" />
+            </Canvas>
+
+            <TextBlock Grid.Row="1" Text="_ _ _ _ _" FontSize="32" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="380" Margin="220,50,0,0">
+                <Button Name="BtnLetterQ" Content="Q" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterW" Content="W" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterE" Content="E" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterR" Content="R" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterT" Content="T" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterY" Content="Y" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterU" Content="U" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterI" Content="I" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterO" Content="O" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterP" Content="P" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterA" Content="A" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterS" Content="S" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterD" Content="D" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterF" Content="F" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterG" Content="G" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterH" Content="H" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterJ" Content="J" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterK" Content="K" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterL" Content="L" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterÑ" Content="Ñ" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterZ" Content="Z" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterX" Content="X" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterC" Content="C" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterV" Content="V" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterB" Content="B" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterN" Content="N" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+                <Button Name="BtnLetterM" Content="M" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
+            </WrapPanel>
+
+            <Grid x:Name="GridChat" Grid.Column="1" Margin="0,0,0,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBox x:Name="TxtHistorial" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Margin="0,0,0,10" Background="#FAFAFA" Width="200" Height="200"/>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox x:Name="TxtMensaje" Text="Escribe tu mensaje aquí..." Grid.Column="0" Margin="10,0,10,0" Padding="5" Foreground="#FFA2A2A2" />
+                    <Button x:Name="BtnSend" Grid.Column="1" Content="Enviar" Click="BtnSend_Click" Padding="10" Margin="0,0,10,0"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

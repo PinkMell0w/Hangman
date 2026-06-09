@@ -37,17 +37,17 @@ namespace HangmanGame.Client.ViewModels
         public bool HasError => !string.IsNullOrEmpty(ErrorMessage);
         public bool IsNotLoading => !_isLoading;
 
-        public ICommand SignInCommand { get; }
+        // public ICommand SignInCommand { get; }
         public ICommand NavigateToLobbyCommand { get; }
 
         public SignInViewModel()
         {
-            _authService = new AuthServiceClient();
-            SignInCommand = new RelayCommand(_ => ExecuteSignIn(), _ => CanSignIn());
+            // _authService = new AuthServiceClient();
+            // SignInCommand = new RelayCommand(_ => ExecuteSignIn(), _ => CanSignIn());
             NavigateToLobbyCommand = new RelayCommand(_ => NavigateToLobby());
         }
 
-        private bool CanSignIn() =>
+        /* private bool CanSignIn() =>
             !string.IsNullOrWhiteSpace(Credential) &&
             !string.IsNullOrWhiteSpace(Password) &&
             !_isLoading;
@@ -82,7 +82,7 @@ namespace HangmanGame.Client.ViewModels
             {
                 MessageBox.Show(response.Message);
             }
-        }
+        } */
         private void NavigateToLobby()
         {
             NavigationManager.Instance.Navigate(new LobbyPage());

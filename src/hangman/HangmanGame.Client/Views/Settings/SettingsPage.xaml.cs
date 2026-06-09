@@ -1,5 +1,4 @@
-﻿using HangmanGame.Client.Helpers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,19 +13,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HangmanGame.Client.Views
+namespace HangmanGame.Client.Views.Settings
 {
     /// <summary>
-    /// Lógica de interacción para LobbyPage.xaml
+    /// Interaction logic for SettingsPage.xaml
     /// </summary>
-    public partial class LobbyPage : Page
+    public partial class SettingsPage : Page
     {
-        public LobbyPage()
+        public SettingsPage()
         {
             InitializeComponent();
         }
 
-        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        private void BtnGoBack_Click(object sender, RoutedEventArgs e)
         {
             //TODO logout logic
             SessionManager.Instance.Logout();
