@@ -118,7 +118,7 @@
     <Compile Include="Views\MatchesList\MatchesListPage.xaml.cs">
       <DependentUpon>MatchesListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ProfilePage.xaml.cs">
+    <Compile Include="Views\Profile\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Settings\SettingsPage.xaml.cs">
@@ -206,7 +206,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ProfilePage.xaml">
+    <Page Include="Views\Profile\ProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -316,8 +316,6 @@
     <Resource Include="Resources\Images\FaceOk.png" />
     <Resource Include="Resources\Images\FaceWin.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Profile\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
