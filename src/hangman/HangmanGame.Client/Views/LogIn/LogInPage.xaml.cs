@@ -25,6 +25,7 @@ namespace HangmanGame.Client.Views
         public LogInPage()
         {
             InitializeComponent();
+            DataContext = new ViewModels.LogInViewModel();
         }
 
         private void TxtUsername_GotFocus(object sender, RoutedEventArgs e)
@@ -40,11 +41,6 @@ namespace HangmanGame.Client.Views
         private void BtnForgotPassword_Click(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private void BtnLogIn_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new LobbyPage());
         }
 
         private void BtnSignUp_Click(object sender, RoutedEventArgs e)

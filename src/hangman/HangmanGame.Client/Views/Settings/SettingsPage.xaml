@@ -24,17 +24,17 @@
 
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0,20,0,0">
             <TextBlock Text="{x:Static props:Resources.Text_language}" FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Margin="20,0,0,5"/>
-            <ComboBox Margin="20,0,0,20" Width="250" FontSize="16" VerticalContentAlignment="Center">
-                <ComboBoxItem Content="{x:Static props:Resources.Text_useSystemDefault}" IsSelected="True"/>
-                <ComboBoxItem Content="Español"/>
-                <ComboBoxItem Content="English"/>
-                <ComboBoxItem Content="Deutsch"/>
+            <ComboBox SelectedValue="{Binding SelectedLanguage}" SelectedValuePath="Tag" Margin="20,0,0,20" Width="250" FontSize="16" VerticalContentAlignment="Center">
+                <ComboBoxItem Tag="system" Content="{x:Static props:Resources.Text_useSystemDefault}" IsSelected="True"/>
+                <ComboBoxItem Tag="es-MX" Content="Español"/>
+                <ComboBoxItem Tag="en-US" Content="English"/>
+                <ComboBoxItem Tag="de-DE" Content="Deutsch"/>
             </ComboBox>
         </StackPanel>
 
         <Grid Grid.Row="2">
-            <Button Name="BtnGoBack" Content="{x:Static props:Resources.Button_goBack}" Margin="20,0,0,10" HorizontalAlignment="Left" Padding="8" Click="BtnGoBack_Click" />
-            <Button Name="BtnSaveSettings" Content="{x:Static props:Resources.Button_saveSettings}" Margin="0,0,20,10" HorizontalAlignment="Right" Padding="8" />
+            <Button Name="BtnGoBack" Content="{x:Static props:Resources.Button_goBack}" Margin="20,0,0,10" HorizontalAlignment="Left" Padding="8" Command="{Binding GoBackCommand}" />
+            <Button Name="BtnSaveSettings" Content="{x:Static props:Resources.Button_saveSettings}" Margin="0,0,20,10" HorizontalAlignment="Right" Padding="8" Command="{Binding SaveSettingsCommand}" />
         </Grid>
     </Grid>
 </Page>

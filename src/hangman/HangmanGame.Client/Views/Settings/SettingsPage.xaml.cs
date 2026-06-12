@@ -26,10 +26,5 @@ namespace HangmanGame.Client.Views.Settings
             InitializeComponent();
             DataContext = new SettingsViewModel();
         }
-
-        private void BtnGoBack_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.GoBack();
-        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HangmanGame.Client.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,11 @@ namespace HangmanGame.Client
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            LanguageManager.CurrentLanguage = Client.Properties.Settings.Default.Language;
+
+            base.OnStartup(e);
+        }
     }
 }

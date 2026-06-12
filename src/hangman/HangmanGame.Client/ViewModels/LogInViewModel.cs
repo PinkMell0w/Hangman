@@ -37,22 +37,22 @@ namespace HangmanGame.Client.ViewModels
         public bool HasError => !string.IsNullOrEmpty(ErrorMessage);
         public bool IsNotLoading => !_isLoading;
 
-        // public ICommand SignInCommand { get; }
+        // public ICommand LogInCommand { get; }
         public ICommand NavigateToLobbyCommand { get; }
 
         public LogInViewModel()
         {
             // _authService = new AuthServiceClient();
-            // SignInCommand = new RelayCommand(_ => ExecuteSignIn(), _ => CanSignIn());
+            // LogInCommand = new RelayCommand(_ => ExecuteLogIn(), _ => CanLogIn());
             NavigateToLobbyCommand = new RelayCommand(_ => NavigateToLobby());
         }
 
-        /* private bool CanSignIn() =>
+        /* private bool CanLogIn() =>
             !string.IsNullOrWhiteSpace(Credential) &&
             !string.IsNullOrWhiteSpace(Password) &&
             !_isLoading;
 
-        private async void ExecuteSignIn()
+        private async void ExecuteLogIn()
         {
             _isLoading = true;
             ErrorMessage = string.Empty;

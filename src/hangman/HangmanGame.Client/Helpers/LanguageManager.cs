@@ -19,11 +19,24 @@ namespace HangmanGame.Client.Helpers
 
         public static void ApplyCulture()
         {
-            var lang = new CultureInfo(_currentLanguage);
+            string language = _currentLanguage;
+
+            if (string.IsNullOrWhiteSpace(language))
+            {
+                language = CultureInfo.CurrentUICulture.Name;
+            }
+
+            if (language == "system")
+            {
+                language = CultureInfo.CurrentUICulture.Name;
+            }
+
+            var lang = new CultureInfo(language);
+
             Thread.CurrentThread.CurrentCulture = lang;
             Thread.CurrentThread.CurrentUICulture = lang;
 
-            Properties.Resources.Culture = _currentLanguage == "es-MX" ? lang: null;
+            Properties.Resources.Culture = lang;
         }
     }
 }
