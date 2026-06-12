@@ -129,7 +129,7 @@
   <data name="Global_settings" xml:space="preserve">
     <value>Ajustes</value>
   </data>
-  <data name="Global_signIn" xml:space="preserve">
+  <data name="Global_logIn" xml:space="preserve">
     <value>Iniciar sesión</value>
   </data>
   <data name="Title_signUp" xml:space="preserve">
@@ -147,12 +147,6 @@
   <data name="Title_message" xml:space="preserve">
     <value>Mensaje</value>
   </data>
-  <data name="Message_alreadyFriends" xml:space="preserve">
-    <value>Ya tienes a este usuario en tu lista de amigos</value>
-  </data>
-  <data name="Message_isYou" xml:space="preserve">
-    <value>No te puedes agregar a ti como amigo</value>
-  </data>
   <data name="Error_incompleteFields" xml:space="preserve">
     <value>Llena todos los campos e inténtalo de nuevo</value>
   </data>
@@ -168,9 +162,6 @@
   <data name="Error_samePassword" xml:space="preserve">
     <value>La nueva contraseña no puede ser la misma que tu contraseña actual</value>
   </data>
-  <data name="Error_specialCharacters" xml:space="preserve">
-    <value>Tu contraseña sólo debe contener letras y/o números</value>
-  </data>
   <data name="Error_alreadyLogged" xml:space="preserve">
     <value>Ya tienes una sesión iniciada</value>
   </data>
@@ -185,12 +176,6 @@
   </data>
   <data name="Button_send" xml:space="preserve">
     <value>Enviar</value>
-  </data>
-  <data name="Button_invite" xml:space="preserve">
-    <value>Invitar</value>
-  </data>
-  <data name="Button_reject" xml:space="preserve">
-    <value>Rechazar</value>
   </data>
   <data name="Button_signUp" xml:space="preserve">
     <value>Registrarse</value>
@@ -228,13 +213,13 @@
   <data name="Text_phone" xml:space="preserve">
     <value>Número telefónico</value>
   </data>
-  <data name="Title_signIn" xml:space="preserve">
+  <data name="Title_logIn" xml:space="preserve">
     <value>Inicia sesión</value>
   </data>
   <data name="Error_generic" xml:space="preserve">
     <value>Ocurrió un error inesperado. Por favor intenta de nuevo más tarde</value>
   </data>
-  <data name="Error_serverConnection" xml:space="preserve">
+  <data name="Error_serverTimeout" xml:space="preserve">
     <value>Se agotó el tiempo de espera de respuesta con el servidor. Si el problema persiste, intente de nuevo más tarde</value>
   </data>
   <data name="Button_forgotPassword" xml:space="preserve">
@@ -258,12 +243,6 @@
   <data name="Title_game" xml:space="preserve">
     <value>¡Hora de adivinar!</value>
   </data>
-  <data name="Title_friendsList" xml:space="preserve">
-    <value>Mis amigos</value>
-  </data>
-  <data name="Button_friends" xml:space="preserve">
-    <value>Amigos</value>
-  </data>
   <data name="Button_profile" xml:space="preserve">
     <value>Perfil</value>
   </data>
@@ -272,5 +251,242 @@
   </data>
   <data name="Button_editProfile" xml:space="preserve">
     <value>Modificar perfil</value>
+  </data>
+  <data name="Button_goBack" xml:space="preserve">
+    <value>Volver</value>
+  </data>
+  <data name="Message_successSignUp" xml:space="preserve">
+    <value>Se ha registrado de manera exitosa</value>
+  </data>
+  <data name="Message_confirmGoBack" xml:space="preserve">
+    <value>¿Estás seguro de que deseas volver?</value>
+  </data>
+  <data name="Button_yes" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="Button_no" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Message_emailInUse" xml:space="preserve">
+    <value>El correo utilizado ya se encuentra en uso</value>
+  </data>
+  <data name="Error_signUpFailed" xml:space="preserve">
+    <value>No se pudo crear tu cuenta. Intenta más tarde</value>
+  </data>
+  <data name="Error_logInFailed" xml:space="preserve">
+    <value>No pudimos iniciar tu sesión. Intenta de nuevo más tarde</value>
+  </data>
+  <data name="Message_emailCode" xml:space="preserve">
+    <value>Se enviará un código de verificación al correo electrónico asociado con esta cuenta</value>
+  </data>
+  <data name="Message_inputCode" xml:space="preserve">
+    <value>Ingresa el código</value>
+  </data>
+  <data name="Text_newPassword" xml:space="preserve">
+    <value>Nueva contraseña</value>
+  </data>
+  <data name="Button_continue" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
+  <data name="Message_passwordUpdate" xml:space="preserve">
+    <value>Se ha actualizado tu contraseña</value>
+  </data>
+  <data name="Error_invalidCode" xml:space="preserve">
+    <value>El código ingresado es incorrecto, intenta nuevamente</value>
+  </data>
+  <data name="Error_passDontMatch" xml:space="preserve">
+    <value>Las contraseñas no coinciden</value>
+  </data>
+  <data name="Error_codeSendFailed" xml:space="preserve">
+    <value>No pudimos enviar el código al correo. Intenta de nuevo más tarde</value>
+  </data>
+  <data name="Button_resendCode" xml:space="preserve">
+    <value>Reenviar código</value>
+  </data>
+  <data name="Text_totalWins" xml:space="preserve">
+    <value>Victorias totales</value>
+  </data>
+  <data name="Text_losses" xml:space="preserve">
+    <value>Derrotas</value>
+  </data>
+  <data name="Text_winPercentage" xml:space="preserve">
+    <value>Porcentaje de victorias</value>
+  </data>
+  <data name="Text_profilePic" xml:space="preserve">
+    <value>Foto de perfil</value>
+  </data>
+  <data name="Button_deleteAccount" xml:space="preserve">
+    <value>Eliminar cuenta</value>
+  </data>
+  <data name="Button_update" xml:space="preserve">
+    <value>Actualizar</value>
+  </data>
+  <data name="Message_updateSuccess" xml:space="preserve">
+    <value>Información de perfil actualizada exitosamente</value>
+  </data>
+  <data name="Message_sameData" xml:space="preserve">
+    <value>No se ha actualizado ningún dato</value>
+  </data>
+  <data name="Button_selectFile" xml:space="preserve">
+    <value>Seleccionar archivo</value>
+  </data>
+  <data name="Button_search" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="Button_confirm" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+  <data name="Text_selectCategory" xml:space="preserve">
+    <value>Selecciona una categoría</value>
+  </data>
+  <data name="Text_catAnimals" xml:space="preserve">
+    <value>Animales</value>
+  </data>
+  <data name="Text_catFruits" xml:space="preserve">
+    <value>Frutas</value>
+  </data>
+  <data name="Text_catColors" xml:space="preserve">
+    <value>Colores</value>
+  </data>
+  <data name="Text_catObjects" xml:space="preserve">
+    <value>Objetos</value>
+  </data>
+  <data name="Text_catCountries" xml:space="preserve">
+    <value>Países</value>
+  </data>
+  <data name="Text_selectWord" xml:space="preserve">
+    <value>Y una palabra</value>
+  </data>
+  <data name="Text_writeYourOwn" xml:space="preserve">
+    <value>O escribe una propia:</value>
+  </data>
+  <data name="Text_writeWord" xml:space="preserve">
+    <value>Escribe tu palabra</value>
+  </data>
+  <data name="Button_create" xml:space="preserve">
+    <value>Crear</value>
+  </data>
+  <data name="Message_creationSuccess" xml:space="preserve">
+    <value>Se ha creado la partida con éxito</value>
+  </data>
+  <data name="Button_matchSettings" xml:space="preserve">
+    <value>Configurar partida</value>
+  </data>
+  <data name="Button_leaveMatch" xml:space="preserve">
+    <value>Abandonar partida</value>
+  </data>
+  <data name="Button_startMatch" xml:space="preserve">
+    <value>Comenzar partida</value>
+  </data>
+  <data name="Error_connectionEnded" xml:space="preserve">
+    <value>Ocurrió un error de conexión inesperado. Lamentamos las molestias</value>
+  </data>
+  <data name="Text_chatPrompt" xml:space="preserve">
+    <value>Escribe tu mensaje aquí...</value>
+  </data>
+  <data name="Button_saveSettings" xml:space="preserve">
+    <value>Guardar cambios</value>
+  </data>
+  <data name="Button_kickPlayer" xml:space="preserve">
+    <value>Expulsar jugador</value>
+  </data>
+  <data name="Message_wordChange" xml:space="preserve">
+    <value>¿Estás seguro de que quieres cambiar la palabra?</value>
+  </data>
+  <data name="Message_backNoSave" xml:space="preserve">
+    <value>¿Estás seguro de que quieres volver? Si seleccionaste otra palabra, esta no se guardará</value>
+  </data>
+  <data name="Text_you" xml:space="preserve">
+    <value>Tú</value>
+  </data>
+  <data name="Text_awaitingOpponent" xml:space="preserve">
+    <value>Esperando oponente</value>
+  </data>
+  <data name="Text_availableMatches" xml:space="preserve">
+    <value>Partidas disponibles</value>
+  </data>
+  <data name="Button_viewProfile" xml:space="preserve">
+    <value>Ver perfil</value>
+  </data>
+  <data name="Text_created" xml:space="preserve">
+    <value>Creada:</value>
+  </data>
+  <data name="Text_today" xml:space="preserve">
+    <value>Hoy</value>
+  </data>
+  <data name="Text_awaitingStart" xml:space="preserve">
+    <value>Esperando a que {username} comience la partida</value>
+  </data>
+  <data name="Text_playerJoined" xml:space="preserve">
+    <value>{username} se ha unido a la partida</value>
+  </data>
+  <data name="Text_rightGuess" xml:space="preserve">
+    <value>¡Correcto!</value>
+  </data>
+  <data name="Text_wrongGuess" xml:space="preserve">
+    <value>¡Ups, letra equivocada! Te quedan {attempts} intentos</value>
+  </data>
+  <data name="Message_confirmLeave" xml:space="preserve">
+    <value>¿Estás seguro de que deseas abandonar la partida?</value>
+  </data>
+  <data name="Append_noPenalization" xml:space="preserve">
+    <value>No se te penalizará</value>
+  </data>
+  <data name="Text_playerLeft" xml:space="preserve">
+    <value>{username} ha abandonado la partida</value>
+  </data>
+  <data name="Message_hostLeft" xml:space="preserve">
+    <value>El host ha abandonado la partida</value>
+  </data>
+  <data name="Append_penalization" xml:space="preserve">
+    <value>Perderás 3 puntos si abandonas ahora</value>
+  </data>
+  <data name="Message_youLeft" xml:space="preserve">
+    <value>Abandonaste la partida.</value>
+  </data>
+  <data name="Message_opponentLeft" xml:space="preserve">
+    <value>Tu oponente abandonó la partida. Tu puntaje no ha sido afectado</value>
+  </data>
+  <data name="Message_confirmKick" xml:space="preserve">
+    <value>¿Estás seguro de que deseas expulsar al jugador? Si la partida ya comenzó, esta terminará</value>
+  </data>
+  <data name="Message_gotKicked" xml:space="preserve">
+    <value>Has sido expulsado de la partida.</value>
+  </data>
+  <data name="Append_pointsLost" xml:space="preserve">
+    <value>Perdiste 3 puntos</value>
+  </data>
+  <data name="Message_kickedPlayer" xml:space="preserve">
+    <value>Expulsaste a {username}</value>
+  </data>
+  <data name="Message_kickedMidGame" xml:space="preserve">
+    <value>Expulsaste a tu oponente. Por equidad, has perdido 3 puntos</value>
+  </data>
+  <data name="Append_noPointsLost" xml:space="preserve">
+    <value>Tu puntaje no ha sido afectado</value>
+  </data>
+  <data name="Message_wordGuessed" xml:space="preserve">
+    <value>¡Felicidades! Adivinaste la palabra: {Word}. Ganaste 10 puntos</value>
+  </data>
+  <data name="Message_opponentWon" xml:space="preserve">
+    <value>{username} adivinó tu palabra. ¡Suerte para la próxima!</value>
+  </data>
+  <data name="Message_wordNotGuessed" xml:space="preserve">
+    <value>¡Qué mal! No adivinaste la palabra- ¡Suerte para la próxima!</value>
+  </data>
+  <data name="Message_opponentLost" xml:space="preserve">
+    <value>¡Felicidades! {username} no adivinó tu palabra. Ganaste 5 puntos</value>
+  </data>
+  <data name="Error_scoresUpdFailed" xml:space="preserve">
+    <value>No se pudo guardar tu puntaje ni se pudo actualizar tu historial de victorias y derrotas. Tus puntajes no cambiarán</value>
+  </data>
+  <data name="Error_messageNotSent" xml:space="preserve">
+    <value>Tu mensaje tardó mucho en enviarse. Inténtalo de nuevo</value>
+  </data>
+  <data name="Text_language" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="Text_useSystemDefault" xml:space="preserve">
+    <value>Usar idioma por defecto</value>
   </data>
 </root>

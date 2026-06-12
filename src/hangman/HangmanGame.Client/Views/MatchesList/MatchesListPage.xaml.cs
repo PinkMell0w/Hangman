@@ -1,5 +1,4 @@
-﻿using HangmanGame.Client.Views.FriendsList;
-using HangmanGame.Client.Views.Game;
+﻿using HangmanGame.Client.Views.Game;
 using HangmanGame.Client.Views.Profile;
 using HangmanGame.Client.Views.Settings;
 using System;
@@ -32,11 +31,6 @@ namespace HangmanGame.Client.Views.MatchesList
         private void BtnGoBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
-        }
-
-        private void BtnFriends_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new FriendsListPage());
         }
 
         private void BtnSettings_Click(object sender, RoutedEventArgs e)

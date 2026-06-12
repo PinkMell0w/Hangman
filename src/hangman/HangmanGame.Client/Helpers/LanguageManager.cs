@@ -5,7 +5,7 @@ namespace HangmanGame.Client.Helpers
 {
     public static class LanguageManager
     {
-        private static string _currentLanguage = "en-US";
+        private static string _currentLanguage = Properties.Settings.Default.Language;
 
         public static string CurrentLanguage
         {

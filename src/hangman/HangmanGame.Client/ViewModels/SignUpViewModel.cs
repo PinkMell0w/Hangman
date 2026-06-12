@@ -135,7 +135,7 @@ namespace HangmanGame.Client.ViewModels
 
             if (response.Success)
             {
-                NavigationManager.Instance.Navigate(new Views.SignInPage());
+                NavigationManager.Instance.Navigate(new Views.LogInPage());
             }
             else
             {
@@ -145,7 +145,7 @@ namespace HangmanGame.Client.ViewModels
 
         private void NavigateToSignIn()
         {
-            NavigationManager.Instance.Navigate(new Views.SignInPage());
+            NavigationManager.Instance.Navigate(new Views.LogInPage());
         }
     }
 }

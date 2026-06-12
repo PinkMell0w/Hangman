@@ -28,7 +28,6 @@
                 <Button Name="BtnCreateMatch" Margin="0,0,0,10" Padding="5" Height="30" Content="{x:Static props:Resources.Button_createMatch}" Click="BtnCreateMatch_Click"  />
                 <Button Name="BtnJoinMatch" Margin="0,0,0,10" Padding="5" Height="30" Content="{x:Static props:Resources.Button_joinMatch}" Click="BtnJoinMatch_Click"  />
                 <Button Name="BtnProfile" Margin="0,0,0,10" Padding="5" Height="30" Content="{x:Static props:Resources.Button_profile}" Click="BtnProfile_Click"  />
-                <Button Name="BtnFriends" Margin="0,0,0,10" Padding="5" Height="30" Content="{x:Static props:Resources.Button_friends}" Click="BtnFriends_Click"  />
                 <Button Name="BtnSettings" Margin="0,0,0,10" Padding="5" Height="30" Content="{x:Static props:Resources.Global_settings}" Click="BtnSettings_Click"  />
                 <Button Name="BtnLogout" Padding="5" Height="30" Content="{x:Static props:Resources.Button_logOut}" Click="BtnLogout_Click"  />
             </StackPanel>

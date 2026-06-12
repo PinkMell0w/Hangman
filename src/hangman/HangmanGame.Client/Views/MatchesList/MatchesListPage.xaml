@@ -31,13 +31,6 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel VerticalAlignment="Bottom">
-                <Button Name="BtnFriends" Padding="5" Margin="20,0,0,10" HorizontalAlignment="Left" Click="BtnFriends_Click">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Image Source="/Resources/Images/Friends.png" Height="20"/>
-                        <TextBlock Text="Amigos" FontSize="12" VerticalAlignment="Center" Margin="8,0,0,0"/>
-                    </StackPanel>
-                </Button>
-
                 <Button Name="BtnSettings" Padding="5" Margin="20,0,0,10" HorizontalAlignment="Left" Click="BtnSettings_Click">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <Image Source="/Resources/Images/Settings.png" Height="20"/>

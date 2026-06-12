@@ -129,7 +129,7 @@
   <data name="Global_settings" xml:space="preserve">
     <value>Einstellungen</value>
   </data>
-  <data name="Global_signIn" xml:space="preserve">
+  <data name="Global_logIn" xml:space="preserve">
     <value>Einloggen</value>
   </data>
   <data name="Title_signUp" xml:space="preserve">
@@ -147,12 +147,6 @@
   <data name="Title_message" xml:space="preserve">
     <value>Nachricht</value>
   </data>
-  <data name="Message_alreadyFriends" xml:space="preserve">
-    <value>Du bist bereits mit diesem Benutzer befreundet</value>
-  </data>
-  <data name="Message_isYou" xml:space="preserve">
-    <value>Du kannst dich nicht mit dir selbst anfreunden</value>
-  </data>
   <data name="Error_incompleteFields" xml:space="preserve">
     <value>Fülle alle Felder aus und versuche es erneut</value>
   </data>
@@ -168,9 +162,6 @@
   <data name="Error_samePassword" xml:space="preserve">
     <value>Das neue Passwort kann nicht das selbe wie das momentane Passwort sein</value>
   </data>
-  <data name="Error_specialCharacters" xml:space="preserve">
-    <value>Dein Passwort kann nur Buchstaben/Zahlen enthalten</value>
-  </data>
   <data name="Error_alreadyLogged" xml:space="preserve">
     <value>Du bist bereits eingelogged</value>
   </data>
@@ -185,12 +176,6 @@
   </data>
   <data name="Button_send" xml:space="preserve">
     <value>Senden</value>
-  </data>
-  <data name="Button_invite" xml:space="preserve">
-    <value>Einladen</value>
-  </data>
-  <data name="Button_reject" xml:space="preserve">
-    <value>Ablehnen</value>
   </data>
   <data name="Button_signUp" xml:space="preserve">
     <value>Registrieren</value>
@@ -228,13 +213,13 @@
   <data name="Text_phone" xml:space="preserve">
     <value>Telefonnummer</value>
   </data>
-  <data name="Title_signIn" xml:space="preserve">
+  <data name="Title_logIn" xml:space="preserve">
     <value>Logge dich ein</value>
   </data>
   <data name="Error_generic" xml:space="preserve">
     <value>Ein unerwarteter Fehler ist aufgetreten. Bitte versuche er später erneut</value>
   </data>
-  <data name="Error_serverConnection" xml:space="preserve">
+  <data name="Error_serverTimeout" xml:space="preserve">
     <value>Der Server eine Zeitüberschreitung verursacht. Falls das Problem besteht, bitte versuche es später erneut</value>
   </data>
   <data name="Button_forgotPassword" xml:space="preserve">
@@ -258,12 +243,6 @@
   <data name="Title_game" xml:space="preserve">
     <value>Zeit zum Raten!</value>
   </data>
-  <data name="Title_friendsList" xml:space="preserve">
-    <value>Meine Freunde</value>
-  </data>
-  <data name="Button_friends" xml:space="preserve">
-    <value>Freunde</value>
-  </data>
   <data name="Button_profile" xml:space="preserve">
     <value>Profil</value>
   </data>
@@ -272,5 +251,243 @@
   </data>
   <data name="Button_editProfile" xml:space="preserve">
     <value>Profil bearbeiten</value>
+  </data>
+  <data name="Button_goBack" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="Message_successSignUp" xml:space="preserve">
+    <value>Erfolgreich registriert</value>
+  </data>
+  <data name="Message_confirmGoBack" xml:space="preserve">
+    <value>Sind sie sich sicher, dass sie zurück gehen möchten?</value>
+  </data>
+  <data name="Button_yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="Button_no" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="Message_emailInUse" xml:space="preserve">
+    <value>Diese E-Mail Adresse ist bereits in Benutzung</value>
+  </data>
+  <data name="Error_signUpFailed" xml:space="preserve">
+    <value>Account konnte nicht erstellt werden. Versuche es später erneut</value>
+  </data>
+  <data name="Error_logInFailed" xml:space="preserve">
+    <value>Log-In fehlgeschlagen. Versuche es später erneut</value>
+  </data>
+  <data name="Message_emailCode" xml:space="preserve">
+    <value>Ein Verifikations Code wurde ihnen zur registrierten E-Mail Adresse gesendet. </value>
+  </data>
+  <data name="Message_inputCode" xml:space="preserve">
+    <value>Code eingeben</value>
+  </data>
+  <data name="Text_newPassword" xml:space="preserve">
+    <value>Neues Passwort</value>
+  </data>
+  <data name="Button_continue" xml:space="preserve">
+    <value>Weiter</value>
+  </data>
+  <data name="Message_passwordUpdate" xml:space="preserve">
+    <value>Dein Passwort wurde aktualisiert</value>
+  </data>
+  <data name="Error_invalidCode" xml:space="preserve">
+    <value>Der von Ihnen eingegebene Code ist nicht korrekt. Versuchen sie es erneut</value>
+  </data>
+  <data name="Error_passDontMatch" xml:space="preserve">
+    <value>Die Passwörter stimmen nicht überein</value>
+  </data>
+  <data name="Error_codeSendFailed" xml:space="preserve">
+    <value>Der Code konnte nicht per E-Mail gesendet werden. Versuche es später erneut</value>
+  </data>
+  <data name="Button_resendCode" xml:space="preserve">
+    <value>Code erneut senden</value>
+  </data>
+  <data name="Text_totalWins" xml:space="preserve">
+    <value>Gesamte Siege</value>
+  </data>
+  <data name="Text_losses" xml:space="preserve">
+    <value>Niederlagen</value>
+  </data>
+  <data name="Text_winPercentage" xml:space="preserve">
+    <value>Erfolgsquote</value>
+  </data>
+  <data name="Text_profilePic" xml:space="preserve">
+    <value>Profilbild</value>
+  </data>
+  <data name="Button_deleteAccount" xml:space="preserve">
+    <value>Account löschen</value>
+  </data>
+  <data name="Button_update" xml:space="preserve">
+    <value>Aktualisieren</value>
+  </data>
+  <data name="Message_updateSuccess" xml:space="preserve">
+    <value>Profil Informationen erfolgreich aktualisiert</value>
+  </data>
+  <data name="Message_sameData" xml:space="preserve">
+    <value>Daten wurden nicht aktualisiert</value>
+  </data>
+  <data name="Button_selectFile" xml:space="preserve">
+    <value>Speicherstand wählen</value>
+  </data>
+  <data name="Button_search" xml:space="preserve">
+    <value>Suchen</value>
+  </data>
+  <data name="Button_confirm" xml:space="preserve">
+    <value>Bestätigen</value>
+  </data>
+  <data name="Text_selectCategory" xml:space="preserve">
+    <value>Wähle eine Kategorie</value>
+  </data>
+  <data name="Text_catAnimals" xml:space="preserve">
+    <value>Tiere</value>
+  </data>
+  <data name="Text_catFruits" xml:space="preserve">
+    <value>Früchte</value>
+  </data>
+  <data name="Text_catColors" xml:space="preserve">
+    <value>Farben</value>
+  </data>
+  <data name="Text_catObjects" xml:space="preserve">
+    <value>Objekte</value>
+  </data>
+  <data name="Text_catCountries" xml:space="preserve">
+    <value>Länder</value>
+  </data>
+  <data name="Text_selectWord" xml:space="preserve">
+    <value>Und ein Wort</value>
+  </data>
+  <data name="Text_writeYourOwn" xml:space="preserve">
+    <value>Oder schreibe dein eigenes:</value>
+  </data>
+  <data name="Text_writeWord" xml:space="preserve">
+    <value>Schreibe dein Wort</value>
+  </data>
+  <data name="Button_create" xml:space="preserve">
+    <value>Erstellen</value>
+  </data>
+  <data name="Message_creationSuccess" xml:space="preserve">
+    <value>Match erfolgreich erstellt</value>
+  </data>
+  <data name="Button_matchSettings" xml:space="preserve">
+    <value>Match Einstellungen</value>
+  </data>
+  <data name="Button_leaveMatch" xml:space="preserve">
+    <value>Match verlassen</value>
+  </data>
+  <data name="Button_startMatch" xml:space="preserve">
+    <value>Match starten</value>
+  </data>
+  <data name="Error_connectionEnded" xml:space="preserve">
+    <value>Ein unerwarteter Verbindungsfehler aufgetreten. Wir entschuldigen uns für die Unannehmlichkeiten</value>
+  </data>
+  <data name="Text_chatPrompt" xml:space="preserve">
+    <value>Nachricht schreiben...</value>
+  </data>
+  <data name="Button_saveSettings" xml:space="preserve">
+    <value>Änderungen speichern</value>
+  </data>
+  <data name="Button_kickPlayer" xml:space="preserve">
+    <value>Spieler kicken</value>
+  </data>
+  <data name="Message_wordChange" xml:space="preserve">
+    <value>Sind sie sich sicher, dass sie das Wort ändern möchten?</value>
+  </data>
+  <data name="Message_backNoSave" xml:space="preserve">
+    <value>Sind sie sich sicher, dass sie zurück möchten? Falls sie ein anderes Wort gewählt haben, wird es nicht gespeichert</value>
+  </data>
+  <data name="Text_you" xml:space="preserve">
+    <value>Ich</value>
+  </data>
+  <data name="Text_awaitingOpponent" xml:space="preserve">
+    <value>Warte auf Gegner</value>
+  </data>
+  <data name="Text_availableMatches" xml:space="preserve">
+    <value>Verfügbare Matche</value>
+  </data>
+  <data name="Button_viewProfile" xml:space="preserve">
+    <value>Profil ansehen</value>
+  </data>
+  <data name="Text_created" xml:space="preserve">
+    <value>Erstellt von:</value>
+  </data>
+  <data name="Text_today" xml:space="preserve">
+    <value>Heute</value>
+  </data>
+  <data name="Text_awaitingStart" xml:space="preserve">
+    <value>Warte auf {username}, das Match zu starten...</value>
+  </data>
+  <data name="Text_playerJoined" xml:space="preserve">
+    <value>{username} ist dem Match beigetreten</value>
+  </data>
+  <data name="Text_rightGuess" xml:space="preserve">
+    <value>Richtig!</value>
+  </data>
+  <data name="Text_wrongGuess" xml:space="preserve">
+    <value>Hoppla, falscher Buchstabe! Du hast noch {attempts} versuche übrig</value>
+  </data>
+  <data name="Message_confirmLeave" xml:space="preserve">
+    <value>Sind sie sich sicher, dass sie das Match verlassen wollen?</value>
+  </data>
+  <data name="Append_noPenalization" xml:space="preserve">
+    <value>Sie werden deshalb nicht bestraft</value>
+  </data>
+  <data name="Text_playerLeft" xml:space="preserve">
+    <value>{username} hat das Match verlassen</value>
+  </data>
+  <data name="Message_hostLeft" xml:space="preserve">
+    <value>Der Host hat das Match verlassen</value>
+  </data>
+  <data name="Append_penalization" xml:space="preserve">
+    <value>Das Match zu verlassen, wird sie 3 Punkte kosten</value>
+  </data>
+  <data name="Message_youLeft" xml:space="preserve">
+    <value>Sie haben das Match verlassen.</value>
+  </data>
+  <data name="Message_opponentLeft" xml:space="preserve">
+    <value>Ihr Gegner hat das Match verlassen. Ihre Punkte bleiben unverändert</value>
+  </data>
+  <data name="Message_confirmKick" xml:space="preserve">
+    <value>Sind sie sich sicher, dass sie den Spieler kicken möchten? Falls das Spiel bereits begonnen hat, wird es beendet</value>
+  </data>
+  <data name="Message_gotKicked" xml:space="preserve">
+    <value>Sie wurden von dem Match gekickt.</value>
+  </data>
+  <data name="Append_pointsLost" xml:space="preserve">
+    <value>Sie haben 3 Punkte verloren</value>
+  </data>
+  <data name="Message_kickedPlayer" xml:space="preserve">
+    <value>Sie haben {username} gekickt</value>
+  </data>
+  <data name="Message_kickedMidGame" xml:space="preserve">
+    <value>Sie haben ihren Gegner gekickt, um fair zu bleiben, wurden ihnen 3 Punkte abgezogen</value>
+  </data>
+  <data name="Append_noPointsLost" xml:space="preserve">
+    <value>Ihre Punkte bleiben unverändert</value>
+  </data>
+  <data name="Message_wordGuessed" xml:space="preserve">
+    <value>Glückwunsch! Sie haben das Wort erraten: {word}. Sie haben 10 Punkte erhalten
+</value>
+  </data>
+  <data name="Message_opponentWon" xml:space="preserve">
+    <value>{username} hat das Wort erraten. Viel Glück beim nächsten mal!</value>
+  </data>
+  <data name="Message_wordNotGuessed" xml:space="preserve">
+    <value>Schade! Sie habe das Wort nicht erraten können. Viel Glück beim nächsten mal!</value>
+  </data>
+  <data name="Message_opponentLost" xml:space="preserve">
+    <value>Glückwunsch! {username} hat ihr Wort nicht erraten können. Sie haben 5 Punkte erhalten</value>
+  </data>
+  <data name="Error_scoresUpdFailed" xml:space="preserve">
+    <value>Ihre Punkte, sowie Siege &amp; Niederlagen konnten nicht gespeichert werden. Ihre Punkte bleiben unverändert.</value>
+  </data>
+  <data name="Error_messageNotSent" xml:space="preserve">
+    <value>Ihre Nachricht hat zu lang gebraucht, um gesendet zu werden. Versuche es erneut</value>
+  </data>
+  <data name="Text_language" xml:space="preserve">
+    <value>Sprache</value>
+  </data>
+  <data name="Text_useSystemDefault" xml:space="preserve">
+    <value>Systemstandard verwenden</value>
   </data>
 </root>

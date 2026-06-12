@@ -18,11 +18,11 @@ using System.Windows.Shapes;
 namespace HangmanGame.Client.Views
 {
     /// <summary>
-    /// Lógica de interacción para SignInPage.xaml
+    /// Lógica de interacción para LogInPage.xaml
     /// </summary>
-    public partial class SignInPage : Page
+    public partial class LogInPage : Page
     {
-        public SignInPage()
+        public LogInPage()
         {
             InitializeComponent();
         }

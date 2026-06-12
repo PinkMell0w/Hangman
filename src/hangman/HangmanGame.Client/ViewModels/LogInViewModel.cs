@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace HangmanGame.Client.ViewModels
 {
-    public class SignInViewModel : BaseViewModel
+    public class LogInViewModel : BaseViewModel
     {
         private readonly AuthServiceClient _authService;
 
@@ -40,7 +40,7 @@ namespace HangmanGame.Client.ViewModels
         // public ICommand SignInCommand { get; }
         public ICommand NavigateToLobbyCommand { get; }
 
-        public SignInViewModel()
+        public LogInViewModel()
         {
             // _authService = new AuthServiceClient();
             // SignInCommand = new RelayCommand(_ => ExecuteSignIn(), _ => CanSignIn());

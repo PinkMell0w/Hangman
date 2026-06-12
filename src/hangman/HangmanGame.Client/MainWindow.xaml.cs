@@ -14,7 +14,7 @@ namespace HangmanGame.Client
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new SignInPage());
+            MainFrame.Navigate(new LogInPage());
         }
 
         private void Window_Closing(object sender, CancelEventArgs e) { /* TODO LogOut*/ }

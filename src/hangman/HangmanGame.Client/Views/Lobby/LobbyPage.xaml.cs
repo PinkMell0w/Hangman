@@ -1,6 +1,5 @@
 ﻿using HangmanGame.Client.Helpers;
 using HangmanGame.Client.Views.CreateMatch;
-using HangmanGame.Client.Views.FriendsList;
 using HangmanGame.Client.Views.MatchesList;
 using HangmanGame.Client.Views.Profile;
 using HangmanGame.Client.Views.Settings;
@@ -34,7 +33,7 @@ namespace HangmanGame.Client.Views
         private void BtnLogout_Click(object sender, RoutedEventArgs e)
         {
             //TODO logout logic 
-            NavigationService.Navigate(new SignInPage());
+            NavigationService.Navigate(new LogInPage());
         }
 
         private void BtnCreateMatch_Click(object sender, RoutedEventArgs e)
@@ -50,11 +49,6 @@ namespace HangmanGame.Client.Views
         private void BtnProfile_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ProfilePage());
-        }
-
-        private void BtnFriends_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new FriendsListPage());
         }
 
         private void BtnSettings_Click(object sender, RoutedEventArgs e)

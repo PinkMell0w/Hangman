@@ -61,6 +61,42 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You won’t be penalized.
+        /// </summary>
+        public static string Append_noPenalization {
+            get {
+                return ResourceManager.GetString("Append_noPenalization", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your score hasn’t been affected.
+        /// </summary>
+        public static string Append_noPointsLost {
+            get {
+                return ResourceManager.GetString("Append_noPointsLost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You’ll lose 3 points if you leave now.
+        /// </summary>
+        public static string Append_penalization {
+            get {
+                return ResourceManager.GetString("Append_penalization", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You’ve lost 3 points.
+        /// </summary>
+        public static string Append_pointsLost {
+            get {
+                return ResourceManager.GetString("Append_pointsLost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Accept.
         /// </summary>
         public static string Button_accept {
@@ -88,11 +124,47 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        public static string Button_confirm {
+            get {
+                return ResourceManager.GetString("Button_confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Continue.
+        /// </summary>
+        public static string Button_continue {
+            get {
+                return ResourceManager.GetString("Button_continue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create.
+        /// </summary>
+        public static string Button_create {
+            get {
+                return ResourceManager.GetString("Button_create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create match.
         /// </summary>
         public static string Button_createMatch {
             get {
                 return ResourceManager.GetString("Button_createMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete account.
+        /// </summary>
+        public static string Button_deleteAccount {
+            get {
+                return ResourceManager.GetString("Button_deleteAccount", resourceCulture);
             }
         }
         
@@ -124,20 +196,11 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Friends.
+        ///   Looks up a localized string similar to Go back.
         /// </summary>
-        public static string Button_friends {
+        public static string Button_goBack {
             get {
-                return ResourceManager.GetString("Button_friends", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Invite.
-        /// </summary>
-        public static string Button_invite {
-            get {
-                return ResourceManager.GetString("Button_invite", resourceCulture);
+                return ResourceManager.GetString("Button_goBack", resourceCulture);
             }
         }
         
@@ -151,11 +214,47 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kick player.
+        /// </summary>
+        public static string Button_kickPlayer {
+            get {
+                return ResourceManager.GetString("Button_kickPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leave match.
+        /// </summary>
+        public static string Button_leaveMatch {
+            get {
+                return ResourceManager.GetString("Button_leaveMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Log out.
         /// </summary>
         public static string Button_logOut {
             get {
                 return ResourceManager.GetString("Button_logOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Match settings.
+        /// </summary>
+        public static string Button_matchSettings {
+            get {
+                return ResourceManager.GetString("Button_matchSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string Button_no {
+            get {
+                return ResourceManager.GetString("Button_no", resourceCulture);
             }
         }
         
@@ -178,11 +277,38 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reject.
+        ///   Looks up a localized string similar to Resend code.
         /// </summary>
-        public static string Button_reject {
+        public static string Button_resendCode {
             get {
-                return ResourceManager.GetString("Button_reject", resourceCulture);
+                return ResourceManager.GetString("Button_resendCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save changes.
+        /// </summary>
+        public static string Button_saveSettings {
+            get {
+                return ResourceManager.GetString("Button_saveSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string Button_search {
+            get {
+                return ResourceManager.GetString("Button_search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select file.
+        /// </summary>
+        public static string Button_selectFile {
+            get {
+                return ResourceManager.GetString("Button_selectFile", resourceCulture);
             }
         }
         
@@ -205,11 +331,65 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start match.
+        /// </summary>
+        public static string Button_startMatch {
+            get {
+                return ResourceManager.GetString("Button_startMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        public static string Button_update {
+            get {
+                return ResourceManager.GetString("Button_update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View profile.
+        /// </summary>
+        public static string Button_viewProfile {
+            get {
+                return ResourceManager.GetString("Button_viewProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string Button_yes {
+            get {
+                return ResourceManager.GetString("Button_yes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You&apos;re already logged in.
         /// </summary>
         public static string Error_alreadyLogged {
             get {
                 return ResourceManager.GetString("Error_alreadyLogged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We couldn’t send the code to your email. Try again later.
+        /// </summary>
+        public static string Error_codeSendFailed {
+            get {
+                return ResourceManager.GetString("Error_codeSendFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unexpected connection error occurred. We’re sorry for the inconvenience.
+        /// </summary>
+        public static string Error_connectionEnded {
+            get {
+                return ResourceManager.GetString("Error_connectionEnded", resourceCulture);
             }
         }
         
@@ -241,6 +421,33 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The entered code is wrong, try again.
+        /// </summary>
+        public static string Error_invalidCode {
+            get {
+                return ResourceManager.GetString("Error_invalidCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We couldn’t log you in. Try again later.
+        /// </summary>
+        public static string Error_logInFailed {
+            get {
+                return ResourceManager.GetString("Error_logInFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your message took too long to send. Try again.
+        /// </summary>
+        public static string Error_messageNotSent {
+            get {
+                return ResourceManager.GetString("Error_messageNotSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No results.
         /// </summary>
         public static string Error_noCoincidences {
@@ -255,6 +462,15 @@ namespace HangmanGame.Client.Properties {
         public static string Error_noConnection {
             get {
                 return ResourceManager.GetString("Error_noConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The passwords don’t match.
+        /// </summary>
+        public static string Error_passDontMatch {
+            get {
+                return ResourceManager.GetString("Error_passDontMatch", resourceCulture);
             }
         }
         
@@ -286,20 +502,29 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The server timed out. If the problem persists, try again later.
+        ///   Looks up a localized string similar to We couldn’t save your score nor update your wins and losses history. Your scores won’t change..
         /// </summary>
-        public static string Error_serverConnection {
+        public static string Error_scoresUpdFailed {
             get {
-                return ResourceManager.GetString("Error_serverConnection", resourceCulture);
+                return ResourceManager.GetString("Error_scoresUpdFailed", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your password must only have letters and/or numbers.
+        ///   Looks up a localized string similar to The server timed out. If the problem persists, try again later.
         /// </summary>
-        public static string Error_specialCharacters {
+        public static string Error_serverTimeout {
             get {
-                return ResourceManager.GetString("Error_specialCharacters", resourceCulture);
+                return ResourceManager.GetString("Error_serverTimeout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We couldn’t create your account. Try again later.
+        /// </summary>
+        public static string Error_signUpFailed {
+            get {
+                return ResourceManager.GetString("Error_signUpFailed", resourceCulture);
             }
         }
         
@@ -322,6 +547,15 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Log in.
+        /// </summary>
+        public static string Global_logIn {
+            get {
+                return ResourceManager.GetString("Global_logIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string Global_password {
@@ -340,15 +574,6 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Log in.
-        /// </summary>
-        public static string Global_signIn {
-            get {
-                return ResourceManager.GetString("Global_signIn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Username.
         /// </summary>
         public static string Global_username {
@@ -358,20 +583,290 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You&apos;re already friends with this user.
+        ///   Looks up a localized string similar to Are you sure you want to go back? If you selected a different word, it won’t be saved.
         /// </summary>
-        public static string Message_alreadyFriends {
+        public static string Message_backNoSave {
             get {
-                return ResourceManager.GetString("Message_alreadyFriends", resourceCulture);
+                return ResourceManager.GetString("Message_backNoSave", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You can&apos;t add yourself as a friend.
+        ///   Looks up a localized string similar to Are you sure you’d like to go back?.
         /// </summary>
-        public static string Message_isYou {
+        public static string Message_confirmGoBack {
             get {
-                return ResourceManager.GetString("Message_isYou", resourceCulture);
+                return ResourceManager.GetString("Message_confirmGoBack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to kick the player? If the match has begun, it will end.
+        /// </summary>
+        public static string Message_confirmKick {
+            get {
+                return ResourceManager.GetString("Message_confirmKick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to leave the match?.
+        /// </summary>
+        public static string Message_confirmLeave {
+            get {
+                return ResourceManager.GetString("Message_confirmLeave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Match created successfully.
+        /// </summary>
+        public static string Message_creationSuccess {
+            get {
+                return ResourceManager.GetString("Message_creationSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A verification code will be sent to the email associated with this account.
+        /// </summary>
+        public static string Message_emailCode {
+            get {
+                return ResourceManager.GetString("Message_emailCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The email address is already in use.
+        /// </summary>
+        public static string Message_emailInUse {
+            get {
+                return ResourceManager.GetString("Message_emailInUse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You’ve been kicked from the match..
+        /// </summary>
+        public static string Message_gotKicked {
+            get {
+                return ResourceManager.GetString("Message_gotKicked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The host has left the match.
+        /// </summary>
+        public static string Message_hostLeft {
+            get {
+                return ResourceManager.GetString("Message_hostLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input code.
+        /// </summary>
+        public static string Message_inputCode {
+            get {
+                return ResourceManager.GetString("Message_inputCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You’ve kicked your opponent. For fairness, you’ve lost 3 points.
+        /// </summary>
+        public static string Message_kickedMidGame {
+            get {
+                return ResourceManager.GetString("Message_kickedMidGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You kicked {username}.
+        /// </summary>
+        public static string Message_kickedPlayer {
+            get {
+                return ResourceManager.GetString("Message_kickedPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your opponent has left the match. Your score hasn’t been affected.
+        /// </summary>
+        public static string Message_opponentLeft {
+            get {
+                return ResourceManager.GetString("Message_opponentLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Congratulations! {username} didn’t guess your word. You’ve earned 5 points.
+        /// </summary>
+        public static string Message_opponentLost {
+            get {
+                return ResourceManager.GetString("Message_opponentLost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {username} guessed your word. Better luck next time!.
+        /// </summary>
+        public static string Message_opponentWon {
+            get {
+                return ResourceManager.GetString("Message_opponentWon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your password has been updated.
+        /// </summary>
+        public static string Message_passwordUpdate {
+            get {
+                return ResourceManager.GetString("Message_passwordUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No data has been updated.
+        /// </summary>
+        public static string Message_sameData {
+            get {
+                return ResourceManager.GetString("Message_sameData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully signed up.
+        /// </summary>
+        public static string Message_successSignUp {
+            get {
+                return ResourceManager.GetString("Message_successSignUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile info successfully updated.
+        /// </summary>
+        public static string Message_updateSuccess {
+            get {
+                return ResourceManager.GetString("Message_updateSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to change the word?.
+        /// </summary>
+        public static string Message_wordChange {
+            get {
+                return ResourceManager.GetString("Message_wordChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Congratulations! You guessed the word: {word}. You’ve earned 10 points.
+        /// </summary>
+        public static string Message_wordGuessed {
+            get {
+                return ResourceManager.GetString("Message_wordGuessed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Too bad! You didn’t guess the word. Better luck next time!.
+        /// </summary>
+        public static string Message_wordNotGuessed {
+            get {
+                return ResourceManager.GetString("Message_wordNotGuessed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You left the match..
+        /// </summary>
+        public static string Message_youLeft {
+            get {
+                return ResourceManager.GetString("Message_youLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available matches.
+        /// </summary>
+        public static string Text_availableMatches {
+            get {
+                return ResourceManager.GetString("Text_availableMatches", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Awaiting opponent.
+        /// </summary>
+        public static string Text_awaitingOpponent {
+            get {
+                return ResourceManager.GetString("Text_awaitingOpponent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Waiting for {username} to start the match....
+        /// </summary>
+        public static string Text_awaitingStart {
+            get {
+                return ResourceManager.GetString("Text_awaitingStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Animals.
+        /// </summary>
+        public static string Text_catAnimals {
+            get {
+                return ResourceManager.GetString("Text_catAnimals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Colors.
+        /// </summary>
+        public static string Text_catColors {
+            get {
+                return ResourceManager.GetString("Text_catColors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Countries.
+        /// </summary>
+        public static string Text_catCountries {
+            get {
+                return ResourceManager.GetString("Text_catCountries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fruits.
+        /// </summary>
+        public static string Text_catFruits {
+            get {
+                return ResourceManager.GetString("Text_catFruits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Objects.
+        /// </summary>
+        public static string Text_catObjects {
+            get {
+                return ResourceManager.GetString("Text_catObjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type message here….
+        /// </summary>
+        public static string Text_chatPrompt {
+            get {
+                return ResourceManager.GetString("Text_chatPrompt", resourceCulture);
             }
         }
         
@@ -381,6 +876,15 @@ namespace HangmanGame.Client.Properties {
         public static string Text_confirmPassword {
             get {
                 return ResourceManager.GetString("Text_confirmPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created:.
+        /// </summary>
+        public static string Text_created {
+            get {
+                return ResourceManager.GetString("Text_created", resourceCulture);
             }
         }
         
@@ -421,6 +925,33 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string Text_language {
+            get {
+                return ResourceManager.GetString("Text_language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Losses.
+        /// </summary>
+        public static string Text_losses {
+            get {
+                return ResourceManager.GetString("Text_losses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New password.
+        /// </summary>
+        public static string Text_newPassword {
+            get {
+                return ResourceManager.GetString("Text_newPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Phone number.
         /// </summary>
         public static string Text_phone {
@@ -430,20 +961,137 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {username} has joined the match.
+        /// </summary>
+        public static string Text_playerJoined {
+            get {
+                return ResourceManager.GetString("Text_playerJoined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {username} has left the match.
+        /// </summary>
+        public static string Text_playerLeft {
+            get {
+                return ResourceManager.GetString("Text_playerLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile picture.
+        /// </summary>
+        public static string Text_profilePic {
+            get {
+                return ResourceManager.GetString("Text_profilePic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Correct!.
+        /// </summary>
+        public static string Text_rightGuess {
+            get {
+                return ResourceManager.GetString("Text_rightGuess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a category.
+        /// </summary>
+        public static string Text_selectCategory {
+            get {
+                return ResourceManager.GetString("Text_selectCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to And a word.
+        /// </summary>
+        public static string Text_selectWord {
+            get {
+                return ResourceManager.GetString("Text_selectWord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Today.
+        /// </summary>
+        public static string Text_today {
+            get {
+                return ResourceManager.GetString("Text_today", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total wins.
+        /// </summary>
+        public static string Text_totalWins {
+            get {
+                return ResourceManager.GetString("Text_totalWins", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use system default.
+        /// </summary>
+        public static string Text_useSystemDefault {
+            get {
+                return ResourceManager.GetString("Text_useSystemDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Win percentage.
+        /// </summary>
+        public static string Text_winPercentage {
+            get {
+                return ResourceManager.GetString("Text_winPercentage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Write your word.
+        /// </summary>
+        public static string Text_writeWord {
+            get {
+                return ResourceManager.GetString("Text_writeWord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Or write your own:.
+        /// </summary>
+        public static string Text_writeYourOwn {
+            get {
+                return ResourceManager.GetString("Text_writeYourOwn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Oops, wrong letter! You have {attempts} attempts left.
+        /// </summary>
+        public static string Text_wrongGuess {
+            get {
+                return ResourceManager.GetString("Text_wrongGuess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You.
+        /// </summary>
+        public static string Text_you {
+            get {
+                return ResourceManager.GetString("Text_you", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Make a match.
         /// </summary>
         public static string Title_createMatch {
             get {
                 return ResourceManager.GetString("Title_createMatch", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to My friends.
-        /// </summary>
-        public static string Title_friendsList {
-            get {
-                return ResourceManager.GetString("Title_friendsList", resourceCulture);
             }
         }
         
@@ -462,6 +1110,15 @@ namespace HangmanGame.Client.Properties {
         public static string Title_lobby {
             get {
                 return ResourceManager.GetString("Title_lobby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log into your account.
+        /// </summary>
+        public static string Title_logIn {
+            get {
+                return ResourceManager.GetString("Title_logIn", resourceCulture);
             }
         }
         
@@ -507,15 +1164,6 @@ namespace HangmanGame.Client.Properties {
         public static string Title_settings {
             get {
                 return ResourceManager.GetString("Title_settings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Log into your account.
-        /// </summary>
-        public static string Title_signIn {
-            get {
-                return ResourceManager.GetString("Title_signIn", resourceCulture);
             }
         }
         

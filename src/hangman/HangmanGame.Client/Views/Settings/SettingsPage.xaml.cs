@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HangmanGame.Client.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace HangmanGame.Client.Views.Settings
         public SettingsPage()
         {
             InitializeComponent();
+            DataContext = new SettingsViewModel();
         }
 
         private void BtnGoBack_Click(object sender, RoutedEventArgs e)
