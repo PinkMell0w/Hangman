@@ -14,6 +14,7 @@ namespace HangmanGame.Client
         public MainWindow()
         {
             InitializeComponent();
+            NavigationManager.Instance.Initialize(MainFrame, this);
             MainFrame.Navigate(new SignInPage());
         }
 

@@ -8,6 +8,7 @@ using HangmanGame.Data.Repositories;
 using HangmanGame.Server.Services.Helpers;
 using System;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace HangmanGame.Server.Services
 {
@@ -52,7 +53,7 @@ namespace HangmanGame.Server.Services
                 {
                     FullName = request.FullName.Trim(),
                     RoleId = Roles.Player,
-                    DateOfBirth = DateTime.Parse(request.DateOfBirth.Trim()),
+                    DateOfBirth = DateTime.ParseExact(request.DateOfBirth, "dd-MM-yyyy", CultureInfo.InvariantCulture),
                     PhoneNumber = request.PhoneNumber.Trim(),
                     Username = request.Username.Trim(),
                     Email = request.Email.Trim().ToLowerInvariant(),
@@ -149,7 +150,7 @@ namespace HangmanGame.Server.Services
                     System.Diagnostics.Debug.WriteLine($"SignIn session DB error: {ex.Message}");
                 }
 
-                return new SignInResponseDto { Success = true, Message = "Signed in.", UserId = user.UserId, Token = token };
+                return new SignInResponseDto { Success = true, Message = "Signed in.", UserId = user.UserId, Username = user.Username, Token = token };
             }
             catch (Exception ex)
             {

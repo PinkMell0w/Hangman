@@ -10,7 +10,7 @@ namespace HangmanGame.Client.Views.SignUp
         public SignUpPage()
         {
             InitializeComponent();
-            DataContext = new HangmanGame.Client.ViewModels.SignUpViewModel();
+            DataContext = new SignUpViewModel();
         }
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
@@ -21,11 +21,6 @@ namespace HangmanGame.Client.Views.SignUp
         private void ConfirmPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (DataContext is SignUpViewModel vm) vm.ConfirmPassword = ((PasswordBox)sender).Password;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.GoBack();
         }
     }
 }

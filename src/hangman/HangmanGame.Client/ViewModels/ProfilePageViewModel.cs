@@ -1,6 +1,7 @@
 ﻿using HangmanGame.Client.Commands;
 using HangmanGame.Client.HangmanGameService;
 using HangmanGame.Client.Helpers;
+using HangmanGame.Client.Views;
 using HangmanGame.Core.Core.DTOs;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -68,11 +69,13 @@ namespace HangmanGame.Client.ViewModels
         public bool IsNotLoading => !_isLoading;
 
         public ICommand LoadProfileCommand { get; }
+        public ICommand NavigateToLobbyCommand { get; }
 
         public ProfilePageViewModel()
         {
             _userService = new UserServiceClient();
             LoadProfileCommand = new RelayCommand(_ => LoadProfile());
+            NavigateToLobbyCommand = new RelayCommand(_ => NavigateToLobby());
             LoadProfile();
         }
 
@@ -103,6 +106,11 @@ namespace HangmanGame.Client.ViewModels
             {
                 MessageBox.Show(response.Message);
             }
+        }
+
+        private void NavigateToLobby()
+        {
+            NavigationManager.Instance.Navigate(new LobbyPage());
         }
     }
 }

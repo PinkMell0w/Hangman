@@ -131,6 +131,10 @@ namespace HangmanGame.Client.ViewModels
                 () => _authService.Register(request)
             );
 
+            MessageBox.Show(
+                $"Success: {response.Success}\nMessage: {response.Message}"
+            );
+
             _isLoading = false;
             OnPropertyChanged(nameof(IsNotLoading));
 

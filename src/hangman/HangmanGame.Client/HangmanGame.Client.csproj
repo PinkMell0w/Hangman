@@ -311,6 +311,8 @@
     <Resource Include="Resources\Images\FaceOk.png" />
     <Resource Include="Resources\Images\FaceWin.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\SplashLogo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -26,11 +26,11 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel x:Name="UserInfoPanel" Visibility="Visible" Margin="20,20,0,0">
-                <TextBlock Text="Nombre de usuario" FontSize="22" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10"/>
+                <TextBlock Text="{x:Static props:Resources.Global_username}" FontSize="22" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10"/>
                 <TextBlock Text="{Binding Username}" FontSize="32" Margin="0,0,0,10" Width="200" HorizontalAlignment="Left"/>
                 
                 <TextBlock Text="Nombre completo" FontSize="20" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10"/>
-                <TextBlock Text="{Binding FullName}" FontSize="26" Margin="0,0,0,10" Width="200" HorizontalAlignment="Left"/>
+                <TextBlock Text="{Binding FullName}" FontSize="26" Margin="0,0,0,10" HorizontalAlignment="Left"/>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40,0,0,20">
                     <StackPanel Margin="0,0,20,0" Background="PaleVioletRed">
@@ -62,7 +62,7 @@
         </Grid>
 
         <Grid Grid.Row="1" VerticalAlignment="Bottom">
-            <Button Name="BtnGoBack" Content="Volver" Margin="20,0,0,10" HorizontalAlignment="Left" Padding="8" Click="BtnGoBack_Click"/>
+            <Button Name="BtnGoBack" Content="Volver" Margin="20,0,0,10" HorizontalAlignment="Left" Padding="8" Command="{Binding NavigateToLobbyCommand}"/>
             <Button Name="BtnModifyProfile" Content="Modificar perfil" Margin="20,0,140,10" HorizontalAlignment="Right" Padding="8" />
             <Button Name="BtnDeleteProfile" Content="Eliminar perfil" Margin="0,0,20,10" HorizontalAlignment="Right" Padding="8" />
         </Grid>
