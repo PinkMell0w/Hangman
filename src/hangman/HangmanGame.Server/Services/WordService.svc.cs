@@ -24,11 +24,11 @@ namespace HangmanGame.Server.Services
             string category = request.Category?.Trim();
             string difficulty = request.Difficulty?.Trim().ToUpper();
 
-            var validLanguages = new[] { "en", "es" };
+            var validLanguages = new[] { "en", "es", "de" };
             var validDifficulties = new[] { "EASY", "MEDIUM", "HARD" };
 
             if (!Array.Exists(validLanguages, l => l == lang))
-                return Fail($"Unsupported language '{lang}'. Supported: en, es.");
+                return Fail($"Unsupported language '{lang}'. Supported: en, es, de.");
 
             if (!string.IsNullOrEmpty(difficulty) &&
                 !Array.Exists(validDifficulties, d => d == difficulty))

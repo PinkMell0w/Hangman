@@ -67,7 +67,7 @@ namespace HangmanGame.Server.Services
                 profileRepo.Add(new PlayerProfile
                 {
                     UserId = user.UserId,
-                    Bio = "u should edit this later.",
+                    Bio = "",
                     Theme = "default"
                 });
 
