@@ -466,8 +466,7 @@
     <value>Ihre Punkte bleiben unverändert</value>
   </data>
   <data name="Message_wordGuessed" xml:space="preserve">
-    <value>Glückwunsch! Sie haben das Wort erraten: {word}. Sie haben 10 Punkte erhalten
-</value>
+    <value>Glückwunsch! Sie haben das Wort erraten: {word}. Sie haben 10 Punkte erhalten</value>
   </data>
   <data name="Message_opponentWon" xml:space="preserve">
     <value>{username} hat das Wort erraten. Viel Glück beim nächsten mal!</value>

@@ -27,32 +27,7 @@ namespace HangmanGame.Client.Views
         public LobbyPage()
         {
             InitializeComponent();
-        }
-
-        private void BtnLogout_Click(object sender, RoutedEventArgs e)
-        {
-            //TODO logout logic 
-            NavigationService.Navigate(new LogInPage());
-        }
-
-        private void BtnCreateMatch_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new CreateMatchPage());
-        }
-
-        private void BtnJoinMatch_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new MatchesListPage());
-        }
-
-        private void BtnProfile_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new ProfilePage());
-        }
-
-        private void BtnSettings_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new SettingsPage());
+            DataContext = new ViewModels.LobbyViewModel();
         }
     }
 }

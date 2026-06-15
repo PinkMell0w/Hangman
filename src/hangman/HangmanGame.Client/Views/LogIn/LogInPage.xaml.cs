@@ -26,7 +26,7 @@ namespace HangmanGame.Client.Views
         public LogInPage()
         {
             InitializeComponent();
-            DataContext = new ViewModels.LogInViewModel();
+            DataContext = new LogInViewModel();
         }
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)

@@ -29,7 +29,7 @@
                 <TextBlock Text="{x:Static props:Resources.Global_username}" FontSize="22" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10"/>
                 <TextBlock Text="{Binding Username}" FontSize="32" Margin="0,0,0,10" Width="200" HorizontalAlignment="Left"/>
                 
-                <TextBlock Text="Nombre completo" FontSize="20" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10"/>
+                <TextBlock Text="{x:Static props:Resources.Text_fullName}" FontSize="20" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10"/>
                 <TextBlock Text="{Binding FullName}" FontSize="26" Margin="0,0,0,10" HorizontalAlignment="Left"/>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40,0,0,20">
@@ -38,13 +38,13 @@
                         <TextBlock Text="{Binding GamesPlayed}" FontSize="20" Padding="8" Width="100" HorizontalAlignment="Left"/>
                     </StackPanel>
                     <StackPanel Margin="0,0,20,0" Background="CornflowerBlue">
-                        <TextBlock Text="Victorias totales" FontSize="16" FontFamily="Ink Free" FontWeight="Bold" Padding="8"/>
+                        <TextBlock Text="{x:Static props:Resources.Text_totalWins}" FontSize="16" FontFamily="Ink Free" FontWeight="Bold" Padding="8"/>
                         <TextBlock Text="{Binding GamesWon}" FontSize="20" Padding="8" Width="100" HorizontalAlignment="Left"/>
                     </StackPanel>
                 </StackPanel>
 
                 <StackPanel HorizontalAlignment="Left" Margin="40,0,0,10" Background="AliceBlue">
-                    <TextBlock Text="Porcentaje de victorias" FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Padding="5"/>
+                    <TextBlock Text="{x:Static props:Resources.Text_winPercentage}" FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Padding="5"/>
                     <TextBlock Text="{Binding WinRate}" FontSize="32" Padding="8" Width="100" HorizontalAlignment="Left"/>
                 </StackPanel>
                 
@@ -56,15 +56,15 @@
             </StackPanel>
 
             <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <TextBlock Text="Foto de perfil" FontSize="22" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,80,0,20"/>
+                <TextBlock Text="{x:Static props:Resources.Text_profilePic}" FontSize="22" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,80,0,20"/>
                 <Image x:Name="profilePic" Source="/Resources/Images/PlayerPfp.png" Margin="0,0,0,20" Width="160"/>
             </StackPanel>
         </Grid>
 
         <Grid Grid.Row="1" VerticalAlignment="Bottom">
-            <Button Name="BtnGoBack" Content="Volver" Margin="20,0,0,10" HorizontalAlignment="Left" Padding="8" Command="{Binding NavigateToLobbyCommand}"/>
-            <Button Name="BtnModifyProfile" Content="Modificar perfil" Margin="20,0,140,10" HorizontalAlignment="Right" Padding="8" />
-            <Button Name="BtnDeleteProfile" Content="Eliminar perfil" Margin="0,0,20,10" HorizontalAlignment="Right" Padding="8" />
+            <Button Name="BtnGoBack" Content="{x:Static props:Resources.Button_goBack}" Margin="20,0,0,10" HorizontalAlignment="Left" Padding="8" Command="{Binding NavigateToLobbyCommand}"/>
+            <Button Name="BtnModifyProfile" Content="{x:Static props:Resources.Button_editProfile}" Margin="20,0,140,10" HorizontalAlignment="Right" Padding="8" />
+            <Button Name="BtnDeleteProfile" Content="{x:Static props:Resources.Button_deleteAccount}" Margin="0,0,20,10" HorizontalAlignment="Right" Padding="8" />
         </Grid>
     </Grid>
 </Page>

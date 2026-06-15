@@ -14,12 +14,7 @@ namespace HangmanGame.Client.Views
         {
             InitializeComponent();
             DataContext = new ViewModels.ProfilePageViewModel();
-            LoadProfilePicture();
-        }
-
-        private void BtnGoBack_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationManager.Instance.Navigate(new LobbyPage());
+            // LoadProfilePicture();
         }
 
         private void LoadProfilePicture()

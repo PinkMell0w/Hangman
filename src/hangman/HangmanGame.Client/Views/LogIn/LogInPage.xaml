@@ -52,11 +52,11 @@
                     </PasswordBox.Background>
                 </PasswordBox>
                 <Button Content="{x:Static props:Resources.Button_forgotPassword}" HorizontalAlignment="Left" Margin="0,5,0,0" Command="{Binding ForgotPasswordCommand}" Background="#00DDDDDD" BorderBrush="#00707070"/>
-                <Label x:Name="TxtErrorLogin" FontSize="10" FontFamily="Ink Free" FontWeight="Bold" Foreground="#FFB20000" />
+                <Label Content="{Binding ErrorMessage}" FontSize="10" FontFamily="Ink Free" FontWeight="Bold" Foreground="#FFB20000" />
             </StackPanel>
 
             <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                <Button Name="BtnLogIn" Content="{x:Static props:Resources.Global_logIn}"  FontFamily="Ink Free" FontWeight="Bold" Margin="0,0,5,0" Padding="5" Command="{Binding NavigateToLobbyCommand}" BorderBrush="{x:Null}" >
+                <Button Name="BtnLogIn" Content="{x:Static props:Resources.Global_logIn}"  FontFamily="Ink Free" FontWeight="Bold" Margin="0,0,5,0" Padding="5" Command="{Binding LogInCommand}" BorderBrush="{x:Null}" >
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="5"/>

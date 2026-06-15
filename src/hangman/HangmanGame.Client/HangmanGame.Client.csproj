@@ -95,6 +95,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\LobbyViewModel.cs" />
     <Compile Include="ViewModels\LogInViewModel.cs" />
     <Compile Include="ViewModels\ProfilePageViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
@@ -302,6 +303,9 @@
     <Resource Include="Resources\Images\FaceDead.png" />
     <Resource Include="Resources\Images\FaceOk.png" />
     <Resource Include="Resources\Images\FaceWin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\default-avatar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
