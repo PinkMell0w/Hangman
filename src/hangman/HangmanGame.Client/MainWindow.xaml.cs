@@ -18,7 +18,10 @@ namespace HangmanGame.Client
             NavigationManager.Instance.Navigate(new LogInPage());
         }
 
-        private void Window_Closing(object sender, CancelEventArgs e) { /* TODO LogOut*/ }
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            SessionManager.Instance.ClearSession();
+        }
 
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {

@@ -38,21 +38,21 @@ namespace HangmanGame.Client.ViewModels
         public bool HasError => !string.IsNullOrEmpty(ErrorMessage);
         public bool IsNotLoading => !_isLoading;
 
-        // public ICommand LogInCommand { get; }
+        public ICommand LogInCommand { get; }
         public ICommand NavigateToLobbyCommand { get; }
         public ICommand NavigateToSignUpCommand { get; }
         public ICommand ForgotPasswordCommand { get; }
 
         public LogInViewModel()
         {
-            // _authService = new AuthServiceClient();
-            // LogInCommand = new RelayCommand(_ => ExecuteLogIn(), _ => CanLogIn());
+            _authService = new AuthServiceClient();
+            LogInCommand = new RelayCommand(_ => ExecuteLogIn(), _ => CanLogIn());
             NavigateToLobbyCommand = new RelayCommand(_ => NavigateToLobby());
             NavigateToSignUpCommand = new RelayCommand(_ => NavigateToSignUp());
             ForgotPasswordCommand = new RelayCommand(_ => MessageBox.Show("Funcionalidad no implementada aún."));
         }
 
-        /* private bool CanLogIn() =>
+        private bool CanLogIn() =>
             !string.IsNullOrWhiteSpace(Credential) &&
             !string.IsNullOrWhiteSpace(Password) &&
             !_isLoading;

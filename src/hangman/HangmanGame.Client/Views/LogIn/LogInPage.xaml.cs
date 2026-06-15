@@ -31,7 +31,7 @@ namespace HangmanGame.Client.Views
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            if (DataContext is SignInViewModel vm) vm.Password = ((PasswordBox)sender).Password;
+            if (DataContext is LogInViewModel vm) vm.Password = ((PasswordBox)sender).Password;
         }
     }
 }
