@@ -35,6 +35,15 @@ CREATE TABLE [Role] (
 );
 GO
 
+CREATE TABLE UserSession (
+    sessionId   INT         IDENTITY(1,1),
+    userId      INT         NOT NULL,
+    token       VARCHAR(128)NOT NULL,
+    startedAt   DATETIME    NOT NULL DEFAULT GETUTCDATE(),
+    endedAt     DATETIME    NULL
+);
+GO
+
 
 CREATE TABLE PlayerProfile (
     profileId	INT		NOT NULL IDENTITY(1,1),

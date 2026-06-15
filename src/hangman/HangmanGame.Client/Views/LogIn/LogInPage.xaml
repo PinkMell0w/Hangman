@@ -34,7 +34,7 @@
 
             <StackPanel Grid.Row="1" HorizontalAlignment="Left" Margin="25,10,0,10" Width="205" >
                 <Label Content="{x:Static props:Resources.Global_username}" FontSize="14" FontFamily="Ink Free" FontWeight="Bold"/>
-                <TextBox>
+                <TextBox Text="{Binding Credential, UpdateSourceTrigger=PropertyChanged}">
                     <TextBox.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="White"/>
@@ -43,7 +43,7 @@
                     </TextBox.Background>
                 </TextBox>
                 <Label Content="{x:Static props:Resources.Global_password}" FontSize="14" FontFamily="Ink Free" FontWeight="Bold"/>
-                <PasswordBox>
+                <PasswordBox x:Name="PasswordBox" PasswordChanged="PasswordBox_PasswordChanged" >
                     <PasswordBox.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="White"/>
@@ -51,7 +51,7 @@
                         </LinearGradientBrush>
                     </PasswordBox.Background>
                 </PasswordBox>
-                <Button Content="{x:Static props:Resources.Button_forgotPassword}" HorizontalAlignment="Left" Margin="0,5,0,0" Click="BtnForgotPassword_Click" Background="#00DDDDDD" BorderBrush="#00707070"/>
+                <Button Content="{x:Static props:Resources.Button_forgotPassword}" HorizontalAlignment="Left" Margin="0,5,0,0" Command="{Binding ForgotPasswordCommand}" Background="#00DDDDDD" BorderBrush="#00707070"/>
                 <Label x:Name="TxtErrorLogin" FontSize="10" FontFamily="Ink Free" FontWeight="Bold" Foreground="#FFB20000" />
             </StackPanel>
 
@@ -69,7 +69,7 @@
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-                <Button Name="BtnSignUp" Content="{x:Static props:Resources.Button_signUp}" FontFamily="Ink Free" FontWeight="Bold" Margin="5,0,0,0" Padding="5" Click="BtnSignUp_Click" BorderBrush="{x:Null}">
+                <Button Name="BtnSignUp" Content="{x:Static props:Resources.Button_signUp}" FontFamily="Ink Free" FontWeight="Bold" Margin="5,0,0,0" Padding="5" Command="{Binding NavigateToSignUpCommand}" BorderBrush="{x:Null}">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="5"/>

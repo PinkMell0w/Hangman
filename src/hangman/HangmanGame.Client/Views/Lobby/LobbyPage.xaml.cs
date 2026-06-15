@@ -1,7 +1,6 @@
 ﻿using HangmanGame.Client.Helpers;
 using HangmanGame.Client.Views.CreateMatch;
 using HangmanGame.Client.Views.MatchesList;
-using HangmanGame.Client.Views.Profile;
 using HangmanGame.Client.Views.Settings;
 using System;
 using System.Collections.Generic;

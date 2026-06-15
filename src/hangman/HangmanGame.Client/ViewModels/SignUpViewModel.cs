@@ -4,6 +4,7 @@ using HangmanGame.Client.Helpers;
 using HangmanGame.Core.Core.DTOs;
 using System;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace HangmanGame.Client.ViewModels
@@ -90,7 +91,7 @@ namespace HangmanGame.Client.ViewModels
         {
             if (!DateOfBirth.HasValue)
             {
-                ErrorMessage = "select a date";
+                ErrorMessage = "Please select a date of birth";
                 return;
             }
 
@@ -108,7 +109,7 @@ namespace HangmanGame.Client.ViewModels
 
             if (DateOfBirth.Value >= DateTime.Today)
             {
-                ErrorMessage = "seriously...";
+                ErrorMessage = "You can't be born in the future.";
                 return;
             }
 
@@ -130,6 +131,10 @@ namespace HangmanGame.Client.ViewModels
                 () => _authService.Register(request)
             );
 
+            MessageBox.Show(
+                $"Success: {response.Success}\nMessage: {response.Message}"
+            );
+
             _isLoading = false;
             OnPropertyChanged(nameof(IsNotLoading));
 
@@ -139,6 +144,7 @@ namespace HangmanGame.Client.ViewModels
             }
             else
             {
+                MessageBox.Show(response.Message);
                 ErrorMessage = response.Message;
             }
         }

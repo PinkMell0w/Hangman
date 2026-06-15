@@ -8,6 +8,7 @@ using HangmanGame.Data.Repositories;
 using HangmanGame.Server.Services.Helpers;
 using System;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace HangmanGame.Server.Services
 {
@@ -52,7 +53,7 @@ namespace HangmanGame.Server.Services
                 {
                     FullName = request.FullName.Trim(),
                     RoleId = Roles.Player,
-                    DateOfBirth = DateTime.Parse(request.DateOfBirth.Trim()),
+                    DateOfBirth = DateTime.ParseExact(request.DateOfBirth, "dd-MM-yyyy", CultureInfo.InvariantCulture),
                     PhoneNumber = request.PhoneNumber.Trim(),
                     Username = request.Username.Trim(),
                     Email = request.Email.Trim().ToLowerInvariant(),
@@ -67,8 +68,7 @@ namespace HangmanGame.Server.Services
                 profileRepo.Add(new PlayerProfile
                 {
                     UserId = user.UserId,
-                    AvatarUrl = "/images/default-avatar.png",
-                    bio = "u should edit this later.",
+                    Bio = "",
                     Theme = "default"
                 });
 
@@ -108,6 +108,63 @@ namespace HangmanGame.Server.Services
                 context.Dispose();
             }
         }
+
+        public SignInResponseDto SignIn(SignInRequestDto request)
+        {
+            if (request == null || (string.IsNullOrWhiteSpace(request.Email) && string.IsNullOrWhiteSpace(request.Username)) || string.IsNullOrWhiteSpace(request.Password))
+            {
+                return new SignInResponseDto { Success = false, Message = "Invalid credentials." };
+            }
+
+            var context = new DatabaseContext();
+            var userRepo = new UserRepository(context);
+            var sessionRepo = new UserSessionRepository(context);
+
+            try
+            {
+                // Resolve user by username or email
+                User user = null;
+                if (!string.IsNullOrWhiteSpace(request.Email))
+                    user = userRepo.GetByEmail(request.Email.Trim().ToLowerInvariant());
+                else if (!string.IsNullOrWhiteSpace(request.Username))
+                    user = userRepo.GetByUsername(request.Username.Trim());
+
+                if (user == null)
+                    return new SignInResponseDto { Success = false, Message = "Invalid username/email or password." };
+
+                if (!PasswordHelper.VerifyPassword(request.Password, user.Salt, user.PwdHash))
+                    return new SignInResponseDto { Success = false, Message = "Invalid username/email or password." };
+
+                string token = Guid.NewGuid().ToString("N");
+
+                try
+                {
+                    context.BeginTransaction();
+                    sessionRepo.EndActiveSessionsForUser(user.UserId);
+                    sessionRepo.CreateSession(user.UserId, token);
+                    context.Commit();
+                }
+                catch (SqlException ex)
+                {
+                    context.Rollback();
+                    System.Diagnostics.Debug.WriteLine($"SignIn session DB error: {ex.Message}");
+                }
+
+                return new SignInResponseDto { Success = true, Message = "Signed in.", UserId = user.UserId, Username = user.Username, Token = token };
+            }
+            catch (Exception ex)
+            {
+                context.Rollback();
+                System.Diagnostics.Debug.WriteLine($"SignIn error: {ex.Message}");
+                return new SignInResponseDto { Success = false, Message = "An error occurred while signing in." };
+            }
+            finally
+            {
+                context.Dispose();
+            }
+        }
+
+        //TODO get users
 
         private static RegisterResponseDto Fail(string message) =>
             new RegisterResponseDto { Success = false, Message = message };

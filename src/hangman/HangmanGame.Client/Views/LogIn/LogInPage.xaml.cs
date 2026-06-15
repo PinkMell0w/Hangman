@@ -1,4 +1,5 @@
 ﻿using HangmanGame.Client.Helpers;
+using HangmanGame.Client.ViewModels;
 using HangmanGame.Client.Views.SignUp;
 using System;
 using System.Collections.Generic;
@@ -28,24 +29,9 @@ namespace HangmanGame.Client.Views
             DataContext = new ViewModels.LogInViewModel();
         }
 
-        private void TxtUsername_GotFocus(object sender, RoutedEventArgs e)
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void TxtUsername_LostFocus(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnForgotPassword_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnSignUp_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new SignUpPage());
+            if (DataContext is SignInViewModel vm) vm.Password = ((PasswordBox)sender).Password;
         }
     }
 }

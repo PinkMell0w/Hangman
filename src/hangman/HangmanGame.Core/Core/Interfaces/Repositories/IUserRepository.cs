@@ -1,5 +1,6 @@
 ﻿using HangmanGame.Core.Core.Domain;
 using HangmanGame.Core.Core.Interfaces.Repositories;
+using System.Collections.Generic;
 
 namespace HangmanGame.Core.Core.Interfaces
 {
@@ -9,5 +10,6 @@ namespace HangmanGame.Core.Core.Interfaces
         User GetByUsername(string username);
         bool ExistsByEmail(string email);
         bool ExistsByUsername(string username);
+        List<User> SearchByUsername(string username, int excludeUserI);
     }
 }

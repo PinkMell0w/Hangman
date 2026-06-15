@@ -2,6 +2,7 @@
 using HangmanGame.Client.HangmanGameService;
 using HangmanGame.Client.Helpers;
 using HangmanGame.Client.Views;
+using HangmanGame.Client.Views.SignUp;
 using HangmanGame.Core.Core.DTOs;
 using System.Threading.Tasks;
 using System.Windows;
@@ -39,12 +40,16 @@ namespace HangmanGame.Client.ViewModels
 
         // public ICommand LogInCommand { get; }
         public ICommand NavigateToLobbyCommand { get; }
+        public ICommand NavigateToSignUpCommand { get; }
+        public ICommand ForgotPasswordCommand { get; }
 
         public LogInViewModel()
         {
             // _authService = new AuthServiceClient();
             // LogInCommand = new RelayCommand(_ => ExecuteLogIn(), _ => CanLogIn());
             NavigateToLobbyCommand = new RelayCommand(_ => NavigateToLobby());
+            NavigateToSignUpCommand = new RelayCommand(_ => NavigateToSignUp());
+            ForgotPasswordCommand = new RelayCommand(_ => MessageBox.Show("Funcionalidad no implementada aún."));
         }
 
         /* private bool CanLogIn() =>
@@ -75,17 +80,22 @@ namespace HangmanGame.Client.ViewModels
 
             if (response.Success)
             {
-                SessionManager.Instance.SetSession(response.UserId, response.Token);
+                SessionManager.Instance.SetSession(response.UserId, response.Username, response.Token);
                 NavigateToLobby();
             }
             else
             {
                 MessageBox.Show(response.Message);
             }
-        } */
+        }
         private void NavigateToLobby()
         {
             NavigationManager.Instance.Navigate(new LobbyPage());
+        }
+
+        private void NavigateToSignUp()
+        {
+            NavigationManager.Instance.Navigate(new SignUpPage());
         }
     }
 }

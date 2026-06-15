@@ -176,6 +176,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Services\AuthService.svc" />
+    <Content Include="Services\MatchService.svc" />
+    <Content Include="Services\UserService.svc" />
+    <Content Include="Services\WordService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +187,15 @@
       <DependentUpon>AuthService.svc</DependentUpon>
     </Compile>
     <Compile Include="Services\Helpers\FieldValidator.cs" />
+    <Compile Include="Services\MatchService.svc.cs">
+      <DependentUpon>MatchService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\UserService.svc.cs">
+      <DependentUpon>UserService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\WordService.svc.cs">
+      <DependentUpon>WordService.svc</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Config\" />
