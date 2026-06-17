@@ -16,6 +16,31 @@ namespace HangmanGame.Data.Repositories
             _context = context;
         }
 
+        public void AddPlayerToMatch(int matchId, int userId)
+        {
+            const string query = @"
+                INSERT INTO PlayerInMatch
+                    (
+                        matchId,
+                        userId
+                    )
+                VALUES
+                    (
+                        @matchId,
+                        @userId
+                )";
+
+            SqlConnection conn = _context.GetOpenConnection();
+
+            using (SqlCommand cmd = new SqlCommand(query, conn, _context.CurrentTransaction))
+            {
+                cmd.Parameters.AddWithValue("@matchId", matchId);
+                cmd.Parameters.AddWithValue("@userId", userId);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
         public int GetPlayerCountByMatch(int matchId)
         {
             const string query = "SELECT COUNT(*) FROM PlayerInMatch WHERE matchId = @matchId AND isKicked = 0";

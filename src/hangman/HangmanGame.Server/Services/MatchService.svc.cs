@@ -1,3 +1,4 @@
+using HangmanGame.Core.Core.Domain;
 using HangmanGame.Core.Core.DTOs;
 using HangmanGame.Core.Core.Interfaces.Services;
 using HangmanGame.Data.Context;
@@ -118,6 +119,51 @@ namespace HangmanGame.Server.Services
             {
                 Debug.WriteLine($"GetMatchById error: {ex.Message}");
                 return FailDetails("An error occurred while retrieving match details");
+            }
+            finally
+            {
+                context.Dispose();
+            }
+        }
+
+        public CreateMatchResponseDto CreateMatch(CreateMatchRequestDto request)
+        {
+            var context = new DatabaseContext();
+            var matchRepo = new MatchRepository(context);
+            var playerRepo = new PlayerInMatchRepository(context);
+
+            try
+            {
+                context.BeginTransaction();
+
+                var match = new Match
+                {
+                    HostId = request.HostId,
+                    Status = "WAITING",
+                    maxPlayers = 2,
+                    IsLocalNetwork = false,
+                    createdAt = DateTime.UtcNow
+                };
+
+                matchRepo.Add(match);
+
+                playerRepo.AddPlayerToMatch(
+                    match.MatchId,
+                    request.HostId
+                );
+
+                context.Commit();
+
+                return new CreateMatchResponseDto
+                {
+                    Success = true,
+                    MatchId = match.MatchId
+                };
+            }
+            catch
+            {
+                context.Rollback();
+                throw;
             }
             finally
             {

@@ -11,5 +11,8 @@ namespace HangmanGame.Core.Core.Interfaces.Services
 
         [OperationContract]
         GetMatchDetailsResponseDto GetMatchById(GetMatchDetailsRequestDto request);
+
+        [OperationContract]
+        CreateMatchResponseDto CreateMatch(CreateMatchRequestDto request);
     }
 }
