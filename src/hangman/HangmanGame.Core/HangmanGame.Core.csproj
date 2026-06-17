@@ -49,11 +49,11 @@
     <Compile Include="Core\Domain\User.cs" />
     <Compile Include="Core\Domain\UserCard.cs" />
     <Compile Include="Core\Domain\Word.cs" />
+    <Compile Include="Core\DTOs\CreateMatchRequestDto.cs" />
     <Compile Include="Core\DTOs\GetAvailableMatchesRequestDto.cs" />
     <Compile Include="Core\DTOs\GetGameSessionRequestDto.cs" />
     <Compile Include="Core\DTOs\GetMatchDetailsRequestDto.cs" />
     <Compile Include="Core\DTOs\LoadProfileRequestDto.cs" />
-    <Compile Include="Core\DTOs\MatchRequest.cs" />
     <Compile Include="Core\DTOs\ProfileResponseDto.cs" />
     <Compile Include="Core\DTOs\RegisterRequestDto.cs" />
     <Compile Include="Core\DTOs\RegisterResponseDto.cs" />
