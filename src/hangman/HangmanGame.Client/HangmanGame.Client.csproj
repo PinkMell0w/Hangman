@@ -87,6 +87,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\MatchServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\UserServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\WordServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\HashManager.cs" />
     <Compile Include="Helpers\LanguageManager.cs" />
     <Compile Include="Helpers\NavigationManager.cs" />
@@ -95,6 +110,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\CreateMatchPageViewModel.cs" />
     <Compile Include="ViewModels\LobbyViewModel.cs" />
     <Compile Include="ViewModels\LogInViewModel.cs" />
     <Compile Include="ViewModels\ProfilePageViewModel.cs" />
@@ -163,8 +179,51 @@
     <None Include="Connected Services\HangmanGameService\AuthService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\MatchServiceReference\MatchService.wsdl" />
+    <None Include="Connected Services\MatchServiceReference\MatchService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\MatchServiceReference\MatchService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\MatchServiceReference\MatchService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserServiceReference\UserService.wsdl" />
+    <None Include="Connected Services\UserServiceReference\UserService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserServiceReference\UserService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserServiceReference\UserService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserServiceReference\UserService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WordServiceReference\WordService.wsdl" />
+    <None Include="Connected Services\WordServiceReference\WordService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WordServiceReference\WordService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WordServiceReference\WordService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WordServiceReference\WordService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.CreateMatchResponseDto.datasource" />
+    <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.GetAvailableMatchesResponseDto.datasource" />
+    <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.GetMatchDetailsResponseDto.datasource" />
+    <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.ProfileResponseDto.datasource" />
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.RegisterResponseDto.datasource" />
+    <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.SignInResponseDto1.datasource" />
+    <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.UserCardResponseDto.datasource" />
+    <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.WordResponseDto.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -233,6 +292,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\HangmanGameService\" />
+    <WCFMetadataStorage Include="Connected Services\MatchServiceReference\" />
+    <WCFMetadataStorage Include="Connected Services\UserServiceReference\" />
+    <WCFMetadataStorage Include="Connected Services\WordServiceReference\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\HangmanGameService\AuthService.disco" />
@@ -306,6 +368,51 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\default-avatar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MatchServiceReference\MatchService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MatchServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MatchServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MatchServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserServiceReference\UserService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\WordServiceReference\WordService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\WordServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\WordServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\WordServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
 ﻿using HangmanGame.Client.Helpers;
+using HangmanGame.Client.ViewModels;
 using System;
 using System.IO;
 using System.Reflection;
@@ -13,7 +14,7 @@ namespace HangmanGame.Client.Views
         public ProfilePage()
         {
             InitializeComponent();
-            DataContext = new ViewModels.ProfilePageViewModel();
+            DataContext = new ProfilePageViewModel();
             // LoadProfilePicture();
         }
 

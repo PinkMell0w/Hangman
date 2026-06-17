@@ -1,6 +1,7 @@
 ﻿using HangmanGame.Client.Commands;
 using HangmanGame.Client.Helpers;
 using HangmanGame.Client.Views;
+using HangmanGame.Client.Views.CreateMatch;
 using HangmanGame.Client.Views.Settings;
 using HangmanGame.Client.Views.SignUp;
 using System;
@@ -20,11 +21,7 @@ namespace HangmanGame.Client.ViewModels
         public string Username
         {
             get => _username;
-            set
-            {
-                _username = value;
-                OnPropertyChanged();
-            }
+            set { _username = value; OnPropertyChanged(); }
         }
 
         public ICommand CreateMatchCommand { get; }
@@ -50,8 +47,7 @@ namespace HangmanGame.Client.ViewModels
 
         private void CreateMatch()
         {
-            // NavigationManager.Instance.Navigate(new CreateMatchPage());
-            MessageBox.Show("Create Match not implemented yet");
+            NavigationManager.Instance.Navigate(new CreateMatchPage());
         }
 
         private void JoinMatch()

@@ -1,6 +1,6 @@
 ﻿using HangmanGame.Client.Commands;
-using HangmanGame.Client.HangmanGameService;
 using HangmanGame.Client.Helpers;
+using HangmanGame.Client.UserServiceReference;
 using HangmanGame.Client.Views;
 using HangmanGame.Core.Core.DTOs;
 using System.ComponentModel;

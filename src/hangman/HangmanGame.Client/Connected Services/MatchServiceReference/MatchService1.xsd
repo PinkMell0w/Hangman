@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:64696/Services/MatchService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.DTOs" />
+  <xs:element name="GetAvailableMatches">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.DTOs" minOccurs="0" name="request" nillable="true" type="q1:GetAvailableMatchesRequestDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAvailableMatchesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.DTOs" minOccurs="0" name="GetAvailableMatchesResult" nillable="true" type="q2:GetAvailableMatchesResponseDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMatchById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.DTOs" minOccurs="0" name="request" nillable="true" type="q3:GetMatchDetailsRequestDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMatchByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.DTOs" minOccurs="0" name="GetMatchByIdResult" nillable="true" type="q4:GetMatchDetailsResponseDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateMatch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.DTOs" minOccurs="0" name="request" nillable="true" type="q5:CreateMatchRequestDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateMatchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.DTOs" minOccurs="0" name="CreateMatchResult" nillable="true" type="q6:CreateMatchResponseDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.DTOs" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.DTOs" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="GetAvailableMatchesRequestDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetAvailableMatchesRequestDto" nillable="true" type="tns:GetAvailableMatchesRequestDto" />
+  <xs:complexType name="GetAvailableMatchesResponseDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AvailableMatches" nillable="true" type="tns:ArrayOfMatchDto" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetAvailableMatchesResponseDto" nillable="true" type="tns:GetAvailableMatchesResponseDto" />
+  <xs:complexType name="ArrayOfMatchDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MatchDto" nillable="true" type="tns:MatchDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMatchDto" nillable="true" type="tns:ArrayOfMatchDto" />
+  <xs:complexType name="MatchDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreatedAt" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CurrentPlayers" type="xs:int" />
+      <xs:element minOccurs="0" name="HostId" type="xs:int" />
+      <xs:element minOccurs="0" name="HostName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsLocalNetwork" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MatchId" type="xs:int" />
+      <xs:element minOccurs="0" name="MaxPlayers" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MatchDto" nillable="true" type="tns:MatchDto" />
+  <xs:complexType name="GetMatchDetailsRequestDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MatchId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetMatchDetailsRequestDto" nillable="true" type="tns:GetMatchDetailsRequestDto" />
+  <xs:complexType name="GetMatchDetailsResponseDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Match" nillable="true" type="tns:MatchDto" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetMatchDetailsResponseDto" nillable="true" type="tns:GetMatchDetailsResponseDto" />
+  <xs:complexType name="CreateMatchRequestDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HostId" type="xs:int" />
+      <xs:element minOccurs="0" name="IsLocalNetwork" type="xs:boolean" />
+      <xs:element minOccurs="0" name="WordId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreateMatchRequestDto" nillable="true" type="tns:CreateMatchRequestDto" />
+  <xs:complexType name="CreateMatchResponseDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MatchId" type="xs:int" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreateMatchResponseDto" nillable="true" type="tns:CreateMatchResponseDto" />
+</xs:schema>

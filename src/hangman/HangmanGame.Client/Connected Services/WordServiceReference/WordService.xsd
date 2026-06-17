@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.DTOs" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.DTOs" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:64696/Services/WordService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.Domain" />
+  <xs:complexType name="WordRequestDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Difficulty" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Language" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WordRequestDto" nillable="true" type="tns:WordRequestDto" />
+  <xs:complexType name="WordResponseDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.Domain" minOccurs="0" name="Words" nillable="true" type="q1:ArrayOfWord" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WordResponseDto" nillable="true" type="tns:WordResponseDto" />
+</xs:schema>

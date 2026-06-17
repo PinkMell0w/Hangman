@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="c09b18d9-fd4e-4602-8813-be5f7381b772" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:64696/Services/WordService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="WordService.xsd" MetadataType="Schema" ID="72d4b97f-7021-4c17-9f8a-cbb42ed75c2c" SourceId="1" SourceUrl="http://localhost:64696/Services/WordService.svc?xsd=xsd2" />
+    <MetadataFile FileName="WordService1.xsd" MetadataType="Schema" ID="7a124f71-b42a-4a8e-a32d-f105808d889e" SourceId="1" SourceUrl="http://localhost:64696/Services/WordService.svc?xsd=xsd0" />
+    <MetadataFile FileName="WordService2.xsd" MetadataType="Schema" ID="b56ef21e-1efb-4cec-9f53-0229ca7ccc40" SourceId="1" SourceUrl="http://localhost:64696/Services/WordService.svc?xsd=xsd3" />
+    <MetadataFile FileName="WordService.disco" MetadataType="Disco" ID="74e5def3-1e98-4db1-a16d-578116f136e6" SourceId="1" SourceUrl="http://localhost:64696/Services/WordService.svc?disco" />
+    <MetadataFile FileName="WordService.wsdl" MetadataType="Wsdl" ID="dc2027dd-11bb-4045-ae5e-2abbc181d06f" SourceId="1" SourceUrl="http://localhost:64696/Services/WordService.svc?wsdl" />
+    <MetadataFile FileName="WordService3.xsd" MetadataType="Schema" ID="7f45513e-174c-4338-b79a-d270ea212a48" SourceId="1" SourceUrl="http://localhost:64696/Services/WordService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -44,95 +44,21 @@
             
             <TextBlock Text="Y una palabra" FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Margin="0,10,0,10" />
             <Grid Grid.Row="1" x:Name="GdCategories">
-                <WrapPanel x:Name="WpAnimals" Visibility="Visible">
-                    <Button Content="Perro" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Gato" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Oso" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Elefante" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Avestruz" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Loro" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Oveja" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Ocelote" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Rinoceronte" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Abeja" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Águila" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Pulpo" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Calamar" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Mandril" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Cacomixtle" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                </WrapPanel>
+                <ItemsControl ItemsSource="{Binding Words}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Height="150" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
 
-                <WrapPanel x:Name="WpFruits" Visibility="Collapsed">
-                    <Button Content="Manzana" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Pera" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Piña" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Naranja" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Kiwi" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Fresa" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Uva" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Maracuyá" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Carambola" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Zarzamora" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Frambuesa" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Guanábana" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Pitaya" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Papaya" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Limón" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                </WrapPanel>
-
-                <WrapPanel x:Name="WpColors" Visibility="Collapsed">
-                    <Button Content="Rojo" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Naranja" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Amarillo" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Verde" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Celeste" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Azul" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Morado" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Violeta" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Magenta" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Rosa" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Café" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Blanco" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Negro" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Gris" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Índigo" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                </WrapPanel>
-
-                <WrapPanel x:Name="WpObjects" Visibility="Collapsed">
-                    <Button Content="Puerta" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Ventana" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Lápiz" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Goma" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Silla" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Mesa" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Vaso" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Taza" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Vela" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Lámpara" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Linterna" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Refrigerador" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Estufa" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Florero" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Colchón" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                </WrapPanel>
-
-                <WrapPanel x:Name="WpCountries" Visibility="Collapsed">
-                    <Button Content="Estados Unidos" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="México" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Alemania" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Canadá" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Francia" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Brasil" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Italia" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Marruecos" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="China" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Japón" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Corea del Sur" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Zimbabue" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Australia" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Nueva Zelanda" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                    <Button Content="Angola" Padding="8" Margin="0,0,20,10" FontSize="14" />
-                </WrapPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding Name}"
+                                Margin="5"
+                                Padding="10" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </Grid>
         </Grid>
 
@@ -142,8 +68,8 @@
         </StackPanel>
 
         <Grid Grid.Row="3">
-            <Button Name="BtnGoBack" Content="Volver" HorizontalAlignment="Left" Margin="10,0,0,10" Padding="10" Click="BtnGoBack_Click"  />
-            <Button Name="BtnCreateMatch" Content="Crear partida" HorizontalAlignment="Right" Margin="0,0,10,10" Padding="10" Click="BtnCreateMatch_Click"  />
+            <Button Name="BtnGoBack" Content="Volver" HorizontalAlignment="Left" Margin="10,0,0,10" Padding="10" Command="{Binding NavigateToLobbyCommand}" />
+            <Button Name="BtnCreateMatch" Content="Crear partida" HorizontalAlignment="Right" Margin="0,0,10,10" Padding="10" Command="{Binding CreateWaitingRoomCommand}" />
         </Grid>
     </Grid>
 </Page>
