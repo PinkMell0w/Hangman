@@ -63,7 +63,61 @@ namespace HangmanGame.Data.Repositories
 
         public void Add(Match match)
         {
-            //TODO
+            const string query = @"
+                INSERT INTO [Match]
+                    (
+                        hostId,
+                        wordId,
+                        status,
+                        maxPlayers,
+                        isLocalNetwork,
+                        createdAt,
+                        finishedAt
+                    )
+                VALUES
+                    (
+                        @hostId,
+                        @wordId,
+                        @status,
+                        @maxPlayers,
+                        @isLocalNetwork,
+                        @createdAt,
+                        @finishedAt
+                    );
+
+                SELECT CAST(SCOPE_IDENTITY() AS INT);";
+
+            SqlConnection conn = _context.GetOpenConnection();
+
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn, _context.CurrentTransaction))
+                {
+                    cmd.Parameters.AddWithValue("@hostId", match.HostId);
+
+                    if (match.WordId > 0)
+                        cmd.Parameters.AddWithValue("@wordId", match.WordId);
+                    else
+                        cmd.Parameters.AddWithValue("@wordId", DBNull.Value);
+
+                    cmd.Parameters.AddWithValue("@status", match.Status);
+                    cmd.Parameters.AddWithValue("@maxPlayers", match.maxPlayers);
+                    cmd.Parameters.AddWithValue("@isLocalNetwork", match.IsLocalNetwork);
+                    cmd.Parameters.AddWithValue("@createdAt", match.createdAt);
+
+                    if (match.finishedAt != DateTime.MinValue)
+                        cmd.Parameters.AddWithValue("@finishedAt", match.finishedAt);
+                    else
+                        cmd.Parameters.AddWithValue("@finishedAt", DBNull.Value);
+
+                    match.MatchId = (int)cmd.ExecuteScalar();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Add Match error: {ex.Message}");
+                throw;
+            }
         }
 
         public Match GetById(int matchId)
