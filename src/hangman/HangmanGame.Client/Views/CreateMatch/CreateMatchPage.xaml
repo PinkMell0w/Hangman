@@ -28,11 +28,11 @@
             
             <TextBlock Text="{x:Static props:Resources.Text_selectCategory}" FontSize="26" FontFamily="Ink Free" FontWeight="Bold" />
             <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="10,10,10,0" HorizontalAlignment="Center">
-                <Button Content="{x:Static props:Resources.Text_catAnimals}" Padding="10" Margin="0,0,10,0" FontSize="24" Width="140" />
-                <Button Content="{x:Static props:Resources.Text_catFruits}" Padding="10" Margin="0,0,10,0" FontSize="24" Width="140" />
-                <Button Content="{x:Static props:Resources.Text_catColors}" Padding="10" Margin="0,0,10,0" FontSize="24" Width="140" />
-                <Button Content="{x:Static props:Resources.Text_catObjects}" Padding="10" Margin="0,0,10,0" FontSize="24" Width="140" />
-                <Button Content="{x:Static props:Resources.Text_catCountries}" Padding="10" FontSize="24" Width="140" />
+                <Button Content="{x:Static props:Resources.Text_catAnimals}" Command="{Binding SelectCategoryCommand}" CommandParameter="Animals" Padding="10" Margin="0,0,10,0" FontSize="24" Width="140" />
+                <Button Content="{x:Static props:Resources.Text_catFruits}" Command="{Binding SelectCategoryCommand}" CommandParameter="Fruits" Padding="10" Margin="0,0,10,0" FontSize="24" Width="140" />
+                <Button Content="{x:Static props:Resources.Text_catColors}" Command="{Binding SelectCategoryCommand}" CommandParameter="Colors" Padding="10" Margin="0,0,10,0" FontSize="24" Width="140" />
+                <Button Content="{x:Static props:Resources.Text_catObjects}" Command="{Binding SelectCategoryCommand}" CommandParameter="Objects" Padding="10" Margin="0,0,10,0" FontSize="24" Width="140" />
+                <Button Content="{x:Static props:Resources.Text_catCountries}" Command="{Binding SelectCategoryCommand}" CommandParameter="Countries" Padding="10" FontSize="24" Width="140" />
             </StackPanel>
         </Grid>
 

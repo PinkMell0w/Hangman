@@ -25,6 +25,7 @@ namespace HangmanGame.Client.ViewModels
         private ObservableCollection<Word> _words;
 
         private Word _selectedWord;
+        private string _selectedCategory = "Animals";
 
         public ObservableCollection<Word> Words
         {
@@ -38,9 +39,16 @@ namespace HangmanGame.Client.ViewModels
             set { _selectedWord = value; OnPropertyChanged(); }
         }
 
+        public string SelectedCategory
+        {
+            get => _selectedCategory;
+            set { _selectedCategory = value; OnPropertyChanged(); }
+        }
+
         public ICommand NavigateToLobbyCommand { get; }
         public ICommand CreateWaitingRoomCommand { get; }
         public ICommand SelectWordCommand { get; }
+        public ICommand SelectCategoryCommand { get; }
 
         public CreateMatchPageViewModel()
         {
@@ -49,6 +57,7 @@ namespace HangmanGame.Client.ViewModels
             NavigateToLobbyCommand = new RelayCommand(_ => NavigateToLobby());
             CreateWaitingRoomCommand = new RelayCommand(_ => ExecuteCreateMatch());
             SelectWordCommand = new RelayCommand(SelectWord);
+            SelectCategoryCommand = new RelayCommand(SelectCategory);
             LoadWords();
         }
 
@@ -58,7 +67,8 @@ namespace HangmanGame.Client.ViewModels
             {
                 var request = new WordRequestDto
                 {
-                    Language = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName
+                    Language = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName,
+                    Category = SelectedCategory
                 };
 
                 var response = await Task.Run(() =>
@@ -111,6 +121,15 @@ namespace HangmanGame.Client.ViewModels
             if (parameter is Word word)
             {
                 SelectedWord = word;
+            }
+        }
+
+        private void SelectCategory(object parameter)
+        {
+            if (parameter is string category)
+            {
+                SelectedCategory = category;
+                LoadWords();
             }
         }
     }
