@@ -54,6 +54,7 @@
     <Compile Include="Core\DTOs\GetGameSessionRequestDto.cs" />
     <Compile Include="Core\DTOs\GetMatchDetailsRequestDto.cs" />
     <Compile Include="Core\DTOs\JoinMatchRequestDto.cs" />
+    <Compile Include="Core\DTOs\LeaveMatchRequestDto.cs" />
     <Compile Include="Core\DTOs\LoadProfileRequestDto.cs" />
     <Compile Include="Core\DTOs\ProfileResponseDto.cs" />
     <Compile Include="Core\DTOs\RegisterRequestDto.cs" />
