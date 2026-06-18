@@ -4,6 +4,7 @@ using HangmanGame.Core.Core.Interfaces.Services;
 using HangmanGame.Data.Context;
 using HangmanGame.Data.Repositories;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace HangmanGame.Server.Services
 {
     public class MatchService : IMatchService
     {
+        private static ConcurrentDictionary<int, LiveGameRuntimeState> ActiveGames = new ConcurrentDictionary<int, LiveGameRuntimeState>();
+
         public GetAvailableMatchesResponseDto GetAvailableMatches(GetAvailableMatchesRequestDto request)
         {
             if (request == null || request.UserId <= 0)
@@ -248,12 +251,32 @@ namespace HangmanGame.Server.Services
 
             var context = new DatabaseContext();
             var matchRepo = new MatchRepository(context);
+            var wordRepo = new WordRepository(context);
+            var playerRepo = new PlayerInMatchRepository(context);
 
             try
             {
                 context.BeginTransaction();
 
                 matchRepo.UpdateStatus(request.MatchId, "IN_PROGRESS");
+                var match = matchRepo.GetById(request.MatchId);
+                var wordRow = wordRepo.GetById(match.WordId);
+                string secretWord = wordRow != null ? wordRow.Name.ToUpper() : "";
+
+                int guesserUserId = playerRepo.GetGuesserId(request.MatchId);
+
+                string blankSpaces = string.Join(" ", Enumerable.Repeat("_", secretWord.Length));
+
+                var freshGameState = new LiveGameRuntimeState
+                {
+                    MaskedWord = blankSpaces,
+                    HangmanStage = 0,
+                    CurrentTurn = "GUESSER",
+                    MatchStatus = "PLAYING",
+                    LastGuessedLetter = ' '
+                };
+
+                ActiveGames.AddOrUpdate(request.MatchId, freshGameState, (id, oldState) => freshGameState);
 
                 context.Commit();
 
@@ -316,6 +339,61 @@ namespace HangmanGame.Server.Services
             finally
             {
                 context.Dispose();
+            }
+        }
+
+        public LiveGameRuntimeState GetLiveGameLoopState(int matchId)
+        {
+            if (ActiveGames.TryGetValue(matchId, out var state))
+            {
+                return state;
+            }
+
+            return new LiveGameRuntimeState
+            {
+                MaskedWord = "",
+                HangmanStage = 0,
+                CurrentTurn = "GUESSER",
+                MatchStatus = "WAITING"
+            };
+        }
+
+        public void SubmitGuesserLetter(int matchId, char letter)
+        {
+            if (ActiveGames.TryGetValue(matchId, out var state))
+            {
+                state.LastGuessedLetter = char.ToUpper(letter);
+                state.CurrentTurn = "HOST_VALIDATION";
+            }
+        }
+
+        public void SubmitHostValidation(int matchId, bool isCorrect, string manualUpdatedMaskedWord)
+        {
+            if (ActiveGames.TryGetValue(matchId, out var state))
+            {
+                if (isCorrect)
+                {
+                    state.MaskedWord = manualUpdatedMaskedWord;
+
+                    if (!manualUpdatedMaskedWord.Contains("_"))
+                    {
+                        state.MatchStatus = "WON";
+                    }
+                }
+                else
+                {
+                    state.HangmanStage++;
+
+                    if (state.HangmanStage >= 6)
+                    {
+                        state.MatchStatus = "LOST";
+                    }
+                }
+
+                if (state.MatchStatus == "PLAYING")
+                {
+                    state.CurrentTurn = "GUESSER";
+                }
             }
         }
 

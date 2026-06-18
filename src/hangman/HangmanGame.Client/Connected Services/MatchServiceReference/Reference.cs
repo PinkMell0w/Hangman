@@ -50,6 +50,24 @@ namespace HangmanGame.Client.MatchServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/CancelMatch", ReplyAction="http://tempuri.org/IMatchService/CancelMatchResponse")]
         System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.CancelMatchResponseDto> CancelMatchAsync(HangmanGame.Core.Core.DTOs.CancelMatchRequestDto request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/GetLiveGameLoopState", ReplyAction="http://tempuri.org/IMatchService/GetLiveGameLoopStateResponse")]
+        HangmanGame.Core.Core.Interfaces.Services.LiveGameRuntimeState GetLiveGameLoopState(int matchId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/GetLiveGameLoopState", ReplyAction="http://tempuri.org/IMatchService/GetLiveGameLoopStateResponse")]
+        System.Threading.Tasks.Task<HangmanGame.Core.Core.Interfaces.Services.LiveGameRuntimeState> GetLiveGameLoopStateAsync(int matchId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/SubmitGuesserLetter", ReplyAction="http://tempuri.org/IMatchService/SubmitGuesserLetterResponse")]
+        void SubmitGuesserLetter(int matchId, char letter);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/SubmitGuesserLetter", ReplyAction="http://tempuri.org/IMatchService/SubmitGuesserLetterResponse")]
+        System.Threading.Tasks.Task SubmitGuesserLetterAsync(int matchId, char letter);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/SubmitHostValidation", ReplyAction="http://tempuri.org/IMatchService/SubmitHostValidationResponse")]
+        void SubmitHostValidation(int matchId, bool isCorrect, string manualUpdatedMaskedWord);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/SubmitHostValidation", ReplyAction="http://tempuri.org/IMatchService/SubmitHostValidationResponse")]
+        System.Threading.Tasks.Task SubmitHostValidationAsync(int matchId, bool isCorrect, string manualUpdatedMaskedWord);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -125,6 +143,30 @@ namespace HangmanGame.Client.MatchServiceReference {
         
         public System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.CancelMatchResponseDto> CancelMatchAsync(HangmanGame.Core.Core.DTOs.CancelMatchRequestDto request) {
             return base.Channel.CancelMatchAsync(request);
+        }
+        
+        public HangmanGame.Core.Core.Interfaces.Services.LiveGameRuntimeState GetLiveGameLoopState(int matchId) {
+            return base.Channel.GetLiveGameLoopState(matchId);
+        }
+        
+        public System.Threading.Tasks.Task<HangmanGame.Core.Core.Interfaces.Services.LiveGameRuntimeState> GetLiveGameLoopStateAsync(int matchId) {
+            return base.Channel.GetLiveGameLoopStateAsync(matchId);
+        }
+        
+        public void SubmitGuesserLetter(int matchId, char letter) {
+            base.Channel.SubmitGuesserLetter(matchId, letter);
+        }
+        
+        public System.Threading.Tasks.Task SubmitGuesserLetterAsync(int matchId, char letter) {
+            return base.Channel.SubmitGuesserLetterAsync(matchId, letter);
+        }
+        
+        public void SubmitHostValidation(int matchId, bool isCorrect, string manualUpdatedMaskedWord) {
+            base.Channel.SubmitHostValidation(matchId, isCorrect, manualUpdatedMaskedWord);
+        }
+        
+        public System.Threading.Tasks.Task SubmitHostValidationAsync(int matchId, bool isCorrect, string manualUpdatedMaskedWord) {
+            return base.Channel.SubmitHostValidationAsync(matchId, isCorrect, manualUpdatedMaskedWord);
         }
     }
 }

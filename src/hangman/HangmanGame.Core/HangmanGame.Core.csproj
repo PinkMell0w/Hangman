@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Domain\GameSession.cs" />
+    <Compile Include="Core\Domain\GuessAttempt.cs" />
     <Compile Include="Core\Domain\Match.cs" />
     <Compile Include="Core\Domain\PlayerProfile.cs" />
     <Compile Include="Core\Domain\PlayerStats.cs" />

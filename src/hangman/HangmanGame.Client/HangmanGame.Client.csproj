@@ -189,6 +189,9 @@
     <None Include="Connected Services\MatchServiceReference\MatchService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\MatchServiceReference\MatchService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\UserServiceReference\UserService.wsdl" />
     <None Include="Connected Services\UserServiceReference\UserService.xsd">
       <SubType>Designer</SubType>
@@ -227,6 +230,7 @@
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.StartMatchResponseDto.datasource" />
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.UserCardResponseDto.datasource" />
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.WordResponseDto.datasource" />
+    <None Include="Properties\DataSources\HangmanGame.Core.Core.Interfaces.Services.LiveGameRuntimeState.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

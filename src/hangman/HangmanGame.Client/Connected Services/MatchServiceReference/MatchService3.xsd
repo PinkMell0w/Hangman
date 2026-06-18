@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.Interfaces.Services" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.Interfaces.Services" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:64696/Services/MatchService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="LiveGameRuntimeState">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CurrentTurn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HangmanStage" type="xs:int" />
+      <xs:element minOccurs="0" name="LastGuessedLetter" type="ser:char" />
+      <xs:element minOccurs="0" name="MaskedWord" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MatchStatus" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LiveGameRuntimeState" nillable="true" type="tns:LiveGameRuntimeState" />
+</xs:schema>

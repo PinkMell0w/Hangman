@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:64696/Services/MatchService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.DTOs" />
+  <xs:import schemaLocation="http://localhost:64696/Services/MatchService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.Interfaces.Services" />
+  <xs:import schemaLocation="http://localhost:64696/Services/MatchService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:element name="GetAvailableMatches">
     <xs:complexType>
       <xs:sequence>
@@ -83,6 +85,47 @@
       <xs:sequence>
         <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.DTOs" minOccurs="0" name="CancelMatchResult" nillable="true" type="q12:CancelMatchResponseDto" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLiveGameLoopState">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="matchId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLiveGameLoopStateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.Interfaces.Services" minOccurs="0" name="GetLiveGameLoopStateResult" nillable="true" type="q13:LiveGameRuntimeState" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SubmitGuesserLetter">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="matchId" type="xs:int" />
+        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="letter" type="q14:char" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SubmitGuesserLetterResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SubmitHostValidation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="matchId" type="xs:int" />
+        <xs:element minOccurs="0" name="isCorrect" type="xs:boolean" />
+        <xs:element minOccurs="0" name="manualUpdatedMaskedWord" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SubmitHostValidationResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

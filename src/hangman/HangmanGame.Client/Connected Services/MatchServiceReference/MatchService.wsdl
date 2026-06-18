@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:64696/Services/MatchService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:64696/Services/MatchService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:64696/Services/MatchService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.DTOs" />
+      <xsd:import schemaLocation="http://localhost:64696/Services/MatchService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.Interfaces.Services" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IMatchService_GetAvailableMatches_InputMessage">
@@ -43,6 +44,24 @@
   <wsdl:message name="IMatchService_CancelMatch_OutputMessage">
     <wsdl:part name="parameters" element="tns:CancelMatchResponse" />
   </wsdl:message>
+  <wsdl:message name="IMatchService_GetLiveGameLoopState_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLiveGameLoopState" />
+  </wsdl:message>
+  <wsdl:message name="IMatchService_GetLiveGameLoopState_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLiveGameLoopStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMatchService_SubmitGuesserLetter_InputMessage">
+    <wsdl:part name="parameters" element="tns:SubmitGuesserLetter" />
+  </wsdl:message>
+  <wsdl:message name="IMatchService_SubmitGuesserLetter_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SubmitGuesserLetterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMatchService_SubmitHostValidation_InputMessage">
+    <wsdl:part name="parameters" element="tns:SubmitHostValidation" />
+  </wsdl:message>
+  <wsdl:message name="IMatchService_SubmitHostValidation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SubmitHostValidationResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMatchService">
     <wsdl:operation name="GetAvailableMatches">
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/GetAvailableMatches" message="tns:IMatchService_GetAvailableMatches_InputMessage" />
@@ -67,6 +86,18 @@
     <wsdl:operation name="CancelMatch">
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/CancelMatch" message="tns:IMatchService_CancelMatch_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchService/CancelMatchResponse" message="tns:IMatchService_CancelMatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveGameLoopState">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/GetLiveGameLoopState" message="tns:IMatchService_GetLiveGameLoopState_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchService/GetLiveGameLoopStateResponse" message="tns:IMatchService_GetLiveGameLoopState_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitGuesserLetter">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/SubmitGuesserLetter" message="tns:IMatchService_SubmitGuesserLetter_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchService/SubmitGuesserLetterResponse" message="tns:IMatchService_SubmitGuesserLetter_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitHostValidation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/SubmitHostValidation" message="tns:IMatchService_SubmitHostValidation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchService/SubmitHostValidationResponse" message="tns:IMatchService_SubmitHostValidation_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMatchService" type="tns:IMatchService">
@@ -118,6 +149,33 @@
     </wsdl:operation>
     <wsdl:operation name="CancelMatch">
       <soap:operation soapAction="http://tempuri.org/IMatchService/CancelMatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveGameLoopState">
+      <soap:operation soapAction="http://tempuri.org/IMatchService/GetLiveGameLoopState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitGuesserLetter">
+      <soap:operation soapAction="http://tempuri.org/IMatchService/SubmitGuesserLetter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitHostValidation">
+      <soap:operation soapAction="http://tempuri.org/IMatchService/SubmitHostValidation" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

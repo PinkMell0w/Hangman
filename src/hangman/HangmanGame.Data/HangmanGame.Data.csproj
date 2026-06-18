@@ -158,6 +158,8 @@
     <Compile Include="Context\DatabaseContext.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\GameSessionRepository.cs" />
+    <Compile Include="Repositories\GuessAttemptRepository.cs" />
     <Compile Include="Repositories\MatchRepository.cs" />
     <Compile Include="Repositories\PlayerInMatchRepository.cs" />
     <Compile Include="Repositories\PlayerProfileRepository.cs" />

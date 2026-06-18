@@ -22,10 +22,11 @@
     <MetadataSource Address="http://localhost:64696/Services/MatchService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="MatchService.xsd" MetadataType="Schema" ID="56461aa3-8a03-4586-97ff-dce9d412a988" SourceId="1" SourceUrl="http://localhost:64696/Services/MatchService.svc?xsd=xsd2" />
     <MetadataFile FileName="MatchService1.xsd" MetadataType="Schema" ID="d36f896b-75ed-4521-9edf-33de52b0df8e" SourceId="1" SourceUrl="http://localhost:64696/Services/MatchService.svc?xsd=xsd0" />
-    <MetadataFile FileName="MatchService.wsdl" MetadataType="Wsdl" ID="8e711ad4-69da-4d03-a26d-1068b315964e" SourceId="1" SourceUrl="http://localhost:64696/Services/MatchService.svc?wsdl" />
     <MetadataFile FileName="MatchService2.xsd" MetadataType="Schema" ID="31216eb6-5042-4964-8715-42d23d1a7387" SourceId="1" SourceUrl="http://localhost:64696/Services/MatchService.svc?xsd=xsd1" />
+    <MetadataFile FileName="MatchService.xsd" MetadataType="Schema" ID="56461aa3-8a03-4586-97ff-dce9d412a988" SourceId="1" SourceUrl="http://localhost:64696/Services/MatchService.svc?xsd=xsd2" />
+    <MetadataFile FileName="MatchService3.xsd" MetadataType="Schema" ID="f0c59667-2557-450c-8a53-19d5f51b70c1" SourceId="1" SourceUrl="http://localhost:64696/Services/MatchService.svc?xsd=xsd3" />
+    <MetadataFile FileName="MatchService.wsdl" MetadataType="Wsdl" ID="8e711ad4-69da-4d03-a26d-1068b315964e" SourceId="1" SourceUrl="http://localhost:64696/Services/MatchService.svc?wsdl" />
     <MetadataFile FileName="MatchService.disco" MetadataType="Disco" ID="22a49996-0f11-4ede-a356-a179bfe942a1" SourceId="1" SourceUrl="http://localhost:64696/Services/MatchService.svc?disco" />
   </Metadata>
   <Extensions>
