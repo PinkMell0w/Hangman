@@ -17,5 +17,11 @@ namespace HangmanGame.Core.Core.Interfaces.Services
 
         [OperationContract]
         JoinMatchResponseDto JoinMatch(JoinMatchRequestDto request);
+
+        [OperationContract]
+        StartMatchResponseDto StartMatch(StartMatchRequestDto request);
+
+        [OperationContract]
+        CancelMatchResponseDto CancelMatch(CancelMatchRequestDto request);
     }
 }

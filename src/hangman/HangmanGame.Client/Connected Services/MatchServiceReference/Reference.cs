@@ -38,6 +38,18 @@ namespace HangmanGame.Client.MatchServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/JoinMatch", ReplyAction="http://tempuri.org/IMatchService/JoinMatchResponse")]
         System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.JoinMatchResponseDto> JoinMatchAsync(HangmanGame.Core.Core.DTOs.JoinMatchRequestDto request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/StartMatch", ReplyAction="http://tempuri.org/IMatchService/StartMatchResponse")]
+        HangmanGame.Core.Core.DTOs.StartMatchResponseDto StartMatch(HangmanGame.Core.Core.DTOs.StartMatchRequestDto request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/StartMatch", ReplyAction="http://tempuri.org/IMatchService/StartMatchResponse")]
+        System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.StartMatchResponseDto> StartMatchAsync(HangmanGame.Core.Core.DTOs.StartMatchRequestDto request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/CancelMatch", ReplyAction="http://tempuri.org/IMatchService/CancelMatchResponse")]
+        HangmanGame.Core.Core.DTOs.CancelMatchResponseDto CancelMatch(HangmanGame.Core.Core.DTOs.CancelMatchRequestDto request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/CancelMatch", ReplyAction="http://tempuri.org/IMatchService/CancelMatchResponse")]
+        System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.CancelMatchResponseDto> CancelMatchAsync(HangmanGame.Core.Core.DTOs.CancelMatchRequestDto request);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -97,6 +109,22 @@ namespace HangmanGame.Client.MatchServiceReference {
         
         public System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.JoinMatchResponseDto> JoinMatchAsync(HangmanGame.Core.Core.DTOs.JoinMatchRequestDto request) {
             return base.Channel.JoinMatchAsync(request);
+        }
+        
+        public HangmanGame.Core.Core.DTOs.StartMatchResponseDto StartMatch(HangmanGame.Core.Core.DTOs.StartMatchRequestDto request) {
+            return base.Channel.StartMatch(request);
+        }
+        
+        public System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.StartMatchResponseDto> StartMatchAsync(HangmanGame.Core.Core.DTOs.StartMatchRequestDto request) {
+            return base.Channel.StartMatchAsync(request);
+        }
+        
+        public HangmanGame.Core.Core.DTOs.CancelMatchResponseDto CancelMatch(HangmanGame.Core.Core.DTOs.CancelMatchRequestDto request) {
+            return base.Channel.CancelMatch(request);
+        }
+        
+        public System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.CancelMatchResponseDto> CancelMatchAsync(HangmanGame.Core.Core.DTOs.CancelMatchRequestDto request) {
+            return base.Channel.CancelMatchAsync(request);
         }
     }
 }

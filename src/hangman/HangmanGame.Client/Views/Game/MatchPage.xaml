@@ -10,64 +10,133 @@
       Title="{x:Static props:Resources.Title_createMatch}">
 
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/Resources/Images/paperBg.jpg" Stretch="UniformToFill"/>
-        </Grid.Background>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+        <Grid Visibility="{Binding SettingsControlsVisibility}">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Resources/Images/paperBgB.jpg" TileMode="None" Stretch="Fill"/>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-        <Button Name="BtnConfigureMatch" Content="{x:Static props:Resources.Button_matchSettings}" Visibility="{Binding HostControlsVisibility}" HorizontalAlignment="Left" Margin="10" Padding="5" Command="{Binding ConfigureMatchCommand}" />
-
-        <Grid Grid.Row="1" HorizontalAlignment="Center" Margin="0,40,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-
-            <StackPanel Grid.Column="0" HorizontalAlignment="Center">
-                <Image Source="/Resources/Images/PlayerPfp.png" Margin="0,20,0,0" Width="180"/>
-                <TextBlock Text="{x:Static props:Resources.Text_you}" FontFamily="Ink Free" FontWeight="Bold" FontSize="16" Margin="0,10,0,0" HorizontalAlignment="Center"/>
-            </StackPanel>
-
-            <TextBlock Grid.Column="1" Text="VS" FontFamily="Ink Free" FontWeight="Bold" FontSize="80" Margin="60,65,60,0"/>
-
-            <StackPanel Grid.Column="2" HorizontalAlignment="Center">
-                <Image Source="/Resources/Images/NoOpponent.png" Margin="0,20,0,0" Width="180"/>
-                <TextBlock Text="{x:Static props:Resources.Text_awaitingOpponent}" FontFamily="Ink Free" FontWeight="Bold" FontSize="16" Margin="0,10,0,0" HorizontalAlignment="Center"/>
-            </StackPanel>
-        </Grid>
-
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <Button Name="BtnLeaveMatch" Grid.Column="0" Content="{x:Static props:Resources.Button_leaveMatch}" HorizontalAlignment="Left" Margin="10" Padding="5" Click="BtnLeaveMatch_Click" Height="40" VerticalAlignment="Bottom" Command="{Binding LeaveMatchCommand}" />
-
-            <Button Name="BtnStartMatch" Grid.Column="1" Content="{x:Static props:Resources.Button_startMatch}" Visibility="{Binding HostControlsVisibility}" FontSize="18" HorizontalAlignment="Center" Margin="10" Padding="10" Command="{Binding StartMatchCommand}" Height="60" />
-
-            <Grid x:Name="GridChat" Grid.Column="2" Margin="0,10,10,10">
+            <Grid Margin="10,10,10,0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <TextBox x:Name="TxtHistorial" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Margin="0,0,0,10" Background="#FAFAFA" Width="300" Height="200"/>
+                <TextBlock Text="{x:Static props:Resources.Text_selectCategory}" FontSize="26" FontFamily="Ink Free" FontWeight="Bold" />
+                <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="10,10,10,0" HorizontalAlignment="Center">
+                    <Button Content="{x:Static props:Resources.Text_catAnimals}" Command="{Binding SelectCategoryCommand}" CommandParameter="Animals" Padding="10" Margin="0,0,10,0" FontSize="24" Width="140" />
+                    <Button Content="{x:Static props:Resources.Text_catFruits}" Command="{Binding SelectCategoryCommand}" CommandParameter="Fruits" Padding="10" Margin="0,0,10,0" FontSize="24" Width="140" />
+                    <Button Content="{x:Static props:Resources.Text_catColors}" Command="{Binding SelectCategoryCommand}" CommandParameter="Colors" Padding="10" Margin="0,0,10,0" FontSize="24" Width="140" />
+                    <Button Content="{x:Static props:Resources.Text_catObjects}" Command="{Binding SelectCategoryCommand}" CommandParameter="Objects" Padding="10" Margin="0,0,10,0" FontSize="24" Width="140" />
+                    <Button Content="{x:Static props:Resources.Text_catCountries}" Command="{Binding SelectCategoryCommand}" CommandParameter="Countries" Padding="10" FontSize="24" Width="140" />
+                </StackPanel>
+            </Grid>
 
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
+            <Grid Grid.Row="1" Margin="10,10,10,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-                    <TextBox x:Name="TxtMensaje" Text="{x:Static props:Resources.Text_chatPrompt}" Grid.Column="0" Margin="0,0,10,0" Padding="5" Foreground="#FFA2A2A2" />
-                    <Button x:Name="BtnSend" Grid.Column="1" Content="{x:Static props:Resources.Button_send}" Command="{Binding SendMessageCommand}" Padding="10" />
+                <TextBlock Text="{x:Static props:Resources.Text_selectWord}" FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Margin="0,10,0,10" />
+                <Grid Grid.Row="1" x:Name="GdCategories">
+                    <ItemsControl ItemsSource="{Binding Words}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Height="150" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding Name}"
+                                        Margin="5"
+                                        Padding="10"
+                                        Command="{Binding DataContext.SelectWordCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                        CommandParameter="{Binding}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+            </Grid>
+
+            <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Left" Margin="10,0,10,10">
+                <TextBlock Text="{x:Static props:Resources.Text_writeYourOwn}" FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Margin="0,10,0,10" />
+                <TextBox Width="250" Height="30" FontSize="14" />
+            </StackPanel>
+
+            <Grid Grid.Row="3">
+                <Button Name="BtnGoBack" Content="Volver" HorizontalAlignment="Left" Margin="10,0,0,10" Padding="10" Command="{Binding GoBackCommand}" />
+                <Button Name="BtnKickPlayer" Content="Expulsar jugador" HorizontalAlignment="Right" Margin="0,0,200,10" Padding="10" Command="{Binding KickPlayerCommand}" />
+                <Button Name="BtnSaveChanges" Content="Guardar cambios" HorizontalAlignment="Right" Margin="0,0,10,10" Padding="10" Command="{Binding SaveChangesCommand}" />
+            </Grid>
+        </Grid>
+
+        <Grid Visibility="{Binding LobbyControlsVisibility}">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Resources/Images/paperBg.jpg" Stretch="UniformToFill"/>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Button Name="BtnConfigureMatch" Content="{x:Static props:Resources.Button_matchSettings}" Visibility="{Binding HostControlsVisibility}" HorizontalAlignment="Left" Margin="10" Padding="5" Command="{Binding ConfigureMatchCommand}" />
+
+            <Grid Grid.Row="1" HorizontalAlignment="Center" Margin="0,40,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                    <Image Source="/Resources/Images/PlayerPfp.png" Margin="0,20,0,0" Width="180"/>
+                    <TextBlock Text="{x:Static props:Resources.Text_you}" FontFamily="Ink Free" FontWeight="Bold" FontSize="16" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <TextBlock Grid.Column="1" Text="VS" FontFamily="Ink Free" FontWeight="Bold" FontSize="80" Margin="60,65,60,0"/>
+
+                <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+                    <Image Source="/Resources/Images/NoOpponent.png" Margin="0,20,0,0" Width="180"/>
+                    <TextBlock Text="{Binding OpponentName}" FontFamily="Ink Free" FontWeight="Bold" FontSize="16" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Name="BtnLeaveMatch" Grid.Column="0" Content="{x:Static props:Resources.Button_leaveMatch}" HorizontalAlignment="Left" Margin="10" Padding="5" Height="40" VerticalAlignment="Bottom" Command="{Binding LeaveMatchCommand}" />
+
+                <Button Name="BtnStartMatch" Grid.Column="1" Content="{x:Static props:Resources.Button_startMatch}" Visibility="{Binding HostControlsVisibility}" FontSize="18" HorizontalAlignment="Center" Margin="10" Padding="10" Command="{Binding StartMatchCommand}" Height="60" />
+
+                <Grid x:Name="GridChat" Grid.Column="2" Margin="0,10,10,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBox x:Name="TxtHistorial" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Margin="0,0,0,10" Background="#FAFAFA" Width="300" Height="200"/>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox x:Name="TxtMensaje" Text="{x:Static props:Resources.Text_chatPrompt}" Grid.Column="0" Margin="0,0,10,0" Padding="5" Foreground="#FFA2A2A2" />
+                        <Button x:Name="BtnSend" Grid.Column="1" Content="{x:Static props:Resources.Button_send}" Command="{Binding SendMessageCommand}" Padding="10" />
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>

@@ -88,15 +88,24 @@ namespace HangmanGame.Client.ViewModels
 
         private void NavigateToLobby()
         {
-            // TODO Ask confirmation to close room
-            NavigationManager.Instance.Navigate(new LobbyPage());
+            MessageBoxResult result = MessageBox.Show(
+                Properties.Resources.Message_confirmGoBack,
+                "",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning
+            );
+
+            if (result == MessageBoxResult.Yes)
+            {
+                NavigationManager.Instance.Navigate(new LobbyPage());
+            }
         }
 
         private async void ExecuteCreateMatch()
         {
             if (SelectedWord == null)
             {
-                MessageBox.Show("Select a word first.");
+                MessageBox.Show(Properties.Resources.Message_wordNeeded);
                 return;
             }
 

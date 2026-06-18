@@ -495,4 +495,7 @@
   <data name="Text_playersInMatch" xml:space="preserve">
     <value>Spieler: </value>
   </data>
+  <data name="Message_wordNeeded" xml:space="preserve">
+    <value>Bitte wählen Sie ein Wort aus</value>
+  </data>
 </root>

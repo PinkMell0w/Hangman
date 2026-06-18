@@ -127,9 +127,6 @@
     <Compile Include="Views\Game\MatchPage.xaml.cs">
       <DependentUpon>MatchPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Game\MatchSettingsPage.xaml.cs">
-      <DependentUpon>MatchSettingsPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Lobby\LobbyPage.xaml.cs">
       <DependentUpon>LobbyPage.xaml</DependentUpon>
     </Compile>
@@ -218,6 +215,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.CancelMatchResponseDto.datasource" />
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.CreateMatchResponseDto.datasource" />
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.GetAvailableMatchesResponseDto.datasource" />
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.GetMatchDetailsResponseDto.datasource" />
@@ -225,6 +223,7 @@
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.ProfileResponseDto.datasource" />
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.RegisterResponseDto.datasource" />
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.SignInResponseDto1.datasource" />
+    <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.StartMatchResponseDto.datasource" />
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.UserCardResponseDto.datasource" />
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.WordResponseDto.datasource" />
     <None Include="Properties\Settings.settings">
@@ -258,10 +257,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Game\MatchPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Game\MatchSettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

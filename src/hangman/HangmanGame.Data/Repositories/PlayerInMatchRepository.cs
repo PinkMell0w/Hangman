@@ -65,6 +65,24 @@ namespace HangmanGame.Data.Repositories
             }
         }
 
+        public int GetGuesserId(int matchId)
+        {
+            const string query = @"
+                SELECT userId 
+                FROM PlayerInMatch 
+                WHERE matchId = @matchId AND role = 'GUESSER'";
+
+            SqlConnection conn = _context.GetOpenConnection();
+
+            using (SqlCommand cmd = new SqlCommand(query, conn, _context.CurrentTransaction))
+            {
+                cmd.Parameters.AddWithValue("@matchId", matchId);
+
+                object result = cmd.ExecuteScalar();
+                return result != null && result != DBNull.Value ? (int)result : 0;
+            }
+        }
+
         public void RemovePlayerFromMatch(int matchId, int userId)
         {
             const string query = @"

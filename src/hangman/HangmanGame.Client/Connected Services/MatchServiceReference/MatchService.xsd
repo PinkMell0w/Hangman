@@ -29,6 +29,7 @@
       <xs:element minOccurs="0" name="IsLocalNetwork" type="xs:boolean" />
       <xs:element minOccurs="0" name="MatchId" type="xs:int" />
       <xs:element minOccurs="0" name="MaxPlayers" type="xs:int" />
+      <xs:element minOccurs="0" name="OpponentName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -77,4 +78,32 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="JoinMatchResponseDto" nillable="true" type="tns:JoinMatchResponseDto" />
+  <xs:complexType name="StartMatchRequestDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HostId" type="xs:int" />
+      <xs:element minOccurs="0" name="MatchId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StartMatchRequestDto" nillable="true" type="tns:StartMatchRequestDto" />
+  <xs:complexType name="StartMatchResponseDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StartMatchResponseDto" nillable="true" type="tns:StartMatchResponseDto" />
+  <xs:complexType name="CancelMatchRequestDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HostId" type="xs:int" />
+      <xs:element minOccurs="0" name="MatchId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CancelMatchRequestDto" nillable="true" type="tns:CancelMatchRequestDto" />
+  <xs:complexType name="CancelMatchResponseDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CancelMatchResponseDto" nillable="true" type="tns:CancelMatchResponseDto" />
 </xs:schema>

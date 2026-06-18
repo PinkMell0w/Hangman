@@ -32,25 +32,5 @@ namespace HangmanGame.Client.Views.Game
             InitializeComponent();
             DataContext = new MatchPageViewModel(matchId);
         }
-
-        private void BtnConfigureMatch_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new MatchSettingsPage());
-        }
-
-        private void BtnStartMatch_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new GamePage());
-        }
-
-        private void BtnLeaveMatch_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new LobbyPage());
-        }
-
-        private void BtnSend_Click(object sender, RoutedEventArgs e)
-        {
-            // TODO
-        }
     }
 }

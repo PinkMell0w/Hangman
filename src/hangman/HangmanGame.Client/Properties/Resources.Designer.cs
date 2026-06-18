@@ -781,6 +781,15 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please select a word.
+        /// </summary>
+        public static string Message_wordNeeded {
+            get {
+                return ResourceManager.GetString("Message_wordNeeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Too bad! You didn’t guess the word. Better luck next time!.
         /// </summary>
         public static string Message_wordNotGuessed {

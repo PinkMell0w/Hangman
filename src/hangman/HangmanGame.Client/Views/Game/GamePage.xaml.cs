@@ -25,6 +25,11 @@ namespace HangmanGame.Client.Views.Game
             InitializeComponent();
         }
 
+        public GamePage(int matchId)
+        {
+            InitializeComponent();
+        }
+
         private void BtnLeaveMatch_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new LobbyPage());

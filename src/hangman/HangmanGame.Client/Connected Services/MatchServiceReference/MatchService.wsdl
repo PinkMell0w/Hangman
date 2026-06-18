@@ -31,6 +31,18 @@
   <wsdl:message name="IMatchService_JoinMatch_OutputMessage">
     <wsdl:part name="parameters" element="tns:JoinMatchResponse" />
   </wsdl:message>
+  <wsdl:message name="IMatchService_StartMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartMatch" />
+  </wsdl:message>
+  <wsdl:message name="IMatchService_StartMatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartMatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMatchService_CancelMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelMatch" />
+  </wsdl:message>
+  <wsdl:message name="IMatchService_CancelMatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelMatchResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMatchService">
     <wsdl:operation name="GetAvailableMatches">
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/GetAvailableMatches" message="tns:IMatchService_GetAvailableMatches_InputMessage" />
@@ -47,6 +59,14 @@
     <wsdl:operation name="JoinMatch">
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/JoinMatch" message="tns:IMatchService_JoinMatch_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchService/JoinMatchResponse" message="tns:IMatchService_JoinMatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StartMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/StartMatch" message="tns:IMatchService_StartMatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchService/StartMatchResponse" message="tns:IMatchService_StartMatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/CancelMatch" message="tns:IMatchService_CancelMatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchService/CancelMatchResponse" message="tns:IMatchService_CancelMatch_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMatchService" type="tns:IMatchService">
@@ -80,6 +100,24 @@
     </wsdl:operation>
     <wsdl:operation name="JoinMatch">
       <soap:operation soapAction="http://tempuri.org/IMatchService/JoinMatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartMatch">
+      <soap:operation soapAction="http://tempuri.org/IMatchService/StartMatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelMatch">
+      <soap:operation soapAction="http://tempuri.org/IMatchService/CancelMatch" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

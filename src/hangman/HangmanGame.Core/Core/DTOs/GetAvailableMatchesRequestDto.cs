@@ -38,6 +38,9 @@ namespace HangmanGame.Core.Core.DTOs
         public string HostName { get; set; }
 
         [DataMember]
+        public string OpponentName { get; set; }
+
+        [DataMember]
         public string Status { get; set; }
 
         [DataMember]

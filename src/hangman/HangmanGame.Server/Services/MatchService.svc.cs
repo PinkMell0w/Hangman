@@ -97,6 +97,17 @@ namespace HangmanGame.Server.Services
                 var host = userRepo.GetById(match.HostId);
                 string hostName = host?.Username ?? "Unknown";
                 var currentPlayerCount = playerInMatchRepo.GetPlayerCountByMatch(match.MatchId);
+                string opponentName = null;
+
+                if (currentPlayerCount > 1)
+                {
+                    int guesserId = playerInMatchRepo.GetGuesserId(match.MatchId);
+                    if (guesserId > 0)
+                    {
+                        var opponent = userRepo.GetById(guesserId);
+                        opponentName = opponent?.Username;
+                    }
+                }
 
                 return new GetMatchDetailsResponseDto
                 {
@@ -107,6 +118,7 @@ namespace HangmanGame.Server.Services
                         MatchId = match.MatchId,
                         HostId = match.HostId,
                         HostName = hostName,
+                        OpponentName = opponentName,
                         Status = match.Status,
                         MaxPlayers = match.maxPlayers,
                         CurrentPlayers = currentPlayerCount,
@@ -197,7 +209,7 @@ namespace HangmanGame.Server.Services
                     request.UserId,
                     "GUESSER");
 
-                matchRepo.UpdateStatus(request.MatchId, "IN_PROGRESS");
+                matchRepo.UpdateStatus(request.MatchId, "READY");
 
                 context.Commit();
 
@@ -215,6 +227,86 @@ namespace HangmanGame.Server.Services
                 {
                     Success = false,
                     Message = ex.Message
+                };
+            }
+            finally
+            {
+                context.Dispose();
+            }
+        }
+
+        public StartMatchResponseDto StartMatch(StartMatchRequestDto request)
+        {
+            if (request == null || request.MatchId <= 0)
+            {
+                return new StartMatchResponseDto { Success = false, Message = "Invalid match start request." };
+            }
+
+            var context = new DatabaseContext();
+            var matchRepo = new MatchRepository(context);
+
+            try
+            {
+                context.BeginTransaction();
+
+                matchRepo.UpdateStatus(request.MatchId, "IN_PROGRESS");
+
+                context.Commit();
+
+                return new StartMatchResponseDto
+                {
+                    Success = true,
+                    Message = "Match started successfully."
+                };
+            }
+            catch (Exception ex)
+            {
+                context.Rollback();
+
+                return new StartMatchResponseDto
+                {
+                    Success = false,
+                    Message = ex.Message
+                };
+            }
+            finally
+            {
+                context.Dispose();
+            }
+        }
+
+        public CancelMatchResponseDto CancelMatch(CancelMatchRequestDto request)
+        {
+            if (request == null || request.MatchId <= 0)
+            {
+                return new CancelMatchResponseDto { Success = false, Message = "Invalid match cancellation request." };
+            }
+
+            var context = new DatabaseContext();
+            var matchRepo = new MatchRepository(context);
+
+            try
+            {
+                context.BeginTransaction();
+
+                matchRepo.UpdateStatus(request.MatchId, "CANCELED");
+
+                context.Commit();
+
+                return new CancelMatchResponseDto
+                {
+                    Success = true,
+                    Message = "Match canceled successfully."
+                };
+            }
+            catch (Exception ex)
+            {
+                context.Rollback();
+
+                return new CancelMatchResponseDto
+                {
+                    Success = false,
+                    Message = $"Server error: {ex.Message}"
                 };
             }
             finally
