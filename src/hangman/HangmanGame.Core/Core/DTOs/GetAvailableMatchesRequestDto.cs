@@ -35,6 +35,9 @@ namespace HangmanGame.Core.Core.DTOs
         public int HostId { get; set; }
 
         [DataMember]
+        public string WordName { get; set; }
+
+        [DataMember]
         public string HostName { get; set; }
 
         [DataMember]

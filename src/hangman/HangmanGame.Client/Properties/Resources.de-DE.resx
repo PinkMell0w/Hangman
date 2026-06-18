@@ -498,4 +498,7 @@
   <data name="Message_wordNeeded" xml:space="preserve">
     <value>Bitte wählen Sie ein Wort aus</value>
   </data>
+  <data name="Keyboard_alphabet" xml:space="preserve">
+    <value>QWERTZUIOPÜASDFGHJKLÖÄYXCVBNMẞ</value>
+  </data>
 </root>

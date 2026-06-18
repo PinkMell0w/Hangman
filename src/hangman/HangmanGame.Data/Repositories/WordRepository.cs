@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace HangmanGame.Data.Repositories
 {
@@ -76,6 +77,17 @@ namespace HangmanGame.Data.Repositories
                 new SqlParameter("@difficulty", difficulty));
         }
 
+        public Word GetById(int wordId)
+        {
+            const string query = @"
+                    SELECT * FROM Word 
+                    WHERE wordId = @wordId";
+
+            var results = ExecuteWordQuery(query, new SqlParameter("@wordId", wordId));
+
+            return results.FirstOrDefault();
+        }
+
         //reuse
         private IEnumerable<Word> ExecuteWordQuery(string query, params SqlParameter[] parameters)
         {
@@ -108,5 +120,7 @@ namespace HangmanGame.Data.Repositories
                 CreatedAt = (DateTime)reader["createdAt"]
             };
         }
+
+
     }
 }

@@ -31,6 +31,7 @@
       <xs:element minOccurs="0" name="MaxPlayers" type="xs:int" />
       <xs:element minOccurs="0" name="OpponentName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WordName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="MatchDto" nillable="true" type="tns:MatchDto" />

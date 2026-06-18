@@ -592,6 +592,15 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to QWERTYUIOPASDFGHJKLZXCVBNM.
+        /// </summary>
+        public static string Keyboard_alphabet {
+            get {
+                return ResourceManager.GetString("Keyboard_alphabet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to go back? If you selected a different word, it won’t be saved.
         /// </summary>
         public static string Message_backNoSave {

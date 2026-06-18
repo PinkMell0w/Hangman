@@ -36,12 +36,12 @@
                 <Image x:Name="ImgFaceWin" Source="/Resources/Images/FaceWin.png" Stretch="None" Margin="400,0,0,0" Visibility="Hidden" />
                 <Image x:Name="ImgFaceLose" Source="/Resources/Images/FaceDead.png" Stretch="None" Margin="400,0,0,0" Visibility="Hidden" />
 
-                <Image x:Name="ImgStickHead" Source="/Resources/Images/StickHead.png" Stretch="None" Margin="400,0,0,0" Visibility="Hidden" />
-                <Image x:Name="ImgStickTorso" Source="/Resources/Images/StickTorso.png" Stretch="None" Margin="400,0,0,0" Visibility="Hidden" />
-                <Image x:Name="ImgStickArm" Source="/Resources/Images/StickArm.png" Stretch="None" Margin="400,0,0,0" Visibility="Hidden" />
-                <Image x:Name="ImgStickTwoArms" Source="/Resources/Images/StickTwoArms.png" Stretch="None" Margin="400,0,0,0" Visibility="Hidden" />
-                <Image x:Name="ImgStickLeg" Source="/Resources/Images/StickLeg.png" Stretch="None" Margin="400,0,0,0" Visibility="Hidden" />
-                <Image x:Name="ImgStickman" Source="/Resources/Images/Stickman.png" Stretch="None" Margin="400,0,0,0" Visibility="Hidden" />
+                <Image x:Name="ImgStickHead" Source="/Resources/Images/StickHead.png" Stretch="None" Margin="400,0,0,0" Visibility="{Binding HeadVisibility}" />
+                <Image x:Name="ImgStickTorso" Source="/Resources/Images/StickTorso.png" Stretch="None" Margin="400,0,0,0" Visibility="{Binding TorsoVisibility}" />
+                <Image x:Name="ImgStickArm" Source="/Resources/Images/StickArm.png" Stretch="None" Margin="400,0,0,0" Visibility="{Binding Arm1Visibility}" />
+                <Image x:Name="ImgStickTwoArms" Source="/Resources/Images/StickTwoArms.png" Stretch="None" Margin="400,0,0,0" Visibility="{Binding Arm2Visibility}" />
+                <Image x:Name="ImgStickLeg" Source="/Resources/Images/StickLeg.png" Stretch="None" Margin="400,0,0,0" Visibility="{Binding Leg1Visibility}" />
+                <Image x:Name="ImgStickman" Source="/Resources/Images/Stickman.png" Stretch="None" Margin="400,0,0,0" Visibility="{Binding StickmanVisibility}" />
             </Canvas>
 
             <TextBlock Grid.Row="1" Text="_ _ _ _ _" FontSize="32" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Center"/>
@@ -53,35 +53,23 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="380" Margin="220,50,0,0">
-                <Button Name="BtnLetterQ" Content="Q" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterW" Content="W" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterE" Content="E" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterR" Content="R" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterT" Content="T" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterY" Content="Y" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterU" Content="U" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterI" Content="I" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterO" Content="O" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterP" Content="P" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterA" Content="A" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterS" Content="S" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterD" Content="D" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterF" Content="F" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterG" Content="G" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterH" Content="H" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterJ" Content="J" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterK" Content="K" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterL" Content="L" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterÑ" Content="Ñ" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterZ" Content="Z" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterX" Content="X" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterC" Content="C" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterV" Content="V" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterB" Content="B" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterN" Content="N" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-                <Button Name="BtnLetterM" Content="M" FontSize="16" Padding="8" Margin="5" Click="BtnLetter_Click"/>
-            </WrapPanel>
+            <ItemsControl ItemsSource="{Binding KeyboardLetters}" Width="380" HorizontalAlignment="Center" Margin="220,50,0,0">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding}" 
+                                FontSize="16" 
+                                Padding="8" 
+                                Margin="5" 
+                                Command="{Binding DataContext.GuessLetterCommand, RelativeSource={RelativeSource AncestorType=Page}}" 
+                                CommandParameter="{Binding}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
 
             <Grid x:Name="GridChat" Grid.Column="1" Margin="0,0,0,10">
                 <Grid.RowDefinitions>

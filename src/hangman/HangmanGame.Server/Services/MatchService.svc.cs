@@ -86,6 +86,7 @@ namespace HangmanGame.Server.Services
             var matchRepo = new MatchRepository(context);
             var userRepo = new UserRepository(context);
             var playerInMatchRepo = new PlayerInMatchRepository(context);
+            var wordRepo = new WordRepository(context);
 
             try
             {
@@ -98,6 +99,8 @@ namespace HangmanGame.Server.Services
                 string hostName = host?.Username ?? "Unknown";
                 var currentPlayerCount = playerInMatchRepo.GetPlayerCountByMatch(match.MatchId);
                 string opponentName = null;
+                var wordRow = wordRepo.GetById(match.WordId);
+                string targetWord = wordRow != null ? wordRow.Name : "";
 
                 if (currentPlayerCount > 1)
                 {
@@ -117,6 +120,7 @@ namespace HangmanGame.Server.Services
                     {
                         MatchId = match.MatchId,
                         HostId = match.HostId,
+                        WordName = targetWord,
                         HostName = hostName,
                         OpponentName = opponentName,
                         Status = match.Status,
