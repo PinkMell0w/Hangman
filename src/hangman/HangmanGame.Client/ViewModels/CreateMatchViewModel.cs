@@ -108,11 +108,6 @@ namespace HangmanGame.Client.ViewModels
 
             var response = await Task.Run(() => _matchService.CreateMatch(request));
 
-            if (response.Success)
-            {
-                MessageBox.Show(
-                    $"Match created: {response.MatchId}");
-            }
             NavigationManager.Instance.Navigate(new MatchPage());
         }
 

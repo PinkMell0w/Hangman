@@ -142,7 +142,7 @@ namespace HangmanGame.Server.Services
                     Status = "WAITING",
                     maxPlayers = 2,
                     IsLocalNetwork = false,
-                    createdAt = DateTime.UtcNow
+                    createdAt = DateTime.Now
                 };
 
                 matchRepo.Add(match);

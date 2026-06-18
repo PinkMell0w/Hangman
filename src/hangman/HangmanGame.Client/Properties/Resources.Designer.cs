@@ -988,6 +988,15 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Players:.
+        /// </summary>
+        public static string Text_playersInMatch {
+            get {
+                return ResourceManager.GetString("Text_playersInMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Profile picture.
         /// </summary>
         public static string Text_profilePic {

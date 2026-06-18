@@ -8,9 +8,11 @@ using HangmanGame.Core.Core.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace HangmanGame.Client.ViewModels
@@ -48,6 +50,7 @@ namespace HangmanGame.Client.ViewModels
             GoToSettingsCommand = new RelayCommand(_ => GoToSettings());
             ViewProfileCommand = new RelayCommand(_ => ViewProfile());
             RefreshListCommand = new RelayCommand(_ => RefreshList());
+            LoadMatches();
             LoadUsername();
         }
 
@@ -73,12 +76,39 @@ namespace HangmanGame.Client.ViewModels
 
         private void RefreshList()
         {
-            // TODO
+            LoadMatches();
         }
 
         private void LoadUsername()
         {
             Username = SessionManager.Instance.Username;
+        }
+
+        private async void LoadMatches()
+        {
+            try
+            {
+                var request = new GetAvailableMatchesRequestDto
+                    {
+                        UserId = SessionManager.Instance.CurrentUserId
+                    };
+
+                var response = await Task.Run(() => _matchService.GetAvailableMatches(request));
+
+                if (response.Success)
+                {
+                    Matches = new ObservableCollection<MatchDto>(response.AvailableMatches);
+                }
+
+                foreach (var match in response.AvailableMatches)
+                {
+                    MessageBox.Show(match.CreatedAt.ToString("O"));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

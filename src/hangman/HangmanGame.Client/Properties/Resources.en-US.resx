@@ -492,4 +492,7 @@
   <data name="Button_refresh" xml:space="preserve">
     <value>Refresh</value>
   </data>
+  <data name="Text_playersInMatch" xml:space="preserve">
+    <value>Players: </value>
+  </data>
 </root>
