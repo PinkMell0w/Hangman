@@ -1,4 +1,5 @@
-﻿using HangmanGame.Client.Views.Game;
+﻿using HangmanGame.Client.ViewModels;
+using HangmanGame.Client.Views.Game;
 using HangmanGame.Client.Views.Settings;
 using System;
 using System.Collections.Generic;
@@ -25,26 +26,7 @@ namespace HangmanGame.Client.Views.MatchesList
         public MatchesListPage()
         {
             InitializeComponent();
-        }
-
-        private void BtnGoBack_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.GoBack();
-        }
-
-        private void BtnSettings_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new SettingsPage());
-        }
-
-        private void BtnProfile_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new ProfilePage());
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new MatchPage());
+            DataContext = new MatchesListViewModel();
         }
     }
 }

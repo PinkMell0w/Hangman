@@ -277,6 +277,15 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Refresh.
+        /// </summary>
+        public static string Button_refresh {
+            get {
+                return ResourceManager.GetString("Button_refresh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resend code.
         /// </summary>
         public static string Button_resendCode {

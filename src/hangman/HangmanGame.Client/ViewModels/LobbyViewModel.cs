@@ -2,6 +2,7 @@
 using HangmanGame.Client.Helpers;
 using HangmanGame.Client.Views;
 using HangmanGame.Client.Views.CreateMatch;
+using HangmanGame.Client.Views.MatchesList;
 using HangmanGame.Client.Views.Settings;
 using HangmanGame.Client.Views.SignUp;
 using System;
@@ -39,7 +40,6 @@ namespace HangmanGame.Client.ViewModels
             JoinMatchCommand = new RelayCommand(_ => JoinMatch());
 
             ProfileCommand = new RelayCommand(_ => OpenProfile());
-            FriendsCommand = new RelayCommand(_ => OpenFriends());
             SettingsCommand = new RelayCommand(_ => OpenSettings());
 
             LogOutCommand = new RelayCommand(_ => LogOut());
@@ -52,19 +52,12 @@ namespace HangmanGame.Client.ViewModels
 
         private void JoinMatch()
         {
-            // NavigationManager.Instance.Navigate(new JoinMatchPage());
-            MessageBox.Show("Join Match not implemented yet");
+            NavigationManager.Instance.Navigate(new MatchesListPage());
         }
 
         private void OpenProfile()
         {
             NavigationManager.Instance.Navigate(new ProfilePage());
-        }
-
-        private void OpenFriends()
-        {
-            // NavigationManager.Instance.Navigate(new FriendsPage());
-            MessageBox.Show("Friends not implemented yet");
         }
 
         private void OpenSettings()

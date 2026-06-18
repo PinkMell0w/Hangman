@@ -25,7 +25,7 @@ namespace HangmanGame.Client.Views.CreateMatch
         public CreateMatchPage()
         {
             InitializeComponent();
-            DataContext = new CreateMatchPageViewModel();
+            DataContext = new CreateMatchViewModel();
         }
     }
 }

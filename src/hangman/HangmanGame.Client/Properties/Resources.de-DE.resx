@@ -489,4 +489,7 @@
   <data name="Text_useSystemDefault" xml:space="preserve">
     <value>Systemstandard verwenden</value>
   </data>
+  <data name="Button_refresh" xml:space="preserve">
+    <value>Aktualisieren</value>
+  </data>
 </root>

@@ -489,4 +489,7 @@
   <data name="Text_useSystemDefault" xml:space="preserve">
     <value>Usar idioma por defecto</value>
   </data>
+  <data name="Button_refresh" xml:space="preserve">
+    <value>Refrescar</value>
+  </data>
 </root>

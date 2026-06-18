@@ -18,7 +18,7 @@ using System.Windows.Input;
 
 namespace HangmanGame.Client.ViewModels
 {
-    internal class CreateMatchPageViewModel : BaseViewModel
+    internal class CreateMatchViewModel : BaseViewModel
     {
         private readonly WordServiceClient _wordService;
         private readonly MatchServiceClient _matchService;
@@ -50,7 +50,7 @@ namespace HangmanGame.Client.ViewModels
         public ICommand SelectWordCommand { get; }
         public ICommand SelectCategoryCommand { get; }
 
-        public CreateMatchPageViewModel()
+        public CreateMatchViewModel()
         {
             _wordService = new WordServiceClient();
             _matchService = new MatchServiceClient();
