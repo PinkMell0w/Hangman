@@ -177,13 +177,16 @@ namespace HangmanGame.Server.Services
         {
             var context = new DatabaseContext();
             var playerRepo = new PlayerInMatchRepository(context);
+            var matchRepo = new MatchRepository(context);
 
             if (playerRepo.GetPlayerCountByMatch(request.MatchId) >= 2)
-                new JoinMatchResponseDto
+            {
+                return new JoinMatchResponseDto
                 {
                     Success = false,
                     Message = "Match is full."
                 };
+            }
 
             try
             {
@@ -193,6 +196,8 @@ namespace HangmanGame.Server.Services
                     request.MatchId,
                     request.UserId,
                     "GUESSER");
+
+                matchRepo.UpdateStatus(request.MatchId, "IN_PROGRESS");
 
                 context.Commit();
 

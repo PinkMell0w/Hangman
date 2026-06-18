@@ -126,11 +126,6 @@ namespace HangmanGame.Client.ViewModels
                 {
                     Matches = new ObservableCollection<MatchDto>(response.AvailableMatches);
                 }
-
-                foreach (var match in response.AvailableMatches)
-                {
-                    MessageBox.Show(match.CreatedAt.ToString("O"));
-                }
             }
             catch (Exception ex)
             {
