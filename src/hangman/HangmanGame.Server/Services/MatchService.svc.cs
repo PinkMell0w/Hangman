@@ -139,6 +139,7 @@ namespace HangmanGame.Server.Services
                 var match = new Match
                 {
                     HostId = request.HostId,
+                    WordId = request.WordId,
                     Status = "WAITING",
                     maxPlayers = 2,
                     IsLocalNetwork = false,

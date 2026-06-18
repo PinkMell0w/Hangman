@@ -23,7 +23,7 @@ namespace HangmanGame.Data.Repositories
                 SELECT m.matchId, m.hostId, m.wordId, m.[status], m.maxPlayers, m.isLocalNetwork, m.createdAt, m.finishedAt
                 FROM [Match] m
                 WHERE m.[status] = 'WAITING'
-                AND m.createdAt > DATEADD(hour, -1, GETUTCDATE())
+                AND m.createdAt > DATEADD(hour, -1, GETDATE())
                 ORDER BY m.createdAt DESC";
 
             SqlConnection conn = _context.GetOpenConnection();

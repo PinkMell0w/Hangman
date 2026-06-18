@@ -3,6 +3,7 @@ using HangmanGame.Client.Helpers;
 using HangmanGame.Client.MatchServiceReference;
 using HangmanGame.Client.UserServiceReference;
 using HangmanGame.Client.Views;
+using HangmanGame.Client.Views.Game;
 using HangmanGame.Client.Views.Settings;
 using HangmanGame.Core.Core.DTOs;
 using System;
@@ -45,7 +46,7 @@ namespace HangmanGame.Client.ViewModels
         public MatchesListViewModel()
         {
             _matchService = new MatchServiceClient();
-            JoinMatchCommand = new RelayCommand(_ => JoinMatch());
+            JoinMatchCommand = new RelayCommand(JoinMatch);
             GoBackCommand = new RelayCommand(_ => GoToLobby());
             GoToSettingsCommand = new RelayCommand(_ => GoToSettings());
             ViewProfileCommand = new RelayCommand(_ => ViewProfile());
@@ -54,9 +55,35 @@ namespace HangmanGame.Client.ViewModels
             LoadUsername();
         }
 
-        private void JoinMatch()
+        private void JoinMatch(object parameter)
         {
-            // TODO
+            try
+            {
+                if (parameter == null)
+                    return;
+
+                int matchId = (int)parameter;
+
+                var request = new JoinMatchRequestDto
+                {
+                    MatchId = matchId,
+                    UserId = SessionManager.Instance.CurrentUserId
+                };
+
+                var response = _matchService.JoinMatch(request);
+
+                if (!response.Success)
+                {
+                    MessageBox.Show(response.Message);
+                    return;
+                }
+
+                NavigationManager.Instance.Navigate(new MatchPage(matchId));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void GoToLobby()

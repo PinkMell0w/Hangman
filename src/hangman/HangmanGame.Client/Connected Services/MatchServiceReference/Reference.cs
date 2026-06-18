@@ -32,6 +32,12 @@ namespace HangmanGame.Client.MatchServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/CreateMatch", ReplyAction="http://tempuri.org/IMatchService/CreateMatchResponse")]
         System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.CreateMatchResponseDto> CreateMatchAsync(HangmanGame.Core.Core.DTOs.CreateMatchRequestDto request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/JoinMatch", ReplyAction="http://tempuri.org/IMatchService/JoinMatchResponse")]
+        HangmanGame.Core.Core.DTOs.JoinMatchResponseDto JoinMatch(HangmanGame.Core.Core.DTOs.JoinMatchRequestDto request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/JoinMatch", ReplyAction="http://tempuri.org/IMatchService/JoinMatchResponse")]
+        System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.JoinMatchResponseDto> JoinMatchAsync(HangmanGame.Core.Core.DTOs.JoinMatchRequestDto request);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,6 +89,14 @@ namespace HangmanGame.Client.MatchServiceReference {
         
         public System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.CreateMatchResponseDto> CreateMatchAsync(HangmanGame.Core.Core.DTOs.CreateMatchRequestDto request) {
             return base.Channel.CreateMatchAsync(request);
+        }
+        
+        public HangmanGame.Core.Core.DTOs.JoinMatchResponseDto JoinMatch(HangmanGame.Core.Core.DTOs.JoinMatchRequestDto request) {
+            return base.Channel.JoinMatch(request);
+        }
+        
+        public System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.JoinMatchResponseDto> JoinMatchAsync(HangmanGame.Core.Core.DTOs.JoinMatchRequestDto request) {
+            return base.Channel.JoinMatchAsync(request);
         }
     }
 }

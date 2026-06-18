@@ -11,5 +11,20 @@ namespace HangmanGame.Client.ViewModels
     {
         public bool IsHost { get; set; }
         public Visibility HostControlsVisibility => IsHost ? Visibility.Visible : Visibility.Collapsed;
+
+        public MatchPageViewModel()
+        {
+            IsHost = true;
+        }
+
+        public MatchPageViewModel(int matchId)
+        {
+            LoadMatch(matchId);
+        }
+
+        private void LoadMatch(int matchId)
+        {
+            // TODO
+        }
     }
 }

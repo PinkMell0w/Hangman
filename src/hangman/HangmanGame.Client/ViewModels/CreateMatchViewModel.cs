@@ -108,7 +108,15 @@ namespace HangmanGame.Client.ViewModels
 
             var response = await Task.Run(() => _matchService.CreateMatch(request));
 
-            NavigationManager.Instance.Navigate(new MatchPage());
+            if (response.Success)
+            {
+                NavigationManager.Instance.Navigate(new MatchPage(response.MatchId));
+            }
+            else
+            {
+                MessageBox.Show("Failed to create match.");
+            }
+            
         }
 
         private void SelectWord(object parameter)

@@ -221,6 +221,7 @@
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.CreateMatchResponseDto.datasource" />
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.GetAvailableMatchesResponseDto.datasource" />
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.GetMatchDetailsResponseDto.datasource" />
+    <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.JoinMatchResponseDto.datasource" />
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.ProfileResponseDto.datasource" />
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.RegisterResponseDto.datasource" />
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.SignInResponseDto1.datasource" />

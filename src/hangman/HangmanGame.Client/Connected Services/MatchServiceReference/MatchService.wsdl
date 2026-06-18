@@ -25,6 +25,12 @@
   <wsdl:message name="IMatchService_CreateMatch_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateMatchResponse" />
   </wsdl:message>
+  <wsdl:message name="IMatchService_JoinMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinMatch" />
+  </wsdl:message>
+  <wsdl:message name="IMatchService_JoinMatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:JoinMatchResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMatchService">
     <wsdl:operation name="GetAvailableMatches">
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/GetAvailableMatches" message="tns:IMatchService_GetAvailableMatches_InputMessage" />
@@ -37,6 +43,10 @@
     <wsdl:operation name="CreateMatch">
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/CreateMatch" message="tns:IMatchService_CreateMatch_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchService/CreateMatchResponse" message="tns:IMatchService_CreateMatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="JoinMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/JoinMatch" message="tns:IMatchService_JoinMatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchService/JoinMatchResponse" message="tns:IMatchService_JoinMatch_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMatchService" type="tns:IMatchService">
@@ -61,6 +71,15 @@
     </wsdl:operation>
     <wsdl:operation name="CreateMatch">
       <soap:operation soapAction="http://tempuri.org/IMatchService/CreateMatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JoinMatch">
+      <soap:operation soapAction="http://tempuri.org/IMatchService/JoinMatch" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

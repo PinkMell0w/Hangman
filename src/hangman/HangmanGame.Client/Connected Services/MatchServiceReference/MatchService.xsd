@@ -63,4 +63,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CreateMatchResponseDto" nillable="true" type="tns:CreateMatchResponseDto" />
+  <xs:complexType name="JoinMatchRequestDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MatchId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="JoinMatchRequestDto" nillable="true" type="tns:JoinMatchRequestDto" />
+  <xs:complexType name="JoinMatchResponseDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="JoinMatchResponseDto" nillable="true" type="tns:JoinMatchResponseDto" />
 </xs:schema>

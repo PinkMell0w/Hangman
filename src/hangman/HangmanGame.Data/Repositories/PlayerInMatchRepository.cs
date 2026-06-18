@@ -64,5 +64,23 @@ namespace HangmanGame.Data.Repositories
                 return 0;
             }
         }
+
+        public void RemovePlayerFromMatch(int matchId, int userId)
+        {
+            const string query = @"
+                DELETE FROM PlayerInMatch
+                WHERE matchId = @matchId
+                AND userId = @userId";
+
+            SqlConnection conn = _context.GetOpenConnection();
+
+            using (SqlCommand cmd = new SqlCommand(query, conn, _context.CurrentTransaction))
+            {
+                cmd.Parameters.AddWithValue("@matchId", matchId);
+                cmd.Parameters.AddWithValue("@userId", userId);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }
