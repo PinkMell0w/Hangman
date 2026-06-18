@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HangmanGame.Client.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,34 +21,10 @@ namespace HangmanGame.Client.Views.Game
     /// </summary>
     public partial class GamePage : Page
     {
-        public GamePage()
+        public GamePage(int matchId, bool isHost)
         {
             InitializeComponent();
-        }
-
-        public GamePage(int matchId)
-        {
-            InitializeComponent();
-        }
-
-        private void BtnLeaveMatch_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new LobbyPage());
-        }
-
-        private void BtnKickPlayer_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new LobbyPage());
-        }
-
-        private void BtnLetter_Click(object sender, RoutedEventArgs e)
-        {
-            // TODO
-        }
-
-        private void BtnSend_Click(object sender, RoutedEventArgs e)
-        {
-            // TODO
+            DataContext = new GamePageViewModel(matchId, isHost);
         }
     }
 }

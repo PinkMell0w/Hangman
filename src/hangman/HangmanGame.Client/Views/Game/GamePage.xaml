@@ -4,9 +4,10 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HangmanGame.Client.Views.Game"
+      xmlns:props="clr-namespace:HangmanGame.Client.Properties"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="900"
-      Title="GamePage">
+      Title="{x:Static props:Resources.Title_game}">
 
     <Grid>
         <Grid.Background>
@@ -19,8 +20,8 @@
         </Grid.RowDefinitions>
 
         <Grid Margin="10,10,10,0">
-            <Button Name="BtnLeaveMatch" Content="Abandonar partida" FontSize="16" Padding="8" Click="BtnLeaveMatch_Click" HorizontalAlignment="Left"/>
-            <Button Name="BtnKickPlayer" Content="Expulsar jugador" FontSize="16" Padding="8" Click="BtnKickPlayer_Click" HorizontalAlignment="Left" Height="39" Margin="745,0,0,0" VerticalAlignment="Bottom"/>
+            <Button Name="BtnLeaveMatch" Content="{x:Static props:Resources.Button_leaveMatch}" FontSize="16" Padding="8" Command="{Binding LeaveMatchCommand}" HorizontalAlignment="Left"/>
+            <Button Name="BtnKickPlayer" Content="{x:Static props:Resources.Button_kickPlayer}" FontSize="16" Padding="8" Command="{Binding KickPlayerCommand}" HorizontalAlignment="Left" Height="39" Margin="745,0,0,0" VerticalAlignment="Bottom"/>
         </Grid>
 
         <Grid Grid.Row="1">
@@ -85,8 +86,8 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
-                    <TextBox x:Name="TxtMensaje" Text="Escribe tu mensaje aquí..." Grid.Column="0" Margin="10,0,10,0" Padding="5" Foreground="#FFA2A2A2" />
-                    <Button x:Name="BtnSend" Grid.Column="1" Content="Enviar" Click="BtnSend_Click" Padding="10" Margin="0,0,10,0"/>
+                    <TextBox x:Name="TxtMensaje" Text="{x:Static props:Resources.Text_chatPrompt}" Grid.Column="0" Margin="10,0,10,0" Padding="5" Foreground="#FFA2A2A2" />
+                    <Button x:Name="BtnSend" Grid.Column="1" Content="{x:Static props:Resources.Button_send}" Command="{Binding SendMessageCommand}" Padding="10" Margin="0,0,10,0"/>
                 </Grid>
             </Grid>
         </Grid>

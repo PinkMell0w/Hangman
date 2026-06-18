@@ -30,6 +30,7 @@ namespace HangmanGame.Client.ViewModels
         private string _selectedCategory;
 
         private bool _isHost { get; set; }
+        private string _hostName { get; set; }
         private string _opponentName { get; set; }
         private int _matchId { get; set; }
         private DispatcherTimer _lobbyTimer { get; set; }
@@ -63,6 +64,12 @@ namespace HangmanGame.Client.ViewModels
                 OnPropertyChanged(nameof(HostControlsVisibility));
                 OnPropertyChanged(nameof(IsNotHost));
             }
+        }
+
+        public string HostName
+        {
+            get => _hostName;
+            set { _hostName = value; OnPropertyChanged(); }
         }
 
         public string OpponentName
@@ -103,19 +110,24 @@ namespace HangmanGame.Client.ViewModels
         public ICommand KickPlayerCommand { get; private set; }
         public ICommand SaveChangesCommand { get; private set; }
 
-        public MatchPageViewModel()
+        public MatchPageViewModel(int matchId, bool isHost)
         {
             InitializeCommands();
             _matchService = new MatchServiceClient();
+            _wordService = new WordServiceClient();
 
-            IsHost = true;
-            OpponentName = Properties.Resources.Text_awaitingOpponent;
-        }
+            IsHost = isHost;
 
-        public MatchPageViewModel(int matchId)
-        {
-            InitializeCommands();
-            _matchService = new MatchServiceClient();
+            if (IsHost)
+            {
+                HostName = Properties.Resources.Text_you;
+                OpponentName = Properties.Resources.Text_awaitingOpponent;
+            }
+            else
+            {
+                HostName = "...";
+                OpponentName = Properties.Resources.Text_you;
+            }
 
             LoadMatch(matchId);
         }
@@ -153,9 +165,13 @@ namespace HangmanGame.Client.ViewModels
                 {
                     if (IsHost)
                     {
-                        if (!string.IsNullOrEmpty(response.Match.OpponentName))
+                        HostName = Properties.Resources.Text_you;
+
+                        string guesserName = response.Match.OpponentName?.Trim();
+
+                        if (!string.IsNullOrEmpty(guesserName))
                         {
-                            OpponentName = response.Match.OpponentName;
+                            OpponentName = guesserName;
                         }
                         else
                         {
@@ -164,11 +180,14 @@ namespace HangmanGame.Client.ViewModels
                     }
                     else
                     {
-                        if (response.Match.Status == "IN_PROGRESS")
-                        {
-                            _lobbyTimer.Stop();
-                            NavigationManager.Instance.Navigate(new GamePage(MatchId));
-                        }
+                        HostName = response.Match.HostName;
+                        OpponentName = response.Match.HostName;
+                    }
+
+                    if (!IsHost && response.Match.Status == "IN_PROGRESS")
+                    {
+                        _lobbyTimer.Stop();
+                        NavigationManager.Instance.Navigate(new GamePage(MatchId, false));
                     }
                 }
             }
@@ -190,7 +209,20 @@ namespace HangmanGame.Client.ViewModels
 
         private void StartMatch()
         {
-            // TODO
+            try
+            {
+                var request = new StartMatchRequestDto { MatchId = this.MatchId };
+                var response = _matchService.StartMatch(request);
+
+                if (response.Success)
+                {
+                    NavigationManager.Instance.Navigate(new GamePage(MatchId, true));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error starting match: {ex.Message}");
+            }
         }
 
         private void LeaveMatch()

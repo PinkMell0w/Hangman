@@ -98,7 +98,7 @@
 
                 <StackPanel Grid.Column="0" HorizontalAlignment="Center">
                     <Image Source="/Resources/Images/PlayerPfp.png" Margin="0,20,0,0" Width="180"/>
-                    <TextBlock Text="{x:Static props:Resources.Text_you}" FontFamily="Ink Free" FontWeight="Bold" FontSize="16" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+                    <TextBlock Text="{Binding HostName}" FontFamily="Ink Free" FontWeight="Bold" FontSize="16" Margin="0,10,0,0" HorizontalAlignment="Center"/>
                 </StackPanel>
 
                 <TextBlock Grid.Column="1" Text="VS" FontFamily="Ink Free" FontWeight="Bold" FontSize="80" Margin="60,65,60,0"/>

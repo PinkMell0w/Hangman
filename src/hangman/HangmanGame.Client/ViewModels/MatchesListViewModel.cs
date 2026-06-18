@@ -78,7 +78,7 @@ namespace HangmanGame.Client.ViewModels
                     return;
                 }
 
-                NavigationManager.Instance.Navigate(new MatchPage(matchId));
+                NavigationManager.Instance.Navigate(new MatchPage(matchId, false));
             }
             catch (Exception ex)
             {

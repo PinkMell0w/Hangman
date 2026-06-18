@@ -21,16 +21,10 @@ namespace HangmanGame.Client.Views.Game
     /// </summary>
     public partial class MatchPage : Page
     {
-        public MatchPage()
+        public MatchPage(int matchId, bool isHost)
         {
             InitializeComponent();
-            DataContext = new MatchPageViewModel();
-        }
-
-        public MatchPage(int matchId)
-        {
-            InitializeComponent();
-            DataContext = new MatchPageViewModel(matchId);
+            this.DataContext = new MatchPageViewModel(matchId, isHost);
         }
     }
 }

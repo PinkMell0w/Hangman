@@ -499,6 +499,6 @@
     <value>Por favor selecciona una palabra</value>
   </data>
   <data name="Keyboard_alphabet" xml:space="preserve">
-    <value>QWERTYUIOPASDFGHJKLÑZXCVBNM</value>
+    <value>QWERTYUIOPASDFGHJKLÑZXCVBNMÁÉÍÓÚ</value>
   </data>
 </root>

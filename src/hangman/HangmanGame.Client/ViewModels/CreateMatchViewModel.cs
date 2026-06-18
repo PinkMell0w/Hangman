@@ -119,7 +119,7 @@ namespace HangmanGame.Client.ViewModels
 
             if (response.Success)
             {
-                NavigationManager.Instance.Navigate(new MatchPage(response.MatchId));
+                NavigationManager.Instance.Navigate(new MatchPage(response.MatchId, true));
             }
             else
             {
