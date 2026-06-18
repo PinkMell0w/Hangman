@@ -43,7 +43,7 @@ namespace HangmanGame.Data.Repositories
         {
             const string query = @"
                     SELECT * FROM Word 
-                    WHERE language = @lang
+                    WHERE language = @language
                     AND category = @category
                     ORDER BY difficulty";
 
