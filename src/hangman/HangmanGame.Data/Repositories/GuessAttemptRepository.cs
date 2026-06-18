@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace HangmanGame.Data.Repositories
 {
-    internal class GuessAttemptRepository : IMatchRepository
+    public class GuessAttemptRepository : IMatchRepository
     {
         private readonly DatabaseContext _context;
 

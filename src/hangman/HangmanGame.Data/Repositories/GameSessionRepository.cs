@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace HangmanGame.Data.Repositories
 {
-    internal class GameSessionRepository : IMatchRepository
+    public class GameSessionRepository : IMatchRepository
     {
         private readonly DatabaseContext _context;
 
@@ -20,7 +20,7 @@ namespace HangmanGame.Data.Repositories
             _context = context;
         }
 
-        public void Add(GameSession session)
+        public void AddGameSession(GameSession session)
         {
             const string query = @"
                 INSERT INTO [GameSession] (matchId, wordId)

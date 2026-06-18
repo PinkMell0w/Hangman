@@ -216,8 +216,6 @@ namespace HangmanGame.Server.Services
                     request.UserId,
                     "GUESSER");
 
-                matchRepo.UpdateStatus(request.MatchId, "READY");
-
                 context.Commit();
 
                 return new JoinMatchResponseDto
@@ -253,6 +251,7 @@ namespace HangmanGame.Server.Services
             var matchRepo = new MatchRepository(context);
             var wordRepo = new WordRepository(context);
             var playerRepo = new PlayerInMatchRepository(context);
+            var sessionRepo = new GameSessionRepository(context);
 
             try
             {
@@ -265,10 +264,20 @@ namespace HangmanGame.Server.Services
 
                 int guesserUserId = playerRepo.GetGuesserId(request.MatchId);
 
+                var session = new GameSession
+                {
+                    MatchId = match.MatchId,
+                    WordId = match.WordId
+                };
+
+                sessionRepo.AddGameSession(session);
+
                 string blankSpaces = string.Join(" ", Enumerable.Repeat("_", secretWord.Length));
 
                 var freshGameState = new LiveGameRuntimeState
                 {
+                    SessionId = session.SessionId,
+                    GuesserUserId = guesserUserId,
                     MaskedWord = blankSpaces,
                     HangmanStage = 0,
                     CurrentTurn = "GUESSER",
@@ -369,8 +378,20 @@ namespace HangmanGame.Server.Services
 
         public void SubmitHostValidation(int matchId, bool isCorrect, string manualUpdatedMaskedWord)
         {
-            if (ActiveGames.TryGetValue(matchId, out var state))
+            if (!ActiveGames.TryGetValue(matchId, out var state))
             {
+                return;
+            }
+
+            var context = new DatabaseContext();
+            var attemptRepo = new GuessAttemptRepository(context);
+            var sessionRepo = new GameSessionRepository(context);
+            var matchRepo = new MatchRepository(context);
+
+            try
+            {
+                context.BeginTransaction();
+
                 if (isCorrect)
                 {
                     state.MaskedWord = manualUpdatedMaskedWord;
@@ -390,10 +411,40 @@ namespace HangmanGame.Server.Services
                     }
                 }
 
-                if (state.MatchStatus == "PLAYING")
+                var attempt = new GuessAttempt
+                {
+                    SessionId = state.SessionId,
+                    UserId = state.GuesserUserId,
+                    Letter = state.LastGuessedLetter,
+                    IsCorrect = isCorrect
+                };
+
+                attemptRepo.AddGuessAttempt(attempt);
+
+                if (state.MatchStatus == "WON" || state.MatchStatus == "LOST")
+                {
+                    int? winnerId = (state.MatchStatus == "WON") ? (int?)state.GuesserUserId : null;
+
+                    sessionRepo.FinalizeSession(state.SessionId, state.MatchStatus, state.HangmanStage, winnerId);
+
+                    matchRepo.UpdateStatus(matchId, state.MatchStatus);
+                }
+                else
                 {
                     state.CurrentTurn = "GUESSER";
                 }
+
+                context.Commit();
+            }
+            catch (Exception ex)
+            {
+                context.Rollback();
+                Debug.WriteLine($"SubmitHostValidation error: {ex.Message}");
+                throw;
+            }
+            finally
+            {
+                context.Dispose();
             }
         }
 
