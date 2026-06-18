@@ -172,6 +172,51 @@ namespace HangmanGame.Server.Services
             }
         }
 
+        public JoinMatchResponseDto JoinMatch(JoinMatchRequestDto request)
+        {
+            var context = new DatabaseContext();
+            var playerRepo = new PlayerInMatchRepository(context);
+
+            if (playerRepo.GetPlayerCountByMatch(request.MatchId) >= 2)
+                new JoinMatchResponseDto
+                {
+                    Success = false,
+                    Message = "Match is full."
+                };
+
+            try
+            {
+                context.BeginTransaction();
+
+                playerRepo.AddPlayerToMatch(
+                    request.MatchId,
+                    request.UserId,
+                    "GUESSER");
+
+                context.Commit();
+
+                return new JoinMatchResponseDto
+                {
+                    Success = true,
+                    Message = "Joined match successfully."
+                };
+            }
+            catch (Exception ex)
+            {
+                context.Rollback();
+
+                return new JoinMatchResponseDto
+                {
+                    Success = false,
+                    Message = ex.Message
+                };
+            }
+            finally
+            {
+                context.Dispose();
+            }
+        }
+
         private static GetMatchDetailsResponseDto FailDetails(string message) =>
             new GetMatchDetailsResponseDto
             {
