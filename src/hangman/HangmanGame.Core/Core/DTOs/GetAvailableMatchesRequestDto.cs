@@ -9,6 +9,7 @@ namespace HangmanGame.Core.Core.DTOs
     {
         [DataMember]
         public int UserId { get; set; }
+        public string Language { get; set; }
     }
 
     [DataContract]

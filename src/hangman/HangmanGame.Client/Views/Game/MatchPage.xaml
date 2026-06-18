@@ -19,7 +19,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Button Name="BtnConfigureMatch" Content="Configurar partida" HorizontalAlignment="Left" Margin="10" Padding="5" Click="BtnConfigureMatch_Click" />
+        <Button Name="BtnConfigureMatch" Content="{x:Static props:Resources.Button_matchSettings}" Visibility="{Binding HostControlsVisibility}" HorizontalAlignment="Left" Margin="10" Padding="5" Click="BtnConfigureMatch_Click" />
 
         <Grid Grid.Row="1" HorizontalAlignment="Center" Margin="0,40,0,0">
             <Grid.ColumnDefinitions>
@@ -30,14 +30,14 @@
 
             <StackPanel Grid.Column="0" HorizontalAlignment="Center">
                 <Image Source="/Resources/Images/PlayerPfp.png" Margin="0,20,0,0" Width="180"/>
-                <TextBlock Text="Tú" FontFamily="Ink Free" FontWeight="Bold" FontSize="16" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+                <TextBlock Text="{x:Static props:Resources.Text_you}" FontFamily="Ink Free" FontWeight="Bold" FontSize="16" Margin="0,10,0,0" HorizontalAlignment="Center"/>
             </StackPanel>
 
             <TextBlock Grid.Column="1" Text="VS" FontFamily="Ink Free" FontWeight="Bold" FontSize="80" Margin="60,65,60,0"/>
 
             <StackPanel Grid.Column="2" HorizontalAlignment="Center">
                 <Image Source="/Resources/Images/NoOpponent.png" Margin="0,20,0,0" Width="180"/>
-                <TextBlock Text="Esperando oponente" FontFamily="Ink Free" FontWeight="Bold" FontSize="16" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+                <TextBlock Text="{x:Static props:Resources.Text_awaitingOpponent}" FontFamily="Ink Free" FontWeight="Bold" FontSize="16" Margin="0,10,0,0" HorizontalAlignment="Center"/>
             </StackPanel>
         </Grid>
 
@@ -48,9 +48,9 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Name="BtnLeaveMatch" Grid.Column="0" Content="Abandonar partida" HorizontalAlignment="Left" Margin="10" Padding="5" Click="BtnLeaveMatch_Click" Height="40" VerticalAlignment="Bottom" />
+            <Button Name="BtnLeaveMatch" Grid.Column="0" Content="{x:Static props:Resources.Button_leaveMatch}" Visibility="{Binding HostControlsVisibility}" HorizontalAlignment="Left" Margin="10" Padding="5" Click="BtnLeaveMatch_Click" Height="40" VerticalAlignment="Bottom" />
 
-            <Button Name="BtnStartMatch" Grid.Column="1" Content="Comenzar partida" FontSize="18" HorizontalAlignment="Center" Margin="10" Padding="10" Click="BtnStartMatch_Click" Height="60" />
+            <Button Name="BtnStartMatch" Grid.Column="1" Content="{x:Static props:Resources.Button_startMatch}" FontSize="18" HorizontalAlignment="Center" Margin="10" Padding="10" Click="BtnStartMatch_Click" Height="60" />
 
             <Grid x:Name="GridChat" Grid.Column="2" Margin="0,10,10,10">
                 <Grid.RowDefinitions>
@@ -66,8 +66,8 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
-                    <TextBox x:Name="TxtMensaje" Text="Escribe tu mensaje aquí..." Grid.Column="0" Margin="0,0,10,0" Padding="5" Foreground="#FFA2A2A2" />
-                    <Button x:Name="BtnSend" Grid.Column="1" Content="Enviar" Click="BtnSend_Click" Padding="10" />
+                    <TextBox x:Name="TxtMensaje" Text="{x:Static props:Resources.Text_chatPrompt}" Grid.Column="0" Margin="0,0,10,0" Padding="5" Foreground="#FFA2A2A2" />
+                    <Button x:Name="BtnSend" Grid.Column="1" Content="{x:Static props:Resources.Button_send}" Click="BtnSend_Click" Padding="10" />
                 </Grid>
             </Grid>
         </Grid>

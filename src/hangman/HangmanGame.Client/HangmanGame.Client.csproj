@@ -113,6 +113,7 @@
     <Compile Include="ViewModels\CreateMatchPageViewModel.cs" />
     <Compile Include="ViewModels\LobbyViewModel.cs" />
     <Compile Include="ViewModels\LogInViewModel.cs" />
+    <Compile Include="ViewModels\MatchPageViewModel.cs" />
     <Compile Include="ViewModels\ProfilePageViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\SignUpViewModel.cs" />

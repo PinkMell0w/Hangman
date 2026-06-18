@@ -16,18 +16,20 @@ namespace HangmanGame.Data.Repositories
             _context = context;
         }
 
-        public void AddPlayerToMatch(int matchId, int userId)
+        public void AddPlayerToMatch(int matchId, int userId, string role)
         {
             const string query = @"
                 INSERT INTO PlayerInMatch
                     (
                         matchId,
-                        userId
+                        userId,
+                        role
                     )
                 VALUES
                     (
                         @matchId,
-                        @userId
+                        @userId,
+                        @role
                 )";
 
             SqlConnection conn = _context.GetOpenConnection();
@@ -36,6 +38,7 @@ namespace HangmanGame.Data.Repositories
             {
                 cmd.Parameters.AddWithValue("@matchId", matchId);
                 cmd.Parameters.AddWithValue("@userId", userId);
+                cmd.Parameters.AddWithValue("@role", role);
 
                 cmd.ExecuteNonQuery();
             }

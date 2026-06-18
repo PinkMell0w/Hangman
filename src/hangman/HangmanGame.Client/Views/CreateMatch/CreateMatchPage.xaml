@@ -26,13 +26,13 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             
-            <TextBlock Text="Selecciona una categoría" FontSize="26" FontFamily="Ink Free" FontWeight="Bold" />
+            <TextBlock Text="{x:Static props:Resources.Text_selectCategory}" FontSize="26" FontFamily="Ink Free" FontWeight="Bold" />
             <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="10,10,10,0" HorizontalAlignment="Center">
-                <Button Content="Animales" Padding="10" Margin="0,0,10,0" FontSize="24" Width="140" />
-                <Button Content="Frutas" Padding="10" Margin="0,0,10,0" FontSize="24" Width="140" />
-                <Button Content="Colores" Padding="10" Margin="0,0,10,0" FontSize="24" Width="140" />
-                <Button Content="Objetos" Padding="10" Margin="0,0,10,0" FontSize="24" Width="140" />
-                <Button Content="Países" Padding="10" FontSize="24" Width="140" />
+                <Button Content="{x:Static props:Resources.Text_catAnimals}" Padding="10" Margin="0,0,10,0" FontSize="24" Width="140" />
+                <Button Content="{x:Static props:Resources.Text_catFruits}" Padding="10" Margin="0,0,10,0" FontSize="24" Width="140" />
+                <Button Content="{x:Static props:Resources.Text_catColors}" Padding="10" Margin="0,0,10,0" FontSize="24" Width="140" />
+                <Button Content="{x:Static props:Resources.Text_catObjects}" Padding="10" Margin="0,0,10,0" FontSize="24" Width="140" />
+                <Button Content="{x:Static props:Resources.Text_catCountries}" Padding="10" FontSize="24" Width="140" />
             </StackPanel>
         </Grid>
 
@@ -42,7 +42,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             
-            <TextBlock Text="Y una palabra" FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Margin="0,10,0,10" />
+            <TextBlock Text="{x:Static props:Resources.Text_selectWord}" FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Margin="0,10,0,10" />
             <Grid Grid.Row="1" x:Name="GdCategories">
                 <ItemsControl ItemsSource="{Binding Words}">
                     <ItemsControl.ItemsPanel>
@@ -55,7 +55,9 @@
                         <DataTemplate>
                             <Button Content="{Binding Name}"
                                 Margin="5"
-                                Padding="10" />
+                                Padding="10"
+                                Command="{Binding DataContext.SelectWordCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                CommandParameter="{Binding}" />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -63,13 +65,13 @@
         </Grid>
 
         <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Left" Margin="10,0,10,10">
-            <TextBlock Text="O escribe una propia:" FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Margin="0,10,0,10" />
+            <TextBlock Text="{x:Static props:Resources.Text_writeYourOwn}" FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Margin="0,10,0,10" />
             <TextBox Width="250" Height="30" FontSize="14" />
         </StackPanel>
 
         <Grid Grid.Row="3">
-            <Button Name="BtnGoBack" Content="Volver" HorizontalAlignment="Left" Margin="10,0,0,10" Padding="10" Command="{Binding NavigateToLobbyCommand}" />
-            <Button Name="BtnCreateMatch" Content="Crear partida" HorizontalAlignment="Right" Margin="0,0,10,10" Padding="10" Command="{Binding CreateWaitingRoomCommand}" />
+            <Button Name="BtnGoBack" Content="{x:Static props:Resources.Button_goBack}" HorizontalAlignment="Left" Margin="10,0,0,10" Padding="10" Command="{Binding NavigateToLobbyCommand}" />
+            <Button Name="BtnCreateMatch" Content="{x:Static props:Resources.Button_create}" HorizontalAlignment="Right" Margin="0,0,10,10" Padding="10" Command="{Binding CreateWaitingRoomCommand}" />
         </Grid>
     </Grid>
 </Page>

@@ -149,7 +149,8 @@ namespace HangmanGame.Server.Services
 
                 playerRepo.AddPlayerToMatch(
                     match.MatchId,
-                    request.HostId
+                    request.HostId,
+                    "HOST"
                 );
 
                 context.Commit();

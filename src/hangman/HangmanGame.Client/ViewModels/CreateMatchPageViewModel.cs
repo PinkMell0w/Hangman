@@ -1,5 +1,6 @@
 ﻿using HangmanGame.Client.Commands;
 using HangmanGame.Client.Helpers;
+using HangmanGame.Client.MatchServiceReference;
 using HangmanGame.Client.Views;
 using HangmanGame.Client.Views.Game;
 using HangmanGame.Client.WordServiceReference;
@@ -10,6 +11,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -19,9 +21,10 @@ namespace HangmanGame.Client.ViewModels
     internal class CreateMatchPageViewModel : BaseViewModel
     {
         private readonly WordServiceClient _wordService;
+        private readonly MatchServiceClient _matchService;
         private ObservableCollection<Word> _words;
 
-        private string _selectedWord;
+        private Word _selectedWord;
 
         public ObservableCollection<Word> Words
         {
@@ -29,7 +32,7 @@ namespace HangmanGame.Client.ViewModels
             set { _words = value; OnPropertyChanged(); }
         }
 
-        public string SelectedWord
+        public Word SelectedWord
         {
             get => _selectedWord;
             set { _selectedWord = value; OnPropertyChanged(); }
@@ -37,12 +40,15 @@ namespace HangmanGame.Client.ViewModels
 
         public ICommand NavigateToLobbyCommand { get; }
         public ICommand CreateWaitingRoomCommand { get; }
+        public ICommand SelectWordCommand { get; }
 
         public CreateMatchPageViewModel()
         {
             _wordService = new WordServiceClient();
+            _matchService = new MatchServiceClient();
             NavigateToLobbyCommand = new RelayCommand(_ => NavigateToLobby());
-            CreateWaitingRoomCommand = new RelayCommand(_ => CreateWaitingRoom());
+            CreateWaitingRoomCommand = new RelayCommand(_ => ExecuteCreateMatch());
+            SelectWordCommand = new RelayCommand(SelectWord);
             LoadWords();
         }
 
@@ -52,7 +58,7 @@ namespace HangmanGame.Client.ViewModels
             {
                 var request = new WordRequestDto
                 {
-                    Language = "es"
+                    Language = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName
                 };
 
                 var response = await Task.Run(() =>
@@ -76,10 +82,36 @@ namespace HangmanGame.Client.ViewModels
             NavigationManager.Instance.Navigate(new LobbyPage());
         }
 
-        private void CreateWaitingRoom()
+        private async void ExecuteCreateMatch()
         {
-            // TODO Transfer data to MatchPage
+            if (SelectedWord == null)
+            {
+                MessageBox.Show("Select a word first.");
+                return;
+            }
+
+            var request = new CreateMatchRequestDto
+            {
+                HostId = SessionManager.Instance.CurrentUserId,
+                WordId = SelectedWord.WordId
+            };
+
+            var response = await Task.Run(() => _matchService.CreateMatch(request));
+
+            if (response.Success)
+            {
+                MessageBox.Show(
+                    $"Match created: {response.MatchId}");
+            }
             NavigationManager.Instance.Navigate(new MatchPage());
+        }
+
+        private void SelectWord(object parameter)
+        {
+            if (parameter is Word word)
+            {
+                SelectedWord = word;
+            }
         }
     }
 }
