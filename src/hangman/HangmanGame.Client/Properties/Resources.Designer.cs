@@ -709,6 +709,15 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Opponent guessed:.
+        /// </summary>
+        public static string Message_guessingMessage {
+            get {
+                return ResourceManager.GetString("Message_guessingMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The host has left the match.
         /// </summary>
         public static string Message_hostLeft {

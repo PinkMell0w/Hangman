@@ -376,7 +376,7 @@ namespace HangmanGame.Client.ViewModels
                     {
                         IsMyTurn = (state.CurrentTurn == "HOST_VALIDATION");
                         TurnMessage = IsMyTurn
-                            ? $"Opponent guessed '{_lastActiveGuessedLetter}'. Accept or reject this move?"
+                            ? Properties.Resources.Message_guessingMessage + " " + _lastActiveGuessedLetter
                             : "Waiting for player to make a move...";
                     }
                     else

@@ -8,6 +8,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 
 namespace HangmanGame.Server.Services
 {
@@ -448,10 +449,6 @@ namespace HangmanGame.Server.Services
         {
             if (ActiveGames.TryGetValue(matchId, out var state))
             {
-                if (state.MatchStatus == "WON" || state.MatchStatus == "LOST" || state.MatchStatus == "CANCELLED")
-                {
-                    ActiveGames.TryRemove(matchId, out _);
-                }
                 return state;
             }
 
@@ -475,10 +472,7 @@ namespace HangmanGame.Server.Services
 
         public void SubmitHostValidation(int matchId, bool isCorrect)
         {
-            if (!ActiveGames.TryGetValue(matchId, out var state))
-            {
-                return;
-            }
+            if (!ActiveGames.TryGetValue(matchId, out var state)) return;
 
             var context = new DatabaseContext();
             var attemptRepo = new GuessAttemptRepository(context);
@@ -520,7 +514,6 @@ namespace HangmanGame.Server.Services
                 else
                 {
                     state.HangmanStage++;
-
                     if (state.HangmanStage >= 6)
                     {
                         state.MatchStatus = "LOST";
@@ -534,18 +527,28 @@ namespace HangmanGame.Server.Services
                     Letter = state.LastGuessedLetter,
                     IsCorrect = isCorrect
                 };
-
                 attemptRepo.AddGuessAttempt(attempt);
 
                 if (state.MatchStatus == "WON" || state.MatchStatus == "LOST")
                 {
                     string dbResult = (state.MatchStatus == "WON") ? "WIN" : "LOSS";
-
                     int? winnerId = null;
+                    int guesserId = state.GuesserUserId;
+
                     if (state.MatchStatus == "WON")
                     {
-                        winnerId = state.GuesserUserId;
-                        statsRepo.AddPoints(state.GuesserUserId, 10);
+                        winnerId = guesserId > 0 ? guesserId : (int?)null;
+                        if (guesserId > 0)
+                        {
+                            try
+                            {
+                                statsRepo.AddPoints(guesserId, 10);
+                            }
+                            catch (Exception ex)
+                            {
+                                Debug.WriteLine($"Guesser point assignment skipped/failed: {ex.Message}");
+                            }
+                        }
                     }
                     else if (state.MatchStatus == "LOST")
                     {
@@ -553,7 +556,14 @@ namespace HangmanGame.Server.Services
                         if (matchRow != null)
                         {
                             winnerId = matchRow.HostId;
-                            statsRepo.AddPoints(matchRow.HostId, 5);
+                            try
+                            {
+                                statsRepo.AddPoints(matchRow.HostId, 5);
+                            }
+                            catch (Exception ex)
+                            {
+                                Debug.WriteLine($"Host point assignment skipped/failed: {ex.Message}");
+                            }
                         }
                     }
 

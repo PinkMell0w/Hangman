@@ -516,4 +516,7 @@
   <data name="Button_hideDetails" xml:space="preserve">
     <value>Ocultar detalles</value>
   </data>
+  <data name="Message_guessingMessage" xml:space="preserve">
+    <value>El oponente escogió:</value>
+  </data>
 </root>
