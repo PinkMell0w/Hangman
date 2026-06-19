@@ -243,7 +243,18 @@ namespace HangmanGame.Client.ViewModels
             {
                 IsMyTurn = false;
 
-                _matchService.SubmitHostValidation(_matchId, wasCorrect);
+                bool isValidationValid = _matchService.SubmitHostValidation(_matchId, wasCorrect);
+
+                if (!isValidationValid)
+                {
+                    IsMyTurn = true;
+
+                    string errorMsg = Properties.Resources.Message_guessIsValid
+                        ?? Properties.Resources.Message_guessIsInvalid;
+
+                    MessageBox.Show(errorMsg, Properties.Resources.Title_message ?? "Warning",
+                                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
             catch (Exception ex)
             {

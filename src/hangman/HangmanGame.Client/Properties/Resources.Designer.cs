@@ -718,6 +718,24 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Watch out! The guessed letter is NOT in the word. Please reject it.
+        /// </summary>
+        public static string Message_guessIsInvalid {
+            get {
+                return ResourceManager.GetString("Message_guessIsInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Oops! The guessed letter IS in the word. Please accept it.
+        /// </summary>
+        public static string Message_guessIsValid {
+            get {
+                return ResourceManager.GetString("Message_guessIsValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The host has left the match.
         /// </summary>
         public static string Message_hostLeft {

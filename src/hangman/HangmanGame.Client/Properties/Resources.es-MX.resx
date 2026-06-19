@@ -519,4 +519,10 @@
   <data name="Message_guessingMessage" xml:space="preserve">
     <value>El oponente escogió:</value>
   </data>
+  <data name="Message_guessIsValid" xml:space="preserve">
+    <value>¡Ups! La letra jugada SÍ está en la palabra. Por favor acéptala</value>
+  </data>
+  <data name="Message_guessIsInvalid" xml:space="preserve">
+    <value>¡Cuidado! La letra jugada NO está en la palabra. Por favor recházala</value>
+  </data>
 </root>

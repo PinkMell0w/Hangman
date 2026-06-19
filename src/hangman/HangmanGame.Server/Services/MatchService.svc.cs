@@ -470,9 +470,9 @@ namespace HangmanGame.Server.Services
             }
         }
 
-        public void SubmitHostValidation(int matchId, bool isCorrect)
+        public bool SubmitHostValidation(int matchId, bool isCorrect)
         {
-            if (!ActiveGames.TryGetValue(matchId, out var state)) return;
+            if (!ActiveGames.TryGetValue(matchId, out var state)) return false;
 
             var context = new DatabaseContext();
             var attemptRepo = new GuessAttemptRepository(context);
@@ -485,13 +485,21 @@ namespace HangmanGame.Server.Services
             {
                 context.BeginTransaction();
 
+                var matchRow = matchRepo.GetById(matchId);
+                var wordRow = matchRow != null ? wordRepo.GetById(matchRow.WordId) : null;
+                string targetWord = wordRow != null ? wordRow.Name.ToUpper() : "";
+                char guessedChar = char.ToUpper(state.LastGuessedLetter);
+
+                bool trulyCorrect = targetWord.Contains(guessedChar);
+
+                if (isCorrect != trulyCorrect)
+                {
+                    context.Rollback();
+                    return false;
+                }
+
                 if (isCorrect)
                 {
-                    var matchRow = matchRepo.GetById(matchId);
-                    var wordRow = matchRow != null ? wordRepo.GetById(matchRow.WordId) : null;
-                    string targetWord = wordRow != null ? wordRow.Name.ToUpper() : "";
-                    char guessedChar = state.LastGuessedLetter;
-
                     string[] currentTokens = state.MaskedWord.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
                     if (currentTokens.Length == targetWord.Length)
@@ -540,30 +548,15 @@ namespace HangmanGame.Server.Services
                         winnerId = guesserId > 0 ? guesserId : (int?)null;
                         if (guesserId > 0)
                         {
-                            try
-                            {
-                                statsRepo.AddPoints(guesserId, 10);
-                            }
-                            catch (Exception ex)
-                            {
-                                Debug.WriteLine($"Guesser point assignment skipped/failed: {ex.Message}");
-                            }
+                            try { statsRepo.AddPoints(guesserId, 10); } catch (Exception) { }
                         }
                     }
                     else if (state.MatchStatus == "LOST")
                     {
-                        var matchRow = matchRepo.GetById(matchId);
                         if (matchRow != null)
                         {
                             winnerId = matchRow.HostId;
-                            try
-                            {
-                                statsRepo.AddPoints(matchRow.HostId, 5);
-                            }
-                            catch (Exception ex)
-                            {
-                                Debug.WriteLine($"Host point assignment skipped/failed: {ex.Message}");
-                            }
+                            try { statsRepo.AddPoints(matchRow.HostId, 5); } catch (Exception) { }
                         }
                     }
 
@@ -576,12 +569,13 @@ namespace HangmanGame.Server.Services
                 }
 
                 context.Commit();
+                return true; // Successfully processed
             }
             catch (Exception ex)
             {
                 context.Rollback();
                 Debug.WriteLine($"SubmitHostValidation error: {ex.Message}");
-                throw;
+                return false;
             }
             finally
             {

@@ -519,4 +519,10 @@
   <data name="Message_guessingMessage" xml:space="preserve">
     <value>Opponent guessed:</value>
   </data>
+  <data name="Message_guessIsValid" xml:space="preserve">
+    <value>Oops! The guessed letter IS in the word. Please accept it</value>
+  </data>
+  <data name="Message_guessIsInvalid" xml:space="preserve">
+    <value>Watch out! The guessed letter is NOT in the word. Please reject it</value>
+  </data>
 </root>

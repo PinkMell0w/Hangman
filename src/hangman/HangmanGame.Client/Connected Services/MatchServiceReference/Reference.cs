@@ -70,10 +70,10 @@ namespace HangmanGame.Client.MatchServiceReference {
         System.Threading.Tasks.Task SubmitGuesserLetterAsync(int matchId, char letter);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/SubmitHostValidation", ReplyAction="http://tempuri.org/IMatchService/SubmitHostValidationResponse")]
-        void SubmitHostValidation(int matchId, bool isCorrect);
+        bool SubmitHostValidation(int matchId, bool isCorrect);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/SubmitHostValidation", ReplyAction="http://tempuri.org/IMatchService/SubmitHostValidationResponse")]
-        System.Threading.Tasks.Task SubmitHostValidationAsync(int matchId, bool isCorrect);
+        System.Threading.Tasks.Task<bool> SubmitHostValidationAsync(int matchId, bool isCorrect);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -175,11 +175,11 @@ namespace HangmanGame.Client.MatchServiceReference {
             return base.Channel.SubmitGuesserLetterAsync(matchId, letter);
         }
         
-        public void SubmitHostValidation(int matchId, bool isCorrect) {
-            base.Channel.SubmitHostValidation(matchId, isCorrect);
+        public bool SubmitHostValidation(int matchId, bool isCorrect) {
+            return base.Channel.SubmitHostValidation(matchId, isCorrect);
         }
         
-        public System.Threading.Tasks.Task SubmitHostValidationAsync(int matchId, bool isCorrect) {
+        public System.Threading.Tasks.Task<bool> SubmitHostValidationAsync(int matchId, bool isCorrect) {
             return base.Channel.SubmitHostValidationAsync(matchId, isCorrect);
         }
     }

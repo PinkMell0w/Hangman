@@ -519,4 +519,10 @@
   <data name="Message_guessingMessage" xml:space="preserve">
     <value>Gegner riet:</value>
   </data>
+  <data name="Message_guessIsValid" xml:space="preserve">
+    <value>Hoppla! Der geratene Buchstabe ist tatsächlich im Wort enthalten. Bitte akzeptieren Sie ihn</value>
+  </data>
+  <data name="Message_guessIsInvalid" xml:space="preserve">
+    <value>Achtung! Der geratene Buchstabe kommt im Wort nicht vor. Bitte ablehnen</value>
+  </data>
 </root>

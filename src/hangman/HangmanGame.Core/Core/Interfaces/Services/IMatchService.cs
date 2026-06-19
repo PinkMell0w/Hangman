@@ -57,6 +57,6 @@ namespace HangmanGame.Core.Core.Interfaces.Services
         void SubmitGuesserLetter(int matchId, char letter);
 
         [OperationContract]
-        void SubmitHostValidation(int matchId, bool isCorrect);
+        bool SubmitHostValidation(int matchId, bool isCorrect);
     }
 }
