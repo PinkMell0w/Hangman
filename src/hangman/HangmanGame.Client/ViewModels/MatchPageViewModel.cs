@@ -171,6 +171,17 @@ namespace HangmanGame.Client.ViewModels
 
                 var response = _matchService.GetMatchById(request);
 
+                if (response == null || !response.Success || response.Match == null || response.Match.Status == "CANCELLED")
+                {
+                    if (!IsHost)
+                    {
+                        _lobbyTimer.Stop();
+                        MessageBox.Show(Properties.Resources.Message_hostLeft, Properties.Resources.Title_message, MessageBoxButton.OK, MessageBoxImage.Information);
+                        NavigationManager.Instance.Navigate(new MatchesListPage());
+                    }
+                    return;
+                }
+
                 if (response != null && response.Success && response.Match != null)
                 {
                     if (SelectedWord == null && !string.IsNullOrEmpty(response.Match.WordName))
@@ -235,6 +246,12 @@ namespace HangmanGame.Client.ViewModels
                 return;
             }
 
+            if (string.IsNullOrEmpty(OpponentName) || OpponentName == Properties.Resources.Text_awaitingOpponent)
+            {
+                MessageBox.Show(Properties.Resources.Text_awaitingOpponent);
+                return;
+            }
+
             try
             {
                 var request = new StartMatchRequestDto { MatchId = this.MatchId };
@@ -246,6 +263,10 @@ namespace HangmanGame.Client.ViewModels
 
                     NavigationManager.Instance.Navigate(new GamePage(MatchId, true));
                 }
+                else
+                {
+                    MessageBox.Show($"Cannot start match: {response.Message}", "Match Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
             catch (Exception ex)
             {
@@ -256,7 +277,7 @@ namespace HangmanGame.Client.ViewModels
         private void LeaveMatch()
         {
             MessageBoxResult result = MessageBox.Show(
-                Properties.Resources.Message_confirmLeave,
+                Properties.Resources.Message_confirmLeave + " " + Properties.Resources.Append_noPenalization,
                 Properties.Resources.Button_leaveMatch,
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Question

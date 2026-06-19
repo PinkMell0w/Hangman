@@ -104,7 +104,7 @@
                 <TextBlock Grid.Column="1" Text="VS" FontFamily="Ink Free" FontWeight="Bold" FontSize="80" Margin="60,65,60,0"/>
 
                 <StackPanel Grid.Column="2" HorizontalAlignment="Center">
-                    <Image Source="/Resources/Images/NoOpponent.png" Margin="0,20,0,0" Width="180"/>
+                    <Image Source="/Resources/Images/PlayerPfp.png" Margin="0,20,0,0" Width="180"/>
                     <TextBlock Text="{Binding OpponentName}" FontFamily="Ink Free" FontWeight="Bold" FontSize="16" Margin="0,10,0,0" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Grid>
@@ -118,26 +118,7 @@
 
                 <Button Name="BtnLeaveMatch" Grid.Column="0" Content="{x:Static props:Resources.Button_leaveMatch}" HorizontalAlignment="Left" Margin="10" Padding="5" Height="40" VerticalAlignment="Bottom" Command="{Binding LeaveMatchCommand}" />
 
-                <Button Name="BtnStartMatch" Grid.Column="1" Content="{x:Static props:Resources.Button_startMatch}" Visibility="{Binding HostControlsVisibility}" FontSize="18" HorizontalAlignment="Center" Margin="10" Padding="10" Command="{Binding StartMatchCommand}" Height="60" />
-
-                <Grid x:Name="GridChat" Grid.Column="2" Margin="0,10,10,10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-
-                    <TextBox x:Name="TxtHistorial" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Margin="0,0,0,10" Background="#FAFAFA" Width="300" Height="200"/>
-
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-
-                        <TextBox x:Name="TxtMensaje" Text="{x:Static props:Resources.Text_chatPrompt}" Grid.Column="0" Margin="0,0,10,0" Padding="5" Foreground="#FFA2A2A2" />
-                        <Button x:Name="BtnSend" Grid.Column="1" Content="{x:Static props:Resources.Button_send}" Command="{Binding SendMessageCommand}" Padding="10" />
-                    </Grid>
-                </Grid>
+                <Button Name="BtnStartMatch" Grid.Column="1" Content="{x:Static props:Resources.Button_startMatch}" Visibility="{Binding HostControlsVisibility}" FontSize="18" HorizontalAlignment="Center" Margin="0,0,0,120" Padding="10" Command="{Binding StartMatchCommand}" Height="60" />
             </Grid>
         </Grid>
     </Grid>

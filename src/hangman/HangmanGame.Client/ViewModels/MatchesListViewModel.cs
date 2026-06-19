@@ -127,9 +127,9 @@ namespace HangmanGame.Client.ViewModels
                     Matches = new ObservableCollection<MatchDto>(response.AvailableMatches);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(Properties.Resources.Error_serverTimeout, Properties.Resources.Title_message, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

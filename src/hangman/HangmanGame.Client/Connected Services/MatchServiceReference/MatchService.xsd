@@ -110,6 +110,7 @@
   <xs:element name="UpdateMatchWordResponseDto" nillable="true" type="tns:UpdateMatchWordResponseDto" />
   <xs:complexType name="CancelMatchRequestDto">
     <xs:sequence>
+      <xs:element minOccurs="0" name="IsKick" type="xs:boolean" />
       <xs:element minOccurs="0" name="MatchId" type="xs:int" />
       <xs:element minOccurs="0" name="UserId" type="xs:int" />
     </xs:sequence>

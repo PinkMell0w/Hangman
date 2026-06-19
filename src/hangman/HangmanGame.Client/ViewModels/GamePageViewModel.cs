@@ -151,7 +151,7 @@ namespace HangmanGame.Client.ViewModels
 
         private async void LeaveMatch()
         {
-            var result = MessageBox.Show(Properties.Resources.Message_confirmLeave + Properties.Resources.Append_penalization,
+            var result = MessageBox.Show(Properties.Resources.Message_confirmLeave + " " + Properties.Resources.Append_penalization,
                                  Properties.Resources.Title_message, MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
             if (result != MessageBoxResult.Yes) return;
@@ -163,6 +163,8 @@ namespace HangmanGame.Client.ViewModels
                 int currentUserId = SessionManager.Instance.CurrentUserId;
                 var request = new CancelMatchRequestDto { MatchId = _matchId, UserId = currentUserId, IsKick = false };
                 await Task.Run(() => _matchService.CancelMatch(request));
+                MessageBox.Show(Properties.Resources.Message_youLeft + " " + Properties.Resources.Append_pointsLost,
+                        Properties.Resources.Title_message, MessageBoxButton.OK, MessageBoxImage.Information);
 
                 if (IsHost)
                     NavigationManager.Instance.Navigate(new LobbyPage());
@@ -264,11 +266,28 @@ namespace HangmanGame.Client.ViewModels
         {
             try
             {
-                var response = _matchService.GetMatchById(new GetMatchDetailsRequestDto { MatchId = _matchId });
-                if (response != null && response.Success && response.Match != null)
+                var state = _matchService.GetLiveGameLoopState(_matchId);
+                if (state != null)
                 {
-                    // Sets the initial masked string display
-                    DisplayedWord = response.Match.WordName ?? "";
+                    DisplayedWord = state.MaskedWord;
+                    HangmanStage = state.HangmanStage;
+                    GameState = state.MatchStatus;
+                    _lastActiveGuessedLetter = state.LastGuessedLetter;
+
+                    if (IsHost)
+                    {
+                        IsMyTurn = (state.CurrentTurn == "HOST_VALIDATION");
+                        TurnMessage = IsMyTurn
+                            ? $"Opponent guessed '{_lastActiveGuessedLetter}'. Accept or reject this move?"
+                            : "Waiting for player to make a move...";
+                    }
+                    else
+                    {
+                        IsMyTurn = (state.CurrentTurn == "GUESSER");
+                        TurnMessage = IsMyTurn
+                            ? "Your turn! Pick a letter."
+                            : "Waiting for host validation...";
+                    }
                 }
             }
             catch (Exception ex)
@@ -289,6 +308,27 @@ namespace HangmanGame.Client.ViewModels
             try
             {
                 var state = _matchService.GetLiveGameLoopState(_matchId);
+
+                if(state == null || state.MatchStatus == "CANCELLED")
+                {
+                    _syncTimer?.Stop();
+                    Cleanup();
+
+                    string notification;
+
+                    if (IsHost)
+                    {
+                        notification = Properties.Resources.Message_opponentLeft + " " + Properties.Resources.Append_noPointsLost;
+                    }
+                    else
+                    {
+                        notification = Properties.Resources.Message_hostLeft + " " + Properties.Resources.Append_noPointsLost;
+                    }
+
+                    HandleAbortedMatch(notification);
+                    return;
+                }
+
                 if (state != null)
                 {
                     DisplayedWord = state.MaskedWord;
@@ -307,11 +347,22 @@ namespace HangmanGame.Client.ViewModels
                     if (GameState == "WON" || GameState == "LOST")
                     {
                         _syncTimer.Stop();
-                        string message = GameState == "WON"
-                            ? Properties.Resources.Message_wordGuessed
-                            : Properties.Resources.Message_wordNotGuessed;
+                        string message;
 
-                        MessageBox.Show(message, "", MessageBoxButton.OK, MessageBoxImage.Information);
+                        if (GameState == "WON")
+                        {
+                            message = IsHost
+                                ? Properties.Resources.Message_opponentWon
+                                : Properties.Resources.Message_wordGuessed;
+                        }
+                        else
+                        {
+                            message = IsHost
+                                ? Properties.Resources.Message_opponentLost
+                                : Properties.Resources.Message_wordNotGuessed;
+                        }
+
+                        MessageBox.Show(message, Properties.Resources.Title_message, MessageBoxButton.OK, MessageBoxImage.Information);
 
                         Cleanup();
                         App.Current.Dispatcher.Invoke(() => {
@@ -341,6 +392,19 @@ namespace HangmanGame.Client.ViewModels
             {
                 Console.WriteLine($"Sync Error: {ex.Message}");
             }
+        }
+
+        private void HandleAbortedMatch(string alertMessage)
+        {
+            MessageBox.Show(alertMessage, Properties.Resources.Title_message,
+                            MessageBoxButton.OK, MessageBoxImage.Warning);
+
+            App.Current.Dispatcher.Invoke(() => {
+                if (IsHost)
+                    NavigationManager.Instance.Navigate(new LobbyPage());
+                else
+                    NavigationManager.Instance.Navigate(new MatchesListPage());
+            });
         }
 
         public void Cleanup()

@@ -4,6 +4,7 @@ using HangmanGame.Client.Helpers;
 using HangmanGame.Client.Views;
 using HangmanGame.Client.Views.SignUp;
 using HangmanGame.Core.Core.DTOs;
+using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -59,33 +60,40 @@ namespace HangmanGame.Client.ViewModels
 
         private async void ExecuteLogIn()
         {
-            _isLoading = true;
-            ErrorMessage = string.Empty;
-            OnPropertyChanged(nameof(IsNotLoading));
-
-            var request = new SignInRequestDto
+            try
             {
-                Password = Password
-            };
+                _isLoading = true;
+                ErrorMessage = string.Empty;
+                OnPropertyChanged(nameof(IsNotLoading));
 
-            if (Credential.Contains("@"))
-                request.Email = Credential.Trim();
-            else
-                request.Username = Credential.Trim();
+                var request = new SignInRequestDto
+                {
+                    Password = Password
+                };
 
-            var response = await Task.Run(() => _authService.SignIn(request));
+                if (Credential.Contains("@"))
+                    request.Email = Credential.Trim();
+                else
+                    request.Username = Credential.Trim();
 
-            _isLoading = false;
-            OnPropertyChanged(nameof(IsNotLoading));
+                var response = await Task.Run(() => _authService.SignIn(request));
 
-            if (response.Success)
-            {
-                SessionManager.Instance.SetSession(response.UserId, response.Username, response.Token);
-                NavigateToLobby();
+                _isLoading = false;
+                OnPropertyChanged(nameof(IsNotLoading));
+
+                if (response.Success)
+                {
+                    SessionManager.Instance.SetSession(response.UserId, response.Username, response.Token);
+                    NavigateToLobby();
+                }
+                else
+                {
+                    MessageBox.Show(response.Message);
+                }
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show(response.Message);
+                MessageBox.Show(Properties.Resources.Error_logInFailed, Properties.Resources.Title_message, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         private void NavigateToLobby()

@@ -104,10 +104,10 @@ namespace HangmanGame.Server.Services
                 string opponentName = null;
                 var wordRow = wordRepo.GetById(match.WordId);
                 string targetWord = wordRow != null ? wordRow.Name : "";
+                int guesserId = playerInMatchRepo.GetGuesserId(match.MatchId);
 
                 if (currentPlayerCount > 1)
                 {
-                    int guesserId = playerInMatchRepo.GetGuesserId(match.MatchId);
                     if (guesserId > 0)
                     {
                         var opponent = userRepo.GetById(guesserId);
@@ -126,6 +126,7 @@ namespace HangmanGame.Server.Services
                         WordName = targetWord,
                         HostName = hostName,
                         OpponentName = opponentName,
+                        OpponentId = guesserId,
                         Status = match.Status,
                         MaxPlayers = match.maxPlayers,
                         CurrentPlayers = currentPlayerCount,
@@ -255,6 +256,16 @@ namespace HangmanGame.Server.Services
 
             try
             {
+                int guesserUserId = playerRepo.GetGuesserId(request.MatchId);
+                if (guesserUserId <= 0)
+                {
+                    return new StartMatchResponseDto
+                    {
+                        Success = false,
+                        Message = "Cannot start a match without an opponent."
+                    };
+                }
+
                 context.BeginTransaction();
 
                 matchRepo.UpdateStatus(request.MatchId, "IN_PROGRESS");
@@ -262,7 +273,7 @@ namespace HangmanGame.Server.Services
                 var wordRow = wordRepo.GetById(match.WordId);
                 string secretWord = wordRow != null ? wordRow.Name.ToUpper() : "";
 
-                int guesserUserId = playerRepo.GetGuesserId(request.MatchId);
+                guesserUserId = playerRepo.GetGuesserId(request.MatchId);
 
                 var session = new GameSession
                 {
@@ -391,6 +402,11 @@ namespace HangmanGame.Server.Services
                 {
                     matchRepo.UpdateStatus(request.MatchId, "CANCELLED");
 
+                    if (ActiveGames.TryGetValue(request.MatchId, out var state))
+                    {
+                        state.MatchStatus = "CANCELLED";
+                    }
+
                     bool isKickAction = isHost && request.IsKick && (guesserId != 0);
 
                     if (isKickAction)
@@ -432,6 +448,10 @@ namespace HangmanGame.Server.Services
         {
             if (ActiveGames.TryGetValue(matchId, out var state))
             {
+                if (state.MatchStatus == "WON" || state.MatchStatus == "LOST" || state.MatchStatus == "CANCELLED")
+                {
+                    ActiveGames.TryRemove(matchId, out _);
+                }
                 return state;
             }
 
