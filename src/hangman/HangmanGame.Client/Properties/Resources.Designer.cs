@@ -835,6 +835,15 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About me.
+        /// </summary>
+        public static string Text_aboutMe {
+            get {
+                return ResourceManager.GetString("Text_aboutMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Available matches.
         /// </summary>
         public static string Text_availableMatches {
@@ -961,6 +970,15 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Games played.
+        /// </summary>
+        public static string Text_gamesPlayed {
+            get {
+                return ResourceManager.GetString("Text_gamesPlayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hangman.
         /// </summary>
         public static string Text_gameTitle {
@@ -975,15 +993,6 @@ namespace HangmanGame.Client.Properties {
         public static string Text_language {
             get {
                 return ResourceManager.GetString("Text_language", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Losses.
-        /// </summary>
-        public static string Text_losses {
-            get {
-                return ResourceManager.GetString("Text_losses", resourceCulture);
             }
         }
         

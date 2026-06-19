@@ -26,6 +26,12 @@ namespace HangmanGame.Client.UserServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/SearchUsers", ReplyAction="http://tempuri.org/IUserService/SearchUsersResponse")]
         System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.UserCardResponseDto> SearchUsersAsync(HangmanGame.Core.Core.DTOs.UserCardRequestDto request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateProfile", ReplyAction="http://tempuri.org/IUserService/UpdateProfileResponse")]
+        HangmanGame.Core.Core.DTOs.UpdateProfileResponseDto UpdateProfile(HangmanGame.Core.Core.DTOs.UpdateProfileRequestDto request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateProfile", ReplyAction="http://tempuri.org/IUserService/UpdateProfileResponse")]
+        System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.UpdateProfileResponseDto> UpdateProfileAsync(HangmanGame.Core.Core.DTOs.UpdateProfileRequestDto request);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -69,6 +75,14 @@ namespace HangmanGame.Client.UserServiceReference {
         
         public System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.UserCardResponseDto> SearchUsersAsync(HangmanGame.Core.Core.DTOs.UserCardRequestDto request) {
             return base.Channel.SearchUsersAsync(request);
+        }
+        
+        public HangmanGame.Core.Core.DTOs.UpdateProfileResponseDto UpdateProfile(HangmanGame.Core.Core.DTOs.UpdateProfileRequestDto request) {
+            return base.Channel.UpdateProfile(request);
+        }
+        
+        public System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.UpdateProfileResponseDto> UpdateProfileAsync(HangmanGame.Core.Core.DTOs.UpdateProfileRequestDto request) {
+            return base.Channel.UpdateProfileAsync(request);
         }
     }
 }

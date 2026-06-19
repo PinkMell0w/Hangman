@@ -8,7 +8,11 @@ namespace HangmanGame.Core.Core.Interfaces.Services
     {
         [OperationContract]
         ProfileResponseDto LoadProfile(LoadProfileRequestDto request);
+
         [OperationContract]
         UserCardResponseDto SearchUsers(UserCardRequestDto request);
+
+        [OperationContract]
+        UpdateProfileResponseDto UpdateProfile(UpdateProfileRequestDto request);
     }
 }

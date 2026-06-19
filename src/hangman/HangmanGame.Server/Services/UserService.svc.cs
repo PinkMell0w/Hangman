@@ -130,6 +130,59 @@ namespace HangmanGame.Server.Services
             }
         }
 
+        public UpdateProfileResponseDto UpdateProfile(UpdateProfileRequestDto request)
+        {
+            if (request == null || request.UserId <= 0)
+            {
+                return new UpdateProfileResponseDto
+                {
+                    Success = false,
+                    Message = "Invalid update request."
+                };
+            }
+
+            var context = new DatabaseContext();
+            var profileRepo = new PlayerProfileRepository(context);
+
+            try
+            {
+                bool isUpdated = profileRepo.UpdateProfileInfo(
+                    request.UserId,
+                    request.Username,
+                    request.Bio
+                );
+
+                if (isUpdated)
+                {
+                    return new UpdateProfileResponseDto
+                    {
+                        Success = true,
+                        Message = "Profile updated successfully."
+                    };
+                }
+                else
+                {
+                    return new UpdateProfileResponseDto
+                    {
+                        Success = false,
+                        Message = "No data has been updated."
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new UpdateProfileResponseDto
+                {
+                    Success = false,
+                    Message = $"Internal server error: {ex.Message}"
+                };
+            }
+            finally
+            {
+                context.Dispose();
+            }
+        }
+
         private static UserCardResponseDto FailSearch(string message) =>
             new UserCardResponseDto
             {

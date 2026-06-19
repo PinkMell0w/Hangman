@@ -39,4 +39,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserCardResponseDto" nillable="true" type="tns:UserCardResponseDto" />
+  <xs:complexType name="UpdateProfileRequestDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Bio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpdateProfileRequestDto" nillable="true" type="tns:UpdateProfileRequestDto" />
+  <xs:complexType name="UpdateProfileResponseDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpdateProfileResponseDto" nillable="true" type="tns:UpdateProfileResponseDto" />
 </xs:schema>

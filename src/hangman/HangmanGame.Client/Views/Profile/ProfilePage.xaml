@@ -25,16 +25,17 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel x:Name="UserInfoPanel" Visibility="Visible" Margin="20,20,0,0">
+            <StackPanel x:Name="UserInfoPanel" Margin="20,20,0,0">
                 <TextBlock Text="{x:Static props:Resources.Global_username}" FontSize="22" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10"/>
-                <TextBlock Text="{Binding Username}" FontSize="32" Margin="0,0,0,10" Width="200" HorizontalAlignment="Left"/>
+                <TextBlock Text="{Binding Username}" Visibility="{Binding ViewModeVisibility}" FontSize="32" Margin="0,0,0,10" Width="200" HorizontalAlignment="Left"/>
+                <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding EditModeVisibility}" FontSize="24" Margin="0,0,0,10" Width="250" HorizontalAlignment="Left"/>
                 
                 <TextBlock Text="{x:Static props:Resources.Text_fullName}" FontSize="20" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10"/>
                 <TextBlock Text="{Binding FullName}" FontSize="26" Margin="0,0,0,10" HorizontalAlignment="Left"/>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40,0,0,20">
                     <StackPanel Margin="0,0,20,0" Background="PaleVioletRed">
-                        <TextBlock Text="Partidas jugadas" FontSize="16" FontFamily="Ink Free" FontWeight="Bold" Padding="8"/>
+                        <TextBlock Text="{x:Static props:Resources.Text_gamesPlayed}" FontSize="16" FontFamily="Ink Free" FontWeight="Bold" Padding="8"/>
                         <TextBlock Text="{Binding GamesPlayed}" FontSize="20" Padding="8" Width="100" HorizontalAlignment="Left"/>
                     </StackPanel>
                     <StackPanel Margin="0,0,20,0" Background="CornflowerBlue">
@@ -47,24 +48,24 @@
                     <TextBlock Text="{x:Static props:Resources.Text_winPercentage}" FontSize="20" FontFamily="Ink Free" FontWeight="Bold" Padding="5"/>
                     <TextBlock Text="{Binding WinRate}" FontSize="32" Padding="8" Width="100" HorizontalAlignment="Left"/>
                 </StackPanel>
-                
-                <TextBlock Text="Tema" FontSize="16" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10"/>
-                <TextBlock Text="{Binding Theme}" FontSize="20" Margin="0,0,0,10" Width="200" HorizontalAlignment="Left"/>
-                
-                <TextBlock Text="Acerca de" FontSize="16" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10"/>
-                <TextBlock Text="{Binding Bio}" FontSize="20" Margin="0,0,0,10" TextWrapping="Wrap" Width="300" HorizontalAlignment="Left"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top">
                 <TextBlock Text="{x:Static props:Resources.Text_profilePic}" FontSize="22" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,80,0,20"/>
                 <Image x:Name="profilePic" Source="/Resources/Images/PlayerPfp.png" Margin="0,0,0,20" Width="160"/>
+                <TextBlock Text="{x:Static props:Resources.Text_aboutMe}" FontSize="16" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,10,0,10"/>
+                <TextBlock Text="{Binding Bio}" Visibility="{Binding ViewModeVisibility}" FontSize="20" Margin="0,0,0,10" TextWrapping="Wrap" Width="300" HorizontalAlignment="Left"/>
+                <TextBox Text="{Binding Bio, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding EditModeVisibility}" FontSize="18" Height="80" Width="300" TextWrapping="Wrap" AcceptsReturn="True" HorizontalAlignment="Left" Margin="0,0,0,10"/>
             </StackPanel>
         </Grid>
 
         <Grid Grid.Row="1" VerticalAlignment="Bottom">
-            <Button Name="BtnGoBack" Content="{x:Static props:Resources.Button_goBack}" Margin="20,0,0,10" HorizontalAlignment="Left" Padding="8" Command="{Binding NavigateToLobbyCommand}"/>
-            <Button Name="BtnModifyProfile" Content="{x:Static props:Resources.Button_editProfile}" Margin="20,0,140,10" HorizontalAlignment="Right" Padding="8" />
-            <Button Name="BtnDeleteProfile" Content="{x:Static props:Resources.Button_deleteAccount}" Margin="0,0,20,10" HorizontalAlignment="Right" Padding="8" />
+            <Button Name="BtnGoBack" Content="{x:Static props:Resources.Button_goBack}" Margin="20,0,0,10" HorizontalAlignment="Left" Padding="8" Command="{Binding NavigateToLobbyCommand}" Visibility="{Binding ViewModeVisibility}" />
+            <Button Name="BtnModifyProfile" Content="{x:Static props:Resources.Button_editProfile}" Margin="20,0,140,10" HorizontalAlignment="Right" Padding="8" Command="{Binding ModifyProfileCommand}" Visibility="{Binding ViewModeVisibility}" />
+            <Button Name="BtnDeleteProfile" Content="{x:Static props:Resources.Button_deleteAccount}" Margin="0,0,20,10" HorizontalAlignment="Right" Padding="8" Visibility="{Binding ViewModeVisibility}" />
+
+            <Button Name="BtnCancelChanges" Content="{x:Static props:Resources.Button_cancel}" Margin="20,0,0,10" HorizontalAlignment="Left" Padding="8" Command="{Binding GoBackCommand}" Visibility="{Binding EditModeVisibility}"/>
+            <Button Name="BtnSaveChanges" Content="{x:Static props:Resources.Button_saveSettings}" Margin="0,0,20,10" HorizontalAlignment="Right" Padding="8" Command="{Binding SaveChangesCommand}" Visibility="{Binding EditModeVisibility}"/>
         </Grid>
     </Grid>
 </Page>

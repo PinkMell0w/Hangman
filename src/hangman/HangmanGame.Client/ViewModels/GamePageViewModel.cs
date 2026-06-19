@@ -139,14 +139,29 @@ namespace HangmanGame.Client.ViewModels
                 }
             });
 
-            LeaveMatchCommand = new RelayCommand(_ => { /* Handle Leave Match */ });
-            KickPlayerCommand = new RelayCommand(_ => { /* Handle Kick */ });
-            SendMessageCommand = new RelayCommand(_ => { /* Handle Chat */ });
+            LeaveMatchCommand = new RelayCommand(_ => LeaveMatch());
+            KickPlayerCommand = new RelayCommand(_ => KickPlayer());
+            SendMessageCommand = new RelayCommand(_ => SendMessage());
 
             DisplayedWord = "";
 
             InitializeWordDisplay();
             StartSyncTimer();
+        }
+
+        private void LeaveMatch()
+        {
+            // TODO
+        }
+
+        private void KickPlayer()
+        {
+            // TODO
+        }
+
+        private void SendMessage()
+        {
+            // TODO
         }
 
         private void GuessLetter(char letter)

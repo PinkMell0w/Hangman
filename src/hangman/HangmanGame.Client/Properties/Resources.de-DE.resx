@@ -306,9 +306,6 @@
   <data name="Text_totalWins" xml:space="preserve">
     <value>Gesamte Siege</value>
   </data>
-  <data name="Text_losses" xml:space="preserve">
-    <value>Niederlagen</value>
-  </data>
   <data name="Text_winPercentage" xml:space="preserve">
     <value>Erfolgsquote</value>
   </data>
@@ -506,5 +503,11 @@
   </data>
   <data name="Button_incorrectGuess" xml:space="preserve">
     <value>Falsch</value>
+  </data>
+  <data name="Text_gamesPlayed" xml:space="preserve">
+    <value>Gespielte Spiele</value>
+  </data>
+  <data name="Text_aboutMe" xml:space="preserve">
+    <value>Über mich</value>
   </data>
 </root>
