@@ -31,6 +31,8 @@ Repositorio para el proyecto de Ahorcado de la Experiencia Educativa de Tecnolog
 ### Esto necesita ser cambiado; los casos de uso y funcionalidades por implementar no reflejan esta tabla y necesita ser actualizada
 
 CASOS DE USO QUE NO SE IMPLEMENTARÁN:
+| ID    | Name                 |
+|-------|----------------------|
 | CU-03 | Password recovery    |
 | CU-06 | Search user          |
 | CU-07 | Send friend request  |
