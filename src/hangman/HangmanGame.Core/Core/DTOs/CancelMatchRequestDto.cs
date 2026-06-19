@@ -15,6 +15,9 @@ namespace HangmanGame.Core.Core.DTOs
 
         [DataMember]
         public int UserId { get; set; }
+
+        [DataMember]
+        public bool IsKick { get; set; }
     }
 
     [DataContract]

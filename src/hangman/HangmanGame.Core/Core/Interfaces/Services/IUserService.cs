@@ -14,5 +14,8 @@ namespace HangmanGame.Core.Core.Interfaces.Services
 
         [OperationContract]
         UpdateProfileResponseDto UpdateProfile(UpdateProfileRequestDto request);
+
+        [OperationContract]
+        GetScoreBreakdownResponseDto GetScoreBreakdown(int userId);
     }
 }

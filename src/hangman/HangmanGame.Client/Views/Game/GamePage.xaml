@@ -21,7 +21,7 @@
 
         <Grid Margin="10,10,10,0">
             <Button Name="BtnLeaveMatch" Content="{x:Static props:Resources.Button_leaveMatch}" FontSize="16" Padding="8" Command="{Binding LeaveMatchCommand}" HorizontalAlignment="Left"/>
-            <Button Name="BtnKickPlayer" Content="{x:Static props:Resources.Button_kickPlayer}" FontSize="16" Padding="8" Command="{Binding KickPlayerCommand}" HorizontalAlignment="Left" Height="39" Margin="745,0,0,0" VerticalAlignment="Bottom"/>
+            <Button Name="BtnKickPlayer" Content="{x:Static props:Resources.Button_kickPlayer}" FontSize="16" Padding="8" Command="{Binding KickPlayerCommand}" HorizontalAlignment="Right" Height="39" Margin="745,0,0,0" VerticalAlignment="Bottom"/>
         </Grid>
 
         <Grid Grid.Row="1">

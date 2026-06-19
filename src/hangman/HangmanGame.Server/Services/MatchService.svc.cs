@@ -391,7 +391,7 @@ namespace HangmanGame.Server.Services
                 {
                     matchRepo.UpdateStatus(request.MatchId, "CANCELLED");
 
-                    bool isKickAction = isHost && (guesserId != 0);
+                    bool isKickAction = isHost && request.IsKick && (guesserId != 0);
 
                     if (isKickAction)
                     {

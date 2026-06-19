@@ -149,14 +149,61 @@ namespace HangmanGame.Client.ViewModels
             StartSyncTimer();
         }
 
-        private void LeaveMatch()
+        private async void LeaveMatch()
         {
-            // TODO
+            var result = MessageBox.Show(Properties.Resources.Message_confirmLeave + Properties.Resources.Append_penalization,
+                                 Properties.Resources.Title_message, MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result != MessageBoxResult.Yes) return;
+
+            try
+            {
+                Cleanup();
+
+                int currentUserId = SessionManager.Instance.CurrentUserId;
+                var request = new CancelMatchRequestDto { MatchId = _matchId, UserId = currentUserId, IsKick = false };
+                await Task.Run(() => _matchService.CancelMatch(request));
+
+                if (IsHost)
+                    NavigationManager.Instance.Navigate(new LobbyPage());
+                else
+                    NavigationManager.Instance.Navigate(new MatchesListPage());
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error leaving match: {ex.Message}");
+                MessageBox.Show("Ocurrió un error al intentar salir de la partida. Reanudando...", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                StartSyncTimer();
+            }
         }
 
-        private void KickPlayer()
+        private async void KickPlayer()
         {
-            // TODO
+            if (!IsHost) return;
+
+            var result = MessageBox.Show(Properties.Resources.Message_confirmKick,
+                                         Properties.Resources.Title_message, MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result != MessageBoxResult.Yes) return;
+
+            try
+            {
+                Cleanup();
+                int currentUserId = SessionManager.Instance.CurrentUserId;
+
+                var request = new CancelMatchRequestDto { MatchId = _matchId, UserId = currentUserId, IsKick = true };
+                await Task.Run(() => _matchService.CancelMatch(request));
+
+                MessageBox.Show(Properties.Resources.Message_kickedMidGame, Properties.Resources.Title_message, MessageBoxButton.OK, MessageBoxImage.Information);
+                NavigationManager.Instance.Navigate(new LobbyPage());
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error kicking player: {ex.Message}");
+                MessageBox.Show("Ocurrió un error al intentar expulsar al jugador.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                StartSyncTimer();
+            }
         }
 
         private void SendMessage()

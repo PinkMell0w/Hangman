@@ -183,6 +183,41 @@ namespace HangmanGame.Server.Services
             }
         }
 
+        public GetScoreBreakdownResponseDto GetScoreBreakdown(int userId)
+        {
+            if (userId <= 0)
+            {
+                return new GetScoreBreakdownResponseDto { Success = false, Message = "Invalid user." };
+            }
+
+            var context = new DatabaseContext();
+            var gameSessionRepo = new GameSessionRepository(context);
+
+            try
+            {
+                var historyLedger = gameSessionRepo.GetScoreHistoryByUserId(userId);
+
+                return new GetScoreBreakdownResponseDto
+                {
+                    Success = true,
+                    Ledger = historyLedger
+                };
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"UserService error: {ex.Message}");
+                return new GetScoreBreakdownResponseDto
+                {
+                    Success = false,
+                    Message = "Internal error retrieving score data."
+                };
+            }
+            finally
+            {
+                context.Dispose();
+            }
+        }
+
         private static UserCardResponseDto FailSearch(string message) =>
             new UserCardResponseDto
             {
