@@ -142,6 +142,15 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Correct.
+        /// </summary>
+        public static string Button_correctGuess {
+            get {
+                return ResourceManager.GetString("Button_correctGuess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create.
         /// </summary>
         public static string Button_create {
@@ -201,6 +210,15 @@ namespace HangmanGame.Client.Properties {
         public static string Button_goBack {
             get {
                 return ResourceManager.GetString("Button_goBack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect.
+        /// </summary>
+        public static string Button_incorrectGuess {
+            get {
+                return ResourceManager.GetString("Button_incorrectGuess", resourceCulture);
             }
         }
         

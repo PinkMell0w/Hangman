@@ -501,4 +501,10 @@
   <data name="Keyboard_alphabet" xml:space="preserve">
     <value>QWERTYUIOPASDFGHJKLZXCVBNM</value>
   </data>
+  <data name="Button_correctGuess" xml:space="preserve">
+    <value>Correct</value>
+  </data>
+  <data name="Button_incorrectGuess" xml:space="preserve">
+    <value>Incorrect</value>
+  </data>
 </root>

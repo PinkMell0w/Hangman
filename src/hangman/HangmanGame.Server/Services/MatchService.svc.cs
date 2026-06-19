@@ -311,6 +311,46 @@ namespace HangmanGame.Server.Services
             }
         }
 
+        public UpdateMatchWordResponseDto UpdateMatchWord(UpdateMatchWordRequestDto request)
+        {
+            if (request == null || request.MatchId <= 0)
+            {
+                return new UpdateMatchWordResponseDto { Success = false, Message = "Invalid word update request." };
+            }
+
+            var context = new DatabaseContext();
+            var matchRepo = new MatchRepository(context);
+
+            try
+            {
+                context.BeginTransaction();
+
+                matchRepo.UpdateWord(request.MatchId, request.WordId);
+
+                context.Commit();
+
+                return new UpdateMatchWordResponseDto
+                {
+                    Success = true,
+                    Message = "Word updated successfully"
+                };
+            }
+            catch (Exception ex)
+            {
+                context.Rollback();
+
+                return new UpdateMatchWordResponseDto
+                {
+                    Success = false,
+                    Message = ex.Message
+                };
+            }
+            finally
+            {
+                context.Dispose();
+            }
+        }
+
         public CancelMatchResponseDto CancelMatch(CancelMatchRequestDto request)
         {
             if (request == null || request.MatchId <= 0)
@@ -413,7 +453,7 @@ namespace HangmanGame.Server.Services
             }
         }
 
-        public void SubmitHostValidation(int matchId, bool isCorrect, string manualUpdatedMaskedWord)
+        public void SubmitHostValidation(int matchId, bool isCorrect)
         {
             if (!ActiveGames.TryGetValue(matchId, out var state))
             {
@@ -424,6 +464,7 @@ namespace HangmanGame.Server.Services
             var attemptRepo = new GuessAttemptRepository(context);
             var sessionRepo = new GameSessionRepository(context);
             var matchRepo = new MatchRepository(context);
+            var wordRepo = new WordRepository(context);
 
             try
             {
@@ -431,9 +472,26 @@ namespace HangmanGame.Server.Services
 
                 if (isCorrect)
                 {
-                    state.MaskedWord = manualUpdatedMaskedWord;
+                    var matchRow = matchRepo.GetById(matchId);
+                    var wordRow = matchRow != null ? wordRepo.GetById(matchRow.WordId) : null;
+                    string targetWord = wordRow != null ? wordRow.Name.ToUpper() : "";
+                    char guessedChar = state.LastGuessedLetter;
 
-                    if (!manualUpdatedMaskedWord.Contains("_"))
+                    string[] currentTokens = state.MaskedWord.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                    if (currentTokens.Length == targetWord.Length)
+                    {
+                        for (int i = 0; i < targetWord.Length; i++)
+                        {
+                            if (targetWord[i] == guessedChar)
+                            {
+                                currentTokens[i] = guessedChar.ToString();
+                            }
+                        }
+                        state.MaskedWord = string.Join(" ", currentTokens);
+                    }
+
+                    if (!state.MaskedWord.Contains("_"))
                     {
                         state.MatchStatus = "WON";
                     }
@@ -461,10 +519,8 @@ namespace HangmanGame.Server.Services
                 if (state.MatchStatus == "WON" || state.MatchStatus == "LOST")
                 {
                     int? winnerId = (state.MatchStatus == "WON") ? (int?)state.GuesserUserId : null;
-
                     sessionRepo.FinalizeSession(state.SessionId, state.MatchStatus, state.HangmanStage, winnerId);
-
-                    matchRepo.UpdateStatus(matchId, state.MatchStatus);
+                    matchRepo.UpdateStatus(matchId, "FINISHED");
                 }
                 else
                 {

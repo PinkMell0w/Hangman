@@ -38,6 +38,12 @@
   <wsdl:message name="IMatchService_StartMatch_OutputMessage">
     <wsdl:part name="parameters" element="tns:StartMatchResponse" />
   </wsdl:message>
+  <wsdl:message name="IMatchService_UpdateMatchWord_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMatchWord" />
+  </wsdl:message>
+  <wsdl:message name="IMatchService_UpdateMatchWord_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMatchWordResponse" />
+  </wsdl:message>
   <wsdl:message name="IMatchService_CancelMatch_InputMessage">
     <wsdl:part name="parameters" element="tns:CancelMatch" />
   </wsdl:message>
@@ -82,6 +88,10 @@
     <wsdl:operation name="StartMatch">
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/StartMatch" message="tns:IMatchService_StartMatch_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchService/StartMatchResponse" message="tns:IMatchService_StartMatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMatchWord">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/UpdateMatchWord" message="tns:IMatchService_UpdateMatchWord_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchService/UpdateMatchWordResponse" message="tns:IMatchService_UpdateMatchWord_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CancelMatch">
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/CancelMatch" message="tns:IMatchService_CancelMatch_InputMessage" />
@@ -140,6 +150,15 @@
     </wsdl:operation>
     <wsdl:operation name="StartMatch">
       <soap:operation soapAction="http://tempuri.org/IMatchService/StartMatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMatchWord">
+      <soap:operation soapAction="http://tempuri.org/IMatchService/UpdateMatchWord" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

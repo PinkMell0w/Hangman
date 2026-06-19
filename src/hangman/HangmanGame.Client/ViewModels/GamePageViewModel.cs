@@ -1,5 +1,8 @@
 ﻿using HangmanGame.Client.Commands;
+using HangmanGame.Client.Helpers;
 using HangmanGame.Client.MatchServiceReference;
+using HangmanGame.Client.Views;
+using HangmanGame.Client.Views.MatchesList;
 using HangmanGame.Client.WordServiceReference;
 using HangmanGame.Core.Core.DTOs;
 using System;
@@ -24,9 +27,10 @@ namespace HangmanGame.Client.ViewModels
         private int _hangmanStage = 0;
         private bool _isHost;
         private int _matchId;
-        private string _gameState = "PLAYING"; // "PLAYING", "WON", "LOST"
+        private string _gameState = "PLAYING";
         private bool _isMyTurn;
         private string _turnMessage;
+        private char _lastActiveGuessedLetter = ' ';
 
         public ObservableCollection<char> KeyboardLetters { get; set; }
 
@@ -51,7 +55,12 @@ namespace HangmanGame.Client.ViewModels
         {
             get => _isHost;
             set
-            { _isHost = value; OnPropertyChanged(); }
+            {
+                _isHost = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(GuesserUiVisibility));
+                OnPropertyChanged(nameof(HostUiVisibility));
+            }
         }
 
         public string GameState
@@ -70,14 +79,29 @@ namespace HangmanGame.Client.ViewModels
         public bool IsMyTurn
         {
             get => _isMyTurn;
-            set { _isMyTurn = value; OnPropertyChanged(); }
+            set
+            {
+                _isMyTurn = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(GuesserUiVisibility));
+                OnPropertyChanged(nameof(HostUiVisibility));
+            }
         }
 
         public string TurnMessage
         {
             get => _turnMessage;
-            set { _turnMessage = value; OnPropertyChanged(); }
+            set
+            {
+                _turnMessage = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(ValidationPromptText));
+            }
         }
+
+        public string ValidationPromptText => TurnMessage;
+        public Visibility GuesserUiVisibility => (!IsHost) ? Visibility.Visible : Visibility.Collapsed;
+        public Visibility HostUiVisibility => (IsHost && IsMyTurn) ? Visibility.Visible : Visibility.Collapsed;
 
         public Visibility HeadVisibility => HangmanStage >= 1 ? Visibility.Visible : Visibility.Collapsed;
         public Visibility TorsoVisibility => HangmanStage >= 2 ? Visibility.Visible : Visibility.Collapsed;
@@ -91,22 +115,33 @@ namespace HangmanGame.Client.ViewModels
         public Visibility FaceLoseVisibility => GameState == "LOST" ? Visibility.Visible : Visibility.Collapsed;
 
         public ICommand GuessLetterCommand { get; private set; }
-        public ICommand HostCorrectCommand { get; private set; }
-        public ICommand HostIncorrectCommand { get; private set; }
+        public ICommand ValidateGuessCommand { get; private set; }
+        public ICommand LeaveMatchCommand { get; private set; }
+        public ICommand KickPlayerCommand { get; private set; }
+        public ICommand SendMessageCommand { get; private set; }
 
         public GamePageViewModel(int matchId, bool isHost)
         {
             _matchId = matchId;
             _isHost = isHost;
             _matchService = new MatchServiceClient();
+            _wordService = new WordServiceClient();
 
             var alphabet = Properties.Resources.Keyboard_alphabet ?? "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             KeyboardLetters = new ObservableCollection<char>(alphabet.ToCharArray());
 
             GuessLetterCommand = new RelayCommand(param => GuessLetter((char)param));
 
-            HostCorrectCommand = new RelayCommand(_ => SubmitHostValidation(true));
-            HostIncorrectCommand = new RelayCommand(_ => SubmitHostValidation(false));
+            ValidateGuessCommand = new RelayCommand(param => {
+                if (param != null && bool.TryParse(param.ToString(), out bool wasCorrect))
+                {
+                    SubmitHostValidation(wasCorrect);
+                }
+            });
+
+            LeaveMatchCommand = new RelayCommand(_ => { /* Handle Leave Match */ });
+            KickPlayerCommand = new RelayCommand(_ => { /* Handle Kick */ });
+            SendMessageCommand = new RelayCommand(_ => { /* Handle Chat */ });
 
             DisplayedWord = "";
 
@@ -118,17 +153,38 @@ namespace HangmanGame.Client.ViewModels
         {
             if (!IsMyTurn || IsHost) return;
 
-            KeyboardLetters.Remove(letter);
+            try
+            {
+                IsMyTurn = false;
+                TurnMessage = "Submitting guess...";
+
+                _matchService.SubmitGuesserLetter(_matchId, letter);
+
+                if (KeyboardLetters.Contains(letter))
+                {
+                    KeyboardLetters.Remove(letter);
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Error sending guess: {ex.Message}");
+            }
+        }
+
+        private void SubmitHostValidation(bool wasCorrect)
+        {
+            if (!IsMyTurn || !IsHost) return;
 
             try
             {
-                // TODO: Send letter to WCF server, which flags the turn state to "Awaiting Host Validation"
-                // _matchService.SubmitGuesserLetter(_matchId, letter);
                 IsMyTurn = false;
+
+                _matchService.SubmitHostValidation(_matchId, wasCorrect);
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error sending guess: {ex.Message}");
+                IsMyTurn = true;
+                System.Diagnostics.Debug.WriteLine($"Error sending validation: {ex.Message}");
             }
         }
 
@@ -141,23 +197,21 @@ namespace HangmanGame.Client.ViewModels
             OnPropertyChanged(nameof(Leg1Visibility));
             OnPropertyChanged(nameof(StickmanVisibility));
         }
+
         private void InitializeWordDisplay()
         {
             try
             {
                 var response = _matchService.GetMatchById(new GetMatchDetailsRequestDto { MatchId = _matchId });
-
                 if (response != null && response.Success && response.Match != null)
                 {
-                    string word = response.Match.WordName;
-                    int wordLength = word.Length;
-                    DisplayedWord = string.Join(" ", Enumerable.Repeat("_", wordLength));
+                    // Sets the initial masked string display
+                    DisplayedWord = response.Match.WordName ?? "";
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error initializing word: {ex.Message}");
-                DisplayedWord = "";
+                Console.WriteLine($"Error initializing word display: {ex.Message}");
             }
         }
 
@@ -172,12 +226,54 @@ namespace HangmanGame.Client.ViewModels
         {
             try
             {
-                // TODO: Fetch current game state row from server
-                // var state = _matchService.GetGameState(_matchId);
-                // 1. Update DisplayedWord with letters filled in so far
-                // 2. Update HangmanStage (0 to 6)
-                // 3. Update GameState ("PLAYING", "WON", "LOST")
-                // 4. Update IsMyTurn depending on whether the server is waiting for a Guess or a Host validation
+                var state = _matchService.GetLiveGameLoopState(_matchId);
+                if (state != null)
+                {
+                    DisplayedWord = state.MaskedWord;
+                    HangmanStage = state.HangmanStage;
+                    GameState = state.MatchStatus;
+                    _lastActiveGuessedLetter = state.LastGuessedLetter;
+
+                    if (state.CurrentTurn == "GUESSER" && state.LastGuessedLetter != ' ')
+                    {
+                        if (KeyboardLetters.Contains(state.LastGuessedLetter))
+                        {
+                            KeyboardLetters.Remove(state.LastGuessedLetter);
+                        }
+                    }
+
+                    if (GameState == "WON" || GameState == "LOST")
+                    {
+                        _syncTimer.Stop();
+                        string message = GameState == "WON"
+                            ? Properties.Resources.Message_wordGuessed
+                            : Properties.Resources.Message_wordNotGuessed;
+
+                        MessageBox.Show(message, "", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                        Cleanup();
+                        App.Current.Dispatcher.Invoke(() => {
+                            if (IsHost) NavigationManager.Instance.Navigate(new LobbyPage());
+                            else NavigationManager.Instance.Navigate(new MatchesListPage());
+                        });
+                        return;
+                    }
+
+                    if (IsHost)
+                    {
+                        IsMyTurn = (state.CurrentTurn == "HOST_VALIDATION");
+                        TurnMessage = IsMyTurn
+                            ? $"Opponent guessed '{_lastActiveGuessedLetter}'. Accept or reject this move?"
+                            : "Waiting for player to make a move...";
+                    }
+                    else
+                    {
+                        IsMyTurn = (state.CurrentTurn == "GUESSER");
+                        TurnMessage = IsMyTurn
+                            ? "Your turn! Pick a letter."
+                            : "Waiting for host validation...";
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -185,29 +281,9 @@ namespace HangmanGame.Client.ViewModels
             }
         }
 
-        private void SubmitHostValidation(bool wasCorrect)
-        {
-            if (!IsMyTurn || !IsHost) return;
-
-            try
-            {
-                // TODO: Tell WCF server if guess was correct.
-                // If false: Server increments HangmanStage.
-                // If true: Server updates the masked word string with the guessed letter.
-                // Then, server sets Turn state back to the Guesser.
-                // _matchService.SubmitHostValidation(_matchId, wasCorrect);
-                IsMyTurn = false;
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Error saving host action: {ex.Message}");
-            }
-        }
-
         public void Cleanup()
         {
             _syncTimer?.Stop();
         }
-
     }
 }

@@ -33,9 +33,9 @@
             <Canvas Grid.Row="0" Height="200" Margin="0,20,0,20">
                 <Image Source="/Resources/Images/Gallows.png" Stretch="None" Margin="400,0,0,0" />
 
-                <Image x:Name="ImgFaceOk" Source="/Resources/Images/FaceOk.png" Stretch="None" Margin="400,0,0,0" Visibility="Hidden" />
-                <Image x:Name="ImgFaceWin" Source="/Resources/Images/FaceWin.png" Stretch="None" Margin="400,0,0,0" Visibility="Hidden" />
-                <Image x:Name="ImgFaceLose" Source="/Resources/Images/FaceDead.png" Stretch="None" Margin="400,0,0,0" Visibility="Hidden" />
+                <Image x:Name="ImgFaceOk" Source="/Resources/Images/FaceOk.png" Stretch="None" Margin="400,0,0,0" Visibility="{Binding FaceOkVisibility}" />
+                <Image x:Name="ImgFaceWin" Source="/Resources/Images/FaceWin.png" Stretch="None" Margin="400,0,0,0" Visibility="{Binding FaceWinVisibility}" />
+                <Image x:Name="ImgFaceLose" Source="/Resources/Images/FaceDead.png" Stretch="None" Margin="400,0,0,0" Visibility="{Binding FaceLoseVisibility}" />
 
                 <Image x:Name="ImgStickHead" Source="/Resources/Images/StickHead.png" Stretch="None" Margin="400,0,0,0" Visibility="{Binding HeadVisibility}" />
                 <Image x:Name="ImgStickTorso" Source="/Resources/Images/StickTorso.png" Stretch="None" Margin="400,0,0,0" Visibility="{Binding TorsoVisibility}" />
@@ -45,7 +45,7 @@
                 <Image x:Name="ImgStickman" Source="/Resources/Images/Stickman.png" Stretch="None" Margin="400,0,0,0" Visibility="{Binding StickmanVisibility}" />
             </Canvas>
 
-            <TextBlock Grid.Row="1" Text="_ _ _ _ _" FontSize="32" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Text="{Binding DisplayedWord}" FontSize="32" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Center"/>
         </Grid>
 
         <Grid Grid.Row="2">
@@ -54,7 +54,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <ItemsControl ItemsSource="{Binding KeyboardLetters}" Width="380" HorizontalAlignment="Center" Margin="220,50,0,0">
+            <ItemsControl ItemsSource="{Binding KeyboardLetters}" Visibility="{Binding GuesserUiVisibility}" Width="380" HorizontalAlignment="Center" Margin="220,50,0,0">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal" />
@@ -71,6 +71,25 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
+
+            <StackPanel Visibility="{Binding HostUiVisibility}" 
+            Width="380" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="220,20,0,0">
+
+                <TextBlock Text="{Binding ValidationPromptText}" 
+               FontSize="18" TextAlignment="Center" FontWeight="Bold" Margin="0,0,0,20" TextWrapping="Wrap"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="{x:Static props:Resources.Button_correctGuess}" 
+                Command="{Binding ValidateGuessCommand}" 
+                CommandParameter="True" 
+                Background="LightGreen" Padding="20,10" Margin="10"/>
+
+                    <Button Content="{x:Static props:Resources.Button_incorrectGuess}" 
+                Command="{Binding ValidateGuessCommand}" 
+                CommandParameter="False" 
+                Background="LightCoral" Padding="20,10" Margin="10"/>
+                </StackPanel>
+            </StackPanel>
 
             <Grid x:Name="GridChat" Grid.Column="1" Margin="0,0,0,10">
                 <Grid.RowDefinitions>

@@ -3,6 +3,7 @@ using HangmanGame.Client.Helpers;
 using HangmanGame.Client.MatchServiceReference;
 using HangmanGame.Client.Views;
 using HangmanGame.Client.Views.Game;
+using HangmanGame.Client.Views.MatchesList;
 using HangmanGame.Client.WordServiceReference;
 using HangmanGame.Core.Core.Domain;
 using HangmanGame.Core.Core.DTOs;
@@ -27,11 +28,12 @@ namespace HangmanGame.Client.ViewModels
         private ObservableCollection<Word> _words;
 
         private Word _selectedWord;
-        private string _selectedCategory;
+        private string _selectedCategory = "Animals";
 
         private bool _isHost { get; set; }
         private string _hostName { get; set; }
         private string _opponentName { get; set; }
+        private int _opponentId { get; set; }
         private int _matchId { get; set; }
         private DispatcherTimer _lobbyTimer { get; set; }
         private bool _isShowingSettings { get; set; }
@@ -76,6 +78,12 @@ namespace HangmanGame.Client.ViewModels
         {
             get => _opponentName;
             set { _opponentName = value; OnPropertyChanged(); }
+        }
+
+        public int OpponentId
+        {
+            get => _opponentId;
+            set { _opponentId = value; OnPropertyChanged(); }
         }
 
         public int MatchId
@@ -141,6 +149,8 @@ namespace HangmanGame.Client.ViewModels
             SelectWordCommand = new RelayCommand(SelectWord);
             SelectCategoryCommand = new RelayCommand(SelectCategory);
             GoBackCommand = new RelayCommand(_ => GoBack());
+            KickPlayerCommand = new RelayCommand(_ => KickPlayer());
+            SaveChangesCommand = new RelayCommand(_ => SaveChanges());
         }
 
         private void StartLobbyPolling(int matchId)
@@ -163,6 +173,14 @@ namespace HangmanGame.Client.ViewModels
 
                 if (response != null && response.Success && response.Match != null)
                 {
+                    if (SelectedWord == null && !string.IsNullOrEmpty(response.Match.WordName))
+                    {
+                        SelectedWord = new Word
+                        {
+                            Name = response.Match.WordName
+                        };
+                    }
+
                     if (IsHost)
                     {
                         HostName = Properties.Resources.Text_you;
@@ -172,16 +190,18 @@ namespace HangmanGame.Client.ViewModels
                         if (!string.IsNullOrEmpty(guesserName))
                         {
                             OpponentName = guesserName;
+                            OpponentId = response.Match.OpponentId;
                         }
                         else
                         {
                             OpponentName = Properties.Resources.Text_awaitingOpponent;
+                            OpponentId = 0;
                         }
                     }
                     else
                     {
                         HostName = response.Match.HostName;
-                        OpponentName = response.Match.HostName;
+                        OpponentName = Properties.Resources.Text_you;
                     }
 
                     if (!IsHost && response.Match.Status == "IN_PROGRESS")
@@ -209,6 +229,12 @@ namespace HangmanGame.Client.ViewModels
 
         private void StartMatch()
         {
+            if (SelectedWord == null)
+            {
+                MessageBox.Show(Properties.Resources.Message_wordNeeded);
+                return;
+            }
+
             try
             {
                 var request = new StartMatchRequestDto { MatchId = this.MatchId };
@@ -216,6 +242,8 @@ namespace HangmanGame.Client.ViewModels
 
                 if (response.Success)
                 {
+                    _lobbyTimer?.Stop();
+
                     NavigationManager.Instance.Navigate(new GamePage(MatchId, true));
                 }
             }
@@ -243,7 +271,11 @@ namespace HangmanGame.Client.ViewModels
 
             try
             {
-                var request = new CancelMatchRequestDto { MatchId = this.MatchId };
+                var request = new CancelMatchRequestDto
+                {
+                    MatchId = this.MatchId,
+                    UserId = SessionManager.Instance.CurrentUserId
+                };
 
                 var response = _matchService.CancelMatch(request);
 
@@ -257,7 +289,14 @@ namespace HangmanGame.Client.ViewModels
                 System.Diagnostics.Debug.WriteLine($"Error canceling match: {ex.Message}");
             }
 
-            NavigationManager.Instance.Navigate(new LobbyPage());
+            if (IsHost)
+            {
+                NavigationManager.Instance.Navigate(new LobbyPage());
+            }
+            else
+            {
+                NavigationManager.Instance.Navigate(new MatchesListPage());
+            }
         }
 
         private void SendMessage()
@@ -346,10 +385,13 @@ namespace HangmanGame.Client.ViewModels
             if (result == MessageBoxResult.No)
                 return;
 
-            /*
             try
             {
-                var response = _matchService.UpdateMatchWord(this.MatchId, SelectedWord.WordId);
+                var response = _matchService.UpdateMatchWord(new UpdateMatchWordRequestDto
+                {
+                    MatchId = this.MatchId,
+                    WordId = SelectedWord.WordId
+                });
 
                 if (response.Success)
                 {
@@ -360,7 +402,6 @@ namespace HangmanGame.Client.ViewModels
             {
                 Console.WriteLine($"Error saving match settings: {ex.Message}");
             }
-            */
         }
 
         private void KickPlayer()
@@ -379,21 +420,27 @@ namespace HangmanGame.Client.ViewModels
 
             if (result == MessageBoxResult.No) return;
 
-            /*
             try
             {
-                var response = _matchService.KickPlayer(this.MatchId);
+                var request = new CancelMatchRequestDto
+                {
+                    MatchId = this.MatchId,
+                    UserId = OpponentId
+                };
+
+                var response = _matchService.CancelMatch(request);
 
                 if (response.Success)
                 {
                     OpponentName = Properties.Resources.Text_awaitingOpponent;
+                    OpponentId = 0;
+                    MessageBox.Show("Jugador expulsado de la sala.");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error kicking player: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Error kicking player: {ex.Message}");
             }
-            */
         }
     }
 }

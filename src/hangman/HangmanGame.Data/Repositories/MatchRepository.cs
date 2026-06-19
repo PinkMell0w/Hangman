@@ -175,6 +175,22 @@ namespace HangmanGame.Data.Repositories
             }
         }
 
+        public void UpdateWord(int matchId, int wordId)
+        {
+            var connection = _context.GetOpenConnection();
+            var transaction = _context.CurrentTransaction;
+
+            string query = "UPDATE [Match] SET [wordId] = @wordId WHERE matchId = @matchId";
+
+            using (var command = new SqlCommand(query,connection, transaction))
+            {
+                command.Parameters.AddWithValue("@wordId", wordId);
+                command.Parameters.AddWithValue("@matchId", matchId);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
         public void Update(Match entity) => throw new NotImplementedException();
         public void Delete(int id)
         {

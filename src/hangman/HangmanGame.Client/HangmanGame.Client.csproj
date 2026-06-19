@@ -228,6 +228,7 @@
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.RegisterResponseDto.datasource" />
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.SignInResponseDto1.datasource" />
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.StartMatchResponseDto.datasource" />
+    <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.UpdateMatchWordResponseDto.datasource" />
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.UserCardResponseDto.datasource" />
     <None Include="Properties\DataSources\HangmanGame.Core.Core.DTOs.WordResponseDto.datasource" />
     <None Include="Properties\DataSources\HangmanGame.Core.Core.Interfaces.Services.LiveGameRuntimeState.datasource" />

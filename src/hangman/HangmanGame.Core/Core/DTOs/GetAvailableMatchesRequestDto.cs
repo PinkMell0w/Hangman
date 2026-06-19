@@ -44,6 +44,9 @@ namespace HangmanGame.Core.Core.DTOs
         public string OpponentName { get; set; }
 
         [DataMember]
+        public int OpponentId { get; set; }
+
+        [DataMember]
         public string Status { get; set; }
 
         [DataMember]

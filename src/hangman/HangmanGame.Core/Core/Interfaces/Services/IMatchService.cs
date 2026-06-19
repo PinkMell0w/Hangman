@@ -45,6 +45,9 @@ namespace HangmanGame.Core.Core.Interfaces.Services
         StartMatchResponseDto StartMatch(StartMatchRequestDto request);
 
         [OperationContract]
+        UpdateMatchWordResponseDto UpdateMatchWord(UpdateMatchWordRequestDto request);
+
+        [OperationContract]
         CancelMatchResponseDto CancelMatch(CancelMatchRequestDto request);
 
         [OperationContract]
@@ -54,6 +57,6 @@ namespace HangmanGame.Core.Core.Interfaces.Services
         void SubmitGuesserLetter(int matchId, char letter);
 
         [OperationContract]
-        void SubmitHostValidation(int matchId, bool isCorrect, string manualUpdatedMaskedWord);
+        void SubmitHostValidation(int matchId, bool isCorrect);
     }
 }

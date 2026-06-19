@@ -45,6 +45,12 @@ namespace HangmanGame.Client.MatchServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/StartMatch", ReplyAction="http://tempuri.org/IMatchService/StartMatchResponse")]
         System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.StartMatchResponseDto> StartMatchAsync(HangmanGame.Core.Core.DTOs.StartMatchRequestDto request);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/UpdateMatchWord", ReplyAction="http://tempuri.org/IMatchService/UpdateMatchWordResponse")]
+        HangmanGame.Core.Core.DTOs.UpdateMatchWordResponseDto UpdateMatchWord(HangmanGame.Core.Core.DTOs.UpdateMatchWordRequestDto request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/UpdateMatchWord", ReplyAction="http://tempuri.org/IMatchService/UpdateMatchWordResponse")]
+        System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.UpdateMatchWordResponseDto> UpdateMatchWordAsync(HangmanGame.Core.Core.DTOs.UpdateMatchWordRequestDto request);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/CancelMatch", ReplyAction="http://tempuri.org/IMatchService/CancelMatchResponse")]
         HangmanGame.Core.Core.DTOs.CancelMatchResponseDto CancelMatch(HangmanGame.Core.Core.DTOs.CancelMatchRequestDto request);
         
@@ -64,10 +70,10 @@ namespace HangmanGame.Client.MatchServiceReference {
         System.Threading.Tasks.Task SubmitGuesserLetterAsync(int matchId, char letter);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/SubmitHostValidation", ReplyAction="http://tempuri.org/IMatchService/SubmitHostValidationResponse")]
-        void SubmitHostValidation(int matchId, bool isCorrect, string manualUpdatedMaskedWord);
+        void SubmitHostValidation(int matchId, bool isCorrect);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchService/SubmitHostValidation", ReplyAction="http://tempuri.org/IMatchService/SubmitHostValidationResponse")]
-        System.Threading.Tasks.Task SubmitHostValidationAsync(int matchId, bool isCorrect, string manualUpdatedMaskedWord);
+        System.Threading.Tasks.Task SubmitHostValidationAsync(int matchId, bool isCorrect);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -137,6 +143,14 @@ namespace HangmanGame.Client.MatchServiceReference {
             return base.Channel.StartMatchAsync(request);
         }
         
+        public HangmanGame.Core.Core.DTOs.UpdateMatchWordResponseDto UpdateMatchWord(HangmanGame.Core.Core.DTOs.UpdateMatchWordRequestDto request) {
+            return base.Channel.UpdateMatchWord(request);
+        }
+        
+        public System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.UpdateMatchWordResponseDto> UpdateMatchWordAsync(HangmanGame.Core.Core.DTOs.UpdateMatchWordRequestDto request) {
+            return base.Channel.UpdateMatchWordAsync(request);
+        }
+        
         public HangmanGame.Core.Core.DTOs.CancelMatchResponseDto CancelMatch(HangmanGame.Core.Core.DTOs.CancelMatchRequestDto request) {
             return base.Channel.CancelMatch(request);
         }
@@ -161,12 +175,12 @@ namespace HangmanGame.Client.MatchServiceReference {
             return base.Channel.SubmitGuesserLetterAsync(matchId, letter);
         }
         
-        public void SubmitHostValidation(int matchId, bool isCorrect, string manualUpdatedMaskedWord) {
-            base.Channel.SubmitHostValidation(matchId, isCorrect, manualUpdatedMaskedWord);
+        public void SubmitHostValidation(int matchId, bool isCorrect) {
+            base.Channel.SubmitHostValidation(matchId, isCorrect);
         }
         
-        public System.Threading.Tasks.Task SubmitHostValidationAsync(int matchId, bool isCorrect, string manualUpdatedMaskedWord) {
-            return base.Channel.SubmitHostValidationAsync(matchId, isCorrect, manualUpdatedMaskedWord);
+        public System.Threading.Tasks.Task SubmitHostValidationAsync(int matchId, bool isCorrect) {
+            return base.Channel.SubmitHostValidationAsync(matchId, isCorrect);
         }
     }
 }

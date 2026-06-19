@@ -65,6 +65,7 @@
     <Compile Include="Core\DTOs\SignInRequestDto.cs" />
     <Compile Include="Core\DTOs\SignInResponseDto.cs" />
     <Compile Include="Core\DTOs\StartMatchRequestDto.cs" />
+    <Compile Include="Core\DTOs\UpdateMatchWordRequestDto.cs" />
     <Compile Include="Core\DTOs\UserCardRequestDto.cs" />
     <Compile Include="Core\DTOs\UserCardResponseDto.cs" />
     <Compile Include="Core\DTOs\WordRequestDto.cs" />

@@ -73,17 +73,31 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="UpdateMatchWord">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.DTOs" minOccurs="0" name="request" nillable="true" type="q11:UpdateMatchWordRequestDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMatchWordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.DTOs" minOccurs="0" name="UpdateMatchWordResult" nillable="true" type="q12:UpdateMatchWordResponseDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="CancelMatch">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.DTOs" minOccurs="0" name="request" nillable="true" type="q11:CancelMatchRequestDto" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.DTOs" minOccurs="0" name="request" nillable="true" type="q13:CancelMatchRequestDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CancelMatchResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.DTOs" minOccurs="0" name="CancelMatchResult" nillable="true" type="q12:CancelMatchResponseDto" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.DTOs" minOccurs="0" name="CancelMatchResult" nillable="true" type="q14:CancelMatchResponseDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -97,7 +111,7 @@
   <xs:element name="GetLiveGameLoopStateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.Interfaces.Services" minOccurs="0" name="GetLiveGameLoopStateResult" nillable="true" type="q13:LiveGameRuntimeState" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/HangmanGame.Core.Core.Interfaces.Services" minOccurs="0" name="GetLiveGameLoopStateResult" nillable="true" type="q15:LiveGameRuntimeState" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -105,7 +119,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="matchId" type="xs:int" />
-        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="letter" type="q14:char" />
+        <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="letter" type="q16:char" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -119,7 +133,6 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="matchId" type="xs:int" />
         <xs:element minOccurs="0" name="isCorrect" type="xs:boolean" />
-        <xs:element minOccurs="0" name="manualUpdatedMaskedWord" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
