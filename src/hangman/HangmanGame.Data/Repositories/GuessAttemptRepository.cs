@@ -22,7 +22,6 @@ namespace HangmanGame.Data.Repositories
 
         public void AddGuessAttempt(GuessAttempt attempt)
         {
-            // SQL Server automatically handles attemptId and attemptedAt!
             const string query = @"
                 INSERT INTO [GuessAttempt] (sessionId, userId, letter, isCorrect)
                 VALUES (@sessionId, @userId, @letter, @isCorrect);
@@ -40,7 +39,6 @@ namespace HangmanGame.Data.Repositories
                     cmd.Parameters.AddWithValue("@letter", attempt.Letter.ToString());
                     cmd.Parameters.AddWithValue("@isCorrect", attempt.IsCorrect);
 
-                    // Assuming your domain model maps attemptId to a property like GuessAttemptId or AttemptId
                     attempt.GuessAttemptId = (int)cmd.ExecuteScalar();
                 }
             }

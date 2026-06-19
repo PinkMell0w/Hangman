@@ -14,7 +14,7 @@ namespace HangmanGame.Core.Core.DTOs
         public int MatchId { get; set; }
 
         [DataMember]
-        public int HostId { get; set; }
+        public int UserId { get; set; }
     }
 
     [DataContract]

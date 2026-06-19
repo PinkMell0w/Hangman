@@ -57,6 +57,41 @@ namespace HangmanGame.Data.Repositories
                 }
             }
         }
+
+        public void AddPoints(int userId, int points)
+        {
+            const string query = @"
+            UPDATE PlayerStats 
+            SET totalScore = totalScore + @points 
+            WHERE userId = @userId";
+
+            SqlConnection conn = _context.GetOpenConnection();
+
+            using (SqlCommand cmd = new SqlCommand(query, conn, _context.CurrentTransaction))
+            {
+                cmd.Parameters.AddWithValue("@points", points);
+                cmd.Parameters.AddWithValue("@userId", userId);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void DeductPoints(int userId, int points)
+        {
+            const string query = @"
+            UPDATE PlayerStats 
+            SET totalScore = totalScore - @points 
+            WHERE userId = @userId";
+
+            SqlConnection conn = _context.GetOpenConnection();
+
+            using (SqlCommand cmd = new SqlCommand(query, conn, _context.CurrentTransaction))
+            {
+                cmd.Parameters.AddWithValue("@points", points);
+                cmd.Parameters.AddWithValue("@userId", userId);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
         public PlayerStats Get(int id) => throw new NotImplementedException();
         public IEnumerable<PlayerStats> GetAll() => throw new NotImplementedException();
         public void Update(PlayerStats entity) => throw new NotImplementedException();

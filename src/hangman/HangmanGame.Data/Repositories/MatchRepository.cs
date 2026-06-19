@@ -176,7 +176,17 @@ namespace HangmanGame.Data.Repositories
         }
 
         public void Update(Match entity) => throw new NotImplementedException();
-        public void Delete(int id) => throw new NotImplementedException();
+        public void Delete(int id)
+        {
+            SqlConnection conn = _context.GetOpenConnection();
+            const string query = "DELETE FROM [Match] WHERE matchId = @matchId";
+
+            using (SqlCommand cmd = new SqlCommand(query, conn, _context.CurrentTransaction))
+            {
+                cmd.Parameters.AddWithValue("@matchId", id);
+                cmd.ExecuteNonQuery();
+            }
+        }
         public Match Get(int id) => throw new NotImplementedException();
         public IEnumerable<Match> GetAll() => throw new NotImplementedException();
     }

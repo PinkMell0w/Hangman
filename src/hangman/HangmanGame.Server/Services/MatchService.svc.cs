@@ -320,12 +320,49 @@ namespace HangmanGame.Server.Services
 
             var context = new DatabaseContext();
             var matchRepo = new MatchRepository(context);
+            var playerRepo = new PlayerInMatchRepository(context);
+            var playerStatsRepo = new PlayerStatsRepository(context);
 
             try
             {
                 context.BeginTransaction();
 
-                matchRepo.UpdateStatus(request.MatchId, "CANCELED");
+                Match currentMatch = matchRepo.GetById(request.MatchId);
+                if (currentMatch == null)
+                {
+                    return new CancelMatchResponseDto { Success = false, Message = "Match not found." };
+                }
+
+                int guesserId = playerRepo.GetGuesserId(request.MatchId);
+                bool isHost = (request.UserId == currentMatch.HostId);
+
+                if (currentMatch.Status == "WAITING")
+                {
+                    if (!isHost)
+                    {
+                        playerRepo.RemovePlayerFromMatch(request.MatchId, request.UserId);
+                    }
+                    else
+                    {
+                        matchRepo.Delete(request.MatchId);
+                    }
+                }
+                else if (currentMatch.Status == "IN_PROGRESS")
+                {
+                    matchRepo.UpdateStatus(request.MatchId, "CANCELLED");
+
+                    bool isKickAction = isHost && (guesserId != 0);
+
+                    if (isKickAction)
+                    {
+                        playerStatsRepo.DeductPoints(currentMatch.HostId, 3);
+                        playerStatsRepo.DeductPoints(guesserId, 3);
+                    }
+                    else
+                    {
+                        playerStatsRepo.DeductPoints(request.UserId, 3);
+                    }
+                }
 
                 context.Commit();
 
