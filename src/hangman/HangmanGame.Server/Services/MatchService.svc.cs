@@ -465,6 +465,7 @@ namespace HangmanGame.Server.Services
             var sessionRepo = new GameSessionRepository(context);
             var matchRepo = new MatchRepository(context);
             var wordRepo = new WordRepository(context);
+            var statsRepo = new PlayerStatsRepository(context);
 
             try
             {
@@ -518,8 +519,25 @@ namespace HangmanGame.Server.Services
 
                 if (state.MatchStatus == "WON" || state.MatchStatus == "LOST")
                 {
-                    int? winnerId = (state.MatchStatus == "WON") ? (int?)state.GuesserUserId : null;
-                    sessionRepo.FinalizeSession(state.SessionId, state.MatchStatus, state.HangmanStage, winnerId);
+                    string dbResult = (state.MatchStatus == "WON") ? "WIN" : "LOSS";
+
+                    int? winnerId = null;
+                    if (state.MatchStatus == "WON")
+                    {
+                        winnerId = state.GuesserUserId;
+                        statsRepo.AddPoints(state.GuesserUserId, 10);
+                    }
+                    else if (state.MatchStatus == "LOST")
+                    {
+                        var matchRow = matchRepo.GetById(matchId);
+                        if (matchRow != null)
+                        {
+                            winnerId = matchRow.HostId;
+                            statsRepo.AddPoints(matchRow.HostId, 5);
+                        }
+                    }
+
+                    sessionRepo.FinalizeSession(state.SessionId, dbResult, state.HangmanStage, winnerId);
                     matchRepo.UpdateStatus(matchId, "FINISHED");
                 }
                 else

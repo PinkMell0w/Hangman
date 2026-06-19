@@ -164,7 +164,13 @@ namespace HangmanGame.Data.Repositories
             var connection = _context.GetOpenConnection();
             var transaction = _context.CurrentTransaction;
 
-            string query = "UPDATE [Match] SET [status] = @status WHERE matchId = @matchId";
+            string query = @"UPDATE [Match] 
+                     SET [status] = @status,
+                     [finishedAt] = CASE 
+                        WHEN @status = 'FINISHED' THEN GETDATE() 
+                        ELSE [finishedAt] 
+                     END 
+                     WHERE matchId = @matchId";
 
             using (var command = new SqlCommand(query, connection, transaction))
             {
