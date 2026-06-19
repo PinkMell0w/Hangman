@@ -299,11 +299,6 @@ namespace HangmanGame.Client.ViewModels
                 };
 
                 var response = _matchService.CancelMatch(request);
-
-                if (response.Success)
-                {
-                    MessageBox.Show("Match cancelled successfully. Returning to main menu.");
-                }
             }
             catch (Exception ex)
             {
@@ -312,10 +307,12 @@ namespace HangmanGame.Client.ViewModels
 
             if (IsHost)
             {
+                MessageBox.Show(Properties.Resources.Message_youLeft + " " + Properties.Resources.Append_noPointsLost, Properties.Resources.Title_message, MessageBoxButton.OK);
                 NavigationManager.Instance.Navigate(new LobbyPage());
             }
             else
             {
+                MessageBox.Show(Properties.Resources.Message_hostLeft + " " + Properties.Resources.Append_noPointsLost);
                 NavigationManager.Instance.Navigate(new MatchesListPage());
             }
         }
