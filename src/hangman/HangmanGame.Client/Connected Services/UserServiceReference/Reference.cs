@@ -32,6 +32,12 @@ namespace HangmanGame.Client.UserServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateProfile", ReplyAction="http://tempuri.org/IUserService/UpdateProfileResponse")]
         System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.UpdateProfileResponseDto> UpdateProfileAsync(HangmanGame.Core.Core.DTOs.UpdateProfileRequestDto request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetScoreBreakdown", ReplyAction="http://tempuri.org/IUserService/GetScoreBreakdownResponse")]
+        HangmanGame.Core.Core.DTOs.GetScoreBreakdownResponseDto GetScoreBreakdown(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetScoreBreakdown", ReplyAction="http://tempuri.org/IUserService/GetScoreBreakdownResponse")]
+        System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.GetScoreBreakdownResponseDto> GetScoreBreakdownAsync(int userId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,6 +89,14 @@ namespace HangmanGame.Client.UserServiceReference {
         
         public System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.UpdateProfileResponseDto> UpdateProfileAsync(HangmanGame.Core.Core.DTOs.UpdateProfileRequestDto request) {
             return base.Channel.UpdateProfileAsync(request);
+        }
+        
+        public HangmanGame.Core.Core.DTOs.GetScoreBreakdownResponseDto GetScoreBreakdown(int userId) {
+            return base.Channel.GetScoreBreakdown(userId);
+        }
+        
+        public System.Threading.Tasks.Task<HangmanGame.Core.Core.DTOs.GetScoreBreakdownResponseDto> GetScoreBreakdownAsync(int userId) {
+            return base.Channel.GetScoreBreakdownAsync(userId);
         }
     }
 }

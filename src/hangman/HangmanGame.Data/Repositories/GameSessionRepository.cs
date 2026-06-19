@@ -91,7 +91,7 @@ namespace HangmanGame.Data.Repositories
             const string query = @"
                 SELECT 
                     gs.finishedAt AS MatchDate,
-                    w.wordName AS Word,
+                    w.word AS Word,
                     uHost.username AS OpponentName,
                     10 AS PointsType,
                     'WORD_GUESSED' AS Category
@@ -107,7 +107,7 @@ namespace HangmanGame.Data.Repositories
 
                 SELECT 
                     gs.finishedAt AS MatchDate,
-                    w.wordName AS Word,
+                    w.word AS Word,
                     uGuesser.username AS OpponentName,
                     5 AS PointsType,
                     'OPPONENT_FAILED' AS Category
@@ -124,7 +124,7 @@ namespace HangmanGame.Data.Repositories
 
                 SELECT 
                     ISNULL(m.finishedAt, GETDATE()) AS MatchDate,
-                    ISNULL(w.wordName, 'N/A') AS Word,
+                    ISNULL(w.word, 'N/A') AS Word,
                     'System' AS OpponentName,
                     -3 AS PointsType,
                     'PENALIZATION' AS Category

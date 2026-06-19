@@ -3,7 +3,10 @@ using HangmanGame.Client.Helpers;
 using HangmanGame.Client.UserServiceReference;
 using HangmanGame.Client.Views;
 using HangmanGame.Core.Core.DTOs;
+using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,9 +27,14 @@ namespace HangmanGame.Client.ViewModels
         private string _errorMessage;
         private bool _isLoading;
         private bool _isEditing;
+        private bool _isShowingStats;
 
         private string _originalUsername;
         private string _originalBio;
+
+        private ObservableCollection<GetScoreBreakdownRequestDto> _wonMatches = new ObservableCollection<GetScoreBreakdownRequestDto>();
+        private ObservableCollection<GetScoreBreakdownRequestDto> _rivalFailedMatches = new ObservableCollection<GetScoreBreakdownRequestDto>();
+        private ObservableCollection<GetScoreBreakdownRequestDto> _penalties = new ObservableCollection<GetScoreBreakdownRequestDto>();
 
         public string Username
         {
@@ -66,15 +74,38 @@ namespace HangmanGame.Client.ViewModels
         public bool HasError => !string.IsNullOrEmpty(ErrorMessage);
         public bool IsNotLoading => !_isLoading;
 
+        public ObservableCollection<GetScoreBreakdownRequestDto> WonMatches
+        {
+            get => _wonMatches;
+            set { _wonMatches = value; OnPropertyChanged(); }
+        }
+        public ObservableCollection<GetScoreBreakdownRequestDto> RivalFailedMatches
+        {
+            get => _rivalFailedMatches;
+            set { _rivalFailedMatches = value; OnPropertyChanged(); }
+        }
+        public ObservableCollection<GetScoreBreakdownRequestDto> Penalties
+        {
+            get => _penalties;
+            set { _penalties = value; OnPropertyChanged(); }
+        }
+
         public Visibility ViewModeVisibility => _isEditing ? Visibility.Collapsed : Visibility.Visible;
         public Visibility EditModeVisibility => _isEditing ? Visibility.Visible : Visibility.Collapsed;
+        public Visibility StatsVisibility => _isShowingStats ? Visibility.Visible : Visibility.Collapsed;
+
+        public Visibility ProfileDetailsVisibility => _isShowingStats ? Visibility.Collapsed : Visibility.Visible;
+
+        public Visibility ModifyButtonsVisibility => (_isEditing || _isShowingStats) ? Visibility.Collapsed : Visibility.Visible;
+
+        public string ToggleStatsButtonText => _isShowingStats ? Properties.Resources.Button_hideDetails : Properties.Resources.Button_seeScores;
 
         public ICommand LoadProfileCommand { get; }
         public ICommand NavigateToLobbyCommand { get; }
-
         public ICommand ModifyProfileCommand { get; }
         public ICommand SaveChangesCommand { get; }
         public ICommand GoBackCommand { get; }
+        public ICommand ToggleStatsCommand { get; }
 
         public ProfilePageViewModel()
         {
@@ -85,6 +116,8 @@ namespace HangmanGame.Client.ViewModels
             ModifyProfileCommand = new RelayCommand(_ => ModifyProfile());
             SaveChangesCommand = new RelayCommand(_ => SaveChanges());
             GoBackCommand = new RelayCommand(_ => GoBack());
+
+            ToggleStatsCommand = new RelayCommand(_ => ToggleStats());
             LoadProfile();
         }
 
@@ -96,8 +129,11 @@ namespace HangmanGame.Client.ViewModels
             ErrorMessage = string.Empty;
             OnPropertyChanged(nameof(IsNotLoading));
 
-            var request = new LoadProfileRequestDto { UserId = SessionManager.Instance.CurrentUserId };
+            int currentUserId = SessionManager.Instance.CurrentUserId;
+            var request = new LoadProfileRequestDto { UserId = currentUserId };
+
             var response = await Task.Run(() => _userService.LoadProfile(request));
+            var breakdownResponse = await Task.Run(() => _userService.GetScoreBreakdown(currentUserId));
 
             _isLoading = false;
             OnPropertyChanged(nameof(IsNotLoading));
@@ -110,9 +146,30 @@ namespace HangmanGame.Client.ViewModels
                 GamesWon = response.GamesWon;
                 WinRate = response.WinRate;
                 Bio = response.Bio;
-            } else
+            }
+            else
             {
                 MessageBox.Show(response.Message);
+            }
+
+            if (breakdownResponse != null && breakdownResponse.Success)
+            {
+                WonMatches.Clear();
+                RivalFailedMatches.Clear();
+                Penalties.Clear();
+
+                foreach (var item in breakdownResponse.Ledger.Where(x => x.Category == "WORD_GUESSED"))
+                    WonMatches.Add(item);
+
+                foreach (var item in breakdownResponse.Ledger.Where(x => x.Category == "OPPONENT_FAILED"))
+                    RivalFailedMatches.Add(item);
+
+                foreach (var item in breakdownResponse.Ledger.Where(x => x.Category == "PENALIZATION"))
+                    Penalties.Add(item);
+            }
+            else if (breakdownResponse != null && !breakdownResponse.Success)
+            {
+                MessageBox.Show(breakdownResponse.Message);
             }
         }
 
@@ -182,6 +239,16 @@ namespace HangmanGame.Client.ViewModels
         {
             OnPropertyChanged(nameof(ViewModeVisibility));
             OnPropertyChanged(nameof(EditModeVisibility));
+            OnPropertyChanged(nameof(ModifyButtonsVisibility));
+        }
+
+        private void ToggleStats()
+        {
+            _isShowingStats = !_isShowingStats;
+            OnPropertyChanged(nameof(StatsVisibility));
+            OnPropertyChanged(nameof(ProfileDetailsVisibility));
+            OnPropertyChanged(nameof(ModifyButtonsVisibility));
+            OnPropertyChanged(nameof(ToggleStatsButtonText));
         }
     }
 }

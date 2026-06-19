@@ -54,4 +54,28 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UpdateProfileResponseDto" nillable="true" type="tns:UpdateProfileResponseDto" />
+  <xs:complexType name="GetScoreBreakdownResponseDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Ledger" nillable="true" type="tns:ArrayOfGetScoreBreakdownRequestDto" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetScoreBreakdownResponseDto" nillable="true" type="tns:GetScoreBreakdownResponseDto" />
+  <xs:complexType name="ArrayOfGetScoreBreakdownRequestDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetScoreBreakdownRequestDto" nillable="true" type="tns:GetScoreBreakdownRequestDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetScoreBreakdownRequestDto" nillable="true" type="tns:ArrayOfGetScoreBreakdownRequestDto" />
+  <xs:complexType name="GetScoreBreakdownRequestDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MatchDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OpponentName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PointsType" type="xs:int" />
+      <xs:element minOccurs="0" name="Word" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetScoreBreakdownRequestDto" nillable="true" type="tns:GetScoreBreakdownRequestDto" />
 </xs:schema>

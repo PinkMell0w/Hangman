@@ -214,6 +214,15 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hide details.
+        /// </summary>
+        public static string Button_hideDetails {
+            get {
+                return ResourceManager.GetString("Button_hideDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Incorrect.
         /// </summary>
         public static string Button_incorrectGuess {
@@ -327,6 +336,15 @@ namespace HangmanGame.Client.Properties {
         public static string Button_search {
             get {
                 return ResourceManager.GetString("Button_search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to See score breakdown.
+        /// </summary>
+        public static string Button_seeScores {
+            get {
+                return ResourceManager.GetString("Button_seeScores", resourceCulture);
             }
         }
         

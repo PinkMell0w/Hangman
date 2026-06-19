@@ -510,4 +510,10 @@
   <data name="Text_aboutMe" xml:space="preserve">
     <value>About me</value>
   </data>
+  <data name="Button_seeScores" xml:space="preserve">
+    <value>See score breakdown</value>
+  </data>
+  <data name="Button_hideDetails" xml:space="preserve">
+    <value>Hide details</value>
+  </data>
 </root>

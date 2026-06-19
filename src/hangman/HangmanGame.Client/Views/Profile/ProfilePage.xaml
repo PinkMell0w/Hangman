@@ -19,7 +19,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid>
+        <Grid Grid.Row="0" Visibility="{Binding ProfileDetailsVisibility}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
@@ -29,7 +29,7 @@
                 <TextBlock Text="{x:Static props:Resources.Global_username}" FontSize="22" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10"/>
                 <TextBlock Text="{Binding Username}" Visibility="{Binding ViewModeVisibility}" FontSize="32" Margin="0,0,0,10" Width="200" HorizontalAlignment="Left"/>
                 <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding EditModeVisibility}" FontSize="24" Margin="0,0,0,10" Width="250" HorizontalAlignment="Left"/>
-                
+
                 <TextBlock Text="{x:Static props:Resources.Text_fullName}" FontSize="20" FontFamily="Ink Free" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10"/>
                 <TextBlock Text="{Binding FullName}" FontSize="26" Margin="0,0,0,10" HorizontalAlignment="Left"/>
 
@@ -59,13 +59,56 @@
             </StackPanel>
         </Grid>
 
-        <Grid Grid.Row="1" VerticalAlignment="Bottom">
-            <Button Name="BtnGoBack" Content="{x:Static props:Resources.Button_goBack}" Margin="20,0,0,10" HorizontalAlignment="Left" Padding="8" Command="{Binding NavigateToLobbyCommand}" Visibility="{Binding ViewModeVisibility}" />
-            <Button Name="BtnModifyProfile" Content="{x:Static props:Resources.Button_editProfile}" Margin="20,0,140,10" HorizontalAlignment="Right" Padding="8" Command="{Binding ModifyProfileCommand}" Visibility="{Binding ViewModeVisibility}" />
-            <Button Name="BtnDeleteProfile" Content="{x:Static props:Resources.Button_deleteAccount}" Margin="0,0,20,10" HorizontalAlignment="Right" Padding="8" Visibility="{Binding ViewModeVisibility}" />
+        <Grid Grid.Row="0" Margin="0,40,0,0">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="180" VerticalAlignment="Top" Margin="20,0,20,60" Visibility="{Binding StatsVisibility}">
+                <TabControl Background="White" BorderBrush="#CCCCCC">
+                    <TabItem Header="Partidas Ganadas (+10 Pts)">
+                        <DataGrid ItemsSource="{Binding WonMatches}" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="Horizontal" Background="White">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Fecha de Partida" Binding="{Binding MatchDate, StringFormat=\{0:dd/MM/yyyy HH:mm\}}" Width="2*" />
+                                <DataGridTextColumn Header="Palabra Adivinada" Binding="{Binding Word}" Width="2*" />
+                                <DataGridTextColumn Header="Jugador Vencido" Binding="{Binding OpponentName}" Width="2*" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
 
-            <Button Name="BtnCancelChanges" Content="{x:Static props:Resources.Button_cancel}" Margin="20,0,0,10" HorizontalAlignment="Left" Padding="8" Command="{Binding GoBackCommand}" Visibility="{Binding EditModeVisibility}"/>
-            <Button Name="BtnSaveChanges" Content="{x:Static props:Resources.Button_saveSettings}" Margin="0,0,20,10" HorizontalAlignment="Right" Padding="8" Command="{Binding SaveChangesCommand}" Visibility="{Binding EditModeVisibility}"/>
+                    <TabItem Header="Victorias por Defensa (+5 Pts)">
+                        <DataGrid ItemsSource="{Binding RivalFailedMatches}" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="Horizontal" Background="White">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Fecha de Partida" Binding="{Binding MatchDate, StringFormat=\{0:dd/MM/yyyy HH:mm\}}" Width="2*" />
+                                <DataGridTextColumn Header="Palabra No Adivinada" Binding="{Binding Word}" Width="2*" />
+                                <DataGridTextColumn Header="Jugador Vencido" Binding="{Binding OpponentName}" Width="2*" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+
+                    <TabItem Header="Penalizaciones (-3 Pts)">
+                        <DataGrid ItemsSource="{Binding Penalties}" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="Horizontal" Background="White">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Fecha" Binding="{Binding MatchDate, StringFormat=\{0:dd/MM/yyyy HH:mm\}}" Width="2*" />
+                                <DataGridTextColumn Header="Palabra en Juego" Binding="{Binding Word}" Width="3*" />
+                                <DataGridTextColumn Header="Origen" Binding="{Binding OpponentName}" Width="1*" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                </TabControl>
+            </ScrollViewer>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid VerticalAlignment="Bottom">
+                <Button Name="BtnGoBack" Content="{x:Static props:Resources.Button_goBack}" Margin="20,0,0,10" HorizontalAlignment="Left" Padding="8" Command="{Binding NavigateToLobbyCommand}" Visibility="{Binding ViewModeVisibility}" />
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,20,10" Visibility="{Binding ViewModeVisibility}">
+                    <Button Name="BtnToggleStats" Content="{Binding ToggleStatsButtonText}" Margin="0,0,10,0" Padding="8" Command="{Binding ToggleStatsCommand}"/>
+
+                    <Button Name="BtnModifyProfile" Content="{x:Static props:Resources.Button_editProfile}" Visibility="{Binding ModifyButtonsVisibility}" Margin="0,0,10,0" Padding="8" Command="{Binding ModifyProfileCommand}" />
+                    <Button Name="BtnDeleteProfile" Content="{x:Static props:Resources.Button_deleteAccount}" Visibility="{Binding ModifyButtonsVisibility}" Padding="8" />
+                </StackPanel>
+
+                <Button Name="BtnCancelChanges" Content="{x:Static props:Resources.Button_cancel}" Margin="20,0,0,10" HorizontalAlignment="Left" Padding="8" Command="{Binding GoBackCommand}" Visibility="{Binding EditModeVisibility}"/>
+                <Button Name="BtnSaveChanges" Content="{x:Static props:Resources.Button_saveSettings}" Margin="0,0,20,10" HorizontalAlignment="Right" Padding="8" Command="{Binding SaveChangesCommand}" Visibility="{Binding EditModeVisibility}"/>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

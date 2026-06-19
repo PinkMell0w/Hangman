@@ -510,4 +510,10 @@
   <data name="Text_aboutMe" xml:space="preserve">
     <value>Acerca de mí</value>
   </data>
+  <data name="Button_seeScores" xml:space="preserve">
+    <value>Ver desglose de puntos</value>
+  </data>
+  <data name="Button_hideDetails" xml:space="preserve">
+    <value>Ocultar detalles</value>
+  </data>
 </root>
