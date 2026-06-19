@@ -763,7 +763,7 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You kicked {username}.
+        ///   Looks up a localized string similar to You kicked your opponent.
         /// </summary>
         public static string Message_kickedPlayer {
             get {
@@ -781,7 +781,7 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Congratulations! {username} didn’t guess your word. You’ve earned 5 points.
+        ///   Looks up a localized string similar to Congratulations! Your opponent didn’t guess your word. You’ve earned 5 points.
         /// </summary>
         public static string Message_opponentLost {
             get {
@@ -790,7 +790,7 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {username} guessed your word. Better luck next time!.
+        ///   Looks up a localized string similar to Your opponent guessed your word. Better luck next time!.
         /// </summary>
         public static string Message_opponentWon {
             get {
@@ -844,7 +844,7 @@ namespace HangmanGame.Client.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Congratulations! You guessed the word: {word}. You’ve earned 10 points.
+        ///   Looks up a localized string similar to Congratulations! You guessed the word. You’ve earned 10 points.
         /// </summary>
         public static string Message_wordGuessed {
             get {

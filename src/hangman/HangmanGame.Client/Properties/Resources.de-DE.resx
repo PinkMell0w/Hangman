@@ -454,7 +454,7 @@
     <value>Sie haben 3 Punkte verloren</value>
   </data>
   <data name="Message_kickedPlayer" xml:space="preserve">
-    <value>Sie haben {username} gekickt</value>
+    <value>Sie haben ihren Gegner gekickt</value>
   </data>
   <data name="Message_kickedMidGame" xml:space="preserve">
     <value>Sie haben ihren Gegner gekickt, um fair zu bleiben, wurden ihnen 3 Punkte abgezogen</value>
@@ -463,16 +463,16 @@
     <value>Ihre Punkte bleiben unverändert</value>
   </data>
   <data name="Message_wordGuessed" xml:space="preserve">
-    <value>Glückwunsch! Sie haben das Wort erraten: {word}. Sie haben 10 Punkte erhalten</value>
+    <value>Glückwunsch! Sie haben das Wort erraten. Sie haben 10 Punkte erhalten</value>
   </data>
   <data name="Message_opponentWon" xml:space="preserve">
-    <value>{username} hat das Wort erraten. Viel Glück beim nächsten mal!</value>
+    <value>Ihren Gegner hat das Wort erraten. Viel Glück beim nächsten mal!</value>
   </data>
   <data name="Message_wordNotGuessed" xml:space="preserve">
     <value>Schade! Sie habe das Wort nicht erraten können. Viel Glück beim nächsten mal!</value>
   </data>
   <data name="Message_opponentLost" xml:space="preserve">
-    <value>Glückwunsch! {username} hat ihr Wort nicht erraten können. Sie haben 5 Punkte erhalten</value>
+    <value>Glückwunsch! Ihren Gegner hat ihr Wort nicht erraten können. Sie haben 5 Punkte erhalten</value>
   </data>
   <data name="Error_scoresUpdFailed" xml:space="preserve">
     <value>Ihre Punkte, sowie Siege &amp; Niederlagen konnten nicht gespeichert werden. Ihre Punkte bleiben unverändert.</value>

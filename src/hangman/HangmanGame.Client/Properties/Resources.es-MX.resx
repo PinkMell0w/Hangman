@@ -454,7 +454,7 @@
     <value>Perdiste 3 puntos</value>
   </data>
   <data name="Message_kickedPlayer" xml:space="preserve">
-    <value>Expulsaste a {username}</value>
+    <value>Expulsaste a tu oponente</value>
   </data>
   <data name="Message_kickedMidGame" xml:space="preserve">
     <value>Expulsaste a tu oponente. Por equidad, has perdido 3 puntos</value>
@@ -463,16 +463,16 @@
     <value>Tu puntaje no ha sido afectado</value>
   </data>
   <data name="Message_wordGuessed" xml:space="preserve">
-    <value>¡Felicidades! Adivinaste la palabra: {Word}. Ganaste 10 puntos</value>
+    <value>¡Felicidades! Adivinaste la palabra. Ganaste 10 puntos</value>
   </data>
   <data name="Message_opponentWon" xml:space="preserve">
-    <value>{username} adivinó tu palabra. ¡Suerte para la próxima!</value>
+    <value>Tu oponente adivinó tu palabra. ¡Suerte para la próxima!</value>
   </data>
   <data name="Message_wordNotGuessed" xml:space="preserve">
     <value>¡Qué mal! No adivinaste la palabra- ¡Suerte para la próxima!</value>
   </data>
   <data name="Message_opponentLost" xml:space="preserve">
-    <value>¡Felicidades! {username} no adivinó tu palabra. Ganaste 5 puntos</value>
+    <value>¡Felicidades! Tu oponente no adivinó tu palabra. Ganaste 5 puntos</value>
   </data>
   <data name="Error_scoresUpdFailed" xml:space="preserve">
     <value>No se pudo guardar tu puntaje ni se pudo actualizar tu historial de victorias y derrotas. Tus puntajes no cambiarán</value>
